@@ -1,6 +1,6 @@
 # Using Node-RED to manage ADSC, ADSB, ACARS and other aircraft type messages.
 
-Navigation: [autoTLE](autoTLE.md)
+Navigation: [autoTLE](autoTLE.md) : [OpenSkyAPI](OpenSkyAPI.md)
 
 So many message types, so many different message paths and sources.
 
