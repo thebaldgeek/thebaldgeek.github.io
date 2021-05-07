@@ -15,3 +15,5 @@ My moto is 'fail fast, fail often'. I am NOT a programer. Do NOT use any of the 
 ### Support or Contact
 
 Be sure and let me know if you get a laugh out of all this.
+    
+    ![linear actuator](https://user-images.githubusercontent.com/7385116/117485168-e8866900-af1c-11eb-8982-83457b7049cd.PNG)
