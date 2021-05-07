@@ -1,5 +1,7 @@
 # Using Node-RED to manage ADSC, ADSB, ACARS and other aircraft type messages.
 
+Navigation: [autoTLE](autoTLE.md)
+
 So many message types, so many different message paths and sources.
 
 Pull them all together with Node-RED and put them on a central web dashboard.
