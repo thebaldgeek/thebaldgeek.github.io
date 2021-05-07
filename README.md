@@ -10,7 +10,7 @@ Begin with the end in mind as my boss used to say. Where you run Node-RED depend
 
 ###  READ THIS!
 
-The key take away from these pages is this:- I am NOT a programer. Do NOT use any of the code shared here. These pages and the code on them are for entertainmet only.
+The key take away from these pages is this:- I am NOT a programer. Do NOT use any of the code shown here. These pages and the code on them are for entertainmet only.
 
 ### Support or Contact
 
