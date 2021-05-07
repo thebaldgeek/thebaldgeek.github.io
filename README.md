@@ -10,7 +10,7 @@ Begin with the end in mind as my boss used to say. Where you run Node-RED depend
 
 ###  READ THIS!
 
-My moto is 'fail fast, fail often'. I am NOT a programer. Do NOT use any of the code shown here. These pages and the code on them are for entertainmet use only.
+My motto is 'fail fast, fail often'. I am NOT a programer. Do NOT use any of the code shown here. These pages and the code on them are for entertainment use only.
 
 ### Support or Contact
 
