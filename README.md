@@ -16,5 +16,7 @@ My moto is 'fail fast, fail often'. I am NOT a programer. Do NOT use any of the 
 
 I will do my best to support your Node-RED aircraft spotting / tracking adventures, but please keep in mind, I am NOT a programmer. I honestly have no idea or right to be doing any of this, so your milage may vary. Also, since I am not a programmer (Have I mentioned I am not a programmer?), I have no idea what a 'pull request' is or how to deal with one, so if you raise one... yeah, sorry... I can't help.
 
-This is an image. Mabey.   
+This is an image of how to NOT hook up your linear actuator motor to your dish.   
+Look at the top connection, see how its attached to pivot point, this means the up and down motion will not be the same.   
+   
 ![Dish elevation tracking motor](linear%20actuator.PNG)
