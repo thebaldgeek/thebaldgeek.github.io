@@ -14,6 +14,6 @@ My moto is 'fail fast, fail often'. I am NOT a programer. Do NOT use any of the 
 
 ### Support or Contact
 
-Be sure and let me know if you get a laugh out of all this.
+I will do my best to support your Node-RED aircraft spotting / tracking adventures, but please keep in mind, I am NOT a programmer. I honestly have no idea or right to be doing any of this, so your milage may vary.
     
     ![linear actuator](https://user-images.githubusercontent.com/7385116/117485168-e8866900-af1c-11eb-8982-83457b7049cd.PNG)
