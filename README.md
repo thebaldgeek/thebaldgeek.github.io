@@ -14,6 +14,7 @@ My moto is 'fail fast, fail often'. I am NOT a programer. Do NOT use any of the 
 
 ### Support or Contact
 
-I will do my best to support your Node-RED aircraft spotting / tracking adventures, but please keep in mind, I am NOT a programmer. I honestly have no idea or right to be doing any of this, so your milage may vary. Also, since I am not a programmer (Have I mentioned I am not a programmer?), I have no idea what a 'pull request' is or how to deal with one.
-    
-    ![linear actuator](https://user-images.githubusercontent.com/7385116/117485168-e8866900-af1c-11eb-8982-83457b7049cd.PNG)
+I will do my best to support your Node-RED aircraft spotting / tracking adventures, but please keep in mind, I am NOT a programmer. I honestly have no idea or right to be doing any of this, so your milage may vary. Also, since I am not a programmer (Have I mentioned I am not a programmer?), I have no idea what a 'pull request' is or how to deal with one, so if you raise one... yeah, sorry... I can't help.
+
+This is an image. Mabey.   
+![image](https://github.com/thebaldgeek/thebaldgeek.github.io/blob/main/linear%20actuator.PNG)
