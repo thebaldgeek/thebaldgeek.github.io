@@ -8,7 +8,7 @@ Pull them all together with Node-RED and put them on a central web dashboard.
 
 Begin with the end in mind as my boss used to say. Where you run Node-RED depends on how much you want your system to grow.
 
-### Jekyll Theme on this page is sorta broken.
+###  READ THIS!
 
 The key take away from these pages is this:- I am NOT a programer. Do NOT use any of the code shared here. These pages and the code on them are for entertainmet only.
 
