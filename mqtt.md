@@ -11,7 +11,7 @@ Here is how to set up a Jaero - more details on the Jaro page.
 ![Jaero Configuration](img/jaeroconfig.png) 
 
 This happens to be a C-band Jaero, for L-Band, you just want the check box for ACARS.  
-Note that if you want to feed more than one (say Planeplotter for example), just put a space after the port number and put your new IP:port in for the other computer or program.   
+Note that if you want to feed more than one computer or program (say Planeplotter for example), just put a space after the port number and put your new IP:port in for the other computer or program.   
 If you are running the Jaero on the same PC as Node-RED, you can use 127.0.01, but you will still need to use a high port number.  
 Remember, for ACARS, the port number in each Jaero can be the same and so you only need one UDP input node in Node-RED (again, unless you are keeping track of each satellite channel).
    
