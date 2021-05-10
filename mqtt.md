@@ -4,7 +4,16 @@ Navigation: [home](README.md)
 
 One of the problems with Jaero is that it can not use host names in any of its settings, only IP addresses.  
 At first we simply used my web IP address, but it changes about 2-4 times a year and so you need to change the IP in around 20-30 Jaeros at each ground station, that gets old pretty quick.   
-Thankfully most remote sites are happy to install Node-RED and so you can just put the Node-RED computer IP address into Jaero and you are done on that side of things. 
+Thankfully most remote sites are happy to install Node-RED and so you can just put the Node-RED computer IP address into Jaero and you are done on that side of things.  
+   
+Here is how to set up a Jaero - more details on the Jaro page.   
+
+![Jaero Configuration](img/jaeroconfig.png) 
+
+This happens to be a C-band Jaero, for L-Band, you just want the check box for ACARS.  
+Note that if you want to feed more than one (say Planeplotter for example), just put a space after the port number and put your new IP:port in for the other computer or program.   
+If you are running the Jaero on the same PC as Node-RED, you can use 127.0.01, but you will still need to use a high port number.  
+Remember, for ACARS, the port number in each Jaero can be the same and so you only need one UDP input node in Node-RED (again, unless you are keeping track of each satellite channel).
    
 On the Node-RED side of things, you place a UDP input node (since Jaero uses UDP to send the ACARS messages) and connect its output to an MQTT output node. Configure the MQTT server hostname and port, add the user/pass and your done. Very quick, very clean, and no open ports at the remote site.  
 Pick a high UDP port number, but something you can keep track of and is logical, say 40100 for the first one and go up from there.   
