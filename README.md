@@ -21,4 +21,4 @@ I will do my best to support your Node-RED aircraft spotting / tracking adventur
 This is an image of how to NOT hook up your linear actuator motor to your dish.   
 Look at the top connection, see how its attached to pivot point, this means the up and down motion will not be the same.   
    
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/linear%20actuator.PNG" height="40%">
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/linear%20actuator.PNG" height="500">

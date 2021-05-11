@@ -6,8 +6,10 @@ One of the first things to do is to install a JSON pretty print extension in you
 Each receiver has a feed ID, you will need that feed ID if you want to drill into your Jaero feeds and use Node-RED to look at the numbers of aircraft each satellite channel is carrying.    
 Of course, there is also nothing stopping you from just looking the total of all the feeds and calling it a day.  
 Here is what the feed ID list looks like when expanded a bit in your browser:   
-![JSON feed ID](img/vrsfeednumbers.png)   
    
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/vrsfeednumbers.png" height="470">   
+
+
 Don't confuse the JSON ID with the VRS feed ID. In the image above, if you want San Diego data, you need feed id 6, NOT 1.   
 The way you use this ID then is in the URL. So in my case, I run Node-RED on the same Windows PC as VRS, so my URL becomes http://127.0.0.1:8880/virtualradar/AircraftList.json?feed=6   
 If you put that URL in your browser, you will see just the JSON data for the aircraft on the San Diego VRS receiver.   

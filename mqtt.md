@@ -8,7 +8,7 @@ Thankfully most remote sites are happy to install Node-RED on the same Windows P
    
 Here is how to set up a Jaero - more details on the Jaero page.   
 
-![Jaero Configuration](img/jaeroconfig.png) 
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/jaeroconfig.png" height="580"> 
 
 This happens to be a C-band Jaero, for L-Band, you just want the check box for ACARS.  
 Note that if you want to feed more than one computer or program (say Planeplotter for example), just put a space after the last port number on that line and put your new IP:port in for the other computer or program.   
@@ -20,7 +20,7 @@ Pick a high UDP port number, but something you can keep track of and is logical,
 Use the same port number in each Jaero (unless you want to track which aircraft are using which channels on the satellite)
 This is how it looks.   
 
-![UDP to MQTT](img/udptomqtt.png) 
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/udptomqtt.png" height="150"> 
 
 For a typical L-Band ground station, this is all you need to send data to the central server. It seem almost too easy. The key is that Node-RED knows how to look up the host name of the broker, and since the host name never changes (its IP address can change, but the name does not) then everything connects and stays working.  
 
