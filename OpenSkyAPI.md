@@ -6,7 +6,7 @@ Navigation: [home](README.md)
     
 Unlike most other ADSB sites, OpenSky-network.org give API access to past data. 7 day airport arrival/departure history and 30 aircraft movement history.   
 You can easily use a Node-RED http node to do a GET on the URL and present the data in a table.   
-This helps give some more information as to an aircraft of interest has been lately.
+This helps give some more information as to where an aircraft of interest has been lately.
 
 If you are feeding OpenSky, you will have a user/pass. You will need to add these to the following flows.   
     
