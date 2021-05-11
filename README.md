@@ -1,10 +1,10 @@
-# Using Node-RED to manage ADSC, ADSB, ACARS and other aircraft type messages.
+# Using Node-RED to manage ADSC, ADSB, ACARS, VDL2, HF-DL and other aircraft type messages.
 
-Navigation: [autoTLE](autoTLE.md) : [OpenSkyAPI](OpenSkyAPI.md) : [VRS](vrs.md)
+Navigation: [autoTLE](autoTLE.md) : [OpenSkyAPI](OpenSkyAPI.md) : [VRS](vrs.md) : [MQTT](mqtt.md)
 
-So many message types, so many different message paths and sources.
+So many message types, so many different message paths and sources but all involving aircraft.
 
-Pull them all together with Node-RED and put them on a central web dashboard.
+Pull them all together, add context and map them with Node-RED. Put all that on a central web dashboard.
 
 ### Raspberry Pi or Windows PC or Linux Box?
 
