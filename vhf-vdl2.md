@@ -68,7 +68,7 @@ In that file, uncomment the DUMPVDL2_OPTIONS= and put your options from the test
 `systemctl status dumpvdl2`  
 `systemctl enable dumpvdl2`  
 
-
+- - - - 
 ## vdlm2dec ##  
 Even though I don't use it since I cant handle the random JSON keys, here is a partial flow that displays some of the main key value pairs for vdlm2dec via JSON.    
     

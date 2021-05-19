@@ -22,6 +22,7 @@ Then select UTC:
    
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/piutc.png" height="470">   
 
+- - - -
   
 ## ZeroTeir ##
 I access all my remote Pis (and a few Windows PCs needed for Jaero etc) via ZeroTier.com can not speak more highly of it.  
