@@ -6,8 +6,7 @@ There are two main decoders that use an SDR and decode VDL2 data (I only ran eit
 
 Both vdlm2dec and dumpvdl2 can work with Node-RED. In fact they are very similar to install and use. They both output their data in JSON but only dumpvdl2 has a decoded text option.   
 Part of the problem with both of them is that neither author lists all the options of the JSON keys their programs can produce in their docs, this makes it hard for me to write a Node-RED flow that can intelligently deal with unknown keys as they come across the wire. I'm sure if you dug into their code they would probably have an array somewhere in a file that lists all the possible key pairs that their program could show in an given message. I'm also sure that if you knew how to program there is probably a well known method to deal with random key pairs in your code.   
->>>>>>> eb81e5699988939ba32859a7fef482c70e3f2cba
-   
+
 Note that vdlm2dec requires its command line frequencies to be in Mhz while dumpvdl requires them to be in Hz. 
 
 **Feeding VDL2 data to Node-RED**    
