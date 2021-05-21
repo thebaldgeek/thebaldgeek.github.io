@@ -3,7 +3,7 @@
 Navigation: [home](README.md)
 
 There are two parts to consider here.   
-You should not hit the URL every time you want to track the satellite or move the rotator. To pull this off, we get the TLE and store it in a flow.context, then every time we want to move the rotator or get the satellite position data we read the TLE out of the flow.context.   
+You should not hit the URL every time you want to track the satellite or move the rotator. To pull this off, we get the TLE once every 24 hours (plenty fast enough for most satellite orbits) and store it in a flow.context list, then every time we want to move the rotator or get the satellite position data we read the TLE out of the flow.context list.   
 This example uses 25E Alphasat as its example. Just change the satellite number for your object of tracking choice.
     
 With all that said, here is the flow:   
