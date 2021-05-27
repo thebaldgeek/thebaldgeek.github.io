@@ -40,7 +40,7 @@ Here are some rough notes to build dumpvdl. This is a very bear bones build. We 
 `sudo make install`  
 `sudo ldconfig`  
 `sudo nano /etc/modprobe.d/blacklist.conf`  
-Add the following line, save and exit the file: blacklist dvb_usb_rtl28xxu  
+Add the following line, save and exit the file: `blacklist dvb_usb_rtl28xxu`  
 Reboot the Pi  
 `cd`  
 `git clone https://github.com/szpajder/dumpvdl2.git`  
