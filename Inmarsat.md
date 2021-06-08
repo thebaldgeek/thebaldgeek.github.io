@@ -52,4 +52,13 @@ This is heatmap of Inmarsat 98W orbit taken over 2-3 days.
 **A note about window mounted L-Band antennas.** We have found in helping many people get up and running with L-Band reception that many double and singled glazed windows have a 'Low E coating'. It is a very thin (transparent) metal film on the glass that helps with insulation from cold and heat. It is very very effective in blocking RF signal. More often than not people may find they get a better signal looking through a wall or roof than looking through a window. Please keep that in mind when using the AR sat finder app and seeing where to place your antenna.  
    
 The type of antenna also will have some impact on your continuous reception. If you just want to setup now and then to pick up a little data for an hour or so, then this will not be a major issue, but if you wish to leave the antenna in place and track aircraft messages around the clock (ie, over the whole orbit of the satellite) then here are some tips:   
-<img src="https://github.com/thebaldgeek/thebaldgeek.github.io/blob/main/img/25elbandv2patchdropouts.png" height="580"> 
+   
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/25elbandv2patchdropouts.png" height="280"> 
+   
+Here is a classic issue that comes up often with the RTLSDR V2 (and V1) Patch antennas. They have marginal beam width and so you can often lose data at the top or bottom (or both) of the orbit.   
+We will cover how to plot your data rate on a graph like this in another page, but it is a critical part of setting up, tuning and running a quality ground station.   
+In this case you can try tilting the antenna mount up a bit at a time until you have good data rates over the whole orbit, or you can swap out the patch antenna for a helix antenna.
+Here are some of the L-Band antennas we have tested:
+
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/98waso.jpg" height="580">   
+From front to back, we have the v1 patch, the v2 patch, a wire wound 7 turn helix and lastly a 4mm copper pipe 7 turn helix (my preferred antenna for L-Band).
