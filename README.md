@@ -10,11 +10,11 @@ If you want both ADSB and ADSC planes on a map: <a href="http://thebaldgeek.net:
 If you want to see the data rates for the ADSC aircraft the system tracks: <a href="http://thebaldgeek.net:99/graphs1090/" rel="noopener" target="_blank">http://thebaldgeek.net:99/graphs1090/</a>  
   
 **Node-RED Dashboard**  
-Live ACARS, VDL, HFDL and Inmarsat C-Band and L-Band ACARS messages for most of the planet (broken down into different bands and types of aircraft's (like Bizjets and Military).  
+Live ACARS, VDL, HFDL and Inmarsat C-Band and L-Band messages for most of the planet - broken down into different bands and types of aircraft's (like Bizjets and Military).  
 <a href="http://thebaldgeek.net:2277/ui/#/0" rel="noopener" target="_blank">http://thebaldgeek.net:2277/ui/#/0</a>  
   
 Take your time on that 'site'. The menu is on the top left (the three bars).  
-View each of the pages and **pay attention to the update log page at the very bottom of the page menu.**  
+View each of the pages and *pay attention to the update log page at the very bottom of the page menu.*  
 We are constantly working on the site. The site is a case of function over form. It is not really 'friendly', but it is rather powerful.
 For example, you can filter on commercial or military CPDLC messages, or ACARS messages in general.  
 
@@ -29,7 +29,7 @@ If you have an ADSC satellite dish setup and would like to feed your data to the
 ###  READ THIS!
 
 My motto is 'fail fast, fail often'. I am NOT a programer. Do NOT use any of the code shown here. These pages and the code on them are for entertainment use only.   
-The pages on this site are a brain dump. There are a lot of different moving parts to running a ground station. This site is an attempt to document all the required steps and parts needed.
+The pages on this site are a brain dump. There are a lot of different moving parts to running an effective ground station. Many different people and web sites have small snippets of information about putting together a satcom ground stations. This site is an attempt to pull them together and document all the required steps and parts needed.
 
 ### Support or Contact
 
