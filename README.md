@@ -5,9 +5,9 @@ Navigation: [Inmarsat](Inmarsat.md) : [autoTLE](autoTLE.md) : [OpenSkyAPI](OpenS
 **Planes on a map**   
 If you want to look look at just the aircraft that we are tracking via satellite: <a href="http://thebaldgeek.net:99/tar1090/" rel="noopener" target="_blank">http://thebaldgeek.net:99/tar1090/</a>  
 If you want to get a feel for the satellite coverage over the past 24 hours (it's memory heavy so zoom and pan slowly): <a href="http://thebaldgeek.net:99/tar1090/?pTracks" rel="noopener" target="_blank">http://thebaldgeek.net:99/tar1090/?pTracks</a>  
-If you just want both ADSB and ADSC planes on a map: <a href="http://thebaldgeek.net:99/recombine/" rel="noopener" target="_blank">http://thebaldgeek.net:99/recombine/</a>  
+If you want both ADSB and ADSC planes on a map: <a href="http://thebaldgeek.net:99/recombine/" rel="noopener" target="_blank">http://thebaldgeek.net:99/recombine/</a>  
 **Data Graphs**  
-If you want to see the data rates for the ADSC aircraft the system tracks, you can: <a href="http://thebaldgeek.net:99/graphs1090/" rel="noopener" target="_blank">http://thebaldgeek.net:99/graphs1090/</a>  
+If you want to see the data rates for the ADSC aircraft the system tracks: <a href="http://thebaldgeek.net:99/graphs1090/" rel="noopener" target="_blank">http://thebaldgeek.net:99/graphs1090/</a>  
   
 **Node-RED Dashboard**  
 Live ACARS, VDL, HFDL and Inmarsat C-Band and L-Band ACARS messages for most of the planet (broken down into different bands and types of aircraft's (like Bizjets and Military).  
