@@ -35,7 +35,4 @@ The pages on this site are a brain dump. There are a lot of different moving par
 
 I will do my best to support your Node-RED aircraft spotting / tracking adventures, but please keep in mind, I am NOT a programmer. I honestly have no idea or right to be doing any of this, so your milage may vary. Also, since I am not a programmer (Have I mentioned I am not a programmer?), I have no idea what a 'pull request' is or how to deal with one, so if you raise one... yeah, sorry... I can't help.
 
-This is an image of how to NOT hook up your linear actuator motor to your dish.   
-Look at the top connection, see how its attached to pivot point, this means the up and down motion will not be the same.   
-   
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/linear%20actuator.PNG" height="500">
+Check back often, this site is being updated almost daily.
