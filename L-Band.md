@@ -65,7 +65,7 @@ Some people build, some people buy their antennas. With L-Band, you can do eithe
     
     Here is a selection of L-Band antennas that I have used at some point in time:   
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/PXL_20210418_192625210.jpg" height="580">      
-      
+
 At the front we have the RTL-SDR v1 patch. Next is the V2 patch, then a prototype of the 3D printed helix and then a second prototype.   
 
    The most popular buy option is the RTL-SDR v2 patch antenna. In June 2021 it was out of stock globally for the next many months.    
@@ -80,3 +80,18 @@ If you only have an indoor antenna option, then more antenna gain is something y
   My goal was to setup a system that had 24 x 7 x 365 coverage and caught every downlink message possible from every channel on the satellite.   
      
 My current preferred, recommended and in stock antenna for L-Band is a 3D printed 7 turn Helix.  
+Here is a close up of the antenna while connected to a NanoVNA.   
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/nanovna.png" height="580">  
+    
+The hard work of getting the spacing is taken care of by the 3D printed white framework.   
+You can download the file from thingverse here: https://www.thingiverse.com/thing:4834929  
+Take care to download and print the correct type, there are 4 to chose from.   
+Since I am not shooting into a dish, I need right-hand circular polarization. I also really like the version with the extra leg support, so use file: NH1542R2   
+I order the 4mm copper tube off Amazon and the base is a stainless steel 8 inch pizza pan also from Amazon. The hardware is stainless steel from Home Depot. The antenna connector is a SMA male bulkhead connector from Amazon.   
+The key to building the antenna is to pre-form the copper on a cylinder that is very close to the final size.   
+As it happens, a Vegemite jar is perfect (I am Australian).   
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/lbandpreformcopperwind.png" height="320">    
+Once you preform the copper to the right size, you can then wind it on the framework very smoothly.  
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/lbandpreformcopper.png" height="460">  
+    
+Trim the turns to exactly 7 and 
