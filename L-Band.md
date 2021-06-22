@@ -116,13 +116,24 @@ That said, if you just want to monitor now and then, and you want to use the Jae
    
 ## Download and unzip Jaero   
 We want to be sure to be using the 1.0.4.12-Alpha version of Jaero which was updated in March 2021.   
-Go to the Jaero GitHub page: https://github.com/jontio/JAERO/releases and under the 'Development Build' (at the top of the page) there is a small 'Assets' drop down, expand it and download the file you need.   
+Go to the Jaero GitHub page: <https://github.com/jontio/JAERO/releases> and under the 'Development Build' (at the top of the page) there is a small 'Assets' drop down, expand it and download the file you need.   
 A quick word here on Linux. While there is a build of linux, myself and others have not managed to run the required 12 or so instances on Linux. One or two is find, but as you add more, the message decode rate starts to drop until they are running but not decoding. I have had to stick to Windows for all my satellite decoding adventures.   
 Note that the file states 1.0.4.11, but when you unzip and run it, its really 1.0.4.12-alpha.   
 Note that you don't need to install this version, you can simply run it from the subdirectory you unzip it into.   
     
 The new alpha version includes support for basestation.sqb. This is a pseudo 'standard' of aircraft details database. As Jaero decodes aircraft messages, it looks up each ICAO (Jaero calls them AES) in the database and provides type and owner information in its log file. If you are going to use Node-RED to track the aircraft, skip this step.   
 The basestation.sqb file that this version of Jaero includes has around 188,000 aircraft details, but we can quickly do better.    
-Visit the flightairmap page and download their basestation.sqb file: https://data.flightairmap.com/  
+Visit the flightairmap page and download their basestation.sqb file: <https://data.flightairmap.com/>  
 The link is at the bottom of that page.   
-Unzip it on your computer and copy the file to your Jaero subdirectory and replace (over write) the one in there. The flightairmap database has 380,000 aircraft, so almost double the chances of Jaero showing the information for any satcom ACARS messages you decode.
+Unzip it on your computer and copy the file to your Jaero subdirectory and replace (over write) the one in there. The flightairmap database has 380,000 aircraft, so almost double the chances of Jaero showing the information for any satcom ACARS messages you decode.   
+If you are using Node-RED I will walk you through building an even larger database with around 558,000 aircraft details. Or you can get creative and modify your own database to use with Jaero.    
+    
+Once you have copied the database over, you can now double click Jaero and run it.   
+I intend to write an entire page on Jaero in the future, but for now, lets just do one more tweak for those of you running standalone (ie, no Node-RED).   
+
+### Jaero Log Link   
+Click on the gear icon, then click on the second tab in the settings, the 'Log Window'.   
+Here you will see the link that will be opened in your web browser when you click on the aircraft drawing in the Jaero log.   
+Out of the box it is set to: `http://www.flightradar24.com/data/airplanes/{REG}`  
+This is Ok for some people, but many would rather it open to ADSBExcahnge, good news, we can change it.    
+Delete the fightradar24 link and replace it with: `https://globe.adsbexchange.com/?icao={AES}`   
