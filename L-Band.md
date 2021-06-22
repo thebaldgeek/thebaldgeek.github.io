@@ -56,14 +56,15 @@ CONFIRM TYPE OF 3 FIGHTER AIRCRAFT WITH YOU`
 This is from a French dispatch operator to a tanker that was towing 3 Rafael fighter aircraft around Tahiti.   
 Since L-Band is from the ground to the aircraft, you will also see 'commands' given to flight crews for course changes, or even future flights, so you will know about a flight plan before it is flown. Here is one such example:  
 `-06-21UTCAES:AE07EAGES:022.50107A!H1C-#MDWXR/ID50107A,RCH240,AJZF102SD173/MR3,11/MTKHMN,1610,TAFKHMN221610ZVRB06KT9999FEW240QNH3016INST26C-AUTORESPONSEBASEDONAVAILABLEDATA-CONTACTC2AGENCYFORADDITIONALINFO9FAD`  
-Here we see RCH240 being instructed to flight to KHMN.   
+Here we see RCH240 being instructed to fly to KHMN.   
     
 There is more, but I will save it for the Military page (when I get to writing it).   
      
 ## Building the hardware ##   
 Some people build, some people buy their antennas. With L-Band, you can do either.    
     
-    Here is a selection of L-Band antennas that I have used at some point in time:   
+Here is a selection of L-Band antennas that I have used at some point in time:   
+
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/PXL_20210418_192625210.jpg" height="580">      
 
 At the front we have the RTL-SDR v1 patch. Next is the V2 patch, then a prototype of the 3D printed helix and then a second prototype.   
@@ -84,12 +85,12 @@ Here is a close up of the antenna while connected to a NanoVNA.
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/nanovna.png" height="580">  
     
 The hard work of getting the spacing is taken care of by the 3D printed white framework.   
-You can download the file from thingverse here: https://www.thingiverse.com/thing:4834929  
+You can download the file from thingverse here: <https://www.thingiverse.com/thing:4834929>  
 Take care to download and print the correct type, there are 4 to chose from.   
 Since I am not shooting into a dish, I need right-hand circular polarization. I also really like the version with the extra leg support, so use file: NH1542R2   
 I order the 4mm copper tube off Amazon and the base is a stainless steel 8 inch pizza pan also from Amazon. The hardware is stainless steel from Home Depot. The antenna connector is a SMA male bulkhead connector from Amazon.   
 The key to building the antenna is to pre-form the copper on a cylinder that is very close to the final size.   
-As it happens, a Vegemite jar is perfect (I am Australian).   
+As it happens, a Vegemite jar is perfect (I am Australian - I had it close to hand).   
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/lbandpreformcopperwind.png" height="320">    
 Once you preform the copper to the right size, you can then wind it on the framework very smoothly.  
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/lbandpreformcopper.png" height="460">  
@@ -111,4 +112,17 @@ Be sure and run some quality coax. The longer the length required to get from th
 ## First Light    
 With the antenna mounted and the coax run, we can focus on the software side of things.   
 I am going to proceed as if you are going to set up and monitor all channels around the clock and you are going to feed your data to your local Node-RED for message filtering (ie just Military aircraft) and reporting / alerting.   
-That said, if you just want to monitor now and then, and you want to use the Jaero aircraft database and logging, you need to skim over what follows and pick up how to set up the database and ADSBExchange link in Jaero for the best experience.
+That said, if you just want to monitor now and then, and you want to use the Jaero aircraft database and logging, you need to skim over what follows and pick up how to set up the database and ADSBExchange link in Jaero for the best experience.   
+   
+## Download and unzip Jaero   
+We want to be sure to be using the 1.0.4.12-Alpha version of Jaero which was updated in March 2021.   
+Go to the Jaero GitHub page: https://github.com/jontio/JAERO/releases and under the 'Development Build' (at the top of the page) there is a small 'Assets' drop down, expand it and download the file you need.   
+A quick word here on Linux. While there is a build of linux, myself and others have not managed to run the required 12 or so instances on Linux. One or two is find, but as you add more, the message decode rate starts to drop until they are running but not decoding. I have had to stick to Windows for all my satellite decoding adventures.   
+Note that the file states 1.0.4.11, but when you unzip and run it, its really 1.0.4.12-alpha.   
+Note that you don't need to install this version, you can simply run it from the subdirectory you unzip it into.   
+    
+The new alpha version includes support for basestation.sqb. This is a pseudo 'standard' of aircraft details database. As Jaero decodes aircraft messages, it looks up each ICAO (Jaero calls them AES) in the database and provides type and owner information in its log file. If you are going to use Node-RED to track the aircraft, skip this step.   
+The basestation.sqb file that this version of Jaero includes has around 188,000 aircraft details, but we can quickly do better.    
+Visit the flightairmap page and download their basestation.sqb file: https://data.flightairmap.com/  
+The link is at the bottom of that page.   
+Unzip it on your computer and copy the file to your Jaero subdirectory and replace (over write) the one in there. The flightairmap database has 380,000 aircraft, so almost double the chances of Jaero showing the information for any satcom ACARS messages you decode.
