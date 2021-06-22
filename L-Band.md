@@ -117,7 +117,7 @@ That said, if you just want to monitor now and then, and you want to use the Jae
 ## Download and unzip Jaero   
 We want to be sure to be using the 1.0.4.12-Alpha version of Jaero which was updated in March 2021.   
 Go to the Jaero GitHub page: <https://github.com/jontio/JAERO/releases> and under the 'Development Build' (at the top of the page) there is a small 'Assets' drop down, expand it and download the file you need.   
-A quick word here on Linux. While there is a build of linux, myself and others have not managed to run the required 12 or so instances on Linux. One or two is find, but as you add more, the message decode rate starts to drop until they are running but not decoding. I have had to stick to Windows for all my satellite decoding adventures.   
+A quick word here on Linux. While there is a build of linux, myself and others have not managed to run the required 12 or so instances on Linux. One or two is fine, but as you add more, the message decode rate starts to drop until they are running but not decoding. I have had to stick to Windows for all my satellite decoding adventures.   
 Note that the file states 1.0.4.11, but when you unzip and run it, its really 1.0.4.12-alpha.   
 Note that you don't need to install this version, you can simply run it from the subdirectory you unzip it into.   
     
@@ -137,3 +137,8 @@ Here you will see the link that will be opened in your web browser when you clic
 Out of the box it is set to: `http://www.flightradar24.com/data/airplanes/{REG}`  
 This is Ok for some people, but many would rather it open to ADSBExcahnge, good news, we can change it.    
 Delete the fightradar24 link and replace it with: `https://globe.adsbexchange.com/?icao={AES}`   
+Now when you click on that drawing (and first highlighting the aircraft of interest in the Jaero log list), you will open that aircraft last known position on the ADSBExchange map.   
+If you are going to be using Node-RED, I will show you how to make those links in a function node so we can skip this step.   
+    
+### Decode some data already    
+If you are just going to decode one channel at a time, then back at the Jaero settings page, you can simply check the audio input and make sure it lines up with the one in your SDR software and you can start clicking around and decoding data.
