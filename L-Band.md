@@ -94,4 +94,4 @@ As it happens, a Vegemite jar is perfect (I am Australian).
 Once you preform the copper to the right size, you can then wind it on the framework very smoothly.  
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/lbandpreformcopper.png" height="460">  
     
-Trim the turns to exactly 7 and 
+Trim the turns to exactly 7 and then drill the two large holes for the 3D frame, then mark and drill the bulkhead connector mount near the left hand side support - you go near the left side of the frame so you can run the first 2/3rds of the copper parallel to the base, this improves the match and lowers the SWR. Solder the copper pipe to the connector and you are done building the antenna.
