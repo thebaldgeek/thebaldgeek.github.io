@@ -109,7 +109,7 @@ Some have attached them to camera tripods and used them inside their apartment's
 Bottom line, the antenna and LNA are *NOT* water proof and you must put it under cover.   
 Be sure and run some quality coax. The longer the length required to get from the antenna to the SDR, the more you should spend on the coax. 1.5GHz is rather lossy, more so than the 1090MHz from an ADSB antenna that you might be used to. (And even more so than the VHF ACARS frequency of around 130MHz). If in doubt, LMR-400 is the coax to use.   
     
-## First Light    
+## Software setup and tweaks    
 With the antenna mounted and the coax run, we can focus on the software side of things.   
 I am going to proceed as if you are going to set up and monitor all channels around the clock and you are going to feed your data to your local Node-RED for message filtering (ie just Military aircraft) and reporting / alerting.   
 That said, if you just want to monitor now and then, and you want to use the Jaero aircraft database and logging, you need to skim over what follows and pick up how to set up the database and ADSBExchange link in Jaero for the best experience.   
