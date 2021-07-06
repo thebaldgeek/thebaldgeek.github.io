@@ -6,7 +6,7 @@ The core of this whole project is the software called Jaero.
 This page will grow over time, but as of July 2021 the most precessing thing was to document one way to build Jaero from source on a Raspberry Pi 4 (4 gig RAM version - 8 Gig SD card minium).   
     
 I started with the SDRplay image since I wanted to test both the RSP1a and the RTLSDRv3 receivers.    
-Pull down the v0.7 image here: https://www.sdrplay.com/raspberry-pi-images/  
+Pull down the v0.7 image here: <https://www.sdrplay.com/raspberry-pi-images/>  
 Burn it to your Pi SD card with the usual software.   
 Put it in the Pi and boot it up. Note it is not a headless install, you will need an HDMI monitor, keyboard and mouse (for the start up at any rate). You will also need a network connection to install the required software.   
 Once you boot up, you can run ```sudo raspi-config``` if you like, I expand the file system and set the clock to UTC if nothing else.    
