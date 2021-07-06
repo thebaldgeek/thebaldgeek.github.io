@@ -15,7 +15,7 @@ Note that this will build Jaero version 1.0.4.11 - the last 'stable' release. Th
 
 Time to open the terminal and copy paste the following commands. Do them one at a time and let them finish before doing the next. All up should take about 15 minutes from start to finish.   
     
-   ```sudo apt-get install libvorbis-dev   
+  ```sudo apt-get install libvorbis-dev   
 sudo apt-get install qt5-default  
 sudo apt-get install libqt5svg5*  
 sudo apt-get install qtmultimedia5-dev  
@@ -57,7 +57,7 @@ sudo ldconfig
 cd ~/git/JAERO-1.0.4.11/JAERO/  
 qmake  
 make -j4  
-sudo make install   
+sudo make install  
 ```   
    
 You will find Jaero in the 'Internet' menu option of the Pi menu.
