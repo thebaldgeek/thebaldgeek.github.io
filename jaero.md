@@ -63,4 +63,9 @@ Time to open the terminal and copy paste the following commands. Do them one at 
     sudo make install  
    
    
-You will find Jaero in the 'Internet' menu option of the Pi menu.
+You will find Jaero in the 'Internet' menu option of the Pi menu.  
+Here we are using SDRangel to feed a 10500 downlink channel into Jaero.  
+  
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/jareoonlinux.PNG" height="580">  
+     
+Not a lot to see really, but 10s and 10s of hours went into this screenshot.
