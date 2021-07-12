@@ -117,7 +117,7 @@ That said, if you just want to monitor now and then, and you want to use the Jae
 ## Download and unzip Jaero   
 We want to be sure to be using the 1.0.4.12-Alpha version of Jaero which was updated in March 2021.   
 Go to the Jaero GitHub page: <https://github.com/jontio/JAERO/releases> and under the 'Development Build' (at the top of the page) there is a small 'Assets' drop down, expand it and download the file you need.   
-A quick word here on Linux. While there is a build of linux, myself and others have not managed to run the required 12 or so instances on Linux. One or two is fine, but as you add more, the message decode rate starts to drop until they are running but not decoding. I have had to stick to Windows for all my satellite decoding adventures.   
+A quick word here on Linux. While there is a Jaero build for linux (I have instructions to do this on the [jaero](jaero.md) page), myself and others have not managed to run the required 12 or so instances on Linux. One or two is fine, but as you add more, the message decode rate starts to drop until they are running but not decoding. I have had to stick to Windows for all my satellite decoding adventures.   
 Note that the file states 1.0.4.11, but when you unzip and run it, its really 1.0.4.12-alpha.   
 Note that you don't need to install this version, you can simply run it from the subdirectory you unzip it into.   
     
