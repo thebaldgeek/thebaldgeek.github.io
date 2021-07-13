@@ -4,7 +4,7 @@ Navigation: [home](README.md)
 
 The core of this whole project is the software called Jaero.  
 This page will grow over time, but as of July 2021 the most pressing thing was to document one way to build Jaero from source on a Raspberry Pi 4 (4 gig RAM version - 8 Gig SD card minium).   
-    
+## Building Jaero on Linux    
 ~~I started with the SDRplay image since I wanted to test both the RSP1a and the RTLSDRv3 receivers.    
 Pull down the v0.7 image here: <https://www.sdrplay.com/raspberry-pi-images/>~~  
 Update. I had HUGE issues with sound drivers on the SDRplay image. Spent hours and hours and never got it sorted.   
@@ -68,4 +68,6 @@ Here we are using SDRangel to feed a 10500 downlink channel into Jaero.
   
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/jareoonlinux.PNG" height="580">  
      
-Not a lot to see really, but 10s and 10s of hours went into this screenshot.
+Not a lot to see really, but 10s and 10s of hours went into this screenshot.  
+## Jaero on Windows   
+Use the March 1.0.4.12 Alpha version, you don't need to install it, just run it from the directory you unzip it from. This version fixes the local time stamp and uses UTC instead. It also allows you to use BaseStation.sqb for its logging aircraft database lookup.
