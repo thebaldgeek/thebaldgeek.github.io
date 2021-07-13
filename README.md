@@ -1,6 +1,6 @@
 # Using Node-RED to manage ADSC, ADSB, ACARS, VDL2, HF-DL and other aircraft type messages.
 
-Navigation: [Jaero](jaero.md) : [Inmarsat](Inmarsat.md) : [L-Band](L-Band.md) : [autoTLE](autoTLE.md) : [OpenSkyAPI](OpenSkyAPI.md) : [VRS](vrs.md) : [MQTT](mqtt.md) : [VHF-VDL2](vhf-vdl2.md) : [Raspberry Pi](raspberrypi.md)
+Navigation: [Jaero](jaero.md) : [Inmarsat](Inmarsat.md) : [L-Band](L-Band.md) : [autoTLE](autoTLE.md) : [OpenSkyAPI](OpenSkyAPI.md) : [VRS](vrs.md) : [MQTT](mqtt.md) : [VHF-VDL2](vhf-vdl2.md) : [Raspberry Pi](raspberrypi.md): [Telegram Chat Bot](telegram.md)
 
 **Planes on a map**   
 If you want to look look at just the aircraft that we are tracking via satellite: <a href="http://thebaldgeek.net:99/tar1090/" rel="noopener" target="_blank">http://thebaldgeek.net:99/tar1090/</a>  
