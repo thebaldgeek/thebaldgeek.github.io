@@ -21,7 +21,7 @@ Here is a partial flow will display some of the main text values that come in on
 Here are some rough notes to build dumpvdl. This is a very bear bones build. We turn off pretty much all the options that dumpvdl supports. We simply want to move the decoded text from the station location to a central Node-RED.  
 
 `sudo apt-get install build-essential cmake git libglib2.0-dev pkg-config`   
-`cd`  
+`cd ~`  
 `git clone https://github.com/szpajder/libacars`  
 `cd libacars`  
 `mkdir build`  
@@ -31,7 +31,7 @@ Here are some rough notes to build dumpvdl. This is a very bear bones build. We 
 `sudo make install`  
 `sudo ldconfig`  
 `sudo apt-get install librtlsdr-dev`
-`cd`  
+`cd ~`  
 `git clone git://git.osmocom.org/rtl-sdr.git`  
 `cd rtl-sdr/`  
 `mkdir build`  
@@ -42,7 +42,7 @@ Here are some rough notes to build dumpvdl. This is a very bear bones build. We 
 `sudo nano /etc/modprobe.d/blacklist.conf`  
 Add the following line, save and exit the file: `blacklist dvb_usb_rtl28xxu`  
 Reboot the Pi  
-`cd`  
+`cd ~`  
 `git clone https://github.com/szpajder/dumpvdl2.git`  
 `cd dumpvdl2`  
 `mkdir build`  
