@@ -30,18 +30,23 @@ Here are some rough notes to build dumpvdl. This is a very bear bones build. We 
 `make`  
 `sudo make install`  
 `sudo ldconfig`  
-`sudo apt-get install librtlsdr-dev`
+`sudo apt-get install librtlsdr-dev`  
 `cd ~`  
 `git clone git://git.osmocom.org/rtl-sdr.git`  
 `cd rtl-sdr/`  
 `mkdir build`  
-`cmake ../`  
+`cd build`   
+`cmake ../ -DINSTALL_UDEV_RULES=ON`     
 `make`  
 `sudo make install`  
 `sudo ldconfig`  
+`sudo cp ../rtl-sdr.rules /etc/udev/rules.d/`   
 `sudo nano /etc/modprobe.d/blacklist.conf`  
 Add the following line, save and exit the file: `blacklist dvb_usb_rtl28xxu`  
 Reboot the Pi  
+Test the dongle before going much further:   
+`rtl_test -t`  
+(Don't worry about the PLL not locked or the E4000 error)  
 `cd ~`  
 `git clone https://github.com/szpajder/dumpvdl2.git`  
 `cd dumpvdl2`  
