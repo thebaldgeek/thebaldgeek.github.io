@@ -43,21 +43,13 @@ Here are some rough notes to build dumpvdl. This is a very bear bones build. We 
 Add the following line, save and exit the file: `blacklist dvb_usb_rtl28xxu`  
 Reboot the Pi  
 `cd ~`  
-`git clone git://git.osmocom.org/rtl-sdr.git`  
-`cd rtl-sdr`  
-`mkdir build`  
- `cd build`  
-`cmake ../`  
-`make`  
-`sudo make install`  
-`sudo ldconfig`  
-`cd ~`  
 `git clone https://github.com/szpajder/dumpvdl2.git`  
 `cd dumpvdl2`  
 `mkdir build`  
 `cd build`  
 (The following is one long line, be sure and both lines here as one)  
 `cmake -DMIRISDR=FALSE -DSDRPLAY=FALSE -DSOAPYSDR=FALSE -DSQLITE=FALSE -DETSY_STATSD=FALSE -DRAW_BINARY_FORMAT=FALSE -DZMQ=FALSE ../`  
+`cd ..`  
 `make`  
 `sudo make install`  
 
