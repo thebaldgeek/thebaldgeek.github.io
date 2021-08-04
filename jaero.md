@@ -70,7 +70,7 @@ Here we are using SDRangel to feed a 10500 downlink channel into Jaero.
      
 Not a lot to see really, but 10s and 10s of hours went into this screenshot.  
 ## Jaero on Windows   
-Use the March 1.0.4.12 and the August 1.0.4.13 Alpha versions, you don't need to install it, just run it from the directory you unzip it from. This version fixes the local time stamp and uses UTC instead. It also allows you to use BaseStation.sqb for its logging aircraft database lookup. The 1.0.4.13 of Jaero adds the ZMQ input for data. You should be using at lest this version.   
+Use the March 1.0.4.12 and the August 1.0.4.13 Alpha versions, you don't need to install it, just run it from the directory you unzip it from. This version fixes the local time stamp and uses UTC instead. It also allows you to use BaseStation.sqb for its logging aircraft database lookup. The 1.0.4.13 of Jaero adds the ZMQ input for data. You should be using at lest this version. There is a how-to page for setting up SDRReceiver on Windows [here](SDRReceiver.md)   
     
 basestation.sqb. This is a pseudo 'standard' of aircraft details database. As Jaero decodes aircraft messages, it looks up each ICAO (Jaero calls them AES) in the database and provides type and owner information in its log file. If you are going to use Node-RED to track the aircraft, skip this step.   
 The basestation.sqb file that this version of Jaero includes has around 188,000 aircraft details, but we can quickly do better.    
