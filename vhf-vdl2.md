@@ -46,6 +46,7 @@ Reboot the Pi
 `git clone https://github.com/szpajder/dumpvdl2.git`  
 `cd dumpvdl2`  
 `mkdir build`  
+`cd build`    
 `cmake -DMIRISDR=FALSE -DSDRPLAY=FALSE -DSOAPYSDR=FALSE -DSQLITE=FALSE -DETSY_STATSD=FALSE -DRAW_BINARY_FORMAT=FALSE -DZMQ=FALSE ../`  
 `make`  
 `sudo make install`  

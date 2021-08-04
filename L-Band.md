@@ -98,11 +98,11 @@ Once you preform the copper to the right size, you can then wind it on the frame
     
 Trim the turns to exactly 7 and then drill the two large holes for the 3D frame, then mark and drill the bulkhead connector mount near the left hand side support - you go near the left side of the frame so you can run the first 2/3rds of the copper parallel to the base, this improves the match and lowers the SWR. Solder the copper pipe to the connector and you are done building the antenna.   
 ## Contact thebaldgeek if you want to buy a pre-made and tested helix   
-   If don't have access to a 3D printer (try your local public library or 3D printing service) and would rather just buy a fully built and tested antenna I am selling them for $50 including shipping to mainland USA. Drop me an email if you would like to buy one: bmorchard at g mail dot com. If you are not in the USA and would like to buy one, drop me an email and we will do our best to ship one to you.      
+   If don't have access to a 3D printer (try your local public library or 3D printing service) and would rather just buy a fully built and tested antenna I am selling them for $50 including shipping to mainland USA. Drop me an email if you would like to buy one: bmorchard at g mail dot com. If you are not in the USA and would like to buy one, still go ahead and drop me an email and we will do our best to ship one to you. I accept payment via PayPal, but if you must do a check, we can probably work with you on that.      
       <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/7turnhelixantennas.jpg" height="460">
 
    While it works Ok on its own, it really shines with a Nooelec L-Band low noise amplifier (LNA) mounted directly behind it. I buy my LNAs from Amazon. You can use Bias-T to power the amplifier or a micro USB power lead if your SDR device does not offer Bias-T as an option. Keep in mind that not all SDR Bias-Ts are equal. For example, I found out (the hard way) that the RSP1a Bias-T is not powerful enough to run the Nooelec LNA, but the RTLSDRv3 runs it just fine. (As does the Nooelec SmarTee SDR).   
-Here is the link to Amazon USA for the L-Band LNA that I really like and highly recomend. <https://www.amazon.com/gp/product/B07K1NMC23>   
+Here is the link to Amazon USA for the L-Band LNA that I really like and highly recommend. <https://www.amazon.com/gp/product/B07K1NMC23>   
 Also keep in mind that if plan to mount this helix outside (and I strongly suggest you do) it will need to be weather proofed. Here are some photos of some customer solutions....   
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/lbandhelixglueinpot.png" height="320">   
 The silicon did not hold as well as they hoped, so they ended up screwing the base to the sides of the pot:    
@@ -128,30 +128,17 @@ I am going to proceed as if you are going to set up and monitor all channels aro
 That said, if you just want to monitor now and then, and you want to use the Jaero aircraft database and logging, you need to skim over what follows and pick up how to set up the database and ADSBExchange link in Jaero for the best experience.   
    
 ## Download and unzip Jaero   
-We want to be sure to be using the 1.0.4.12-Alpha version of Jaero which was updated in March 2021.   
-Go to the Jaero GitHub page: <https://github.com/jontio/JAERO/releases> and under the 'Development Build' (at the top of the page) there is a small 'Assets' drop down, expand it and download the file you need.   
-A quick word here on Linux. While there is a Jaero build for linux (I have instructions to do this on the [jaero](jaero.md) page), myself and others have not managed to run the required 12 or so instances on Linux. One or two is fine, but as you add more, the message decode rate starts to drop until they are running but not decoding. I have had to stick to Windows for all my satellite decoding adventures.   
-Note that the file states 1.0.4.11, but when you unzip and run it, its really 1.0.4.12-alpha.   
-Note that you don't need to install this version, you can simply run it from the subdirectory you unzip it into.   
-    
-The new alpha version includes support for basestation.sqb. This is a pseudo 'standard' of aircraft details database. As Jaero decodes aircraft messages, it looks up each ICAO (Jaero calls them AES) in the database and provides type and owner information in its log file. If you are going to use Node-RED to track the aircraft, skip this step.   
-The basestation.sqb file that this version of Jaero includes has around 188,000 aircraft details, but we can quickly do better.    
-Visit the flightairmap page and download their basestation.sqb file: <https://data.flightairmap.com/>  
-The link is at the bottom of that page.   
-Unzip it on your computer and copy the file to your Jaero subdirectory and replace (over write) the one in there. The flightairmap database has 380,000 aircraft, so almost double the chances of Jaero showing the information for any satcom ACARS messages you decode.   
-If you are using Node-RED I will walk you through building an even larger database with around 558,000 aircraft details. Or you can get creative and modify your own database to use with Jaero.    
-    
-Once you have copied the database over, you can now double click Jaero and run it.   
-I intend to write an entire page on Jaero in the future, but for now, lets just do one more tweak for those of you running standalone (ie, no Node-RED).   
-
-### Jaero Log Link   
-Click on the gear icon, then click on the second tab in the settings, the 'Log Window'.   
-Here you will see the link that will be opened in your web browser when you click on the aircraft drawing in the Jaero log.   
-Out of the box it is set to: `http://www.flightradar24.com/data/airplanes/{REG}`  
-This is Ok for some people, but many would rather it open to ADSBExcahnge, good news, we can change it.    
-Delete the fightradar24 link and replace it with: `https://globe.adsbexchange.com/?icao={AES}`   
-Now when you click on that drawing (and first highlighting the aircraft of interest in the Jaero log list), you will open that aircraft last known position on the ADSBExchange map.   
-If you are going to be using Node-RED, I will show you how to make those links in a function node so we can skip this step.   
+We want to be sure to be using the 1.0.4.13-Alpha version of Jaero which was updated in August 2021.   
+Go to the Jaero GitHub page: <https://github.com/jontio/JAERO/releases> and under the list of 'Commits' bullet points (at the top of the page) there is a small 'Assets' drop down, expand it and download the file you need.   
+## Jaero on Linux
+A quick word here on Linux. While there is a Jaero build for linux (I have instructions to do this on the [jaero](jaero.md) page), there are a few issues.
+1. If you want to run the SDRReceiver software (which you do - its the best way) then you MUST use the .13 version of Jaero.   
+2. As yet, there are no clear instructions to build that version on the Raspberry Pi. (the reason is because Jaero uses qt5 for the GUI and the version of qt5 on the Pi is old and out of date, so Jaero can be built or installed on the Pi).  
+Please let me know if you find a way to get the .13 version of Jaero built and installed on a Pi.   
+3. The old v11 version of Jaero builds Ok, but uses so much CPU when its running that  myself and others have not managed to run the required 12 or so instances on Linux. One or two is fine, but as you add more, the message decode rate starts to drop until they are running but not decoding. I have had to stick to Windows for all my satellite decoding adventures.   
+## To install and run Jaero on Windows   
+To get up and running on Windows using SDRReciver, look at the dedicated page here:    
+   
     
 ### Decode some data already    
-If you are just going to decode one channel at a time, then back at the Jaero settings page, you can simply check the audio input and make sure it lines up with the one in your SDR software and you can start clicking around and decoding data.
+Once you have SDRReceiver installed and running and your Jaeros up and decoding, its just a matter now of moving the data where you want it.
