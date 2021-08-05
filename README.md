@@ -44,3 +44,12 @@ This site is an attempt to pull this together and document all the required step
 I will do my best to support your Node-RED aircraft spotting / tracking adventures, but please keep in mind, I am NOT a programmer. I honestly have no idea or right to be doing any of this, so your milage may vary. Also, since I am not a programmer (Have I mentioned I am not a programmer?), I have no idea what a 'pull request' is or how to deal with one, so if you raise one... yeah, sorry... I can't help.
 
 Check back often, this site is being updated almost daily.
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HGJWTNL65R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HGJWTNL65R');
+</script>
