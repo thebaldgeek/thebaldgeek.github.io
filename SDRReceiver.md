@@ -117,7 +117,7 @@ Click the blue bump to move the pale green box over it so it will start to decod
 
 Lastly, click the black CPU square to turn it green and save some computer power (It just slows down the blue wave form update - but is well worth it) and if you want to save even more, select "None' from the drop down list under the constellation to turn that off. Make sure your AFC is on.  
 
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/jaerocpusavemodes.png" height="580">   
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/jaerocpusavemodes.png" height="400">   
 
 Now, minimize that Jaero, and do that all over on the next 17. Making sure you get the next VFO number and its matching decode rate.  
 Each one will save its settings when you close it, so next time, just double click the start batch file and you will be up and running in a few seconds.
