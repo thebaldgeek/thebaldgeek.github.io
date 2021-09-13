@@ -94,3 +94,13 @@ Even though I don't use it since I cant handle the random JSON keys, here is a p
  
  
 136.925 reserved for VDL4 Worldwide
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HGJWTNL65R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-HGJWTNL65R');
+</script>

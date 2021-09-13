@@ -35,3 +35,11 @@ Authenticate and name this Pi by going to your network on their website.
 `sudo zerotier-cli listnetworks`  
 `sudo touch /var/lib/zerotier-one/networks.d/YourZeroTeirNetworkID.conf`  
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HGJWTNL65R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-HGJWTNL65R');
+</script>

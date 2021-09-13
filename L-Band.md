@@ -142,3 +142,13 @@ To get up and running on Windows using SDRReciver, look at the dedicated page he
     
 ### Decode some data already    
 Once you have SDRReceiver installed and running and your Jaeros up and decoding, its just a matter now of moving the data where you want it.
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HGJWTNL65R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-HGJWTNL65R');
+</script>

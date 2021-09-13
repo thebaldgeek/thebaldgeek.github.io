@@ -29,3 +29,11 @@ I would strongly recommend that you keep track of the number of aircraft you see
 
 Now that we can do that, we can start to dig into the JSON a bit more.  
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HGJWTNL65R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-HGJWTNL65R');
+</script>

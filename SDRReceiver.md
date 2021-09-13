@@ -121,3 +121,13 @@ Lastly, click the black CPU square to turn it green and save some computer power
 
 Now, minimize that Jaero, and do that all over on the next 17. Making sure you get the next VFO number and its matching decode rate.  
 Each one will save its settings when you close it, so next time, just double click the start batch file and you will be up and running in a few seconds.
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HGJWTNL65R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-HGJWTNL65R');
+</script>

@@ -31,3 +31,13 @@ And here is a sample flow to you started:
 There are lots of reasons why MQTT is the right tool for the job, but the one I like the most is that I only need one open port on my router, no mater how many ground stations are feeding me data, or what kind of data, I just use different topics for the different stations and it all stays neatly sorted in the both the broker and in my server Node-RED instance.
 
 If any readers of these pages are running an L-Band or C-Band ACARS Satcom station and would like to share their data via MQTT, just drop me a line and I will send you the broker details.
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HGJWTNL65R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-HGJWTNL65R');
+</script>

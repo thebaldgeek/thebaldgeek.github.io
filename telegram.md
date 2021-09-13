@@ -61,3 +61,13 @@ First, we simply invoke `/help` and get the bot commands. Then we ask the bot to
    
 If you add any aviation commands to your chat bot, I'd love to hear about them. Check back to this page from time to time, I will add any extra commands (I have some ideas....).  
 Oh, and if clean up the TAF report formatting, I would be super appreciative if you shared that flow.
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HGJWTNL65R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-HGJWTNL65R');
+</script>

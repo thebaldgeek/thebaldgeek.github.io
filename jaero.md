@@ -90,3 +90,13 @@ This is Ok for some people, but many would rather it open to ADSBExcahnge, good 
 Delete the fightradar24 link and replace it with: `https://globe.adsbexchange.com/?icao={AES}`   
 Now when you click on that drawing (and first highlighting the aircraft of interest in the Jaero log list), you will open that aircraft last known position on the ADSBExchange map.   
 If you are going to be using Node-RED, I will show you how to make those links in a function node so we can skip this step.
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HGJWTNL65R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-HGJWTNL65R');
+</script>
