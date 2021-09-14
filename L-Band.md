@@ -69,16 +69,16 @@ Here is a selection of L-Band antennas that I have used at some point in time:
 
 At the front we have the RTL-SDR v1 patch. Next is the V2 patch, then a prototype of the 3D printed helix and then a second prototype.   
 ## Buy
-   The most popular buy option is the RTL-SDR v2 patch antenna. In June 2021 it was out of stock globally for the next many months.    
-The other options are smaller antennas. (Not recommended) Some (including myself) have tested modified GPS antennas. Generally these are too small and do not have enough gain to be of real value. You might get up and running with a few scratchy signals, but will soon be disappointed.  
-If your interest is listening to voice calls, you are going to need a pretty good antenna, the v2 patch antenna is marginal, more gain is required for good decodes of the audio. Just keep in mind that the more gain an antenna has, the more directional it becomes. You may get to the point where your L-Band antenna has so much gain that the satellite orbit takes it off your antenna sweet spot and you need to track it or move each time you want to decode some messages.   
+   The most popular buy option is the RTL-SDR v2 patch antenna. 
+The other options are smaller antennas. (Not recommended) Some (including myself) have tested modified GPS antennas. Generally these are too small and do not have enough gain to be of real value. You might get up and running with a few scratchy signals, but you will soon be disappointed.  
+If your interest is listening to voice calls, you are going to need a pretty good antenna, the v2 patch antenna is marginal, more gain is required for good decodes of the audio. Just keep in mind that the more gain an antenna has, the more directional it becomes. You may get to the point where your L-Band antenna has so much gain that the satellite orbit takes it off your antenna sweet spot and you need to track it or move each time you want to decode some voice messages.   
 
    
-Another aspect to consider is your interest in L-Band ACARS. If you just want to set something up and use it for an hour or so then pull it down, something like the V2 patch antenna might be Ok.   
+Another aspect to consider is your long term interest in L-Band ACARS. If you just want to set something up and use it for an hour or so then pull it down, something like the V2 patch antenna might be Ok.   
 If you just want to listen to one downlink channel a time, then your antenna configuration does not change much, but your software setup becomes a LOT simpler.  
 If you only have an indoor antenna option, then more antenna gain is something you really need to consider.   
   
-  My goal was to setup a system that had 24 x 7 x 365 coverage and caught every downlink message possible from every channel on the satellite.   
+  My goal was to setup a system that had 24 x 7 x 365 coverage and caught every downlink message possible from every data channel on the satellite.   
 ## Build     
 My current preferred, recommended and in stock antenna for L-Band is a 3D printed 7 turn Helix.  
 Here is a close up of the antenna while connected to a NanoVNA.   
@@ -87,7 +87,7 @@ Here is a close up of the antenna while connected to a NanoVNA.
 The hard work of getting the spacing is taken care of by the 3D printed white framework.   
 You can download the file from thingverse here: <https://www.thingiverse.com/thing:4834929>  
 Take care to download and print the correct type, there are 4 to chose from.   
-Since I am not shooting into a dish, I need right-hand circular polarization. I also really like the version with the extra leg support at the top of the three legs, so I use file: NH1542R2   
+Since I am **not** shooting into a dish, I need right-hand circular polarization. I also really like the version with the extra leg support at the top of the three legs, so I use file: NH1542R2   
 Order the 4mm copper tube off Amazon and the base is a stainless steel 8 inch pizza pan also from Amazon. The hardware is stainless steel from Home Depot. The antenna connector is a SMA male bulkhead connector from Amazon.
 Note, the 8 inch pizza pan is the smallest you should go. The reflector is an important part of the antenna performance. You can go bigger, but no smaller.    
 The key to building the antenna is to pre-form the copper on a cylinder that is very close to the final size.   
@@ -98,10 +98,11 @@ Once you preform the copper to the right size, you can then wind it on the frame
     
 Trim the turns to exactly 7 and then drill the two large holes for the 3D frame, then mark and drill the bulkhead connector mount near the left hand side support - you go near the left side of the frame so you can run the first 2/3rds of the copper parallel to the base, this improves the match and lowers the SWR. Solder the copper pipe to the connector and you are done building the antenna.   
 ## Contact thebaldgeek if you want to buy a pre-made and tested helix   
-   If don't have access to a 3D printer (try your local public library or 3D printing service) and would rather just buy a fully built and tested antenna I am selling them for $50 including shipping to mainland USA. Drop me an email if you would like to buy one: bmorchard at g mail dot com. If you are not in the USA and would like to buy one, still go ahead and drop me an email and we will do our best to ship one to you. I accept payment via PayPal, but if you must do a check, we can probably work with you on that.      
-      <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/7turnhelixantennas.jpg" height="460">
+   If don't have access to a 3D printer (try your local public library or 3D printing service) and would rather just buy a fully built and tested antenna I am selling them for $50 including shipping to mainland USA. Drop me an email if you would like to buy one: bmorchard at g mail dot com. If you are not in the USA and would like to buy one, still go ahead and drop me an email and we will do our best to ship one to you. I accept payment via PayPal, but if you must do a check, we can probably work with you on that. **Please!** Be sure and tell me if you need a left-hand antenna (for shooting into a dish)!!! I don't sell many of those and only build them to order.  
 
-   While it works Ok on its own, it really shines with a Nooelec L-Band low noise amplifier (LNA) mounted directly behind it. I buy my LNAs from Amazon. You can use Bias-T to power the amplifier or a micro USB power lead if your SDR device does not offer Bias-T as an option. Keep in mind that not all SDR Bias-Ts are equal. For example, I found out (the hard way) that the RSP1a Bias-T is not powerful enough to run the Nooelec LNA, but the RTLSDRv3 runs it just fine. (As does the Nooelec SmarTee SDR).   
+   <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/7turnhelixantennas.jpg" height="460">
+
+   While it works Ok on its own, it really shines with a Nooelec L-Band low noise amplifier (LNA) mounted directly behind it. I buy my LNAs from Amazon. You can use Bias-T from the SDR dongle to power the amplifier or a micro USB power lead if your SDR device does not offer Bias-T as an option. Keep in mind that not all SDR Bias-Ts are equal. For example, I found out (the hard way) that the RSP1a Bias-T is not powerful enough to run the Nooelec LNA, but the RTLSDRv3 runs it just fine. (As does the Nooelec SmarTee SDR).   
 Here is the link to Amazon USA for the L-Band LNA that I really like and highly recommend. <https://www.amazon.com/gp/product/B07K1NMC23>   
 Also keep in mind that if plan to mount this helix outside (and I strongly suggest you do) it will need to be weather proofed. Here are some photos of some customer solutions....   
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/lbandhelixglueinpot.png" height="320">   
@@ -118,27 +119,25 @@ If you are indoors, you have more options:
    In regard to SDRs, I like the silver v3 RTL-SDR, but in this case, because of the requirement to use Bias-T to power the LNA, I use the Nooelect SmarTee SDR as it has Bias-T always on without needing to run the v3 bat file to turn it on. The performance of the two SDRs seems to be identical.   
       
 How you mount the antenna is up to you. A few people have put them under a flowerpot and mounted them outside and used a bracket that is pointing at their satellite. 
-Some have attached them to camera tripods and used them inside their apartment's. In this case, you do not need to weatherproof the antenna, but it comes at a signal strength drop. Also experiment with positioning, a window may not offer the best signal.   
+Some have attached them to camera tripods and used them inside their apartment's. In this case, you do not need to weatherproof the antenna, but it comes at a signal strength drop. Also experiment with positioning, a **window may not offer the best signal**.   
 Bottom line, the antenna and LNA are *NOT* water proof and you must put it under cover.   
 Be sure and run some quality coax. The longer the length required to get from the antenna to the SDR, the more you should spend on the coax. 1.5GHz is rather lossy, more so than the 1090MHz from an ADSB antenna that you might be used to. (And even more so than the VHF ACARS frequency of around 130MHz). If in doubt, LMR-400 is the coax to use.   
     
 ## Software setup and tweaks    
 With the antenna mounted and the coax run, we can focus on the software side of things.   
-I am going to proceed as if you are going to set up and monitor all channels around the clock and you are going to feed your data to your local Node-RED for message filtering (ie just Military aircraft) and reporting / alerting.   
+I am going to proceed as if you are going to set up and monitor all data channels around the clock and you are going to feed your data to your local Node-RED for message filtering (ie just Military aircraft) and reporting / alerting.   
 That said, if you just want to monitor now and then, and you want to use the Jaero aircraft database and logging, you need to skim over what follows and pick up how to set up the database and ADSBExchange link in Jaero for the best experience.   
    
 ## Download and unzip Jaero   
-We want to be sure to be using the 1.0.4.13-Alpha version of Jaero which was updated in August 2021.   
+We want to be sure to be using the 1.0.4.13-2 version of Jaero which was updated on August 10 2021.   
 Go to the Jaero GitHub page: <https://github.com/jontio/JAERO/releases> and under the list of 'Commits' bullet points (at the top of the page) there is a small 'Assets' drop down, expand it and download the file you need.   
 ## Jaero on Linux
 A quick word here on Linux. While there is a Jaero build for linux (I have instructions to do this on the [jaero](jaero.md) page), there are a few issues.
-1. If you want to run the SDRReceiver software (which you do - its the best way) then you MUST use the .13 version of Jaero.   
-2. As yet, there are no clear instructions to build that version on the Raspberry Pi. (the reason is because Jaero uses qt5 for the GUI and the version of qt5 on the Pi is old and out of date, so Jaero can be built or installed on the Pi).  
-Please let me know if you find a way to get the .13 version of Jaero built and installed on a Pi.   
-3. The old v11 version of Jaero builds Ok, but uses so much CPU when its running that  myself and others have not managed to run the required 12 or so instances on Linux. One or two is fine, but as you add more, the message decode rate starts to drop until they are running but not decoding. I have had to stick to Windows for all my satellite decoding adventures.   
+If you plan to run the SDRReceiver software (which you do - its the best way) then you MUST use the .13 version of Jaero. Only this version has the data pipe option.   
+Decoding more than 1 voice channel on a Pi is about the limit. Audio decoding is very CPU intensive and the Pi 4 can only handle one conversation at a time. Data on the other hand is easy. I personally have run 12 data channels on a Pi 4 and CPU is only around 60%.   
 ## To install and run Jaero on Windows   
 To get up and running on Windows using SDRReciver, look at the dedicated page here:    
-   
+   <https://thebaldgeek.github.io/SDRReceiver.html>
     
 ### Decode some data already    
 Once you have SDRReceiver installed and running and your Jaeros up and decoding, its just a matter now of moving the data where you want it.
