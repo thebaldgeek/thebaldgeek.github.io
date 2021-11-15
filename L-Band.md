@@ -122,7 +122,90 @@ How you mount the antenna is up to you. A few people have put them under a flowe
 Some have attached them to camera tripods and used them inside their apartment's. In this case, you do not need to weatherproof the antenna, but it comes at a signal strength drop. Also experiment with positioning, a **window may not offer the best signal**.   
 Bottom line, the antenna and LNA are *NOT* water proof and you must put it under cover.   
 Be sure and run some quality coax. The longer the length required to get from the antenna to the SDR, the more you should spend on the coax. 1.5GHz is rather lossy, more so than the 1090MHz from an ADSB antenna that you might be used to. (And even more so than the VHF ACARS frequency of around 130MHz). If in doubt, LMR-400 is the coax to use.   
-    
+   
+   Ok, so you have the antenna mounted and pointed roughly in the [right direction](Inmarsat.md), now where to tune the SDR software?
+
+## Inmarsat L-Band Frequencies and Data Rates ##  
+
+### 4A4F4 25-East
+1545.1150 GES:90 600  
+1545.1200 GES:90 600  
+1545.1250 GES:90 1200  
+1545.1300 GES:90 600  
+1545.1600 GES:C5 600  
+1545.1650 GES:C5 600  
+1545.1850 GES:C5 600  
+1545.1900 GES:C5 600  
+1545.2150 GES:C1 600  
+1545.2200 GES:C1 600  
+1545.2250 GES:C1 600  
+1546.0130 GES:90 10500  
+1546.0270 GES:90 10500  
+1546.0430 GES:C1 10500  
+1546.0920 GES:C1 10500  
+1546.1080 GES:C5 10500  
+1546.1200 GES:C5 10500  
+     
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/alphasatLband.PNG" height="400">       
+
+### 3F5 54W  
+1545.0300 GES:43 600  
+1545.0350 GES:44 1200      
+1545.0400 GES:43 600  
+1545.0450 GES:44 1200    
+1545.0950 GES:44 600  
+1545.1000 GES:02 600  
+1545.1350 GES:44 600  
+1545.1400 GES:43 1200  
+1545.1790 GES:43 600  
+1546.0550 GES:44 10500  
+1546.0700 GES:43 10500  
+1546.0850 GES:44 10500  
+   
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/54wL-Band.png" height="380">  
+
+### 4F3 98W  
+1545.0500 GES:05 600  
+1545.0600 GES:D0 600  
+1545.0650 GES:D0 600  
+1545.0750 GES:D0 1200  
+1545.0800 GES:05 600  
+1545.0850 GES:D0 600  
+1545.0900 GES:05 600  
+1545.1000 GES:02 600  
+1545.1700 GES:02 600  
+1545.1750 GES:02 600  
+1546.0050 GES:D0 10500  
+1546.0200 GES:D0 10500  
+1546.0630 GES:02 10500  
+1546.0780 GES:05 10500      
+  
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/98w_L-Band_rtlsdr_activepatch.PNG" height="380">  
+
+### 4F1 143E  
+1545.025 GES:50 600   
+1545.030 GES:82 600  
+1545.035 GES:82 600   
+1545.040 GES:85 600   
+1545.045 GES:85 600   
+1545.055 GES:50 600   
+1545.070 GES:50 1200    
+1545.095 GES:85 600   
+1545.135 GES:50 600   
+1545.140 GES:50 600   
+1545.145 GES:50 600   
+1545.150 GES:50 600   
+1545.155 GES:85 600   
+1545.180 GES:82 600   
+1545.210 GES:82 600   
+1546.005 GES:50 10500   
+1546.035 GES:50 10500   
+1546.055 GES:85 10500   
+1546.070 GES:82 10500   
+1546.085 GES:50 10500   
+   
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/143eL-Band.png" height="380"> 
+     
 ## Software setup and tweaks    
 With the antenna mounted and the coax run, we can focus on the software side of things.   
 I am going to proceed as if you are going to set up and monitor all data channels around the clock and you are going to feed your data to your local Node-RED for message filtering (ie just Military aircraft) and reporting / alerting.   
