@@ -70,18 +70,23 @@ Here is a selection of L-Band antennas that I have used at some point in time:
 At the front we have the RTL-SDR v1 patch. Next is the V2 patch, then a prototype of the 3D printed helix and then a second prototype.   
 ## Buy
    The most popular buy option is the RTL-SDR v2 patch antenna. 
-The other options are smaller antennas. (Not recommended) Some (including myself) have tested modified GPS antennas. Generally these are too small and do not have enough gain to be of real value. You might get up and running with a few scratchy signals, but you will soon be disappointed.  
-If your interest is listening to voice calls, you are going to need a pretty good antenna, the v2 patch antenna is marginal, more gain is required for good decodes of the audio. Just keep in mind that the more gain an antenna has, the more directional it becomes. You may get to the point where your L-Band antenna has so much gain that the satellite orbit takes it off your antenna sweet spot and you need to track it or move each time you want to decode some voice messages.   
+The other options are smaller antennas which is strongly not recommended! (Low price = low performance - very low). Some (including myself) have tested modified GPS antennas. Generally these are too small and do not have enough gain to be of real value. You might get up and running with a few scratchy signals on some of the stronger 600/1200 data channels, but you will soon be disappointed.  
+If your interest is listening to voice calls, you are going to need a pretty good antenna, the v2 patch antenna is marginal, more gain is required for good consistent decodes of the audio. Just keep in mind that the more gain an antenna has, the more directional it becomes. You may get to the point where your L-Band antenna has so much gain that the satellite orbit takes it off your antenna sweet spot and you need to track it or move each time you want to decode some voice messages. Note that this can even happen with a poorly installed patch antenna, here is an example: 
 
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/patchorbit.png" height="320"> 
+  
+Note how the message rate drops to zero when the satellite is at the top if its orbit. In this case, the patch mount should be tilted down a little so that the signal/message rate is consistent with aircraft movements. (Overnight, in the early mornings, aircraft movements die down, but your message rate should never go to zero).  
+Another reason for these dropouts could be an obstruction between you and the satellite, for example a house or tree. The satellite orbit is a '8', both up and down and side to side - another topic for another page.
    
 Another aspect to consider is your long term interest in L-Band ACARS. If you just want to set something up and use it for an hour or so then pull it down, something like the V2 patch antenna might be Ok.   
 If you just want to listen to one downlink channel a time, then your antenna configuration does not change much, but your software setup becomes a LOT simpler.  
 If you only have an indoor antenna option, then more antenna gain is something you really need to consider.   
   
-  My goal was to setup a system that had 24 x 7 x 365 coverage and caught every downlink message possible from every data channel on the satellite.   
+  My goal was to setup a system that had 24 x 7 x 365 coverage and catch every downlink message possible from every data channel on the satellite.   
 ## Build     
-My current preferred, recommended and in stock antenna for L-Band is a 3D printed 7 turn Helix.  
-Here is a close up of the antenna while connected to a NanoVNA.   
+My current preferred, recommended and **in stock** antenna for L-Band is a 3D printed 7 turn Helix.  
+Here is a close up of the antenna while connected to a NanoVNA.  
+
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/nanovna.png" height="580">  
     
 The hard work of getting the spacing is taken care of by the 3D printed white framework.   
@@ -92,18 +97,33 @@ Order the 4mm copper tube off Amazon and the base is a stainless steel 8 inch pi
 Note, the 8 inch pizza pan is the smallest you should go. The reflector is an important part of the antenna performance. You can go bigger, but no smaller.    
 The key to building the antenna is to pre-form the copper on a cylinder that is very close to the final size.   
 As it happens, a Vegemite jar is perfect (I am Australian - I had it close to hand).   
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/lbandpreformcopperwind.png" height="320">    
+
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/lbandpreformcopperwind.png" height="320">  
+
 Once you preform the copper to the right size, you can then wind it on the framework very smoothly.  
+
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/lbandpreformcopper.png" height="460">  
     
 Trim the turns to exactly 7 and then drill the two large holes for the 3D frame, then mark and drill the bulkhead connector mount near the left hand side support - you go near the left side of the frame so you can run the first 2/3rds of the copper parallel to the base, this improves the match and lowers the SWR. Solder the copper pipe to the connector and you are done building the antenna.   
 ## Contact thebaldgeek if you want to buy a pre-made and tested helix   
-   If don't have access to a 3D printer (try your local public library or 3D printing service) and would rather just buy a fully built and tested antenna I am selling them for $50 including shipping to mainland USA. Drop me an email if you would like to buy one: bmorchard at g mail dot com. If you are not in the USA and would like to buy one, still go ahead and drop me an email and we will do our best to ship one to you. I accept payment via PayPal, but if you must do a check, we can probably work with you on that. **Please!** Be sure and tell me if you need a left-hand antenna (for shooting into a dish)!!! I don't sell many of those and only build them to order.  
+   If don't have access to a 3D printer (try your local public library or 3D printing service) and would rather just buy a fully built and tested antenna I am selling them for $50 including shipping to mainland USA. Drop me an email if you would like to buy one: bmorchard at g mail dot com. If you are not in the USA and would like to buy one, still go ahead and drop me an email and we will do our best to ship one to you. I accept payment via PayPal, but if you must do a check, we can probably work with you on that.  
+   **Please!** Be sure and tell me if you need a left-hand antenna (for shooting into a dish)!!! I don't sell many of those and only build them to order.  
 
    <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/7turnhelixantennas.jpg" height="460">
 
-   While it works Ok on its own, it really shines with a Nooelec L-Band low noise amplifier (LNA) mounted directly behind it. I buy my LNAs from Amazon. You can use Bias-T from the SDR dongle to power the amplifier or a micro USB power lead if your SDR device does not offer Bias-T as an option. Keep in mind that not all SDR Bias-Ts are equal. For example, I found out (the hard way) that the RSP1a Bias-T is not powerful enough to run the Nooelec LNA, but the RTLSDRv3 runs it just fine. (As does the Nooelec SmarTee SDR).   
+   While it can work Okish on its own, it really shines with a Nooelec L-Band low noise amplifier (LNA) mounted directly behind it. I buy my LNAs from Amazon. You can use Bias-T from the SDR dongle to power the amplifier or a micro USB power lead if your SDR device does not offer Bias-T as an option. Keep in mind that not all SDR Bias-Ts are equal. For example, I found out (the hard way) that the RSP1a Bias-T is not powerful enough to run the Nooelec LNA, but the RTLSDRv3 runs it just fine. (As does the Nooelec SmarTee SDR).   
 Here is the link to Amazon USA for the L-Band LNA that I really like and highly recommend. <https://www.amazon.com/gp/product/B07K1NMC23>   
+To give a feel for how the three antennas work, here are the three waterfalls centered around the 10500 channels.  
+
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/98wasov1patch.png" height="320"> 
+
+
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/98wasov2patch.PNG" height="320">   
+
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/98wasocopperhelix.png" height="320">   
+    
+No antenna is going to work its best indoors, but if its your only option, then more gain will help.
+
 Also keep in mind that if plan to mount this helix outside (and I strongly suggest you do) it will need to be weather proofed. Here are some photos of some customer solutions....   
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/lbandhelixglueinpot.png" height="320">   
 The silicon did not hold as well as they hoped, so they ended up screwing the base to the sides of the pot:    
