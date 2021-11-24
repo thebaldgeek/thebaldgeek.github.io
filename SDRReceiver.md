@@ -3,13 +3,15 @@
 Navigation: [home](README.md)  
   
 ## The Old Way
-The old way to send data from your SDR software to Jaero was to use virtual audio cables (VAC). This was very fragile, CPU intensive, expensive (a licensed copy of VAC was required) and each SDR software package had its up and down's. Issues ranged from unpredictable lockups/crashes, PC hangs, high CPU use, memory leaks, convoluted graphical interfaces and a lot of unneeded features (bloat). It also made the option of running on Linux just about impossible. With satcom you just need the frequency data to be sent to each Jaero the most efficient way possible with out needing constant monitoring and restarts. Most systems even run headless and you never need to look at the actual SDR software for months at at time.   
+The old way to send data from your SDR software to Jaero was to use virtual audio cables (VAC). This was very fragile, CPU intensive, expensive (a licensed copy of VAC was required) and each SDR software package had its up and down's. Issues ranged from unpredictable lockups/crashes, PC hangs, high CPU use, memory leaks, convoluted graphical interfaces and a lot of unneeded features (bloat). It also made the option of running on Linux just about impossible. With satcom you just need the aircraft data to be sent to each Jaero the most efficient way possible with out needing constant monitoring and restarts. Most systems even run headless and you never need to look at the actual SDR software for months at at time.   
   
-In August 2021, a new SDR receiver and version of Jaero were released that solved all these issues.   
+In August 2021, a new SDR receiver and version of Jaero was released that solved all these issues.   
 ## Big Picture    
-SDRReceiver uses an ini file to set its frequencies. It is not visual point-and-click software. You put the center frequency in the file, then sub VFO frequencies and name them, Jaero then picks up the data from the ZMQ data stream identified by the VFO names.  
+SDRReceiver uses an ini file to set its frequencies. It is not visual point-and-click software. You put the center frequency in the text file, then sub VFO frequencies and name them, Jaero then picks up the data from the ZMQ data stream identified by the VFO names.  
+
+This is critical and really important. All other SDR software requires an audio pipe from it to Jaero, SDRR uses a data pipe. The latter is a LOT more robust, light weight and far more accurate way to move data from the SDR dongle to Jaero.  
 ### The bottom line
-There are two main parts to getting the whole system working, SDRReceiver and its ini file and starting Jaero with a batch file, setting up each Jaero with the correct port number and VFO name. You only have to configure everything once.
+There are two main parts to getting the whole system working, SDRReceiver and its ini file and starting Jaero with a batch file, setting up each Jaero with the correct port number and VFO name. Note, you only have to configure everything once. Once its all setup, its a simple double click to start everything up as needed.
 ## Install SDRReceiver on Windows  
 Visit the github page and download the Windows zip file.   
 <https://github.com/jeroenbeijer/SDRReceiver>  
@@ -27,15 +29,16 @@ While you are there, be sure and check out the comments in the 98W ini file, the
 The main missing one is L-Band for 143E. If you have it, please let me know.  
 
 Download the .ini file into the same directory as your SDRReceiver unzipped into.   
-Now, from Windows Explorer, hold down the left shift key and right mouse click to pull up the menu. From that pop up menu select either Open Command Prompt, or Open PowerShell Window Here. (depending on your version of Windows).   
+Now, from Windows Explorer, hold down the right shift key on your keyboard and right mouse click on an empty part of the page to pull up the menu. From that pop up menu select either Open Command Prompt, or Open PowerShell Window Here. (depending on your version of Windows).   
 
 That will open a back or blue box window, now start typing the command `SDR` and hit the tab key, this will auto complete the command to the .exe and then you just add `-s` and then name of your ini file.   
 
-The full command is thus `.\SDRReceiver.exe -s 54w.ini`   
+The full command is something like `.\SDRReceiver.exe -s 54w.ini` (Of course use your named .ini file).   
 If you computer throws an error that it cant find the ini, then Windows might have saved it with a hidden .txt extension, so type this: `.\SDRReceiver.exe -s 54w.ini.txt` (Of course use the name of your .ini file)
-It should work. If not, then you did not put the .ini file in the same directory as the SDRReceiver software.  
+It should work. If not, then you most likely did not put the .ini file in the same directory as the SDRReceiver software.  
       
-You should now see a small spectrum window appear, click on the 'Start SDR' button and slowly the waveform will show up. You should see something similar to what you are used to. Thin spikes from the 600/1200 channels on the left and fat spikes from the 10500 channels on the right.    
+You should now see a small spectrum window appear, click on the 'Start SDR' button and slowly the waveform will show up. If your SDR dongle requires bias-T to power an LNA, you can (if you are using an RTLSDRv3 silver dongle - hint, you should be) click the Bias-T button to turn it on.  
+You should see something similar to what you are used to. Thin spikes from the 600/1200 channels on the left and fat spikes from the 10500 channels on the right.    
 ## Starting Jaero  
 
 Once you have that running, the next thing is to setup Jaero to connect to the VFOs.   
@@ -98,11 +101,11 @@ Adjust things to your liking from top to bottom.
   Looking at the settings top to bottom - a quick overview. More details on the [jaero](jaero.md) page.    
 
 1. This just hides these message types from the live display window. Most people leave it as those listed messages can be hard to read or understand their purpose.  
-2. This changes the format of the message in the main window, play around when you get it running, most people like format 3.  
-3. Most people leave this checked. It seems the non text messages are link Pings or ACKs for C-Band messages and other system stuff.
+2. This changes the format of the message in the main window, play around when you get it running, most people like format 3. If you are a software programmer, you might like the JSON option from this list - note, you can only select one message format type.  
+3. Most people leave this checked. It seems the non text messages are link Pings or ACKs for L/C-Band messages and other system stuff that is not of interest to (most) humans.
 4. Beeps are annoying when you get 18 Jaeros running - uncheck it for sanity.
 5. This sends the ACARS messages to another computer using UDP. Note that Jaero can not use host names here, it must be an IP address and port number. Leave a space, then put in the next IP:port if you want to feed more than one server the ACARS messages.  
-6. Is for when you have a satellite dish and are using Jaero on C-Band. This is the IP and port for your VRS or tar1090 to plot the aircraft positions on a map. (Not used on L-Band since there is no position data)  
+6. Is for when you have a satellite dish and are using Jaero on C-Band. This is the IP and port for your VRS or tar1090 to plot the aircraft positions on a map. (Not used on L-Band since there is no position data).  
 7. Check it if you must log, it will slow down the starting of Jaero the longer it runs.
 8. If you have a VRS with images, you can pick them up here if you are logging.
 9. Never thought we would get here did you.... 
@@ -110,6 +113,8 @@ Leave your ini file as it shows: zmq_address=tcp://*:6003 (Note, some of the .in
 The port is important. So in each jaero Check the ZMQ box and just put your home IP of `tcp://127.0.0.1:6003` and again, make sure the port matches your ini file.  
 Lastly, the topic. In your .ini file each VFO has a name, you must make sure that the name in JAERO matches the names in the ini. If you have used the .ini file and the startJaero batch file I have here, they should be very close.  
 Also **WATCH OUT!** Jaero likes to put a space at the start of the word VFO!! So **make sure** that the V is tucked up against the edge of his box!!!! (Ask me how I know this!!!!!!!!!! - No don't)  
+
+For the tabs on the top, I like turn off logging and turn off voice decoding. You may do otherwise, but if you just want the data, logging and voice use up CPU that you don't need to waste for just getting data.   
 
 Click Ok. Last few things to do here... make sure you select the right data rate in Jaero that matches the VFO in the ini file for that VFO.  
 
@@ -119,7 +124,7 @@ Lastly, click the black CPU square to turn it green and save some computer power
 
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/jaerocpusavemodes.png" height="400">   
 
-Now, minimize that Jaero, and do that all over on the next 17. Making sure you get the next VFO number and its matching decode rate.  
+Now, minimize that Jaero, and do that all over again on the next 17. Making sure you get the next VFO number and its matching decode rate.  
 Each one will save its settings when you close it, so next time, just double click the start batch file and you will be up and running in a few seconds.
 
 

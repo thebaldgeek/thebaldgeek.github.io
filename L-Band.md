@@ -76,7 +76,7 @@ If your interest is listening to voice calls, you are going to need a pretty goo
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/patchorbit.png" height="320"> 
   
 Note how the message rate drops to zero when the satellite is at the top if its orbit. In this case, the patch mount should be tilted down a little so that the signal/message rate is consistent with aircraft movements. (Overnight, in the early mornings, aircraft movements die down, but your message rate should never go to zero).  
-Another reason for these dropouts could be an obstruction between you and the satellite, for example a house or tree. The satellite orbit is a '8', both up and down and side to side - another topic for another page.
+Another reason for these dropouts could be an obstruction between you and the satellite, for example a house or tree. If you recall from the [Inmarsat](Inmarsat.md) page the satellite orbit is a '8', both up and down and side to side.
    
 Another aspect to consider is your long term interest in L-Band ACARS. If you just want to set something up and use it for an hour or so then pull it down, something like the V2 patch antenna might be Ok.   
 If you just want to listen to one downlink channel a time, then your antenna configuration does not change much, but your software setup becomes a LOT simpler.  
@@ -229,21 +229,10 @@ Be sure and run some quality coax. The longer the length required to get from th
 ## Software setup and tweaks    
 With the antenna mounted and the coax run, we can focus on the software side of things.   
 I am going to proceed as if you are going to set up and monitor all data channels around the clock and you are going to feed your data to your local Node-RED for message filtering (ie just Military aircraft) and reporting / alerting.   
-That said, if you just want to monitor now and then, and you want to use the Jaero aircraft database and logging, you need to skim over what follows and pick up how to set up the database and ADSBExchange link in Jaero for the best experience.   
-   
-## Download and unzip Jaero   
-We want to be sure to be using the 1.0.4.13-2 version of Jaero which was updated on August 10 2021.   
-Go to the Jaero GitHub page: <https://github.com/jontio/JAERO/releases> and under the list of 'Commits' bullet points (at the top of the page) there is a small 'Assets' drop down, expand it and download the file you need.   
-## Jaero on Linux
-A quick word here on Linux. While there is a Jaero build for linux (I have instructions to do this on the [jaero](jaero.md) page), there are a few issues.
-If you plan to run the SDRReceiver software (which you do - its the best way) then you MUST use the .13 version of Jaero. Only this version has the data pipe option.   
-Decoding more than 1 voice channel on a Pi is about the limit. Audio decoding is very CPU intensive and the Pi 4 can only handle one conversation at a time. Data on the other hand is easy. I personally have run 12 data channels on a Pi 4 and CPU is only around 60%.   
-## To install and run Jaero on Windows   
-To get up and running on Windows using SDRReciver, look at the dedicated page here:    
-   <https://thebaldgeek.github.io/SDRReceiver.html>
-    
-### Decode some data already    
-Once you have SDRReceiver installed and running and your Jaeros up and decoding, its just a matter now of moving the data where you want it.
+
+In sort you need to run Jaero, thats the only software package that can decode the AERO data. You can run it on Windows or Linux.  
+You also need to run some SDR dongle sofware, on either Windows or Linux there are lots of options.    
+Each has their own page from my [Home](README.md) page.
 
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
