@@ -10,7 +10,8 @@ Here is the big picture of what we are going to review:
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/lbandoverview.jpg" height="580">   
    
 The full signal path will be covered on another page, but the most import thing to know about L-Band is that you are picking up the ACARS messages *from* the airline dispatch or ground support staff *to* the aircraft.   
-The way I describe it to friends and family is L-Band is *from land*. C-Band is *from Cockpit*.   
+The way I describe it to friends and family is L-Band is *from land*. C-Band is *from Cockpit*. (If you are interested in listening to audio, you will hear the voice of the dispatch operator and silence while the flight crew are talking, you will *not* hear a full duplex conversation, just the ground side only).   
+
 I take pains to explain this now before we get stated so that you understand what sort of messages you can expect to see from your efforts.    
 Here is a typical sort of message you might see:   
 `AES:4249EA GES:50 2 .VQ-BLQ ! RA G
@@ -24,7 +25,7 @@ YES/NO
 THANK YOU
 `  
 You can clearly see that this is a message from ground crew talking to the aircraft.   
-But, don't be disapointed, there are a LOT of very interesting messages that come from ground staff and get sent up to the flight crew. Here is a hint, this is a CPDLC message to the same aircraft:   
+But, don't be disappointed, there are a LOT of very interesting messages that come from ground staff and get sent up to the flight crew. Here is a hint, this is a CPDLC message to the same aircraft:   
 
 `AES:4249EA GES:50 2 .VQ-BLQ ! H1 C
 #MD/AA GDXE1XA.AT1.VQ-BLQ6192D0E622C960EC18
@@ -70,13 +71,13 @@ Here is a selection of L-Band antennas that I have used at some point in time:
 At the front we have the RTL-SDR v1 patch. Next is the V2 patch, then a prototype of the 3D printed helix and then a second prototype.   
 ## Buy
    The most popular buy option is the RTL-SDR v2 patch antenna. 
-The other options are smaller antennas which is strongly not recommended! (Low price = low performance - very low). Some (including myself) have tested modified GPS antennas. Generally these are too small and do not have enough gain to be of real value. You might get up and running with a few scratchy signals on some of the stronger 600/1200 data channels, but you will soon be disappointed.  
+The other options are smaller antennas which is strongly not recommended! (Low price = low performance - very low signal). Some (including myself) have tested modified GPS antennas. Generally these are too small and do not have enough gain to be of real value. You might get up and running with a few scratchy signals on some of the stronger 600/1200 data channels, but you will soon be disappointed.  
 If your interest is listening to voice calls, you are going to need a pretty good antenna, the v2 patch antenna is marginal, more gain is required for good consistent decodes of the audio. Just keep in mind that the more gain an antenna has, the more directional it becomes. You may get to the point where your L-Band antenna has so much gain that the satellite orbit takes it off your antenna sweet spot and you need to track it or move each time you want to decode some voice messages. Note that this can even happen with a poorly installed patch antenna, here is an example: 
 
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/patchorbit.png" height="320"> 
   
 Note how the message rate drops to zero when the satellite is at the top if its orbit. In this case, the patch mount should be tilted down a little so that the signal/message rate is consistent with aircraft movements. (Overnight, in the early mornings, aircraft movements die down, but your message rate should never go to zero).  
-Another reason for these dropouts could be an obstruction between you and the satellite, for example a house or tree. If you recall from the [Inmarsat](Inmarsat.md) page the satellite orbit is a '8', both up and down and side to side.
+Another reason for these dropouts could be an obstruction between you and the satellite, for example a house or tree. If you recall from the [Inmarsat](Inmarsat.md) page the satellite orbit over ~24 hours is a '8', both up and down and side to side.
    
 Another aspect to consider is your long term interest in L-Band ACARS. If you just want to set something up and use it for an hour or so then pull it down, something like the V2 patch antenna might be Ok.   
 If you just want to listen to one downlink channel a time, then your antenna configuration does not change much, but your software setup becomes a LOT simpler.  
@@ -90,9 +91,9 @@ Here is a close up of the antenna while connected to a NanoVNA.
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/nanovna.png" height="580">  
     
 The hard work of getting the spacing is taken care of by the 3D printed white framework.   
-You can download the file from thingverse here: <https://www.thingiverse.com/thing:4834929>  
-Take care to download and print the correct type, there are 4 to chose from.   
-Since I am **not** shooting into a dish, I need right-hand circular polarization. I also really like the version with the extra leg support at the top of the three legs, so I use file: NH1542R2   
+You can download the file from thingverse here: <https://www.thingiverse.com/thing:4980180>  
+Take care to download and print the correct type, there are 11 to chose from.   
+Since I am **not** shooting into a dish, I need right-hand circular polarization. I also really like the version with the extra leg support at the top of the three legs, so I use file: <https://cdn.thingiverse.com/assets/d0/70/24/9c/3a/1542R_7T_0.11S_4.7D_10-90M_ACARS.stl>   
 Order the 4mm copper tube off Amazon and the base is a stainless steel 8 inch pizza pan also from Amazon. The hardware is stainless steel from Home Depot. The antenna connector is a SMA male bulkhead connector from Amazon.
 Note, the 8 inch pizza pan is the smallest you should go. The reflector is an important part of the antenna performance. You can go bigger, but no smaller.    
 The key to building the antenna is to pre-form the copper on a cylinder that is very close to the final size.   
