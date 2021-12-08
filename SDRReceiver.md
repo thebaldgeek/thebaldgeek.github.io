@@ -7,7 +7,7 @@ The old way to send data from your SDR software to Jaero was to use virtual audi
   
 In August 2021, a new SDR receiver and version of Jaero was released that solved all these issues.   
 ## Big Picture    
-SDRReceiver uses an ini file to set its frequencies. It is not visual point-and-click software. You put the center frequency in the text file, then sub VFO frequencies and name them, Jaero then picks up the data from the ZMQ data stream identified by the VFO names.  
+SDRReceiver uses an ini file to set its frequencies. It is not visual point-and-click software so will take some patience to get used to and get it dialed for your system. You put the center frequency in the text file, then sub VFO frequencies and name them, Jaero then picks up the data from the ZMQ data stream identified by the VFO names.  
 
 This is critical and really important. All other SDR software requires an audio pipe from it to Jaero, SDRR uses a data pipe. The latter is a LOT more robust, light weight and far more accurate way to move data from the SDR dongle to Jaero.  
 ### The bottom line
@@ -38,7 +38,9 @@ If you computer throws an error that it cant find the ini, then Windows might ha
 It should work. If not, then you most likely did not put the .ini file in the same directory as the SDRReceiver software.  
       
 You should now see a small spectrum window appear, click on the 'Start SDR' button and slowly the waveform will show up. If your SDR dongle requires bias-T to power an LNA, you can (if you are using an RTLSDRv3 silver dongle - hint, you should be) click the Bias-T button to turn it on.  
-You should see something similar to what you are used to. Thin spikes from the 600/1200 channels on the left and fat spikes from the 10500 channels on the right.    
+You should see something similar to what you are used to. Thin spikes from the 600/1200 channels on the left and fat spikes from the 10500 channels on the right.   
+
+Do note that I have had issues using SDRReceiver with a NooElec SmarTee dongle (the ones with the bias-t always on), I use and recommend the flat silver RTLSDR v3 dongles.    
 ## Starting Jaero  
 
 Once you have that running, the next thing is to setup Jaero to connect to the VFOs.   
@@ -55,7 +57,7 @@ I would leave it there as we no longer need to install Jaero and we can run wher
 (This will also leave your current Jaero install untouched and so you can always go back if you miss the old ways).  
 
 Now, the real key seems to be how to start Jaero.  
-I don't know what satellite you are looking at, so I don't know how many VFO's are in your ini file. Just keep in mind you need to start as many Jaeros as you have VFOs in your .ini file. (You don't have to, but it would be nice to get all the data right?).   
+I don't know what satellite you are looking at, so I don't know how many VFO's you will need in your ini file. Just keep in mind you need to start as many Jaeros as you have VFOs in your SDRR .ini file. (You don't have to, but it would be nice to get all the data right?).   
 
 *IN THE SAME* folder as Jaero, create a new text file, I called mine `startJaero.bat`  
 
@@ -106,7 +108,7 @@ Adjust things to your liking from top to bottom.
 4. Beeps are annoying when you get 18 Jaeros running - uncheck it for sanity.
 5. This sends the ACARS messages to another computer using UDP. Note that Jaero can not use host names here, it must be an IP address and port number. Leave a space, then put in the next IP:port if you want to feed more than one server the ACARS messages.  
 6. Is for when you have a satellite dish and are using Jaero on C-Band. This is the IP and port for your VRS or tar1090 to plot the aircraft positions on a map. (Not used on L-Band since there is no position data).  
-7. Check it if you must log, it will slow down the starting of Jaero the longer it runs.
+7. Check it if you must log, it will slow down the starting of Jaero the longer it runs. It will also drive you nuts trying to view the logs of 18 different Jaeros, review the Node-RED page and see that there is a better way to build custom logs.
 8. If you have a VRS with images, you can pick them up here if you are logging.
 9. Never thought we would get here did you.... 
 Leave your ini file as it shows: zmq_address=tcp://*:6003 (Note, some of the .ini files have different port numbers, thats fine, just be sure to match port for port. The port in your .ini must match the port you use in your Jaeros).  
@@ -120,7 +122,7 @@ Click Ok. Last few things to do here... make sure you select the right data rate
 
 Click the blue bump to move the pale green box over it so it will start to decode.  
 
-Lastly, click the black CPU square to turn it green and save some computer power (It just slows down the blue wave form update - but is well worth it) and if you want to save even more, select "None' from the drop down list under the constellation to turn that off. Make sure your AFC is on.  
+Lastly, click the black CPU square to turn it green and save some computer power (It just slows down the blue wave form update - but is well worth it) and if you want to save even more, select "None' from the drop down list under the constellation to turn that off. Make sure AFC is on.  
 
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/jaerocpusavemodes.png" height="400">   
 
