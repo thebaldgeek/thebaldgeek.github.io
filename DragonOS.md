@@ -7,7 +7,7 @@ To this end, this page will try and help smooth out that process.
     
 Start by downloading the latest image of DragonOS and burn it to a 32 Gigabyte (minimum) microSD card.  
 This page is about getting set up and running on a Pi 4, so that should be noted.
-(https://sourceforge.net/projects/dragonos-pi64/)   
+<https://sourceforge.net/projects/dragonos-pi64/>   
 Burn it using your tool of choice.   
 ## Enable SSH
 Once the image is burnt, add a file to the root partition called 'ssh' with no extension. (Hint, if you are on a Windows PC, if the image burner has 'ejected' the microSD card, take it out and put it back in again to remount it).   
