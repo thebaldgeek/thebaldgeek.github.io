@@ -13,6 +13,7 @@ This is critical and really important. All other SDR software requires an audio 
 ### The bottom line
 There are two main parts to getting the whole system working, SDRReceiver and its ini file and starting Jaero with a batch file, setting up each Jaero with the correct port number and VFO name. Note, you only have to configure everything once. Once its all setup, its a simple double click to start everything up as needed.
 ## Install SDRReceiver on Windows  
+(For running SDRReceiver on Linux, check out DragonOS).   
 Visit the github page and download the Windows zip file.   
 <https://github.com/jeroenbeijer/SDRReceiver>  
   
