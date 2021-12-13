@@ -146,12 +146,29 @@ If you are indoors, you have more options:
 Here is a great shot from a helix owner - looks like the ultimate L-Band antenna shoot out... I have asked for some results, so check back for those...  
 
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/antennaFarm.jpg" height="320">   
+   
+   From left to right. We have the ever popular RTLSDR v2 patch, the out of stock Othernet patch, long boom yagi (18 dBi and a length of 1,67 meters) and my  7 turn helix.  
+   The results are interesting. Keep in mind these are just 'desktop' measurements as you see in the photo. I like them because they are real world, but should not be taken as hard and fast numbers: (Your install mileage may vary).   
+  
 
+
+| Antenna        | Jaero 600 dBuV  | Jaero 1200 dBuV  | Jaero 10500 dBuV        | Jaero 8400 dBuV  | Voice Decode  |
+| ------------- |:-------------:| :-----:| :-------------: |:-------------:| :-----:|
+| Helix      | 61.1 | 54.1 | 46.3  | 46.2 | yes |
+| Yagi      | 62.4 | 61.5 | 50  | 48.1 | yes |
+| Othernet | 53.2 | 54.7 | 39.5 | 35.8  |  no |
+| v2 Patch | 56.2 | 58.4 | 46.2 | 48 | occasionally |
+
+The gentleman that owns all the antennas kindly provided the numbers and used the same SDR and software to run the test for a few minutes on each antenna.   
+It clearly shows that a big high gain antenna like the yagi is king of the L-Band, but keep in mind that it has such a narrow beam width that you will probably need to 'track' the satellite to some extent to keep the signal peaked.  
+It also shows that the data channels are not all equal. The 10500 and 8400 voice channels are the weakest. (And arguably the most interesting - despite the fact that I personally don't find one sided conversations interesting.)  
+## Which SDR?
    In regard to SDRs, I like the silver v3 RTL-SDR, but in this case, because of the requirement to use Bias-T to power the LNA, I use the Nooelect SmarTee SDR as it has Bias-T always on without needing to run the v3 bat file to turn it on. The performance of the two SDRs seems to be identical. With that said, I have had some issue using the SmarTee with [SDRReceiver](SDRReceiver.md) that I am still working through.   
-      
+## Mounting       
 How you mount the antenna is up to you. A few people have put them under a flowerpot and mounted them outside and used a bracket that is pointing at their satellite. 
 Some have attached them to camera tripods and used them inside their apartment's. In this case, you do not need to weatherproof the antenna, but it comes at a signal strength drop. Also experiment with positioning, a **window may not offer the best signal**.   
 Bottom line, the antenna and LNA are *NOT* water proof and you must put it under cover.   
+## Coax
 Be sure and run some quality coax. The longer the length required to get from the antenna to the SDR, the more you should spend on the coax. 1.5GHz is rather lossy, more so than the 1090MHz from an ADSB antenna that you might be used to. (And even more so than the VHF ACARS frequency of around 130MHz). If in doubt, LMR-400 is the coax to use.   
    
    Ok, so you have the antenna mounted and pointed roughly in the [right direction](Inmarsat.md), now where to tune the SDR software?
