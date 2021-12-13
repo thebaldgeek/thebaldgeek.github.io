@@ -110,9 +110,9 @@ Once you preform the copper to the right size, you can then wind it on the frame
     
 Trim the turns to exactly 7 and then drill the two large holes for the 3D frame, then mark and drill the bulkhead connector mount near the left hand side support - you go near the left side of the frame so you can run the first 2/3rds of the copper parallel to the base, this improves the match and lowers the SWR. Solder the copper pipe to the connector and you are done building the antenna.   
 ## Contact thebaldgeek if you want to buy a pre-made and tested helix   
-   If don't have access to a 3D printer (try your local public library or 3D printing service) and would rather just buy a fully built and tested antenna I am selling them for $50 including shipping to mainland USA. Drop me an email if you would like to buy one: bmorchard at g mail dot com. 
+   If don't have access to a 3D printer (try your local public library or 3D printing service) and would rather just buy a fully built and tested antenna I am selling them for $60 including shipping to mainland USA. Drop me an email if you would like to buy one: bmorchard at g mail dot com.     
    ### December 2021. Update.   
-   After being caught out with crazy changes in shipping prices and failed deliveries I no longer am shipping international. Mainland USA only.  
+   After being caught out with crazy changes in shipping prices and failed deliveries I shipping international only after going over your options over a few emails between us.    
    I accept payment via PayPal, but if you must do a check, we can probably work with you on that.  
    **Please!** Be sure and tell me if you need a left-hand antenna (for shooting into a dish)!!! I don't sell many of those and only build them to order.  
 
