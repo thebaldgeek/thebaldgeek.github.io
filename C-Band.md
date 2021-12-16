@@ -5,7 +5,7 @@ Navigation: [home](README.md)
 C-Band is the most difficult aspect of a satcom ground station, but because of this and the rich data it can provide, if you have the space, time and patience its probably the most rewarding of all the AERO frequencies that are in use.   
 Here is a random screen shot of the aircraft that my dish can pick up at a pretty average time - you get an ebb and flow in the traffic you will see depending on the time of day and year.   
 
-   <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/98wonly.png" height="210">     
+   <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/72hourscband98w.png" height="400">     
 
 To see what Inmarsat satellite(s) are over your location, review the [Inmarsat](Inmarsat.md) page. This step is critical and not optional for a C-Band setup. You will need a very clear view of the satellite over its entire orbit. It will need to be well above the horizon at all times and it will need to be clear of all terrestrial obstructions at all times.   
 ### Dish size matters.
