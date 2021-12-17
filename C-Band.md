@@ -3,12 +3,12 @@
 Navigation: [home](README.md)  
 
 C-Band is the most difficult aspect of a satcom ground station, but because of this and the rich data it can provide, if you have the space, time and patience its probably the most rewarding of all the AERO frequencies that are in use.   
-Here is a random screen shot of the aircraft that my dish can pick up at a pretty average time - you get an ebb and flow in the traffic you will see depending on the time of day and year.   
+Here is a random screen shot of the aircraft that my dish can pick up over the course of a day - you get an ebb and flow in the traffic you will see depending on the time of day and year. The mix of military vs civil will also change just like it does with ADSB.   
 
    <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/72hourscband98w.png" height="400">     
 
 To see what Inmarsat satellite(s) are over your location, review the [Inmarsat](Inmarsat.md) page. This step is critical and not optional for a C-Band setup. You will need a very clear view of the satellite over its entire orbit. It will need to be well above the horizon at all times and it will need to be clear of all terrestrial obstructions at all times.   
-### Dish size matters.
+## Dish size matters.
 You will need the space for a minimum of a 6 foot (2 meter) dish. Some people will tell you that you can get away with a smaller dish, but the signal is going be so marginal that its hard to justify the time and money to setup something might only just work.   
 I also feel that most people will want a large enough dish that all signals from the satellite can be recovered around the clock. If you are close to the equator (ie, under the satellite) then yes, perhaps something smaller might work.  
 Do your research, ask lots of questions from those that insist a smaller dish will 'work just fine', qualify their data quality.    
@@ -30,14 +30,19 @@ Here is this orbit in the sky as a reminder:
     
 This can be hard to visualize and keep track of, so a more conventional graph is critical (and in my experience not optional):  
 
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/98worbitgraph.png" height="250"> 
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/98worbitgraph.png" height="200"> 
    
 This is the graph that you will be spending a lot of time looking at.   
-The period of the graph at first should be pretty course, 1 or 2 days at most. If you want to track long term (monthly or longer) you can, but be sure and have two versions of this graph, short and long period. I would not go less than a day since that is the orbit period and you will need some reference of time around that window.  
-Just to keep you on your toes, the titles of this graph are wrong red line is the latitude (elevation) and the green line is the longitude (azimuth). My hope is that seeing the '8' graph and this graph next to each other will help you visualize the pattern your dish needs to track over the course of each daily cycle.  
+The period of the graph at first should be pretty course, at least 1 day, 2 at the most. If you want to track long term (monthly or longer) or short you can, but be sure and have two versions of this graph, short and long period. I would not go less than a day since that is the orbit period and you will need some reference of time around that window.  
+In this image, the red plot is the elevation and the green is azimuth. Note the double dip in the azimuth. We will come back to this shortly.   
+ My hope is that seeing the '8' graph and this graph next to each other will help you visualize the pattern your dish needs to track over the course of each daily cycle.  
 
 I highly recommend you spend some time setting up this graph in either Node-RED or some other stable graphing software. You will need it running around the clock.
-This graph is critical to the ADSC ground station operator as it will show when the satellite is at the top of its orbit and at the bottom of its orbit and when the satellite is at the most left part and right part of its orbit. These are two very critical points of the orbit and you will be adjusting the dish at these points, so knowing ahead of time that you will need to setting an alarm for 3am and 3pm is very important. 
+This graph is critical to the ADSC ground station operator as it will show when the satellite is at the top of its orbit and at the bottom of its orbit and when the satellite is at the most left part and right part of its orbit. These are two very critical points of the orbit and you will be adjusting the dish at these points, so knowing ahead of time that you will need to setting an alarm for something like 3am and 3pm is very important.   
+Optional, but to give you an idea of how important this whole orbit data is, here is a snip from the webpage status I have built to keep tabs on the dish and orbit data:    
+
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/98wdishstatus.png" height="380">   
+
 ## Auto update TLE
 Before we leave the graph / where is the satellite topic, its also critical that you are working with fresh TLE (Two Line Elements) for your satellite. By fresh, I have found that updating them every 24 hours is about right. I was doing it monthly for a while, but feel I have better 'lock' on the sat with 24 hour TLE. I have an example flow to get you started on this auto-update via Node-RED on the [autoTLE](autoTLE.md) page.
 ## Hardware BOM (Bill of materials)  
@@ -46,7 +51,7 @@ Before we leave the graph / where is the satellite topic, its also critical that
 1 x Feed horn / Low Noise Block (LNB) Titanium Lite. [Amazon](https://www.amazon.com/C-Band-C1W-PLL-lite-Wideband-Phase/dp/B00OMQKGAW)  
 1 x power injector. 18 to 21 volt DC for C-Band frequencies (Often called an SWM) [Amazon](https://www.amazon.com/s?k=swm+power+inserter&crid=1T4WJW5FWVNJC&sprefix=swm+power%2Caps%2C225&ref=nb_sb_ss_ts-doa-p_1_9)   
 1 x RTLSDR v3 dongle. (Silver flatish one). Get the real thing from [RTL-SDR](https://www.rtl-sdr.com/buy-rtl-sdr-dvb-t-dongles/)  
-1 x Computer (Junk store)  
+1 x Computer (Junk store - aka your garage)  
 1 x GPSDO module [Leo Bodnar](http://www.leobodnar.com/shop/index.php?main_page=product_info&cPath=107&products_id=301&zenid=7527c5a77e36a6c7028130804877017c)   
 1 x power cable for motors and 5v DC supply for GPSDO - length for install [something like this](https://www.amazon.com/Multi-Core-Shielded-Anti-Interference-Control-Signal/dp/B09639HGN9)   
 1 x Linear motor with resistance position feedback. Stroke length as per instructions [4'' example from Amazon](https://www.amazon.com/gp/product/B00NVI5RII/).  
@@ -54,7 +59,7 @@ Before we leave the graph / where is the satellite topic, its also critical that
 ## Physical setup
 Now that we accurately know where the satellite is and when, we can start to set up the dish feed horn and pick up the 10500 signal.
 The feedhorn we use is the Titanium Satellite C1-PLL Lite. It is important to use this exact feed horn for two reasons.
-1. It will down convert the C-Band signal. This is important. Most LNBs are built for TV C-Band, the ADSC signal is at the bottom of the band, so most LNBs will not pick up the C-Band signal this low in frequency.
+1. It will down convert the C-Band signal. This is important. Most LNBs are built for TV C-Band, the ADSC signal is at the bottom of the band (around 3.4GHz), so most LNBs will not pick up the C-Band signal this low in frequency.
 2. It can be easily modified for the GPSDO. (Global Positioning System Disciplined Oscillator). More on this in a moment.
 
 Once you have the LNB mounted, run the coax cable back to the SWM power supply. (Get started with the stock LNB, we will modify it once we have signal lock for a few hours).   
@@ -96,7 +101,7 @@ This is the critical one.
 With the dish roughly on signal you need to find a yardstick or stable measurement ruler than can remain in place for a few days to a few weeks. It should be a solid datum point that you can measure the tilt of the dish against. It should not interfere with the movement of the dish at all and should not be in the way of the linear motor that you will be mounting. You should be able to draw on it and thus mark the top and bottom of the orbit in elevation. It can be behind the dish or in front, perhaps at the front rim/lip.   
 You will need to be as accurate as possible here. Depending on your look angle to the satellite will determine how much your dish will need to pivot up and down to track the sat.  
 It could be as small as an inch (25mm) or up to 3-4 inches (75+mm). Thus you need to be as accurate as possible in your marks. (The angle and movement are based on your location in relation to the satellite - for example, the closer to the equator you are, the more your dish will be looking up - if you live closer to the poles, your dish will be looking more at the horizon.)   
-### Find top and bottom of the orbit on the dish   
+## Find top and bottom of the orbit on the dish   
 Over 48 or more hours, look at the graph and pick times when the satellite is at the top and bottom of the orbit.  
 
 This is critical and not optional. Mark the dish position with a marker on your yardstick, note the top of the orbit position and 12ish hours latter, the bottom of the orbit position.  
