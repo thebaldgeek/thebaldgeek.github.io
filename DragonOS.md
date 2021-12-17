@@ -19,7 +19,7 @@ From here on this page is about getting set up and running on a Pi 4, so that sh
 Burn it using your tool of choice.   
 Note that SSH is enabled by default.
 ## Enable HDMI
-Once the image is burnt, open up the `usercfg.txt` and make sure that `HDMI_force_hotplug = 1` is uncommented.   
+Once the image is burnt, open up the `usercfg.txt` and make sure that `hdmi_force_hotplug=1` is uncommented.   
 To that same file, just below that line, add `hdmi_group=2` and on the next line add `hdmi_mode=82` (this adds a monitor resolution of 1920x1080, use mode=47 for a 1440x900 monitor, mode=35 for a 1280x1024. You can look up other modes from this table [here](https://www.raspberrypi.com/documentation/computers/config_txt.html#:~:text=These%20values%20are%20valid%20if%20hdmi_group%3D2%20(DMT)%3A))  
 Now you can unmount the microSD card and put it in the Pi 4.   
 ## Headless Setup
@@ -67,17 +67,25 @@ It has notes on enabling SDRPlay devices and many other DragonOS specific notes 
 For L-Band work, start SDRReceiver from the terminal using your .ini file.  
 `SDRReceiver -s 98w.ini`  
 Start a single instance of Jaero from the DragonOS menu.   
-Start many Jaeros from another terminal by making a `jaerostart.sh` file setup as follows:   
+Start many Jaeros from another terminal by making a `jaerostart.sh` file setup as follows:    
+`nano jaerostart.sh` then add the following.   
 ```    
 jaero -s VFO01 &   
 jaero -s VFO02 &   
 jaero -s VFO03 &   
 ```   
+Save with ctrl+o and then exit with ctrl+x   
 Add as many instances of Jaero as you need. BE SURE and turn off logging and voice decoding in each when running on a Raspberry Pi. Those two features use a lot of CPU and will cause bad/dropped decodes.   
+
+Once you create that .sh file, make it executable by the command `sudo chmod +x jaerostart.sh`   
+Then run it with `./jaerostart.sh`
     
-For dumpVDL2 and dumphfdl, run them from a terminal. They are not in the menu. Just run them from the terminal prompt.   
-## dumpxx quick start  
-Quick and dirty guide to get you going, more to come on each of these....   
+   
+## dumpxxxx quick start  
+For dumpVDL2 and dumphfdl, run them from a terminal. They are not in the DragonOS menu. Just run them from the terminal prompt.
+
+Quick and dirty guide to get you going, more to come on each of these....  
+
 For dumpvdl2, just open a terminal on the desktop, plug in your RTLSDR v3 dongle connected to the Pi and 136mhz antenna connected and enter this command into the terminal:   
 `dumpvdl2 --msg-filter all,-avlc_s,-acars_nodata,-gsif,-x25_control,-idrp_keepalive,-esis --rtlsdr 2 --gain 40 --correction -1 --output decoded:text:file:path=vdl.log,rotate=hourly 136650000 136975000 136800000`   
 Then to see the messages, do a tail on the log file it creates in your home directory.   
