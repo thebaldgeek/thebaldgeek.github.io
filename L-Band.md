@@ -88,7 +88,7 @@ If you only have an indoor antenna option, then more antenna gain is something y
   
   My goal was to setup a system that had 24 x 7 x 365 coverage and catch every downlink message possible from every data channel on the satellite.   
 ## Build     
-My current preferred, recommended and **in stock** antenna for L-Band is a 3D printed 7 turn Helix.  
+My current preferred, recommended antenna for L-Band is a 3D printed 7 turn Helix.  
 Here is a close up of the antenna while connected to a NanoVNA.  
 
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/nanovna.png" height="580">  
@@ -112,7 +112,7 @@ Trim the turns to exactly 7 and then drill the two large holes for the 3D frame,
 ## Contact thebaldgeek if you want to buy a pre-made and tested helix   
    If don't have access to a 3D printer (try your local public library or 3D printing service) and would rather just buy a fully built and tested antenna I am selling them for $60 including shipping to mainland USA. Drop me an email if you would like to buy one: bmorchard at g mail dot com.     
    ### December 2021. Update.   
-   After being caught out with crazy changes in shipping prices and failed deliveries I ship international only after going over your options over a few emails between us so you understand the risks.    
+   After being caught out with crazy changes in shipping prices and failed deliveries I no longer ship international.    
    I accept payment via PayPal, but if you must do a check, we can probably work with you on that.  
    **Please!** Be sure and tell me if you need a left-hand antenna (for shooting into a dish)!!! I don't sell many of those and only build them to order.  
 
@@ -163,7 +163,7 @@ The gentleman that owns all the antennas kindly provided the numbers and used th
 It clearly shows that a big high gain antenna like the yagi is king of the L-Band, but keep in mind that it has such a narrow beam width that you will probably need to 'track' the satellite to some extent to keep the signal peaked.  
 It also shows that the data channels are not all equal. The 10500 and 8400 voice channels are the weakest. (And arguably the most interesting - despite the fact that I personally don't find one sided conversations interesting.)  
 ## Which SDR?
-   In regard to SDRs, I like the silver v3 RTL-SDR, but in this case, because of the requirement to use Bias-T to power the LNA, I use the Nooelect SmarTee SDR as it has Bias-T always on without needing to run the v3 bat file to turn it on. The performance of the two SDRs seems to be identical. With that said, I have had some issue using the SmarTee with [SDRReceiver](SDRReceiver.md) that I am still working through.   
+   In regard to SDRs, I like the silver v3 RTL-SDR, but in this case, because of the requirement to use Bias-T to power the LNA, I use the Nooelect SmarTee SDR as it has Bias-T always on without needing to run the v3 bat file to turn it on. The performance of the two SDRs seems to be identical. With that said, I have had some issue using the SmarTee with [SDRReceiver](SDRReceiver.md) that I am still working through. Also note that I have tested the RSP1a on L-Band and the more expensive SDR showed no benefit at all over the cheaper RTLSDr v3. This is mostly due to the fact of using the LNA, a more sensitive SDR does not perform any better since the system noise is not limited by the SDR. In short, use the cheaper SDR on L-Band and the other on HF where the difference in performance between the two is dramatic.    
 ## Mounting       
 How you mount the antenna is up to you. A few people have put them under a flowerpot and mounted them outside and used a bracket that is pointing at their satellite. 
 Some have attached them to camera tripods and used them inside their apartment's. In this case, you do not need to weatherproof the antenna, but it comes at a signal strength drop. Also experiment with positioning, a **window may not offer the best signal**.   
