@@ -3,7 +3,7 @@
 Navigation: [home](README.md)  
   
 ## The Old Way
-The old way to send data from your SDR software to Jaero was to use virtual audio cables (VAC). This was very fragile, CPU intensive, expensive (a licensed copy of VAC was required) and each SDR software package had its up and down's. Issues ranged from unpredictable lockups/crashes, PC hangs, high CPU use, memory leaks, convoluted graphical interfaces and a lot of unneeded features (bloat). It also made the option of running on Linux just about impossible. With satcom you just need the aircraft data to be sent to each Jaero the most efficient way possible with out needing constant monitoring and restarts. Most systems even run headless and you never need to look at the actual SDR software for months at at time.   
+The old way to send data from your SDR software to Jaero was to use virtual audio cables (VAC). This was very fragile, CPU intensive, expensive (a licensed copy of VAC was required) and each SDR 'receiver' software package had its up and down's. Issues ranged from unpredictable lockups/crashes, PC hangs, high CPU use, memory leaks, convoluted graphical interfaces and a lot of unneeded features (bloat) for our specific use case. It also made the option of running on Linux just about impossible. With satcom you just need the aircraft data to be sent to each Jaero the most efficient way possible with out needing constant monitoring and restarts. Most systems even run headless and you never need to look at the actual SDR software for months at at time.   
   
 In August 2021, a new SDR receiver and version of Jaero was released that solved all these issues.   
 ## Big Picture    
@@ -13,7 +13,7 @@ This is critical and really important. All other SDR software requires an audio 
 ### The bottom line
 There are two main parts to getting the whole system working, SDRReceiver and its ini file and starting Jaero with a batch file, setting up each Jaero with the correct port number and VFO name. Note, you only have to configure everything once. Once its all setup, its a simple double click to start everything up as needed.
 ## Install SDRReceiver on Windows  
-(For running SDRReceiver on Linux, check out DragonOS).   
+(For running SDRReceiver on Linux, check out [DragonOS](DragonOS.md) the program is prebuilt and ready to go on a Pi or x86).   
 Visit the github page and download the Windows zip file.   
 <https://github.com/jeroenbeijer/SDRReceiver>  
   
@@ -29,6 +29,103 @@ While you are there, be sure and check out the comments in the 98W ini file, the
 
 The main missing one is L-Band for 143E. If you have it, please let me know.  
 
+## ini file breakdown   
+Lets now break down the ini file line by line and try and get you up and running.   
+```sample_rate=1536000```  
+This sets the bandwidth of the SDR dongle. In short, there is no need to change it. It will cover all Inmrasat L-Band and (more on this to come) each C-Band data type. So like the author states, don't change this.   
+Ok, Ok, you want to change it because reasons... fine....Here is some more details...There are only three options for this setting, 1536000 (1.5megs bandwidth), 1920000, this is 1.9mhz bandwidth and needlessly burns CPU covering more spectrum span than L and C require and lastly 288000. This is the least CPU intensive and covers only .2 mhz bandwidth, it allows you to zoom right in on a single signal.   
+
+```center_frequency=1545600000```
+This value will need to be set as per your satellite and if you are looking at C or L-Band.   
+The way to set this is to look at the upper and lower frequencies of your channels and then pick a center value (regardless of if it is on a data channel or not). This center value is what you put in this setting.   
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/findcenterfreq.png" height="380"> 
+Fire up some SDR software, does not matter what, you just need to see the signals/data channels.   
+Set the bandwidth to anything that will show you your satellite data spread like this.   
+Make a note of the top and bottom frequencies a little past the data and then find the middle frequency and thats the one you use for this ini file parameter.   
+
+```zmq_address=tcp://*:6003```   
+Most people run both SDRR and Jaero on the same computer, but I know some of you want /like to complicate things (grin) If so, this setting is for you. SDRR can publish the raw data to another PC over your network and you can run your Jaero on that other PC. So leave this setting as it is and in the Jaeros on the other PC put the IP address of the PC that is running SDRR.   
+Note if you are running more than 1 instance of SDRR on the one PC (which you can if you have more than one SDR dongle plugged in, ie, C and L Band for example) then the port number needs to be unique for each SDRR ini file and your Jaeros much match the port number.   
+
+```correct_dc_bias=1```   
+Some SDRs have a big bump in the middle of their spectrum. You will know it when you see it. Turn it off by setting this value to 1, otherwise set it to 0.   
+
+```tuner_gain=496```    
+You will need to experiment a little with this gain value. Just setting it to max (496) is not always the solution. But, in general, you want to run this gain value high and the VFO gain values (totally different range - more in a sec) lower.    
+Valid gain values are:    
+```#valid tuner gains r82xx_gains[] = { 0, 9, 14, 27, 37, 77, 87, 125, 144, 157, 166, 197, 207, 229, 254, 280, 297, 328, 338, 364, 372, 386, 402, 421, 434, 439, 445, 480, 496 };```
+   
+```mix_offset=0```
+This allows some fine tuning of the main VFOs.   
+Honestly, after helping a bunch of people, its best to leave this at 0 and spend a moment getting the main VFO settings right.   
+Speaking of which, they are up next....   
+    
+```
+[Main VFOs]
+size=2
+1\frequency=1545116000
+1\out_rate=384000
+2\frequency=1546096000
+2\out_rate=192000
+```   
+You can have as many main vfos as you like there, but they _must_ fit inside the main VFO range we set from the start.   
+In short whats happening here is that by break the master (for want of a better work - the big range we first worked out the center of) vfo into sub main vfos we can save CPU (always a good thing).   
+Always remember to never cut the upper/lower too fine, there is roll off at each end, so allow some overlap.   
+So for L-band for example, you would do well to have two main vfos here, one lower to cover the lower speed channels and one upper main vfo for the top 10500 channels.    
+Here is an image of how you might work out the main vfo for the lower speed channels.    
+     
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/mainvfosetting.png" height="380"> 
+    
+That 'Half way' frequency is what you would put into the first vfo. It does not matter if that half way point is on a data channel or not, its just setting the mid point of the range the vfo needs to cover.    
+The 'out_rate' is going to bandwidth you want to cover, wide bing 384000 and narrow being 192000. They are pretty much the only two values you want to use for the main vfos rate.    
+You can put as many vfos (up next) inside the main vfos, but again they must fit inside that range.   
+In short, if you have a super powerful computer, you can just have one main vfo set at the same range as the master vfo and then all your vfos inside that, but most of us are going to want to break that master vfo into main vfos and then have our vfos inside each of their ranges.    
+Take a look at the top total span, see the big gap in the middle (with the nasty wide signal), there is zero point in listening to this big chunk of spectrum, its a total waste of CPU, so we have the master pick up the whole band, then one main vfo for the data on the left and anther main vfo for the 10500's on the right and totally ignore the middle bit... its pretty genius and powerful once you see it like this (I hope you agree).   
+    
+Ok, lastly, the vfos themselves.   
+```
+[vfos]
+size=27
+1\frequency=1545101000
+1\gain=5
+1\data_rate=600
+1\filter_bandwidth=0
+1\topic=VFO01
+2\frequency=1545051000
+2\gain=5
+2\data_rate=600
+2\filter_bandwidth=0
+2\topic=VFO02
+```
+Just a small sample here.    
+The size must match the number you have configured (if you don't the program will barf).   
+Then each vfo has a few settings.   
+The `frequency` must be the center (or close to the center) of the data channel you want. **NOTE** it needs to be the center! SDR# in USB mode lists the frequency on the left. When in raw, its the center frequency. SDR-Console does something else again. My point is, be aware of this and measure the top and bottom of your signal and then put the center into the ini file.   
+
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/vfocenter.png" height="380">   
+    
+Do note that just like the main vfos these vfos must go from lowest to highest frequency. Nothing must be out of order!
+
+`gain` can be a value from 0 to 30ish. (there is no hard limit, but beyond about 10-20 is enough). C-band will require gains around .1 to .5 for example. L-Band seems to like 1 to 10 best. These vfo gain values will interact with the master vfo gain value. You will need to go back and forth a bit here.    
+
+How to set the gain value? A word about the Jaero 'volume' LED.   
+While we are not using VAC any more, the volume LED is still 'valid' as it is showing data clipping. RED is a ton of clipping and the data is not going to be decoded correctly in Jaero so lower the gain in that VFO. Grey is too little gain and it should be raised for that VFO in the ini file. You really want to see a green volume LED. If you cant get a green LED (ie, its grey) then lift the master gain for the SDR in the master vfo gain setting.
+
+`data_rate` is the channel data you are looking to decode. For L-Band you have 3 values used in the data channels, 600, 1200 and 10500 so these are the only values that should be used.   
+     
+`filter_bandwidth` is simply an audio low pass filter. 0 means no filter. Try and match the filter to the data. More on this to come. But in short look at the blue waveform in Jaero and set the filter value in the ini file to give a good shape to it.
+    
+`topic` this is the name you are going to put into Jaero to pick up the data from the vfo. See my Jaero settings screenshot at the bottom of this page for more on this.   
+     
+
+
+# .ini setting tl:dr   
+Set the master vfo for the whole band.   
+Set the main vfo for groups of data channels.    
+Set the vfos for the center of each data channel. Set the rate and filter to suit as per the blue waveform in Jaero.
+
+
+## Download and run.
 Download the .ini file into the same directory as your SDRReceiver unzipped into.   
 Now, from Windows Explorer, hold down the right shift key on your keyboard and right mouse click on an empty part of the page to pull up the menu. From that pop up menu select either Open Command Prompt, or Open PowerShell Window Here. (depending on your version of Windows).   
 
@@ -104,16 +201,16 @@ Adjust things to your liking from top to bottom.
   Looking at the settings top to bottom - a quick overview. More details on the [jaero](jaero.md) page.    
 
 1. This just hides these message types from the live display window. Most people leave it as those listed messages can be hard to read or understand their purpose.  
-2. This changes the format of the message in the main window, play around when you get it running, most people like format 3. If you are a software programmer, you might like the JSON option from this list - note, you can only select one message format type.  
+2. This changes the format of the message in the main window and the UDP data output to any other programs using it (ie, Node-RED), play around when you get it running, most people like format 3. If you are a software programmer, you might like the JSON option from this list - note, you can only select one message format type.  
 3. Most people leave this checked. It seems the non text messages are link Pings or ACKs for L/C-Band messages and other system stuff that is not of interest to (most) humans.
 4. Beeps are annoying when you get 18 Jaeros running - uncheck it for sanity.
 5. This sends the ACARS messages to another computer using UDP. Note that Jaero can not use host names here, it must be an IP address and port number. Leave a space, then put in the next IP:port if you want to feed more than one server the ACARS messages.  
 6. Is for when you have a satellite dish and are using Jaero on C-Band. This is the IP and port for your VRS or tar1090 to plot the aircraft positions on a map. (Not used on L-Band since there is no position data).  
-7. Check it if you must log, it will slow down the starting of Jaero the longer it runs. It will also drive you nuts trying to view the logs of 18 different Jaeros, review the Node-RED page and see that there is a better way to build custom logs.
+7. Check it if you must log, it will slow down the starting of Jaero the longer it runs. It will also drive you nuts trying to view the logs of 18 different Jaeros, review the Node-RED page and see that there is a much much better way to build custom logs and view the live data from all the Jaeros at once.
 8. If you have a VRS with images, you can pick them up here if you are logging.
 9. Never thought we would get here did you.... 
 Leave your ini file as it shows: zmq_address=tcp://*:6003 (Note, some of the .ini files have different port numbers, thats fine, just be sure to match port for port. The port in your .ini must match the port you use in your Jaeros).  
-The port is important. So in each jaero Check the ZMQ box and just put your home IP of `tcp://127.0.0.1:6003` and again, make sure the port matches your ini file.  
+The port is important. So in each jaero Check the ZMQ box and just put your home IP of `tcp://127.0.0.1:6003` and again, make sure the port matches your ini file. If you are running SDRR on another PC on your network, put its IP address in here.  
 Lastly, the topic. In your .ini file each VFO has a name, you must make sure that the name in JAERO matches the names in the ini. If you have used the .ini file and the startJaero batch file I have here, they should be very close.  
 Also **WATCH OUT!** Jaero likes to put a space at the start of the word VFO!! So **make sure** that the V is tucked up against the edge of his box!!!! (Ask me how I know this!!!!!!!!!! - No don't)  
 
