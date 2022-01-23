@@ -42,7 +42,7 @@ Ok, Ok, you want to change it because reasons... fine....Here is some more detai
 This value will need to be set as per your satellite and if you are looking at C or L-Band.   
 The way to set this is to look at the upper and lower frequencies of your channels and then pick a center value (regardless of if it is on a data channel or not). This center value is what you put in this setting.   
 
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/findcenterfreq.png" height="380"> 
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/halfway.png" height="380"> 
 Fire up some SDR software, does not matter what, you just need to see the signals/data channels.   
 Set the bandwidth to anything that will show you your satellite data spread like this.   
 Make a note of the top and bottom frequencies a little past the data and then find the middle frequency and thats the one you use for this ini file parameter.   
