@@ -130,9 +130,9 @@ While we are not using VAC any more, the volume LED is still 'valid' as it is sh
 
 
 # .ini setting tl:dr   
-Set the master vfo for the whole band.   
-Set the main vfo for groups of data channels.    
-Set the vfos for the center of each data channel. Set the rate and filter to suit as per the blue waveform in Jaero.
+Set the master vfo for center of the whole band.   
+Set the main vfo for the center of each group of data channels.    
+Set the vfos for the center of each data channel. Set the gain to get a green volume LED in Jaero. Set the rate and filter to suit as per the blue waveform in Jaero.
 
 
 ## Download and run.
