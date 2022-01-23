@@ -30,36 +30,45 @@ While you are there, be sure and check out the comments in the 98W ini file, the
 The main missing one is L-Band for 143E. If you have it, please let me know.  
 
 ## ini file breakdown   
-Lets now break down the ini file line by line and try and get you up and running.   
-`sample_rate=1536000`  
+Lets now break down the ini file line by line and try and get you up and running.
+
+`sample_rate=1536000`
+
 This sets the bandwidth of the SDR dongle. In short, there is no need to change it. It will cover all Inmrasat L-Band and (more on this to come) each C-Band data type. So like the author states, don't change this.   
 Ok, Ok, you want to change it because reasons... fine....Here is some more details...There are only three options for this setting, 1536000 (1.5megs bandwidth), 1920000, this is 1.9mhz bandwidth and needlessly burns CPU covering more spectrum span than L and C require and lastly 288000. This is the least CPU intensive and covers only .2 mhz bandwidth, it allows you to zoom right in on a single signal.   
 
 `center_frequency=1545600000`
+
 This value will need to be set as per your satellite and if you are looking at C or L-Band.   
 The way to set this is to look at the upper and lower frequencies of your channels and then pick a center value (regardless of if it is on a data channel or not). This center value is what you put in this setting.   
+
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/findcenterfreq.png" height="380"> 
 Fire up some SDR software, does not matter what, you just need to see the signals/data channels.   
 Set the bandwidth to anything that will show you your satellite data spread like this.   
 Make a note of the top and bottom frequencies a little past the data and then find the middle frequency and thats the one you use for this ini file parameter.   
 
-`zmq_address=tcp://*:6003`    
+`zmq_address=tcp://*:6003`
+
 Most people run both SDRR and Jaero on the same computer, but I know some of you want /like to complicate things (grin) If so, this setting is for you. SDRR can publish the raw data to another PC over your network and you can run your Jaero on that other PC. So leave this setting as it is and in the Jaeros on the other PC put the IP address of the PC that is running SDRR.   
 Note if you are running more than 1 instance of SDRR on the one PC (which you can if you have more than one SDR dongle plugged in, ie, C and L Band for example) then the port number needs to be unique for each SDRR ini file and your Jaeros much match the port number.   
 
-`correct_dc_bias=1`   
+`correct_dc_bias=1`
+
 Some SDRs have a big bump in the middle of their spectrum. You will know it when you see it. Turn it off by setting this value to 1, otherwise set it to 0.   
 
-`tuner_gain=496`    
+`tuner_gain=496`
+
 You will need to experiment a little with this gain value. Just setting it to max (496) is not always the solution. But, in general, you want to run this gain value high and the VFO gain values (totally different range - more in a sec) lower.    
-Valid gain values are:    
+Valid gain values are:
+
 `#valid tuner gains r82xx_gains[] = { 0, 9, 14, 27, 37, 77, 87, 125, 144, 157, 166, 197, 207, 229, 254, 280, 297, 328, 338, 364, 372, 386, 402, 421, 434, 439, 445, 480, 496 };`
    
 `mix_offset=0`
+
 This allows some fine tuning of the main VFOs.   
 Honestly, after helping a bunch of people, its best to leave this at 0 and spend a moment getting the main VFO settings right.   
 Speaking of which, they are up next....   
-    
+
 ```
 [Main VFOs]
 size=2
@@ -67,7 +76,8 @@ size=2
 1\out_rate=384000
 2\frequency=1546096000
 2\out_rate=192000
-```   
+```
+
 You can have as many main vfos as you like there, but they _must_ fit inside the main VFO range we set from the start.   
 In short whats happening here is that by break the master (for want of a better work - the big range we first worked out the center of) vfo into sub main vfos we can save CPU (always a good thing).   
 Always remember to never cut the upper/lower too fine, there is roll off at each end, so allow some overlap.   
