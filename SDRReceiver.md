@@ -142,8 +142,11 @@ Now, from Windows Explorer, hold down the right shift key on your keyboard and r
 That will open a back or blue box window, now start typing the command `SDR` and hit the tab key, this will auto complete the command to the .exe and then you just add `-s` and then name of your ini file.   
 
 The full command is something like `.\SDRReceiver.exe -s 54w.ini` (Of course use your named .ini file).   
-If you computer throws an error that it cant find the ini, then Windows might have saved it with a hidden .txt extension, so type this: `.\SDRReceiver.exe -s 54w.ini.txt` (Of course use the name of your .ini file)
+If your computer throws an error that it cant find the ini, then Windows might have saved it with a hidden .txt extension, so type this: `.\SDRReceiver.exe -s 54w.ini.txt` (Of course use the name of your .ini file)
 It should work. If not, then you most likely did not put the .ini file in the same directory as the SDRReceiver software.  
+
+Tip. Once you have your .ini file sorted and everything working the way you want you can simply type 'exit' in the PowerShell to close it. Once SDRRx is running you don't need that box open any more.    
+Second tip. If you know how, you can simply make a Windows bat file with the same command it in and then run that bat file to start SDRRx.
       
 You should now see a small spectrum window appear, click on the 'Start SDR' button and slowly the waveform will show up. If your SDR dongle requires bias-T to power an LNA, you can (if you are using an RTLSDRv3 silver dongle - hint, you should be) click the Bias-T button to turn it on.  
 You should see something similar to what you are used to. Thin spikes from the 600/1200 channels on the left and fat spikes from the 10500 channels on the right.   
