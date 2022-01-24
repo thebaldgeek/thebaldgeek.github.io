@@ -64,6 +64,8 @@ If you must (I really don't like or trust any wifi on any Raspberry Pi. Have bee
 Be sure - this is not optional - and read the start up doc on the desktop.   
 It has notes on enabling SDRPlay devices and many other DragonOS specific notes you *will* want to read.
 ## AERO Software - Quick start    
+**Note!** dumphfdl, dumpvdl2 and SDRReceiver are all command line only programs. They do not have menu items.   
+
 For L-Band work, start SDRReceiver from the terminal using your .ini file.  
 `SDRReceiver -s 98w.ini`  
 Start a single instance of Jaero from the DragonOS menu.   
