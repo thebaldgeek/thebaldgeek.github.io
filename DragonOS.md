@@ -77,6 +77,8 @@ jaero -s VFO02 &
 jaero -s VFO03 &   
 ```   
 Save with ctrl+o and then exit with ctrl+x   
+**BIG NOTE** you need to run each jaero from the terminal with the -s and VFO number and adjust its settings, then click its 'File->Exit' menu before you run that script. You will get a ton of odd errors if you don't. You only have to run each one one at a time the first time, from then on out, you can just run this bulk start script.  
+
 Add as many instances of Jaero as you need. BE SURE and turn off logging and voice decoding in each when running on a Raspberry Pi. Those two features use a lot of CPU and will cause bad/dropped decodes.   
 
 Once you create that .sh file, make it executable by the command `sudo chmod +x jaerostart.sh`   

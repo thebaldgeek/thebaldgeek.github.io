@@ -34,7 +34,7 @@ Lets now break down the ini file line by line and try and get you up and running
 
 `sample_rate=1536000`
 
-This sets the bandwidth of the SDR dongle. In short, there is no need to change it. It will cover all Inmrasat L-Band and (more on this to come) each C-Band data type. So like the author states, don't change this.   
+This sets the bandwidth of the SDR dongle. In short, there is no need to change it. It will cover all Inmarsat L-Band and (more on this to come) each C-Band data type. So like the author states, don't change this.   
 Ok, Ok, you want to change it because reasons... fine....Here is some more details...There are only three options for this setting, 1536000 (1.5megs bandwidth), 1920000, this is 1.9mhz bandwidth and needlessly burns CPU covering more spectrum span than L and C require and lastly 288000. This is the least CPU intensive and covers only .2 mhz bandwidth, it allows you to zoom right in on a single signal.   
 
 `center_frequency=1545600000`
@@ -116,7 +116,7 @@ The `frequency` must be the center (or close to the center) of the data channel 
     
 Do note that just like the main vfos these vfos must go from lowest to highest frequency. Nothing must be out of order!
 
-`gain` can be a value from 0 to 30ish. (there is no hard limit, but beyond about 10-20 is enough). C-band will require gains around .1 to .5 for example. L-Band seems to like 1 to 10 best. These vfo gain values will interact with the master vfo gain value. You will need to go back and forth a bit here.    
+`gain` can be a value from 0 to 30ish. (there is no hard limit, but beyond about 10-20 is enough). C-band will require gains around .1 to .5 for example. L-Band seems to like 1 to 10 best. These vfo gain values will interact with the master vfo gain value. You will need to go back and forth a little bit here.    
 
 How to set the gain value? A word about the Jaero 'volume' LED.   
 While we are not using VAC any more, the volume LED is still 'valid' as it is showing data clipping. RED is a ton of clipping and the data is not going to be decoded correctly in Jaero so lower the gain in that VFO. Grey is too little gain and it should be raised for that VFO in the ini file. You really want to see a green volume LED. If you cant get a green LED (ie, its grey) then lift the master gain for the SDR in the master vfo gain setting.
@@ -130,9 +130,9 @@ While we are not using VAC any more, the volume LED is still 'valid' as it is sh
 
 
 # .ini setting tl:dr   
-Set the master vfo for center of the whole band.   
-Set the main vfo for the center of each group of data channels.    
-Set the vfos for the center of each data channel. Set the gain to get a green volume LED in Jaero. Set the rate and filter to suit as per the blue waveform in Jaero.
+Set the master vfo at the center frequency of the whole band.   
+Set the main vfo at the center frequency of each group of data channels.    
+Set the vfos for the center frequency of each data channel. Set the gain to get a green volume LED in Jaero. Set the rate for the channel data rate and filter to suit as per the blue waveform in Jaero.
 
 
 ## Download and run.
@@ -141,12 +141,12 @@ Now, from Windows Explorer, hold down the right shift key on your keyboard and r
 
 That will open a back or blue box window, now start typing the command `SDR` and hit the tab key, this will auto complete the command to the .exe and then you just add `-s` and then name of your ini file.   
 
-The full command is something like `.\SDRReceiver.exe -s 54w.ini` (Of course use your named .ini file).   
+The full command is `.\SDRReceiver.exe -s 54w.ini` (Of course use your named .ini file).   
 If your computer throws an error that it cant find the ini, then Windows might have saved it with a hidden .txt extension, so type this: `.\SDRReceiver.exe -s 54w.ini.txt` (Of course use the name of your .ini file)
 It should work. If not, then you most likely did not put the .ini file in the same directory as the SDRReceiver software.  
 
-Tip. Once you have your .ini file sorted and everything working the way you want you can simply type 'exit' in the PowerShell to close it. Once SDRRx is running you don't need that box open any more.    
-Second tip. If you know how, you can simply make a Windows bat file with the same command it in and then run that bat file to start SDRRx.
+**Tip.** Once you have your .ini file sorted and everything working the way you want you can simply type 'exit' in the PowerShell to close it. Once SDRRx is running you don't need that box open any more.    
+**Second tip.** If you know how, you can simply make a Windows bat file with the same command it in and then run that bat file to start SDRRx.
       
 You should now see a small spectrum window appear, click on the 'Start SDR' button and slowly the waveform will show up. If your SDR dongle requires bias-T to power an LNA, you can (if you are using an RTLSDRv3 silver dongle - hint, you should be) click the Bias-T button to turn it on.  
 You should see something similar to what you are used to. Thin spikes from the 600/1200 channels on the left and fat spikes from the 10500 channels on the right.   
