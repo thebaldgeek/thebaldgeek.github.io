@@ -66,6 +66,15 @@ It has notes on enabling SDRPlay devices and many other DragonOS specific notes 
 ## AERO Software - Quick start    
 **Note!** dumphfdl, dumpvdl2 and SDRReceiver are all command line only programs. They do not have menu items.   
 
+Very quick start guide for SDRReceiver on Linux:  
+`mkdir sdrrini`  
+`cd sdrrini`  
+`nano 25.ini`  
+Cut paste or type your SDRR settings. To save crtl+o then ctrl+x   
+`SDRReceiver -s 25.ini`   
+    
+That will get SDRRx running with your ini file. Of course name the file your satellite and make sure the .ini settings match your satellite.
+
 For L-Band work, start SDRReceiver from the terminal using your .ini file.  
 `SDRReceiver -s 98w.ini`  
 Start a single instance of Jaero from the DragonOS menu.   
