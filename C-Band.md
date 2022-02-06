@@ -8,18 +8,33 @@ Here is a random screen shot of the aircraft that my dish can pick up over the c
    <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/72hourscband98w.png" height="400">     
 
 To see what Inmarsat satellite(s) are over your location, review the [Inmarsat](Inmarsat.md) page. This step is critical and not optional for a C-Band setup. You will need a very clear view of the satellite over its entire orbit. It will need to be well above the horizon at all times and it will need to be clear of all terrestrial obstructions at all times.   
+
+## Start slowly.   
+It can be overwhelming and seem impossible to build a high performance C-Band ground station, but the truth is, you can start simple and just solve each issue as you feel the need. You don't have to do everything outlined on this page in a week. The other nice thing about this page is that you don't have to re-invent the wheel. You can just check things off the list as you go.   
+Lets break it down....    
+1. Find your satellite and make sure you have a good spot on your property to place the dish.
+2. Get some basic Node-RED graphing of the satellite orbit running.   
+3. Buy a dish.    
+4. Buy a feed (LNB), LNB power supply, some TV grade coax cable, SDR, computer.   
+5. Get planes on a map.
+6. Get aircraft ACARS messages.
+7. Move the dish twice a day (once before work, once after work). Get a feel for where you need to point the dish for each part of the satellite orbit, ie, top and bottom.    
+8. When you are sick of retuning your SDR frequencies for hot/cold (ie, day/night) cycles, buy a GPSDO and modify the LNB so you no longer have re-tune the SDR frequencies.
+9. When you are sick of moving the dish, put a linear motor on it to track the satellite automatically.   
+10. Done. Sit back and enjoy the data.
+
 ## Dish size matters.
 You will need the space for a minimum of a 6 foot (2 meter) dish. Some people will tell you that you can get away with a smaller dish, but the signal is going be so marginal that its hard to justify the time and money to setup something might only just work.   
 I also feel that most people will want a large enough dish that all signals from the satellite can be recovered around the clock. If you are close to the equator (ie, under the satellite) then yes, perhaps something smaller might work.  
 Do your research, ask lots of questions from those that insist a smaller dish will 'work just fine', qualify their data quality.    
-Be sure and read this entire page before making the final decision of the final dish size, there are three types of AERO Data from C-Band and most people with smaller dishes only can pick up one, they dismiss the other two with a wave of the hand 'There is nothing interesting using those weaker signals' ... Moving on....   
+Be sure and read this entire page before making the final decision of the final dish size, there are _three_ types of AERO Data from C-Band and most people with smaller dishes only can pick up one, they dismiss the other two with a wave of the hand 'There is nothing interesting using those weaker signals' ... You need to make that decision, not them ....   
 
 Having free and easy physical access to the dish is also important, you will be spending a lot of time working on it and adjusting it for the setup / commissioning period. If it is on a roof where access is uncomfortable or dangerous, that is a no-go in my mind. You will need also run a coax and a few command and control cables to the dish and lastly some sort of power outlet or stable low voltage outlet will be required somewhat close to the dish.   
 
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/benadjustingdish.jpg" height="580">  
    
 ### Dish computer
-You will also need a fairly powerful Windows PC or Linux computer to run the SDR software and Jaero on. This does not need to be next to the dish, but you will need to run the coax and perhaps other cables from the general area of the computer location to the dish. Something around i5 to i7 with 8-16 gig of RAM and an SSD - so anything from the past few years should be fine.  
+You will also need a fairly powerful Windows PC or Linux computer to run Node-RED, the SDR software and Jaero on. This does not need to be next to the dish, but you will need to run the coax and perhaps other cables from the general area of the computer location to the dish. Something around i5 to i7 with 8-16 gig of RAM and an SSD - so anything from the past few years should be fine.  
 ## Graph / Plot the Satellite Orbit
 You can actually start with the software aspect before you buy any hardware.   
 A critical aspect of setting up and tuning the dish is to be able to visually see the satellite orbit on a graph so that when you power up the dish tracking, you already know the different parts of the satellite orbit and this will speed up your alignment process.   
@@ -39,15 +54,15 @@ In this image, the red plot is the elevation and the green is azimuth. Note the 
 
 I highly recommend you spend some time setting up this graph in either Node-RED or some other stable graphing software. You will need it running around the clock.
 This graph is critical to the ADSC ground station operator as it will show when the satellite is at the top of its orbit and at the bottom of its orbit and when the satellite is at the most left part and right part of its orbit. These are two very critical points of the orbit and you will be adjusting the dish at these points, so knowing ahead of time that you will need to setting an alarm for something like 3am and 3pm is very important.   
-Optional, but to give you an idea of how important this whole orbit data is, here is a snip from the webpage status I have built to keep tabs on the dish and orbit data:    
+Optional, but to give you an idea of how important this whole orbit data is, here is a snip from the webpage status I have built to keep tabs on the dish and orbit data. You don't have to go this hard-core, but I find it very important to know and see this data:    
 
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/98wdishstatus.png" height="380">   
 
 ## Auto update TLE
-Before we leave the graph / where is the satellite topic, its also critical that you are working with fresh TLE (Two Line Elements) for your satellite. By fresh, I have found that updating them every 24 hours is about right. I was doing it monthly for a while, but feel I have better 'lock' on the sat with 24 hour TLE. I have an example flow to get you started on this auto-update via Node-RED on the [autoTLE](autoTLE.md) page.
+Before we leave the graph / where is the satellite topic, its also critical that you are working with fresh TLE (Two Line Element) data for your satellite. By fresh, I have found that updating them every 24 hours is about right. I was doing it monthly for a while, but feel I have better 'lock' on the sat with 24 hour TLE. I have an example flow to get you started on this auto-update via Node-RED on the [autoTLE](autoTLE.md) page.
 ## Hardware BOM (Bill of materials)  
-1 x 2 meter (6 foot) C-Band satellite dish (Can be larger, but not smaller) [eBay](https://www.ebay.com/b/c-band-dish/bn_7024908961)   
-1 x 75 ohm coax cable. Triple or quad shield, length for your installation. [Amazon](https://www.amazon.com/s?k=75+ohm+outdoor+coax+cable&ref=nb_sb_noss)   
+1 x 2 meter (6 foot) C-Band satellite dish (Can be larger, but not smaller) Try and find a used C-Band TV dish. They can be found 2nd hand cheap. [eBay](https://www.ebay.com/b/c-band-dish/bn_7024908961)   
+1 x 75 ohm TV coax cable. Triple or quad shield, length for your installation. [Amazon](https://www.amazon.com/s?k=75+ohm+outdoor+coax+cable&ref=nb_sb_noss)   
 1 x Feed horn / Low Noise Block (LNB) Titanium Lite. [Amazon](https://www.amazon.com/C-Band-C1W-PLL-lite-Wideband-Phase/dp/B00OMQKGAW)  
 1 x power injector. 18 to 21 volt DC for C-Band frequencies (Often called an SWM) [Amazon](https://www.amazon.com/s?k=swm+power+inserter&crid=1T4WJW5FWVNJC&sprefix=swm+power%2Caps%2C225&ref=nb_sb_ss_ts-doa-p_1_9)   
 1 x RTLSDR v3 dongle. (Silver flatish one). Get the real thing from [RTL-SDR](https://www.rtl-sdr.com/buy-rtl-sdr-dvb-t-dongles/)  
@@ -60,9 +75,9 @@ Before we leave the graph / where is the satellite topic, its also critical that
 Now that we accurately know where the satellite is and when, we can start to set up the dish feed horn and pick up the 10500 signal.
 The feedhorn we use is the Titanium Satellite C1-PLL Lite. It is important to use this exact feed horn for two reasons.
 1. It will down convert the C-Band signal. This is important. Most LNBs are built for TV C-Band, the ADSC signal is at the bottom of the band (around 3.4GHz), so most LNBs will not pick up the C-Band signal this low in frequency.
-2. It can be easily modified for the GPSDO. (Global Positioning System Disciplined Oscillator). More on this in a moment.
-
-Once you have the LNB mounted, run the coax cable back to the SWM power supply. (Get started with the stock LNB, we will modify it once we have signal lock for a few hours).   
+2. It can be easily modified for the GPSDO. (Global Positioning System Disciplined Oscillator). More on this in a moment.  
+(Feb 2022 note - I am not sure how much the roll out of 5G will interfere with C-Band satcom signal. We are monitoring this pretty carefully. Perhaps a 5G filtered LNB will be required. Something to keep in mind).  
+Once you have the LNB mounted, run the coax cable back to the SWM power supply. (Get started with the stock LNB, we will modify it once we have signal lock for a few hours/days/weeks).   
 The LNB needs around 18v to 21v DC to operate, this voltage will blow up your SDR dongle if you apply that voltage to it, so you need the SWM power supply to pass the RF signal and block the voltage.  
 
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/swmandsdr.png" height="250">   
