@@ -19,7 +19,10 @@ Before installing this next flow, there are some extra nodes you need to add to 
     
 Install them one at a time, wait till you get the green slider at the top saying its been installed before you do the next one.   
 Once all those are installed, then copy paste this flow.   
-```
+   
+
+```   
+
 [
     {
         "id": "03f577b3e8eaa50a",
@@ -645,6 +648,7 @@ Once all those are installed, then copy paste this flow.
         "hidden": false
     }
 ]   
+  
 ```
 More to come.
 
