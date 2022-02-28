@@ -23,15 +23,16 @@ You will need to either build gr-iridium from source or use [DragonOS](DragonOS)
 Note that none of the Iridium tools need a gui, so you can run it all via a shell on a headless Pi with no issues. I did my testing on a Pi4 2gb. You will quickly max out the CPU long before the memory on the Pi, so 2gig or 4 gig of RAM does not matter.   
 
 It is very important that you run the latest iridium-toolkit. It is under active development and the version on DragonOS does _not_ include the ACARS decoder.   
+```cd ~```   
 ```wget https://github.com/muccc/iridium-toolkit/archive/refs/heads/master.zip```   
 ```unzip master.zip```   
 
-With those two commands you are ready to start.   
+With those three commands you are ready to start.   
 Follow the guide on the [iridium-toolkit](https://github.com/muccc/iridium-toolkit) for a sanity check, ie writing to `output.bits` and `output.parsed` (Hint, remember to chmod them for user permissions).   
 Once you are sure you are getting iridium data from the SDR, you can start moving the data into my site (or your local Node-RED).  
 
 For now you are going to open a few terminals, we are working on an script to run it, but for now, this is the best way to get going.....    
-Here is the big picture, we are going to make two udp.py files each with a different port number, one to feed me your ACARS the other to feed me your sats.json file to plot your coverage [on the Iridium map](http://thebaldgeek.net:7777/map.html).
+Here is the big picture, we are going to make two python files (acars.py and map.py) each with a different port number, one to feed me your ACARS the other to feed me your sats.json file to plot your coverage [on the Iridium map](http://thebaldgeek.net:7777/map.html).
 ### Lots of terminals
 In one terminal, run the extractor:    
 ```iridium-extractor -D 4 --multi-frame /usr/src/gr-iridium/examples/rtl-sdr.conf | python3 -u ~/iridium-toolkit-master/iridium-parser.py -o zmq```  
