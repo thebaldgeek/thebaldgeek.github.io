@@ -47,17 +47,17 @@ Next, in another terminal, run this command:
 ```python3 -u ~/iridium-toolkit-master/reassembler.py -m acars zmq: | python3 /home/ubuntu/acars.py```  
     
 Next we have to get the map working, in another terminal, issue the command:   
-```pip install: https://github.com/joh/when-changed/archive/master.zip```   
+```pip install https://github.com/joh/when-changed/archive/master.zip```   
 This will install a python script that will look for changes to a file.   
 Now, we need to get the map running:   
 ```cd ~/iridium-toolkit-master/html```      
 ```nano example.sh```    
-On the second bottom line, add a 3 at the end of the python, so it should read ```python3 -m http.server --bind 127.0.0.1 8888```     
+On the second bottom line, add a 3 at the end of the python and change the IP address for your Pi (your pi might not be 192.168.1.122), so it should read ```python3 -m http.server --bind 192.168.1.22 8888```     
 Save and exit nano    
 Almost there: make a copy of the python UDP script `cp ~/acars.py ~/map.py`   
 `nano ~/map.py` and change the port number to the one I give you.   
 In the terminal: `./example.sh`   
-In another terminal: ```when-changed ~/iridium-toolkit-master/html/sats.json cat ~/iridium-toolkit-master/html/sats.json |  python3 ~/map.py```
+In another terminal: ```/home/ubuntu/.local/bin/when-changed ~/iridium-toolkit-master/html/sats.json cat ~/iridium-toolkit-master/html/sats.json |  python3 ~/map.py```
 
 
 
