@@ -59,6 +59,11 @@ Almost there: make a copy of the python UDP script `cp ~/acars.py ~/map.py`
 In the terminal: `./example.sh`   
 In another terminal: ```/home/ubuntu/.local/bin/when-changed ~/iridium-toolkit-master/html/sats.json cat ~/iridium-toolkit-master/html/sats.json |  python3 ~/map.py```
 
+So, you need 4 terminal (PuTTY or what ever) sessions:    
+1. ```iridium-extractor -D 4 --multi-frame /usr/src/gr-iridium/examples/rtl-sdr.conf | python3 -u ~/iridium-toolkit-master/iridium-parser.py -o zmq```  
+2. ```python3 -u ~/iridium-toolkit-master/reassembler.py -m acars zmq: | python3 /home/ubuntu/acars.py```   
+3. `./example.sh`   
+4. ```/home/ubuntu/.local/bin/when-changed ~/iridium-toolkit-master/html/sats.json cat ~/iridium-toolkit-master/html/sats.json |  python3 ~/map.py```
 
 
 
