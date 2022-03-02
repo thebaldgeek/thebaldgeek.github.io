@@ -1,6 +1,6 @@
 # Using Node-RED to manage ADSC, ADSB, ACARS, VDL2, HF-DL and other aircraft type messages.
 
-Navigation: [Which Inmarsat](Inmarsat.md) : [L-Band](L-Band.md) : [C-Band](C-Band.md) : [Jaero](jaero.md) : [SDRReceiver](SDRReceiver.md) : [autoTLE](autoTLE.md) : [OpenSkyAPI](OpenSkyAPI.md) : [VRS](vrs.md) : [MQTT](mqtt.md) : [VHF-VDL2](vhf-vdl2.md) : [Raspberry Pi](raspberrypi.md): [Telegram Bot](telegram.md) : [DragonOS](DragonOS.md) : [UAV-Drone](UAV-Drone.md) : [Squawk](Squawk.md) : [Iridium](Iridium.md)
+Navigation: [Inmarsat](Inmarsat.md) : [L-Band](L-Band.md) : [C-Band](C-Band.md) : [Jaero](jaero.md) : [SDRReceiver](SDRReceiver.md) : [autoTLE](autoTLE.md) : [OpenSkyAPI](OpenSkyAPI.md) : [VRS](vrs.md) : [MQTT](mqtt.md) : [VHF-VDL2](vhf-vdl2.md) : [Raspberry Pi](raspberrypi.md): [Telegram Bot](telegram.md) : [DragonOS](DragonOS.md) : [UAV-Drone](UAV-Drone.md) : [Squawk](Squawk.md) : [Iridium](Iridium.md)
 
 # Node-RED Dashboard - The main website
 
@@ -8,9 +8,9 @@ Live ACARS, VDL, HFDL and Inmarsat C-Band and L-Band messages for most of the pl
 <a href="http://thebaldgeek.net:2277/ui/#/0" rel="noopener" target="_blank">http://thebaldgeek.net:2277/ui/#/0</a>   
 
 Take your time on that 'site'. The menu is on the top left (the three bars).  
-View each of the pages and *pay attention to the update log page at the very bottom of the page menu.* This is the best (and only?) way of finding out any new features that has been added.  
+View each of the pages and *pay attention to the update log page on the main 'Summery' page* This is the best (and only?) way of finding out any new features that has been added.  
 I am constantly working on the site. The site is a case of function over form. It is not really 'friendly', but it is rather powerful.
-For example, you can filter on commercial or military CPDLC messages, or ACARS messages in general. 
+For example, you can filter on commercial or military CPDLC messages, or ACARS messages in general. Tip: The site search page is a rolling buffer of the past 48 hours of ACARS messages. And no, I don't keep any other logs or history. 
 
 ## Planes on a map   
 
