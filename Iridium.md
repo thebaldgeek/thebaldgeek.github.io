@@ -33,33 +33,42 @@ Once you are sure you are getting iridium data from the SDR, you can start movin
 
 For now you are going to open a few terminals, we are working on an script to run it, but for now, this is the best way to get going.....    
 Here is the big picture, we are going to make two python files (acars.py and map.py) each with a different port number, one to feed me your ACARS the other to feed me your sats.json file to plot your coverage [on the Iridium map](http://thebaldgeek.net:7777/map.html).
-### Lots of terminals
-In one terminal, run the extractor:    
+# Lots of terminals
+## Terminal One   
+Run the extractor:    
 ```iridium-extractor -D 4 --multi-frame /usr/src/gr-iridium/examples/rtl-sdr.conf | python3 -u ~/iridium-toolkit-master/iridium-parser.py -o zmq```  
 Of course, if you not using an RTLSDR look in the /examples/ directory and find your SDR and tweak that file to best set it up.   
 You are going to get a line of data per second:   
 ```1645669280 | i: 3267/s | i_avg: 142/s | q_max: 1267 | i_ok:   0% | o: 2001/s | ok:   0% | ok:  13/s | ok_avg:   7% | ok:       8971 | ok_avg:  10/s | d: 33001```  
 
-You want to see 60% to 100% in the `ok_avg:` part. Lower number means more bad packets and you need to fix your antenna, coax, LNA or gain in the .conf file.   
-
-Now, in another terminal, type `nano acars.py`, then copy/paste [in this text](https://github.com/microp11/iridiumlive/blob/master/udp-for-il.py) from the iridiumlive github. Change the IP address to my site `thebaldgeek.net` and change the port number from 15007 to the port I give you. Then save and exit nano.    
-Next, in another terminal, run this command:   
+You want to see 60% to 100% in the `ok:` part. Lower number means more bad packets and you need to fix your antenna, coax, LNA or gain in the .conf file.   
+## Terminal Two
+Type `nano acars.py`, then copy/paste [in this text](https://github.com/microp11/iridiumlive/blob/master/udp-for-il.py) from the iridiumlive github. Change the IP address to my site `thebaldgeek.net` and change the port number from 15007 to the port I give you. Then save and exit nano.    
+Next run this command:   
 ```python3 -u ~/iridium-toolkit-master/reassembler.py -m acars zmq: | python3 /home/ubuntu/acars.py```  
-    
-Next we have to get the map working, in another terminal, issue the command:   
-```pip install https://github.com/joh/when-changed/archive/master.zip```   
-This will install a python script that will look for changes to a file.   
+Do note that nothing will show in this terminal until you pickup your first ACARS message, then a single number will show up, you will see a number for every message. I am not sure they have any actual meaning, just don't be alarmed when you press enter and nothing happens for a moment or two.  
+## Terminal Three    
 Now, we need to get the map running:   
 ```cd ~/iridium-toolkit-master/html```      
 ```nano example.sh```    
 On the second bottom line, add a 3 at the end of the python and change the IP address for your Pi (your pi might not be 192.168.1.122), so it should read ```python3 -m http.server --bind 192.168.1.22 8888```     
 Save and exit nano    
 Almost there: make a copy of the python UDP script `cp ~/acars.py ~/map.py`   
-`nano ~/map.py` and change the port number to the one I give you.   
-In the terminal: `./example.sh`   
-In another terminal: ```/home/ubuntu/.local/bin/when-changed ~/iridium-toolkit-master/html/sats.json cat ~/iridium-toolkit-master/html/sats.json |  python3 ~/map.py```
+Now edit that new file: `nano ~/map.py` and change the port number to the one I give you.   
+In the terminal run the example file: `./example.sh`  
+At this point, you can visit your Pi's IP address from any browser on the network and look for the map, so in my case `http://192.168.1.122:8888/map.html`  
+Let that run.
 
-So, you need 4 terminal (PuTTY or what ever) sessions:    
+## Terminal Four   
+```pip install https://github.com/joh/when-changed/archive/master.zip```   
+This will install a python script that will look for changes to a file. 
+Now go to where it was installed:  
+```cd /home/ubuntu/.local/bin```   
+Now run the file watch which will send me your sats.json once a minute and your coverage will be added to the master map on my site:
+
+```./when-changed ~/iridium-toolkit-master/html/sats.json cat ~/iridium-toolkit-master/html/sats.json |  python3 ~/map.py```
+
+So, to wrap this up... you need 4 terminal (PuTTY or what ever) sessions:    
 1. ```iridium-extractor -D 4 --multi-frame /usr/src/gr-iridium/examples/rtl-sdr.conf | python3 -u ~/iridium-toolkit-master/iridium-parser.py -o zmq```  
 2. ```python3 -u ~/iridium-toolkit-master/reassembler.py -m acars zmq: | python3 /home/ubuntu/acars.py```   
 3. `./example.sh`   

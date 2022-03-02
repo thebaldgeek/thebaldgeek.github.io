@@ -55,7 +55,9 @@ Authenticate and name this Pi by going to your network on their website then con
    
 ## VNC server
 Enable cut/paste in VNC by adding ubuntu as a user in the VNC server.   
-Note that you should be able to connect to this VNC server no matter what VNC client you use, TIGHTVNC or OpenVNC for exampe.
+Note that you should be able to connect to this VNC server no matter what VNC client you use, TIGHTVNC or OpenVNC for example.  
+Some people are having a lot of trouble getting the native VNC Server working. If this is the case, go to the applications 'store' and search / install X11VNC and that should get you up and running. Note, you don't have to install VNC at all if you don't want. We are just finding a lot of people want to run the Pi headless.   
+Lastly, some have found that buying and using a fake HDMI adaptor helps the Pi run headless with good screen resolution.
 
 ### Enable Wifi
 If you must (I really don't like or trust any wifi on any Raspberry Pi. Have been burnt by its ultra poor performance far too many times) enable and join your wifi from the desktop. NOTE: this is the best way to get wifi going on DragonOS at this time - the usual Pi methods of wpa_suplicent don't work on the Dragon.
@@ -63,7 +65,7 @@ If you must (I really don't like or trust any wifi on any Raspberry Pi. Have bee
 ## *Read* the start up doc on desktop   
 Be sure - this is not optional - and read the start up doc on the desktop.   
 It has notes on enabling SDRPlay devices and many other DragonOS specific notes you *will* want to read.
-## AERO Software - Quick start    
+## Jaero Software - Quick start    
 **Note!** dumphfdl, dumpvdl2 and SDRReceiver are all command line only programs. They do not have menu items.   
 
 Very quick start guide for SDRReceiver on Linux:  
