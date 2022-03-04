@@ -77,6 +77,7 @@ So, to wrap this up... you need 4 terminal (PuTTY or what ever) sessions:
 Simplex Frequency Allocation   
 
 | Channel Number | Center Frequency(MHz) | Allocation |   
+
 | :-: |-----------|---------------|  
 
 | 1 | 1626.020833 | Guard Channel |   
@@ -94,7 +95,8 @@ Simplex Frequency Allocation
 
 Duplex Channel Band   
 
-| Sub-band | Lower Edge (MHz) | Upper Edge (MHz) |  
+| Sub-band | Lower Edge (MHz) | Upper Edge (MHz) |
+  
 | :-: |--|--|   
 
 | 1 | 1616.000000 | 1616.333333 |   
