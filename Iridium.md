@@ -76,7 +76,7 @@ So, to wrap this up... you need 4 terminal (PuTTY or what ever) sessions:
 
 Simplex Frequency Allocation
 | Channel Number | Center Frequency(MHz) | Allocation |
-| :-: |--|--|
+| :-: |-----------|---------------|
 | 1 | 1626.020833 | Guard Channel |
 | 2 | 1626.062500 | Guard Channel |
 | 3 | 1626.104167 | Quaternary Messaging |
