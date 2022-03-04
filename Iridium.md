@@ -2,34 +2,32 @@
    
 Navigation: [home](README.md)  
 
-There is a good amount of ACARS messages being sent via the Iridium satellite constellation. 2 stations, one in California and one in Texas are seeing around 3000 messages a day.  
+There is a good amount of ACARS messages being sent via the Iridium satellite constellation. 4 stations scattered around mainland USA are seeing around 3000 messages a day.  
 In Feb 2022 we just started looking at it for the first time, so all this is very new, but here are some tips to get you started. If you want to get technical, [this doc](https://www.icao.int/safety/acp/inactive%20working%20groups%20library/acp-wg-m-iridium-3/ird-swg03-wp05-draft%20iridium%20ams(r)s%20tech%20manual%20-%20021506.pdf) is a good read.    
 ### Antenna   
 I started out using the RTLSDR v2 patch antenna since its only meh at Inmarsat and so I had an unused one kicking around. While not the best antenna for Iridium (its directional and has a SAW filter in the LNA), its not too bad and given it's price and availability, if its all you can get, then give it a go.  
 I jumped on eBay and picked up an iridium dome antenna and will report back on how it goes once we get some air time with it.   
-Do note that there are very few _active_ iridium antennas since transmitting up to the satellites is very common, so if you want to go with an LNA, you will need to take a look at building your own ground station. Perhaps more on this in the future if we find real value in the data.   
+Do note that there are very few _active_ iridium antennas since transmitting up to the satellites is very common, so if you want to go with an amplified antenna, you will need to take a look at building your own ground station. Perhaps more on this in the future if we find real value in the data.   
 ### LNA   
 There are a few wide band amplifiers that cover 1.6Ghz, but the Nooelec Iridium LNA has amazing performance. Well worth the money and Bias-T hassels to drive this amplifier. 
 ### SDR   
-I like the RTLSDR v3 for this sort of thing. Its very affordable and very quick and clean to get running. The problem with the RTLSDR is that it only covers around 2Mhz bandwidth and that is only a very small number of the Iridium data channels.  
-4 of us have tried getting the RSP1a up and running and all 4 have failed, we will get to the bottom of that in due course, in the mean time I am using the Airspy Mini (at only 3Mhz bandwidth, looks like the Raspberry Pi can not drive it at its full 6Mhz bandwidth) and am getting good numbers, about 4x the data from the RTLSDR. Once we get the RSP1a working, I will update this page with the instructions. Note that Texas is using an Airspy R2 at around 8Mhz bandwidth.   
+I like the RTLSDR v3 for this sort of thing. Its very affordable and very quick and clean to get running. The problem with the RTLSDR is that it only covers around 2Mhz bandwidth and that is only covers a very small number of the Iridium data channels.  
+4 of us have tried getting the RSP1a up and running and all 4 have failed, we will get to the bottom of that in due course, in the mean time I am using the Airspy Mini (at only 3Mhz bandwidth, looks like the Raspberry Pi can not drive it at its full 6Mhz bandwidth) and am getting good numbers, about 4x the data from the RTLSDR. Once we get the RSP1a working, I will update this page with the instructions. Note that Texas is using an Airspy R2 at around 8Mhz bandwidth and has the best message rate of the 4 stations so far.   
 
 To be clear. You require a 10Mhz bandwidth SDR and computer to drive it to get all the data channels on Iridium.   
   
-Note that if you end up using an LNA, the more expensive RSP1a can not drive it, so you will need a physical Bias-T power injector.
+Note that if you end up using a Nooelect LNA, the more expensive RSP1a can not drive it, so you will need a physical Bias-T power injector.
 ### MUCCC - iridium-toolkit and gr-iridium    
 The repo can be found on the [Chaos Computer Club München](https://github.com/muccc) GitHub.    
-You will need to either build gr-iridium from source or use [DragonOS](DragonOS). Just to add some 'fun' into the mix, the DragonOS_Pi64 and the x86 Dragon_Focal use different versions of gr-iridium with the Pi being the newer version. Not sure what the differences are.   
+You will need to either build gr-iridium from source or use [DragonOS](DragonOS). Just to add some 'fun' into the mix, the DragonOS_Pi64 and the x86 Dragon_Focal use different versions of gr-iridium with the Pi being the newer version. Not sure what the differences are or if they matter for ACARS reception/decoding.   
 Note that none of the Iridium tools need a gui, so you can run it all via a shell on a headless Pi with no issues. I did my testing on a Pi4 2gb. You will quickly max out the CPU long before the memory on the Pi, so 2gig or 4 gig of RAM does not matter.   
 
-It is very important that you run the latest iridium-toolkit. It is under active development and the version on DragonOS does _not_ include the ACARS decoder.   
+It is very important that you run the latest iridium-toolkit. It is under active development and the version on DragonOS does _not_ include the ACARS decoder. To get the latest, run the following 3 commands from your home directory.   
 ```cd ~```   
 ```wget https://github.com/muccc/iridium-toolkit/archive/refs/heads/master.zip```   
 ```unzip master.zip```   
 
 With those three commands you are ready to start.   
-Follow the guide on the [iridium-toolkit](https://github.com/muccc/iridium-toolkit) for a sanity check, ie writing to `output.bits` and `output.parsed` (Hint, remember to chmod them for user permissions).   
-Once you are sure you are getting iridium data from the SDR, you can start moving the data into my site (or your local Node-RED).  
 
 For now you are going to open a few terminals, we are working on an script to run it, but for now, this is the best way to get going.....    
 Here is the big picture, we are going to make two python files (acars.py and map.py) each with a different port number, one to feed me your ACARS the other to feed me your sats.json file to plot your coverage [on the Iridium map](http://thebaldgeek.net:7777/map.html).
@@ -48,7 +46,7 @@ Next run this command:
 ```python3 -u ~/iridium-toolkit-master/reassembler.py -m acars zmq: | python3 /home/ubuntu/acars.py```  
 Do note that nothing will show in this terminal until you pickup your first ACARS message, then a single number will show up, you will see a number for every message. I am not sure they have any actual meaning, just don't be alarmed when you press enter and nothing happens for a moment or two.  
 ## Terminal Three    
-Now, we need to get the map running:   
+Now, we need to get the map running: (This is optional, but cool to see)   
 ```cd ~/iridium-toolkit-master/html```      
 ```nano example.sh```    
 On the second bottom line, add a 3 at the end of the python and change the IP address for your Pi (your pi might not be 192.168.1.122), so it should read ```python3 -m http.server --bind 192.168.1.22 8888```     
@@ -56,8 +54,8 @@ Save and exit nano
 Almost there: make a copy of the python UDP script `cp ~/acars.py ~/map.py`   
 Now edit that new file: `nano ~/map.py` and change the port number to the one I give you.   
 In the terminal run the example file: `./example.sh`  
-At this point, you can visit your Pi's IP address from any browser on the network and look for the map, so in my case `http://192.168.1.122:8888/map.html`  
-Let that run.
+At this point, you can visit your Pi's IP address from any browser on your  network and look for the map, so in my case `http://192.168.1.122:8888/map.html`  
+Let that run. You should see the sats and beams update around once a minute.
 
 ## Terminal Four   
 ```pip install https://github.com/joh/when-changed/archive/master.zip```   
@@ -72,9 +70,59 @@ So, to wrap this up... you need 4 terminal (PuTTY or what ever) sessions:
 1. ```iridium-extractor -D 4 --multi-frame /usr/src/gr-iridium/examples/rtl-sdr.conf | python3 -u ~/iridium-toolkit-master/iridium-parser.py -o zmq```  
 2. ```python3 -u ~/iridium-toolkit-master/reassembler.py -m acars zmq: | python3 /home/ubuntu/acars.py```   
 3. `./example.sh`   
-4. ```/home/ubuntu/.local/bin/when-changed ~/iridium-toolkit-master/html/sats.json cat ~/iridium-toolkit-master/html/sats.json |  python3 ~/map.py```
+4. ```./when-changed ~/iridium-toolkit-master/html/sats.json cat ~/iridium-toolkit-master/html/sats.json |  python3 ~/map.py```
 
+---
 
+Simplex Frequency Allocation
+| ChannelNumber | Center Frequency(MHz) | Allocation |
+|--|--|--|
+1 | 1626.020833 | Guard Channel 
+2 |1626.062500| Guard Channel
+3 |1626.104167| Quaternary Messaging
+4 |1626.145833| Tertiary Messaging
+5 |1626.187500| Guard Channel
+6 |1626.229167| Guard Channel
+7 |1626.270833| Ring Alert
+8 |1626.312500| Guard Channel
+9 |1626.354167| Guard Channel
+10 |1626.395833| Secondary Messaging
+11 |1626.437500| Primary Messaging
+12 |1626.479167| Guard Channel
+
+Duplex Channel Band
+| Sub-band |Lower Edge (MHz) | Upper Edge (MHz)|
+|--|--|--|
+1| 1616.000000| 1616.333333
+2| 1616.333333| 1616.666667
+3| 1616.666667| 1617.000000
+4| 1617.000000| 1617.333333
+5| 1617.333333| 1617.666667
+6| 1617.666667| 1618.000000
+7| 1618.000000| 1618.333333
+8| 1618.333333| 1618.666667
+9| 1618.666667| 1619.000000
+10| 1619.000000| 1619.333333
+11| 1619.333333| 1619.666667
+12| 1619.666667| 1620.000000
+13| 1620.000000| 1620.333333
+14| 1620.333333| 1620.666667
+15| 1620.666667| 1621.000000
+16| 1621.000000| 1621.333333
+17| 1621.333333| 1621.666667
+18| 1621.666667| 1622.000000
+19| 1622.000000| 1622.333333
+20| 1622.333333| 1622.666667
+21| 1622.666667| 1623.000000
+22| 1623.000000| 1623.333333
+23| 1623.333333| 1623.666667
+24| 1623.666667| 1624.000000
+25| 1624.000000| 1624.333333
+26| 1624.333333| 1624.666667
+27| 1624.666667| 1625.000000
+28| 1625.000000| 1625.333333
+29| 1625.333333| 1625.666667
+30| 1625.666667| 1626.000000
 
 Stop reading here, the notes below are wrong and are just for history.   
 
