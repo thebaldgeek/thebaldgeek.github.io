@@ -65,6 +65,7 @@ If you must (I really don't like or trust any wifi on any Raspberry Pi. Have bee
 ## *Read* the start up doc on desktop   
 Be sure - this is not optional - and read the start up doc on the desktop.   
 It has notes on enabling SDRPlay devices and many other DragonOS specific notes you *will* want to read.
+If you have an Airspy device: `cd /usr/src` and then `./SDRplay_RSP_API-ARM64-3.07.1.run`
 ## Jaero Software - Quick start    
 **Note!** dumphfdl, dumpvdl2 and SDRReceiver are all command line only programs. They do not have menu items.   
 
