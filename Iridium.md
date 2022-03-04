@@ -78,7 +78,7 @@ Simplex Frequency Allocation
 
 | Channel Number | Center Frequency(MHz) | Allocation |   
 
-| :-: |-----------|---------------|  
+| :-: | :------: | :------------: |  
 | 1 | 1626.020833 | Guard Channel |   
 | 2 | 1626.062500 | Guard Channel |   
 | 3 | 1626.104167 | Quaternary Messaging |   
@@ -96,7 +96,7 @@ Duplex Channel Band
 
 | Sub-band | Lower Edge (MHz) | Upper Edge (MHz) |
 
-| :-: |--|--|   
+| :-: | :--: | :--: |   
 | 1 | 1616.000000 | 1616.333333 |   
 | 2 | 1616.333333 | 1616.666667 |   
 | 3 | 1616.666667 | 1617.000000 |   
