@@ -14,7 +14,11 @@ For example, you can filter on commercial or military CPDLC messages, or ACARS m
 
 ## Planes on a map   
 
-If you want to just look at the aircraft that we are tracking via satellite: <a href="http://thebaldgeek.net:99/tar1090/" rel="noopener" target="_blank">http://thebaldgeek.net:99/tar1090/</a>   
+If you want to just look at the aircraft that we are tracking via satellite: <a href="http://thebaldgeek.net:99/tar1090/" rel="noopener" target="_blank">http://thebaldgeek.net:99/tar1090/</a>     
+
+Node-RED has a really cool map node, so I fill it with too much data here:   
+<a href="http://thebaldgeek.net:2277/worldmap/" rel="noopener" target="_blank">http://thebaldgeek.net:2277/worldmap/</a>   
+Click the layers on and off via the top right. Tip, the wind layers are pretty heavy, only use one or none for best results unless you are on a beast of a computer.
 
 If you want to see aircraft that currently have satcom ACARS messages associated with them:
 <a href="http://thebaldgeek.net:22234/" rel="noopener" target="_blank">http://thebaldgeek.net:22234</a> (This map uses the fantastic work of Fred and [ACARShub](https://github.com/fredclausen/docker-acarshub))   
@@ -45,7 +49,8 @@ I will do my best to support your Node-RED aircraft spotting / tracking adventur
 
 Check back often, this site is being updated randomly.   
 
-I am pretty active on [Twitter](https://twitter.com/thebaldgeek) if thats your thing.
+I am pretty active on [Twitter](https://twitter.com/thebaldgeek) if thats your thing.  
+Tip, my Tweets are public, so you don't need a Twitter account to read them.
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HGJWTNL65R"></script>
 <script>
