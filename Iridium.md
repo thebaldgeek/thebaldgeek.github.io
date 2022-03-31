@@ -41,10 +41,10 @@ You are going to get a line of data per second:
 
 You want to see 60% to 100% in the `ok:` part. Lower number means more bad packets and you need to fix your antenna, coax, LNA or gain in the .conf file.   
 ## Terminal Two
-Type `nano acars.py`, then copy/paste [in this text](https://github.com/microp11/iridiumlive/blob/master/udp-for-il.py) from the iridiumlive github. Change the IP address to my site `thebaldgeek.net` and change the port number from 15007 to the port I give you. Then save and exit nano.    
+Type `nano acars.py`, then copy/paste [in this text](https://github.com/microp11/iridiumlive/blob/master/udp-for-il.py) from the iridiumlive github. Change the IP address to my site `thebaldgeek.net` and change the port number from 15007 to the port I give you. Then save and exit nano. If you want to send me your map coverage, do this command ```cp acars.py map.py``` then ```nano map.py``` and change the port number for the one I give you.   
 Next run this command:   
 ```python3 -u ~/iridium-toolkit-master/reassembler.py -m acars zmq: | python3 /home/ubuntu/acars.py```  
-Do note that nothing will show in this terminal until you pickup your first ACARS message, then a single number will show up, you will see a number for every message. I am not sure they have any actual meaning, just don't be alarmed when you press enter and nothing happens for a moment or two.  
+Do note that nothing will show in this terminal until you pickup your first ACARS message. Depending on how much Iridium aircraft there are in your area, it could take a moment or a few minutes, then a single number will show up, you will see a number for every message. The number is the size of the ACARS message once its decoded.  
 ## Terminal Three    
 Now, we need to get the map running: (This is optional, but cool to see)   
 ```cd ~/iridium-toolkit-master/html```      
