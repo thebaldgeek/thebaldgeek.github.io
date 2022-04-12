@@ -119,4 +119,13 @@ Note that you might get an error the first time your run this, just press up arr
 Then to see your logs, you can do a tail on the log file it creates in your home directory.   
 Change the HF frequencies for time of day and your location or ground stations of interest (this is a work in progress for me and I will be using Node-RED to control dumphfdl frequency sets).   
 
-In both dump programs you can have more than `--output` option, so you can for example, log locally and forward to a website without any issues.
+In both dump programs you can have more than `--output` option, so you can for example, log locally and forward to a website without any issues.    
+      
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HGJWTNL65R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-HGJWTNL65R');
+</script>
