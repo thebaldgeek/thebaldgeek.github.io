@@ -51,13 +51,15 @@ Now, we need to get the map running: (This is optional, but cool to see)
 ```nano example.sh```    
 On the second bottom line, add a 3 at the end of the python and change the IP address for your Pi (your pi might not be 192.168.1.122), so it should read ```python3 -m http.server --bind 192.168.1.22 8888```     
 Save and exit nano    
-Almost there: make a copy of the python UDP script `cp ~/acars.py ~/map.py`   
-Now edit that new file: `nano ~/map.py` and change the port number to the one I give you.   
+  
 In the terminal run the example file: `./example.sh`  
 At this point, you can visit your Pi's IP address from any browser on your  network and look for the map, so in my case `http://192.168.1.122:8888/map.html`  
 Let that run. You should see the sats and beams update around once a minute.
 
 ## Terminal Four   
+Almost there: make a copy of the python UDP script `cp ~/acars.py ~/map.py`   
+Now edit that new file: `nano ~/map.py` and change the port number to the one I give you.   
+Next run this command: 
 ```pip install https://github.com/joh/when-changed/archive/master.zip```   
 This will install a python script that will look for changes to a file. 
 Now go to where it was installed:  
