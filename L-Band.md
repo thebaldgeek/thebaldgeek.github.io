@@ -117,7 +117,8 @@ Once you preform the copper to the right size, you can then wind it on the frame
 
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/lbandpreformcopper.png" height="460">  
     
-Trim the turns to exactly 7 and then drill the two large holes for the 3D frame, then mark and drill the bulkhead connector mount near the left hand side support - you go near the left side of the frame so you can run the first 2/3rds of the copper parallel to the base, this improves the match and lowers the SWR. Solder the copper pipe to the connector and you are done building the antenna.   
+Trim the turns to roughly 7 and a bit turns (close to 8) and then drill the two large holes for the 3D frame, then mark and drill the bulkhead connector mount near the left hand side support - you go near the left side of the frame so you can run the first 2/3rds of the copper parallel to the base, this improves the match and lowers the SWR. Solder the copper pipe to the connector and you are done building the antenna.   
+Once built, trim the total length to get the VNA dip on frequency and move the first 2/3rds of a turn close to the reflector to get the SWR nice and low and you are done.   
 
 
    <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/7turnhelixantennas.jpg" height="460">
@@ -164,7 +165,7 @@ Here is a great shot from a helix owner - looks like the ultimate L-Band antenna
 | v2 Patch | 56.2 | 58.4 | 46.2 | 48 | occasionally |
 
 The gentleman that owns all the antennas kindly provided the numbers and used the same SDR and software to run the test for a few minutes on each antenna.   
-It clearly shows that a big high gain antenna like the yagi is king of the L-Band, but keep in mind that it has such a narrow beam width that you will probably need to 'track' the satellite to some extent to keep the signal peaked.  
+It clearly shows that a big high gain antenna like the yagi is king of the L-Band, but keep in mind that it has such a narrow beam width that you will probably need to 'track' the satellite to some extent to keep the signal peaked. Also don't forget that the yagi is not circular polarized so is losing some gain there as well.  
 It also shows that the data channels are not all equal. The 10500 and 8400 voice channels are the weakest. (And arguably the most interesting - despite the fact that I personally don't find one sided conversations interesting.)  
 ## Which SDR?
    In regard to SDRs, I like the silver v3 RTL-SDR, but in this case, because of the requirement to use Bias-T to power the LNA, I use the Nooelect SmarTee SDR as it has Bias-T always on without needing to run the v3 bat file to turn it on. The performance of the two SDRs seems to be identical. With that said, I have had some issue using the SmarTee with [SDRReceiver](SDRReceiver.md) that I am still working through. Also note that I have tested the RSP1a on L-Band and the more expensive SDR showed no benefit at all over the cheaper RTLSDr v3. This is mostly due to the fact of using the LNA, a more sensitive SDR does not perform any better since the system noise is not limited by the SDR. In short, use the cheaper SDR on L-Band and the other on HF where the difference in performance between the two is dramatic.    
