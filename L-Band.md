@@ -97,7 +97,16 @@ The hard work of getting the spacing is taken care of by the 3D printed white fr
 You can download the file from thingverse here: <https://www.thingiverse.com/thing:4980180>  
 Take care to download and print the correct type, there are 11 to chose from.   
 Since I am **not** shooting into a dish, I need right-hand circular polarization. I also really like the version with the extra leg support at the top of the three legs, so I use file: <https://cdn.thingiverse.com/assets/d0/70/24/9c/3a/1542R_7T_0.11S_4.7D_10-90M_ACARS.stl>   
-Order the 4mm copper tube off Amazon and the base is a stainless steel 8 inch pizza pan also from Amazon. The hardware is stainless steel from Home Depot. The antenna connector is a SMA male bulkhead connector from Amazon.
+
+# BOM (Bill of Materials)
+1 x 8 inch pizza pan. https://www.amazon.com/gp/product/B08N4VQ9BM/  
+(Note, you can go larger, but no smaller on the reflector. Does not need to be stainless, but they last longer - and are harder to drill).   
+1 x 2m soft copper 4mm tube. https://www.amazon.com/gp/product/B07FXMY5DJ    
+(You will have a little left over, but 2m is the right length. You can go a little smaller diameter, but no bigger. Tube is easier to work with than solid).   
+1 x Male SMA bulk head connector. https://www.amazon.com/gp/product/B06Y5ZMNSJ/   
+Assorted stainless nuts, bolts, screws. (https://www.amazon.com/gp/product/B06X1FNS96 https://www.amazon.com/gp/product/B00B3RIH5E https://www.amazon.com/gp/product/B07D1L38HD https://www.amazon.com/gp/product/B01B1OD6MW/)
+
+Order the 4mm copper tube off Amazon and the base is a stainless steel 8 inch pizza pan also from Amazon. The hardware is stainless steel from Home Depot or Amazon (2 large for the 3D formwork, two small for the SMA bulkhead ). The antenna connector is a SMA male bulkhead connector from Amazon.
 Note, the 8 inch pizza pan is the smallest you should go. The reflector is an important part of the antenna performance. You can go bigger, but no smaller.    
 The key to building the antenna is to pre-form the copper on a cylinder that is very close to the final size.   
 As it happens, a Vegemite jar is perfect (I am Australian - I had it close to hand).   
