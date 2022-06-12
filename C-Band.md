@@ -151,6 +151,36 @@ In 15 minutes time, your dish will be tracking the satellite very accurately.
 __tl:dr__ From the graph find the times of the left and right position of the satellite orbit and match it using the SDR waterfall by twisting the dish left right.   
 From the graph find the times of the top and bottom of the satellite orbit and match it with the dish using the SDR waterfall by moving the dish up and down (tilt).    
 Program the motor to move up and down the exact same range. Bolt it to the dish.   
+# GPSD Modified LNB    
+The LNB works great for big fat wide TV signals, but for the narrow ADSC signals the thermal drift in the 25 Mhz crystal clock is too much and the downlink data will drift outside of the SDR software VFO. THe way to fix this is to replace the crystal with a GPS clock signal that is rock solid no matter what the temperature.   
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/titaniumlite.jpg" height="350">   
+The Titanium Lite LNB is pretty sweet as it does not have any filtering and will go down to the required 3.4Ghz easily. Its also very simple to open up and modify.   
+This is not the exact chip used, but its the closest I could find, but it gives you the idea of what we need to do. Remove the chip and inject a clock signal at the same frequency.   
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/lnbblockdiagram.png" height="250">   
+Here is the kit you will get from Leo.    
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/gpsdokit.jpg" height="250">   
+You will also need to download and run Leo's USB tool kit to adjust the clock to 25 Mhz. Here is a screen shot of the settings I am using.    
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/gpsdousbsettings.jpg" height="650">    
+The GPS antenna just needs a clear shot of the sky and it does not need to be close to the dish as its not about position, but clock (the very accurate one pulse per second that the GPS send down).    
+Ok, so with the GPSDO setup and the LNB in hand, remove the top cover and lets take a look at the crystal we need to remove.    
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/crystalbeforeremoval.jpg" height="450">   
+Heat each end up and pry the cyrstal off the PCB. Be careful not to use too much heat and lift the tracks, just ease the crystal off by heating each end back and forth quickly.    
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/crystalafterremovalwithspares.jpg" height="450">     
+Here is the crystal removed and added to the pile of others that I have done for other people and for testing different LNB's on my dish.    
+Next up, drill a hole in the LNB for the clock coax.    
+I used to drill it in the top next to the existing one, but now drill the hole in the bottom and it works much much better.   
+Here is the old top method.    
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/bothcoaxfrombehind.png" height="250">    
+One thing to be very careful about!!!! When you drill from either side, be super slow and careful. Here is a photo from a guy that did the mod on his LNB and totally (well, pretty much) destroyed it.    
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/carefuldrillingcoaxhole.png" height="350">    
+Ok, so with the hole drilled up from the bottom, thread the coax into the LNB.    
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/coaxready.jpg" height="250">    
+Strip and tin a short bit of both shield and center and then scratch a little of the ground coating off the PCB for the shield to solder to. Solder the shield to the board and the center of the coax to either of the crystal pads. Note, it does not seem to matter which of the crystal pads you put the center to, I have tried both and it works the same no matter. Here are some example shots of how it will end up looking, top or bottom coax method also does not matter, but top will require good waterproofing and some cable management so it does not bend too sharp.    
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/coaxandcenter.png " height="350"> <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/coaxconnection.jpg" height="350"> <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/fatcoax.png" height="350">   
+Ok, so that should give you the idea of whats needed. Lastly, while you are in the LNB, just take a close look at the main coax connector. I have found 3-5 LNBs with either open circuit or poor dry joints on this connector and its more than worth your time to inspect this joint and touch it up if needed.    
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/commonproblem.png" height="250"> <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/dryjointonconector.png" height="250">   
+Ok, so now very very carefully screw the lid back on. (Carefully because the aluminum is super soft and its easy to strip the bolts).
+
 # Software   
 Come back soon....
 
