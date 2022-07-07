@@ -7,9 +7,9 @@ ACARS is the messaging system that allows aircraft talk to and from the ground s
 There are two main ACARS modes on VHF.    
 ACARS between 129 Mhz and 131 Mhz    
 VDL2 between 136.6 Mhz and 136.9 Mhz    
-Roughly you can think of ACARS as slightly older analog and VDL2 digital.    
+Roughly you can think of ACARS as slightly older analog and VDL2 as digital.    
     
-The two different modes are in use to different amounts all over the world, its imposible for us (yet - the data will soon be there for us to say with more confidence) to tell you which to pick for your location. I suggest that you  install both packages, run both for a week and compare numbers for your location. Perhaps, like me in California, both have high value and you will end up running a few SDR dongles. (I run 3 in the one Pi 3).   
+The two different modes are in use to different amounts all over the world, its imposable for us (yet - the data will soon be there for us to say with more confidence) to tell you which to pick for your location. I suggest that you  install both packages, run both for a week and compare numbers for your location. Perhaps, like me in California, both have high message rates and you will end up running a few SDR dongles. (I run 3 in the one Pi 3).   
 The other 'fun' part here is that if the full spread of ACARS frequencies are in use in your location, it will be too wide for a single RTLSDR bandwidth, so if they are and you want to catch all the data (please and thank-you), then you will need to run two dongles, a lower set of frequencies on one and the higher set on the other.   
 So, a full setup might consist of 2 x ACARS SDR and 1 x VDL2 SDR.
     
@@ -26,7 +26,8 @@ A good starter is [RG-8x](https://www.amazon.com/s?k=rg-8x&crid=3QO4RHETIF7KL&sp
 Note, be very careful about running an LNA. ACARS is close to the FM band and you may overload the front of the SDR and make things worse. Look at your SDR waterfall software if you can to see what the RF interference in your area is like and see how well you are picking up the ACARS/VDL bursts. I personally have had both success and failure running the [GPIO filtered airband LNA](https://gpio.com/products/airband-filtered-low-noise-amplifier?variant=19591697301526). In one location it was great and made a worthy addition, in another it made the signal useless. It was an expensive test. Your milage may vary.  
 
 ## Software   
-There is one supported decoder for ACARS and two decoders for VDL2. All of which only run on Linux. (There are some Windows options, Blackcat and MultiPSK, both are outside the scope of this page - neither of them can feed airframes.io).  
+There is one supported decoder for ACARS and two decoders for VDL2. All of which only run on Linux. (There are some Windows options, Blackcat and MultiPSK, both are outside the scope of this page - neither of them can feed airframes.io).   
+If you know and love docker, then there that option as well [SDR Enthusiasts](https://github.com/sdr-enthusiasts) is a good way to combine your ADSB data with your ACARS data in your location.
 
 [acarsdec](https://github.com/TLeconte/acarsdec) is a multi-channel acars decoder with built-in rtl_sdr, airspy front end or sdrplay device.   
 [vdlm2dec](https://github.com/TLeconte/vdlm2dec) can decode up to 8 frequencies simultaneously ( but in the same 2Mhz range ) It decodes ARINC-622 ATS applications (ADS-C, CPDLC) via libacars library.    
