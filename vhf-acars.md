@@ -2,12 +2,17 @@
    
 Navigation: [home](README.md)  
 
+## Aircraft Communication Addressing and Reporting System. ##  
+The way aircraft talk to and from the ground staff.   
+
 There are two main ACARS modes on VHF.    
 ACARS between 129 Mhz and 131 Mhz    
 VDL2 between 136.6 Mhz and 136.9 Mhz    
-Roughly you can think of ACARS as slightly older analog and VDL2 as slightly newer digital.    
+Roughly you can think of ACARS as slightly older analog and VDL2 digital.    
     
-The two different modes are in use to different amounts all over the world, its imposible for us (yet - the data will soon be there for us to say with more confidence) to tell you which to pick for your location. I suggest that you  install both packages, run both for a week and compare numbers for your location. Perhaps, like me in California, both have high value and you will end up running a few SDR dongles.  
+The two different modes are in use to different amounts all over the world, its imposible for us (yet - the data will soon be there for us to say with more confidence) to tell you which to pick for your location. I suggest that you  install both packages, run both for a week and compare numbers for your location. Perhaps, like me in California, both have high value and you will end up running a few SDR dongles. (I run 3 in the one Pi 3).   
+The other 'fun' part here is that if the full spread of ACARS frequencies are in use in your location, it will be too wide for a single RTLSDR bandwidth, so if they are and you want to catch all the data (please and thank-you), then you will need to run two dongles, a lower set of frequencies on one and the higher set on the other.   
+So, a full setup is 2 x ACARS SDR and 1 x VDL2 SDR.
     
 ## Hardware BOM (Bill of materials)  
 * 1 x Antenna. There are some options here. Some have used an old ham 2m antenna, others a 'scanner' antenna. Ovoid a discone, they are very low gain. Here is a nice airband antenna from [Amazon](https://www.amazon.com/dp/B07XNKX18D?ref_=cm_sw_r_ud_dp_QW7K7EJXCSYNG1BKXQTY) Note that you can NOT use your existing ADSB one, the frequencies are not even close.  
@@ -22,9 +27,9 @@ A good starter is [RG-8x](https://www.amazon.com/s?k=rg-8x&crid=3QO4RHETIF7KL&sp
 Note, be very careful about running an LNA. ACARS is close to the FM band and you may overload the front of the SDR and make things worse. Look at your SDR waterfall software if you can to see what the RF interference in your area is like and see how well you are picking up the ACARS/VDL bursts. I personally have had both success and failure running the [GPIO filtered airband LNA](https://gpio.com/products/airband-filtered-low-noise-amplifier?variant=19591697301526). In one location it was great and made a worthy addition, in another it made the signal useless. It was an expensive test. Your milage may vary.  
 
 ## Software   
-There is one supported decoder for ACARS and two decoders for VDL2. All of which only run on Linux. (There are some Windows options, Blackcat and MultiPSK, both are outside the scope of this page).  
+There is one supported decoder for ACARS and two decoders for VDL2. All of which only run on Linux. (There are some Windows options, Blackcat and MultiPSK, both are outside the scope of this page - neither of them can feed airframes.io).  
 
-[acarsdec](https://github.com/TLeconte/acarsdec) The 'fun' part here is that if the full spread of ACARS frequencies are in use in your location, it will be too wide for a single RTLSDR bandwidth, so if they are and you want to catch all the data (please and thank-you), then you will need to run two dongles, a lower set of frequencies on one and the higher set on the other.   
+[acarsdec](https://github.com/TLeconte/acarsdec) is a multi-channel acars decoder with built-in rtl_sdr, airspy front end or sdrplay device.   
 [vdlm2dec](https://github.com/TLeconte/vdlm2dec) can decode up to 8 frequencies simultaneously ( but in the same 2Mhz range ) It decodes ARINC-622 ATS applications (ADS-C, CPDLC) via libacars library.    
 [dumpvdl2](https://github.com/szpajder/dumpvdl2) Has the following features: 
 * RTLSDR (via rtl-sdr library)
