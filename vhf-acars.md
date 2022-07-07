@@ -1,9 +1,8 @@
-# VHF ACARS and VDL2.   
+# Aircraft Communication Addressing and Reporting System. #    
    
 Navigation: [home](README.md)  
-
-## Aircraft Communication Addressing and Reporting System. ##  
-The way aircraft talk to and from the ground staff.   
+ 
+ACARS is the messaging system that allows aircraft talk to and from the ground staff / systems.   
 
 There are two main ACARS modes on VHF.    
 ACARS between 129 Mhz and 131 Mhz    
@@ -12,7 +11,7 @@ Roughly you can think of ACARS as slightly older analog and VDL2 digital.
     
 The two different modes are in use to different amounts all over the world, its imposible for us (yet - the data will soon be there for us to say with more confidence) to tell you which to pick for your location. I suggest that you  install both packages, run both for a week and compare numbers for your location. Perhaps, like me in California, both have high value and you will end up running a few SDR dongles. (I run 3 in the one Pi 3).   
 The other 'fun' part here is that if the full spread of ACARS frequencies are in use in your location, it will be too wide for a single RTLSDR bandwidth, so if they are and you want to catch all the data (please and thank-you), then you will need to run two dongles, a lower set of frequencies on one and the higher set on the other.   
-So, a full setup is 2 x ACARS SDR and 1 x VDL2 SDR.
+So, a full setup might consist of 2 x ACARS SDR and 1 x VDL2 SDR.
     
 ## Hardware BOM (Bill of materials)  
 * 1 x Antenna. There are some options here. Some have used an old ham 2m antenna, others a 'scanner' antenna. Ovoid a discone, they are very low gain. Here is a nice airband antenna from [Amazon](https://www.amazon.com/dp/B07XNKX18D?ref_=cm_sw_r_ud_dp_QW7K7EJXCSYNG1BKXQTY) Note that you can NOT use your existing ADSB one, the frequencies are not even close.  
@@ -45,7 +44,7 @@ There is one supported decoder for ACARS and two decoders for VDL2. All of which
 * Supports message filtering by type or direction (uplink, downlink)
 * Can store raw frames in a binary file for later decoding or archiving purposes.
 
-[Airframes.io](https://app.airframes.io/about) supports all three, personally I like dumpvdl2 as it has a much richer output that I find very helpful (noise floor and signal data just to name two).    
+[Airframes.io](https://app.airframes.io/about) supports feeds from all three, personally I like dumpvdl2 as it has a much richer output that I find very helpful (noise floor and signal data just to name two).    
 
 ## Building / Installing the Software   
 You can script the following commands, but I like to copy paste each one to ensure it runs without error.    
