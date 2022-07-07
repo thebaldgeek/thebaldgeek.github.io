@@ -107,11 +107,11 @@ Now lets install the dumpvdl2 package.
 Lastly, reboot and plug in your ACARS SDR dongle(s).  
 `reboot now`  
 
-Here is an example command to listen on a few VDL frequencies (check out airframes.io/about for a good list of VDL2 frequencies to listen on in your part of the world) and stream the decded messages to a URL and port that your Node-RED should be listening on:   
+Here is an example command to listen on a few VDL frequencies (check out [airframes.io/about](https://app.airframes.io/about) for a good list of VDL2 frequencies to listen on in your part of the world.   
 
 `dumpvdl2 --rtlsdr -0 --gain 42 136725000 136775000 136800000 136975000`
    
-Once you are happy with the output and the input to Node-RED, you can then setup dumpvdl2 to launch in the background and when the Pi boots:  
+Once you are happy with the output you can then setup dumpvdl2 to launch in the background and when the Pi boots:  
   
 `sudo nano /etc/default/dumpvdl2`  
 In that file, uncomment the DUMPVDL2_OPTIONS= and put your options from the test you just ran in to the file, save and exit it - it will look something like this:  
