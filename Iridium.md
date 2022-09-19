@@ -2,21 +2,20 @@
    
 Navigation: [home](README.md)  
 
-There is a good amount of ACARS messages being sent via the Iridium satellite constellation. 4 stations scattered around mainland USA are seeing around 3000 messages a day.  
+There is a good amount of ACARS messages being sent via the Iridium satellite constellation. Currently there are a few stations scattered around mainland USA and a few around Europe / UK which are seeing around 3000 messages a day.  
 In Feb 2022 we just started looking at it for the first time, so all this is very new, but here are some tips to get you started. If you want to get technical, [this doc](https://www.icao.int/safety/acp/inactive%20working%20groups%20library/acp-wg-m-iridium-3/ird-swg03-wp05-draft%20iridium%20ams(r)s%20tech%20manual%20-%20021506.pdf) is a good read.    
 ### Antenna   
 I started out using the RTLSDR v2 patch antenna since its only meh at Inmarsat and so I had an unused one kicking around. While not the best antenna for Iridium (its directional and has a SAW filter in the LNA), its not too bad and given it's price and availability, if its all you can get, then give it a go.  
 I jumped on eBay and picked up an iridium dome antenna and will report back on how it goes once we get some air time with it.   
-Do note that there are very few _active_ iridium antennas since transmitting up to the satellites is very common, so if you want to go with an amplified antenna, you will need to take a look at building your own ground station. Perhaps more on this in the future if we find real value in the data.   
+Do note that there are very few _active_ iridium antennas since transmitting up to the satellites is very common. That said, I have found one that I really like: HC610. Be sure and enable the Bias-T on your SDR, or use a physical Bias-T power injector (which is what I do because I am testing a lot of different SDRs and they all are a pain to turn the bias-T on in the config file).   
 ### LNA   
 There are a few wide band amplifiers that cover 1.6Ghz, but the Nooelec Iridium LNA has amazing performance. Well worth the money and Bias-T hassels to drive this amplifier. 
 ### SDR   
-I like the RTLSDR v3 for this sort of thing. Its very affordable and very quick and clean to get running. The problem with the RTLSDR is that it only covers around 2Mhz bandwidth and that is only covers a very small number of the Iridium data channels.  
-4 of us have tried getting the RSP1a up and running and all 4 have failed, we will get to the bottom of that in due course, in the mean time I am using the Airspy Mini (at only 3Mhz bandwidth, looks like the Raspberry Pi can not drive it at its full 6Mhz bandwidth) and am getting good numbers, about 4x the data from the RTLSDR. Once we get the RSP1a working, I will update this page with the instructions. Note that Texas is using an Airspy R2 at around 8Mhz bandwidth and has the best message rate of the 4 stations so far.   
+I normally like the RTLSDR v3 for this sort of thing (All things ACARS and L-Band). Its very affordable and very quick and clean to get running. The problem with the RTLSDR is that it only covers around 2Mhz bandwidth and that is only covers a very small number of the Iridium data channels.  
+I am testing the LimeSDR (v1), RSP1a, Airspy R2 and the Airspy Mini (at only 3Mhz bandwidth, looks like the Raspberry Pi can not drive it at its full 6Mhz bandwidth) and am getting good numbers, easily more than 4x the data from the RTLSDR. Note that those stations using an Airspy R2 at around 8Mhz bandwidth have the best message rate of all the stations so far.   
 
 To be clear. You require a 10Mhz bandwidth SDR and computer to drive it to get all the data channels on Iridium.   
   
-Note that if you end up using a Nooelect LNA, the more expensive RSP1a can not drive it, so you will need a physical Bias-T power injector.
 ### MUCCC - iridium-toolkit and gr-iridium    
 The repo can be found on the [Chaos Computer Club München](https://github.com/muccc) GitHub.    
 You will need to either build gr-iridium from source or use [DragonOS](DragonOS). Just to add some 'fun' into the mix, the DragonOS_Pi64 and the x86 Dragon_Focal use different versions of gr-iridium with the Pi being the newer version. Not sure what the differences are or if they matter for ACARS reception/decoding.   
