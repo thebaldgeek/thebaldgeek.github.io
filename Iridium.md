@@ -14,19 +14,14 @@ There are a few wide band amplifiers that cover 1.6Ghz, but the Nooelec Iridium 
 I normally like the RTLSDR v3 for this sort of thing (All things ACARS and L-Band). Its very affordable and very quick and clean to get running. The problem with the RTLSDR is that it only covers around 2Mhz bandwidth and that is only covers a very small number of the Iridium data channels.  
 I am testing the LimeSDR (v1), RSP1a, Airspy R2 and the Airspy Mini (at only 3Mhz bandwidth, looks like the Raspberry Pi can not drive it at its full 6Mhz bandwidth) and am getting good numbers, easily more than 4x the data from the RTLSDR. Note that those stations using an Airspy R2 at around 8Mhz bandwidth have the best message rate of all the stations so far.   
 
-To be clear. You require a 10Mhz bandwidth SDR and computer to drive it to get all the data channels on Iridium.   
+To be clear. You require a 10Mhz bandwidth SDR _and_ a computer to drive it to get all the data channels on Iridium. (Again, to be clear, the Raspberry Pi 4 is just not powerfull enough for Iridium).   
   
 ### MUCCC - iridium-toolkit and gr-iridium    
 The repo can be found on the [Chaos Computer Club München](https://github.com/muccc) GitHub.    
-You will need to either build gr-iridium from source or use [DragonOS](DragonOS). Just to add some 'fun' into the mix, the DragonOS_Pi64 and the x86 Dragon_Focal use different versions of gr-iridium with the Pi being the newer version. Not sure what the differences are or if they matter for ACARS reception/decoding.   
-Note that none of the Iridium tools need a gui, so you can run it all via a shell on a headless Pi with no issues. I did my testing on a Pi4 2gb. You will quickly max out the CPU long before the memory on the Pi, so 2gig or 4 gig of RAM does not matter.   
+   
+Note that none of the Iridium tools need a gui, so you can run it all via a shell on a headless computer (or via PuTTY with DragonOS) with no issues. I did my testing on a VMware instance on my Windows PC since you need USB 3.0 to drive your SDR to the required 10Mhz BW.   
 
-It is very important that you run the latest iridium-toolkit. It is under active development and the version on DragonOS does _not_ include the ACARS decoder. To get the latest, run the following 3 commands from your home directory.   
-```cd ~```   
-```wget https://github.com/muccc/iridium-toolkit/archive/refs/heads/master.zip```   
-```unzip master.zip```   
-
-With those three commands you are ready to start.   
+Once you install DragonOS_Focal on an i5 or better x86 computer with a USB 3.0 port, you are ready to start.  
 
 For now you are going to open a few terminals, we are working on an script to run it, but for now, this is the best way to get going.....    
 Here is the big picture, we are going to make two python files (acars.py and map.py) each with a different port number, one to feed me your ACARS the other to feed me your sats.json file to plot your coverage [on the Iridium map](http://thebaldgeek.net:7777/map.html).
