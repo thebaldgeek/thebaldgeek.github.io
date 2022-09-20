@@ -2,10 +2,10 @@
    
 Navigation: [home](README.md)  
 
-There is a good amount of ACARS messages being sent via the Iridium satellite constellation. Currently there are a few stations scattered around mainland USA and a few around Europe / UK which are seeing around 3000 messages a day.  
+There is a solid amount of ACARS messages being sent via the Iridium satellite constellation. Currently there are a few stations scattered around mainland USA and a few around Europe / UK which are seeing around 15,000 messages a day.  
 In Feb 2022 we just started looking at it seriously for the first time, so all this is very new and thus a bit rough around the edges, but here are some tips to get you started. If you want to get technical, [this doc](https://www.icao.int/safety/acp/inactive%20working%20groups%20library/acp-wg-m-iridium-3/ird-swg03-wp05-draft%20iridium%20ams(r)s%20tech%20manual%20-%20021506.pdf) is a good read.   
 Sep 2022 Iridium has picked up a LOT of interest in the past few weeks with some very interesting posts on the ACARS groups.io email list.
-Seems that a good amount of military aircaft are going to be moving from Inmarsat L-Band to Iridium.   
+Seems that a good amount of military aircaft (All USAF KC-135) are going to be moving from Inmarsat L-Band to Iridium.   
 
 ### Antenna   
 I started out using the RTLSDR v2 patch antenna since its only meh at Inmarsat and so I had an unused one kicking around. While not the best antenna for Iridium (its directional and has a SAW filter in the LNA), its not too bad and given it's price and availability, if its all you can get, then give it a go by mounting it outside, looking straight up ie, flat, or angled in any direction that does not have obstuctions (trees etc).  
