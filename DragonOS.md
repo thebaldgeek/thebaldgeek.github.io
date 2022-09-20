@@ -7,14 +7,14 @@ To this end, this page will try and help smooth out that process.
 ## DragonOS or Windows?   
 Lets get this out the way first.  
 If you only want to run SDRReciver and Jaero (For C or L-Band work), you can do that on Win7, Win10 or Win11. Both program's _require_ a desktop GUI, both run fine under Windows.  
-acarsdeco, dumpVDL2, dumpHFDL and Iridium on the other hand, do not use any graphics at all, they are both command line programs and more so, all of them only run under Linux, for Iridium, VHF ACARS or HF ACARS, you must go the Linux route.    
+acarsdeco, dumpVDL2, dumpHFDL and Iridium on the other hand, do not use any graphics / desktop at all, they are all command line programs and all of them _only_ run under Linux.    
 ## Raspberry Pi or old PC/Laptop?  
-There are two builds of DragonOS, one for the Pi4 and one for PC's and laptops.   
-If you want to erase Windows and put DragonOS on an old bit of hardware, thats your call. The old laptop/PC should have more bang for the CPU buck than the Pi, so you might be able to run more programs at once. (Jaero, Iridium and dumpHFDL are CPU intensive - you cant run any more than one of these on a Pi4 for example - and Iridium on a Pi4 is next to useless).    
+There are two builds of DragonOS, one for the Pi4 (DragonOS_Pi64) and one for PC's and laptops (DragonOS_Focal).   
+If you want to erase Windows and put DragonOS on an old bit of hardware, thats your call. The old laptop/PC should have more bang for the CPU buck than the Pi, so you might be able to run more programs at once. (Jaero, Iridium and dumpHFDL are CPU intensive - you cant run any more than one of these at a time on a Pi4 for example - and Iridium on a Pi4 is next to useless).    
 ## DragonOS_Focal on a VMware machine   
-Since Iridium (and dumphfdl to some extent) is very CPU intensive and requies a USB 3.0 port, a few of the bleeding edge Satcom crew are running DragonOS_Focal on their Windows desktops - often a powerful multi-core PC with a healthy amount of RAM that is somewhat lightly loaded.   
-Download the free VMware player, create a new Ubuntu64 machine with 32gig hard drive and as many cores as you like (I suggest 4 is a good start). Point it to the Dragon ISO and install it from the live desktop.    
-You can then reboot the VM into Dragon and when you connect your 10Mhz bandwdith (or HF) SDR, VMware will ask if you want to mount it on the Host PC or the VM, chose VM and you are up and running.   
+Since Iridium (and dumphfdl to some extent) is very CPU intensive and requies a USB 3.0 port, a few of the bleeding edge Satcom crew are running DragonOS_Focal on their Windows PCs - often a powerful multi-core computer with a healthy amount of RAM that is somewhat lightly loaded.   
+To do this download the free VMware player, create a new Ubuntu64 machine with 32gig hard drive and as many cores as you like (I suggest 4 is a good start). Point it to the Dragon ISO and once its booted up, simply install it from the live desktop icon.    
+You can then reboot the VM into DragonOS and when you connect your 10Mhz bandwdith (or HF) SDR, VMware will ask if you want to mount it on the Host PC or the VM, chose VM and you are up and running.   
 ## DragonOS on a Pi 4   
 It seems from early adopters / testers that the Pi 4 with 4 gig of RAM is plenty (2 gig RAM is a bit light on, and 8 gig of RAM is a waste of money - the CPU will max out long before the RAM will).   
 Start by downloading the latest image of DragonOS and burn it to a 32 Gigabyte (minimum) microSD card.  
