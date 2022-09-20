@@ -3,11 +3,13 @@
 Navigation: [home](README.md)  
 
 There is a good amount of ACARS messages being sent via the Iridium satellite constellation. Currently there are a few stations scattered around mainland USA and a few around Europe / UK which are seeing around 3000 messages a day.  
-In Feb 2022 we just started looking at it for the first time, so all this is very new, but here are some tips to get you started. If you want to get technical, [this doc](https://www.icao.int/safety/acp/inactive%20working%20groups%20library/acp-wg-m-iridium-3/ird-swg03-wp05-draft%20iridium%20ams(r)s%20tech%20manual%20-%20021506.pdf) is a good read.    
+In Feb 2022 we just started looking at it for the first time, so all this is very new and thus a bit rough around the edges, but here are some tips to get you started. If you want to get technical, [this doc](https://www.icao.int/safety/acp/inactive%20working%20groups%20library/acp-wg-m-iridium-3/ird-swg03-wp05-draft%20iridium%20ams(r)s%20tech%20manual%20-%20021506.pdf) is a good read.
+Sep 2022 Iridium has picked up a LOT of interest in the past few weeks with some very interesting posts on the ACARS groups.io email list.
+Seems that a good amount of military aircaft are going to me moving from Inmarsat L-Band to Iridium.
 ### Antenna   
 I started out using the RTLSDR v2 patch antenna since its only meh at Inmarsat and so I had an unused one kicking around. While not the best antenna for Iridium (its directional and has a SAW filter in the LNA), its not too bad and given it's price and availability, if its all you can get, then give it a go.  
 I jumped on eBay and picked up an iridium dome antenna and will report back on how it goes once we get some air time with it.   
-Do note that there are very few _active_ iridium antennas since transmitting up to the satellites is very common. That said, I have found one that I really like: HC610. Be sure and enable the Bias-T on your SDR, or use a physical Bias-T power injector (which is what I do because I am testing a lot of different SDRs and they all are a pain to turn the bias-T on in the config file).   
+Do note that there are very few _active_ iridium antennas since transmitting up to the satellites is very common. That said, I have found one that I really like: [HC610](https://www.google.com/search?q=HC610&sourceid=chrome&ie=UTF-8). (There is also a passive version of this antenna, so that might be an eaiser to find buy than this active one). Be sure and enable the Bias-T on your SDR, or use a physical Bias-T power injector (which is what I do because I am testing a lot of different SDRs and they all are a pain to turn the bias-T on in the config file).   
 ### LNA   
 There are a few wide band amplifiers that cover 1.6Ghz, but the Nooelec Iridium LNA has amazing performance. Well worth the money and Bias-T hassels to drive this amplifier. 
 ### SDR   
@@ -17,56 +19,43 @@ I am testing the LimeSDR (v1), RSP1a, Airspy R2 and the Airspy Mini (at only 3Mh
 To be clear. You require a 10Mhz bandwidth SDR _and_ a computer to drive it to get all the data channels on Iridium. (Again, to be clear, the Raspberry Pi 4 is just not powerfull enough for Iridium).   
   
 ### MUCCC - iridium-toolkit and gr-iridium    
-The repo can be found on the [Chaos Computer Club München](https://github.com/muccc) GitHub.    
+If you want to build from source the repo can be found on the [Chaos Computer Club München](https://github.com/muccc) GitHub.    
    
 Note that none of the Iridium tools need a gui, so you can run it all via a shell on a headless computer (or via PuTTY with DragonOS) with no issues. I did my testing on a VMware instance on my Windows PC since you need USB 3.0 to drive your SDR to the required 10Mhz BW.   
 
 Once you install DragonOS_Focal on an i5 or better x86 computer with a USB 3.0 port, you are ready to start.  
 
-For now you are going to open a few terminals, we are working on an script to run it, but for now, this is the best way to get going.....    
-Here is the big picture, we are going to make two python files (acars.py and map.py) each with a different port number, one to feed me your ACARS the other to feed me your sats.json file to plot your coverage [on the Iridium map](http://thebaldgeek.net:7777/map.html).
+For now you are going to open a few terminals, we are working on an script to run it and keep it running (it does crash now and then), but for now, this is the best way to get going.....
+This guide assumes that you would like to share your Iridium data with the world and thus send it to thebaldgeek so it can be added to the main Iridium page and more. You can also open another terminal and use the same process to send data to yourself on another UDP port number.
+ 
+Here is the big picture, we are going to make a python file (acars.py) that will take the output from the Iridium decoder and send it via UDP to my ingest server.
+You will have one terminal to parse the raw data and another one to decode the ACARS messages and to send the data to my site. (Optionally, there is a third for your local map if you would like to see your coverage).
 # Lots of terminals
 ## Terminal One   
-Run the extractor:    
-```iridium-extractor -D 4 --multi-frame /usr/src/gr-iridium/examples/rtl-sdr.conf | python3 -u ~/iridium-toolkit-master/iridium-parser.py -o zmq```  
-Of course, if you not using an RTLSDR look in the /examples/ directory and find your SDR and tweak that file to best set it up.   
+Run the extractor from any directory: (This assumes you are testing with an RTL-SDR V3, change the .conf file to match your SDR and edit it to turn on the Bias-T if required).    
+```iridium-extractor -D 4 --multi-frame /usr/src/gr-iridium/examples/rtl-sdr.conf | python3 -u /usr/src/iridium-toolkit/iridium-parser.py -o zmq```  
+To be clear, if you not using an RTLSDR look in the /usr/src/gr-iridium/examples/ directory and find your SDR and tweak that file to best set it up.   
 You are going to get a line of data per second:   
 ```1645669280 | i: 3267/s | i_avg: 142/s | q_max: 1267 | i_ok:   0% | o: 2001/s | ok:   0% | ok:  13/s | ok_avg:   7% | ok:       8971 | ok_avg:  10/s | d: 33001```  
 
 You want to see 60% to 100% in the `ok:` part. Lower number means more bad packets and you need to fix your antenna, coax, LNA or gain in the .conf file.   
 ## Terminal Two
-Type `nano acars.py`, then copy/paste [in this text](https://github.com/microp11/iridiumlive/blob/master/udp-for-il.py) from the iridiumlive github. Change the IP address to my site `thebaldgeek.net` and change the port number from 15007 to the port I give you. Then save and exit nano. If you want to send me your map coverage, do this command ```cp acars.py map.py``` then ```nano map.py``` and change the port number for the one I give you.   
+Type `nano acars.py`, then copy/paste [in this text](https://github.com/microp11/iridiumlive/blob/master/udp-for-il.py) from the iridiumlive github. Change the IP address to my site `thebaldgeek.net` and change the port number from 15007 to the port I give you. Then save and exit nano.   
 Next run this command:   
-```python3 -u ~/iridium-toolkit-master/reassembler.py -m acars zmq: | python3 /home/ubuntu/acars.py```  
+```python3 -u /usr/src/iridium-toolkit/reassembler.py -m acars zmq: | python3 /home/ubuntu/acars.py```  
 Do note that nothing will show in this terminal until you pickup your first ACARS message. Depending on how much Iridium aircraft there are in your area, it could take a moment or a few minutes, then a single number will show up, you will see a number for every message. The number is the size of the ACARS message once its decoded.  
-## Terminal Three    
+## Terminal Three - Your local map.    
 Now, we need to get the map running: (This is optional, but cool to see)   
-```cd ~/iridium-toolkit-master/html```      
-```nano example.sh```    
+```cd /usr/src/iridium-toolkit/html```      
+```sudo nano example.sh```    
 On the second bottom line, add a 3 at the end of the python and change the IP address for your Pi (your pi might not be 192.168.1.122), so it should read ```python3 -m http.server --bind 192.168.1.22 8888```     
 Save and exit nano    
   
-In the terminal run the example file: `./example.sh`  
+In the terminal run the example file: `sudo ./example.sh`  
 At this point, you can visit your Pi's IP address from any browser on your  network and look for the map, so in my case `http://192.168.1.122:8888/map.html`  
 Let that run. You should see the sats and beams update around once a minute.
 
-## Terminal Four   
-Almost there: make a copy of the python UDP script `cp ~/acars.py ~/map.py`   
-Now edit that new file: `nano ~/map.py` and change the port number to the one I give you.   
-Next run this command: 
-```pip install https://github.com/joh/when-changed/archive/master.zip```   
-This will install a python script that will look for changes to a file. 
-Now go to where it was installed:  
-```cd /home/ubuntu/.local/bin```   
-Now run the file watch which will send me your sats.json once a minute and your coverage will be added to the master map on my site:
-
-```./when-changed ~/iridium-toolkit-master/html/sats.json cat ~/iridium-toolkit-master/html/sats.json |  python3 ~/map.py```
-
-So, to wrap this up... you need 4 terminal (PuTTY or what ever) sessions:    
-1. ```iridium-extractor -D 4 --multi-frame /usr/src/gr-iridium/examples/rtl-sdr.conf | python3 -u ~/iridium-toolkit-master/iridium-parser.py -o zmq```  
-2. ```python3 -u ~/iridium-toolkit-master/reassembler.py -m acars zmq: | python3 /home/ubuntu/acars.py```   
-3. `./example.sh`   
-4. ```./when-changed ~/iridium-toolkit-master/html/sats.json cat ~/iridium-toolkit-master/html/sats.json |  python3 ~/map.py```
+Jump over the fold to see the global map command......
 
 ---
 
@@ -124,9 +113,29 @@ Duplex Channel Band
 | 29 | 1625.333333 | 1625.666667 |   
 | 30 | 1625.666667 | 1626.000000 |   
 
-Stop reading here, the notes below are wrong and are just for history.   
+Stop reading here, the notes below are mostly wrong and are just for history.   
 
 ------------------------------
+Note that I used to run a global Iridium coverage map, but the URL was getting 'attacked' to try and break into my network, so I took it down.
+If there is enough interest from the handfull of Iridium feeders, I can put it back up and just let a few people know about it.
+
+## Terminal Four - Sending me your map data.   
+Almost there: make a copy of the python UDP script `cp ~/acars.py ~/map.py`   
+Now edit that new file: `nano ~/map.py` and change the port number to the one I give you.   
+Next run this command: 
+```pip install https://github.com/joh/when-changed/archive/master.zip```   
+This will install a python script that will look for changes to a file. 
+Now go to where it was installed:  
+```cd /home/ubuntu/.local/bin```   
+Now run the file watch which will send me your sats.json once a minute and your coverage will be added to the master map on my site:
+
+```./when-changed ~/iridium-toolkit-master/html/sats.json cat ~/iridium-toolkit-master/html/sats.json |  python3 ~/map.py```
+
+So, to wrap this up... you need 4 terminal (PuTTY or what ever) sessions:    
+1. ```iridium-extractor -D 4 --multi-frame /usr/src/gr-iridium/examples/rtl-sdr.conf | python3 -u ~/iridium-toolkit-master/iridium-parser.py -o zmq```  
+2. ```python3 -u ~/iridium-toolkit-master/reassembler.py -m acars zmq: | python3 /home/ubuntu/acars.py```   
+3. `./example.sh`   
+4. ```./when-changed ~/iridium-toolkit-master/html/sats.json cat ~/iridium-toolkit-master/html/sats.json |  python3 ~/map.py```
 
 ## Pipe and tee   
 We are going to pipe the data into Node-RED via UDP.   
