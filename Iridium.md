@@ -3,23 +3,24 @@
 Navigation: [home](README.md)  
 
 There is a good amount of ACARS messages being sent via the Iridium satellite constellation. Currently there are a few stations scattered around mainland USA and a few around Europe / UK which are seeing around 3000 messages a day.  
-In Feb 2022 we just started looking at it for the first time, so all this is very new and thus a bit rough around the edges, but here are some tips to get you started. If you want to get technical, [this doc](https://www.icao.int/safety/acp/inactive%20working%20groups%20library/acp-wg-m-iridium-3/ird-swg03-wp05-draft%20iridium%20ams(r)s%20tech%20manual%20-%20021506.pdf) is a good read.
+In Feb 2022 we just started looking at it seriously for the first time, so all this is very new and thus a bit rough around the edges, but here are some tips to get you started. If you want to get technical, [this doc](https://www.icao.int/safety/acp/inactive%20working%20groups%20library/acp-wg-m-iridium-3/ird-swg03-wp05-draft%20iridium%20ams(r)s%20tech%20manual%20-%20021506.pdf) is a good read.
 Sep 2022 Iridium has picked up a LOT of interest in the past few weeks with some very interesting posts on the ACARS groups.io email list.
-Seems that a good amount of military aircaft are going to me moving from Inmarsat L-Band to Iridium.
+Seems that a good amount of military aircaft are going to be moving from Inmarsat L-Band to Iridium.   
+
 ### Antenna   
 I started out using the RTLSDR v2 patch antenna since its only meh at Inmarsat and so I had an unused one kicking around. While not the best antenna for Iridium (its directional and has a SAW filter in the LNA), its not too bad and given it's price and availability, if its all you can get, then give it a go.  
 I jumped on eBay and picked up an iridium dome antenna and will report back on how it goes once we get some air time with it.   
-Do note that there are very few _active_ iridium antennas since transmitting up to the satellites is very common. That said, I have found one that I really like: [HC610](https://www.google.com/search?q=HC610&sourceid=chrome&ie=UTF-8). (There is also a passive version of this antenna, so that might be an eaiser to find buy than this active one). Be sure and enable the Bias-T on your SDR, or use a physical Bias-T power injector (which is what I do because I am testing a lot of different SDRs and they all are a pain to turn the bias-T on in the config file).   
+Do note that there are very few _active_ iridium antennas since transmitting up to the satellites is very common. That said, I have found one that I really like: [HC610](https://www.google.com/search?q=HC610&sourceid=chrome&ie=UTF-8). (There is also a passive version of this antenna, so that might be an eaiser to find buy than this active one). Be sure and enable the Bias-T on your SDR, or use a physical Bias-T power injector (which is what I do because I am testing a lot of different SDRs and they all are a pain to turn the bias-T on in the config file - some don't even support Bias-T).   
 ### LNA   
 There are a few wide band amplifiers that cover 1.6Ghz, but the Nooelec Iridium LNA has amazing performance. Well worth the money and Bias-T hassels to drive this amplifier. 
 ### SDR   
-I normally like the RTLSDR v3 for this sort of thing (All things ACARS and L-Band). Its very affordable and very quick and clean to get running. The problem with the RTLSDR is that it only covers around 2Mhz bandwidth and that is only covers a very small number of the Iridium data channels.  
-I am testing the LimeSDR (v1), RSP1a, Airspy R2 and the Airspy Mini (at only 3Mhz bandwidth, looks like the Raspberry Pi can not drive it at its full 6Mhz bandwidth) and am getting good numbers, easily more than 4x the data from the RTLSDR. Note that those stations using an Airspy R2 at around 8Mhz bandwidth have the best message rate of all the stations so far.   
+I normally like the RTLSDR v3 for this sort of thing (all things ACARS and L-Band). Its very affordable and very quick and clean to get running. The problem with the RTLSDR is that it only covers around 2Mhz bandwidth and that is only a very small number of the Iridium data channels.  
+I am testing the LimeSDR (v1), RSP1a, Airspy R2 and the Airspy Mini and am getting good numbers from most of these, easily more than 4x the data from the RTLSDR. Note that those stations using an Airspy R2 at around 8Mhz bandwidth have the best message rate of all the stations so far.   
 
 To be clear. You require a 10Mhz bandwidth SDR _and_ a computer to drive it to get all the data channels on Iridium. (Again, to be clear, the Raspberry Pi 4 is just not powerfull enough for Iridium).   
   
 ### MUCCC - iridium-toolkit and gr-iridium    
-If you want to build from source the repo can be found on the [Chaos Computer Club München](https://github.com/muccc) GitHub.    
+If you want to build from source the repo can be found on the [Chaos Computer Club München](https://github.com/muccc) GitHub. I really don't recomend building from source, gnu-radio is not trivial to build and nor is the gr-iridium toolkit    
    
 Note that none of the Iridium tools need a gui, so you can run it all via a shell on a headless computer (or via PuTTY with DragonOS) with no issues. I did my testing on a VMware instance on my Windows PC since you need USB 3.0 to drive your SDR to the required 10Mhz BW.   
 
