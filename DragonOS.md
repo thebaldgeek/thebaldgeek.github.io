@@ -2,15 +2,19 @@
    
 Navigation: [home](README.md)  
 
-No matter your interest in AERO data, be it HF-DL, VHF VDL2, L-Band Data, L-Band voice, C-Band Data or C-Band voice or any combination (up to your CPUs ability to keep up), if you are running Linux, DragonOS should be strongly considered as you go-do distro to get up and running.  
+No matter your interest in AERO data, be it HF-DL, VHF ACARS, L-Band Data, L-Band voice, Iridium, C-Band Data or C-Band voice or any combination (up to your CPUs ability to keep up), if you are running Linux, DragonOS should be strongly considered as you go-do distro to get up and running.  
 To this end, this page will try and help smooth out that process.   
 ## DragonOS or Windows?   
 Lets get this out the way first.  
 If you only want to run SDRReciver and Jaero (For C or L-Band work), you can do that on Win7, Win10 or Win11. Both program's _require_ a desktop GUI, both run fine under Windows.  
-dumpVDL2 and dumpHFDL on the other hand, do not use any graphics at all, they are both command line programs and more so, both only run under Linux, for VHF and HF ACARS, you must go the Linux route.    
+acarsdeco, dumpVDL2, dumpHFDL and Iridium on the other hand, do not use any graphics at all, they are both command line programs and more so, all of them only run under Linux, for Iridium, VHF ACARS or HF ACARS, you must go the Linux route.    
 ## Raspberry Pi or old PC/Laptop?  
 There are two builds of DragonOS, one for the Pi4 and one for PC's and laptops.   
-If you want to erase Windows and put DragonOS on an old bit of hardware, thats your call. The old laptop/PC should have more bang for the CPU buck than the Pi, so you might be able to run more programs at once. (Jaero and dumpHFDL are CPU intensive - you cant run both on a Pi4 for example).    
+If you want to erase Windows and put DragonOS on an old bit of hardware, thats your call. The old laptop/PC should have more bang for the CPU buck than the Pi, so you might be able to run more programs at once. (Jaero, Iridium and dumpHFDL are CPU intensive - you cant run any more than one of these on a Pi4 for example - and Iridium on a Pi4 is next to useless).    
+## DragonOS_Focal on a VMware machine   
+Since Iridium (and dumphfdl to some extent) is very CPU intensive and requies a USB 3.0 port, a few of the bleeding edge Satcom crew are running DragonOS_Focal on their Windows desktops - often a powerful multi-core PC with a healthy amount of RAM that is somewhat lightly loaded.   
+Download the free VMware player, create a new Ubuntu64 machine with 32gig hard drive and as many cores as you like (I suggest 4 is a good start). Point it to the Dragon ISO and install it from the live desktop.    
+You can then reboot the VM into Dragon and when you connect your 10Mhz bandwdith (or HF) SDR, VMware will ask if you want to mount it on the Host PC or the VM, chose VM and you are up and running.   
 ## DragonOS on a Pi 4   
 It seems from early adopters / testers that the Pi 4 with 4 gig of RAM is plenty (2 gig RAM is a bit light on, and 8 gig of RAM is a waste of money - the CPU will max out long before the RAM will).   
 Start by downloading the latest image of DragonOS and burn it to a 32 Gigabyte (minimum) microSD card.  
@@ -43,15 +47,6 @@ It should look like this:
   AutomaticLogin = ubuntu
   ```   
 Reboot the pi and log in via your VNC client.
-## ZeroTeir ##
-Next is optional, but I always add my ZeroTeir network. (Its simply a small VPN - Virtual Private Network - a secure tunnel over any network, including the Internet)    
-
-I access all my local and remote Pis (and a few Windows PCs needed for Jaero etc) via ZeroTier.com and can not speak more highly of it. .  
-Here is how to quickly install it on a fresh Pi:  
-`curl -s https://install.zerotier.com/ | sudo bash`  
-`sudo zerotier-cli join YourZeroTeirNetworkID`  
-Authenticate and name this Pi by going to your network on their website then continue.  
-`sudo touch /var/lib/zerotier-one/networks.d/YourZeroTeirNetworkID.conf`    
    
 ## VNC server
 Enable cut/paste in VNC by adding ubuntu as a user in the VNC server.   
@@ -69,7 +64,7 @@ If you have an Airspy device: `cd /usr/src` and then `./SDRplay_RSP_API-ARM64-3.
 ## Jaero Software - Quick start    
 **Note!** dumphfdl, dumpvdl2 and SDRReceiver are all command line only programs. They do not have menu items.   
 
-Very quick start guide for SDRReceiver on Linux:  
+Very quick start guide for SDRReceiver on DragonOS:  
 `mkdir sdrrini`  
 `cd sdrrini`  
 `nano 25.ini`  
