@@ -113,22 +113,25 @@ Lastly, reboot and plug in your ACARS SDR dongle(s).
 `reboot now`  
 
 Here is an example command to listen on a few VDL frequencies (check out [airframes.io/about](https://app.airframes.io/about) for a good list of VDL2 frequencies to listen on in your part of the world.   
-
-`dumpvdl2 --rtlsdr -0 --gain 42 136725000 136775000 136800000 136975000`
    
-Once you are happy with the output you can then setup dumpvdl2 to launch in the background and when the Pi boots:  
-  
+`dumpvdl2 --rtlsdr -0 --gain 42 136725000 136775000 136800000 136975000`
+    
+Once you are happy with the output you can then setup dumpvdl2 to launch in the background and when the Pi boots:   
+   
 `sudo nano /etc/default/dumpvdl2`  
 In that file, uncomment the DUMPVDL2_OPTIONS= and put your options from the test you just ran in to the file, save and exit it - it will look something like this:  
   
-`DUMPVDL2_OPTIONS="--rtlsdr -0 --gain 42 --correction 7 --output decoded:text:udp:address=yourWebSite.com,port=112233 136725000 136775000 136800000 136975000"`  
-
+`DUMPVDL2_OPTIONS="--rtlsdr -0 --gain 42 --correction 7 --output decoded:text:udp:address=yourWebSite.com,port=112233 136725000 136775000 136800000 136975000"`   
+   
+Here is an example command line that will filter out empty system pings and handshakes:       
+`dumpvdl2 --msg-filter all,-avlc_s,-acars_nodata,-gsif,-x25_control,-idrp_keepalive,-esis --rtlsdr 2 --gain 40 --correction -1 --output decoded:text:file:path=vdl.log,rotate=hourly 136650000 136975000 136800000`   
+   
 Here is an example command to listen on a few ACARS fequenices:   
-`acarsdec -v -o 4 -g 280 -r 0 131.550 131.525 131.725 131.825 130.025 130.425 130.450 131.125`  
-
+`acarsdec -v -o 4 -g 280 -r 0 131.550 131.525 131.725 131.825 130.025 130.425 130.450 131.125`   
+   
 Once you have your mode up and decoding to the terminal, then you can feed the data to airframes.io and claim your feeder (and climb the soon coming leaderboard).   
    
-   Stop reading!
+   Stop reading!   
 
  ------------  
 
