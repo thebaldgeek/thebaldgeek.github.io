@@ -1,6 +1,6 @@
 # Using Node-RED to manage ADSC, ADSB, ACARS, VDL2, Iridium, HF-DL and other aircraft type messages.
 
-Navigation: [Inmarsat](Inmarsat.md) : [L-Band](L-Band.md) : [C-Band](C-Band.md) :  [VHF-ACARS/VDL2](vhf-acars.md) : [Iridium](Iridium.md) : [STDC](stdc.md) : [Jaero](jaero.md) : [SDRReceiver](SDRReceiver.md) : [DragonOS](DragonOS.md) : [autoTLE](autoTLE.md) : [OpenSkyAPI](OpenSkyAPI.md) : [VRS](vrs.md) : [MQTT](mqtt.md) : [Raspberry Pi](raspberrypi.md): [Telegram Bot](telegram.md) : [UAV-Drone](UAV-Drone.md) : [Squawk](Squawk.md) 
+Navigation: [Inmarsat](Inmarsat.md) : [L-Band](L-Band.md) : [C-Band](C-Band.md) :  [VHF-ACARS/VDL2](vhf-acars.md) : [Iridium](Iridium.md) : [STDC](stdc.md) : [Jaero](jaero.md) : [SDRReceiver](SDRReceiver.md) : [DragonOS](DragonOS.md) : [autoTLE](autoTLE.md) : [OpenSkyAPI](OpenSkyAPI.md) : [VRS](vrs.md) : [MQTT](mqtt.md) : [Raspberry Pi](raspberrypi.md) : [Telegram Bot](telegram.md) : [UAV-Drone](UAV-Drone.md) : [Squawk](Squawk.md) 
 
 # Node-RED Dashboard - The main website
 
@@ -14,10 +14,10 @@ I am constantly working on the site. The site is a case of function over form. I
 
 ## About  
 The Node-RED dashboard site is fed from Inmarsat 98W (4F3), 54W (3F5), 143E (4F1) and 25E (AF1). Each of these locations feed C-Band and L-Band data to the site via MQTT.   
-There are a few people that generously share their data from different parts of the globe (Asia Pacific, the Americas and UK).  
+There are a few people that generously share their data from different parts of the globe (Asia Pacific, the Americas and UK/Euro).  
   
 While all of us work hard to keep our data feeds up and running 24*7 we are all just aviation enthusiasts with families and day jobs, please keep that in mind as you view the data.  
-If you have an ADSC satellite dish setup and would like to feed your data to the site, please let me know.   
+If you have an ADSC C-Band satellite dish setup and would like to feed your data to the site, please let me know.   
 
 ###  READ THIS!
 
@@ -34,7 +34,8 @@ Check back often, this site is being updated randomly.
 I am pretty active on [Twitter](https://twitter.com/thebaldgeek) if thats your thing.     
 Tip, my Tweets are public, so you don't need a Twitter account to read them.   
     
-For ACARS data and feeding, please support [airframes.io](https://app.airframes.io/about) You can also follow them on Twitter [AirframesIO](https://twitter.com/AirframesIO) 
+For ACARS data and feeding, please support [airframes.io](https://app.airframes.io/about) You can also follow them on Twitter [AirframesIO](https://twitter.com/AirframesIO)   
+#thebaldgeek can be also found on the adsbexchange Discord server - mostly in the ACARS channels.
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HGJWTNL65R"></script>
 <script>
