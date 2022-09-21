@@ -29,6 +29,7 @@ InmarsatDecoder (~$50USD) Windows.
 Teckmanoid (~$50USD) Crossplatform (Java required)   
 Scytale-C (Free) Crossplatform with some work.    
 SDR++ STD-C demodulator plug-in and QT Inmarsat-C Parser. (Free). Linux only   
+stdcdec Command line. Linux. (Free)
     
 It should be noted that none of these software packages share their decoded messages very gracefully. I have had to use Node-RED and do some ugly workarounds to get the messages moved from the decoders to a web dashboard.   
 This may not be an issue in your use case, but bears mentioning as the real power of receiving any of these satcom message streams is being able to filter and alert on messages of interest. 
