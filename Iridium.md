@@ -118,11 +118,11 @@ Stop reading here, the notes below are mostly wrong and are just for history.
 
 ------------------------------
 Note that I used to run a global Iridium coverage map, but the URL was getting 'attacked' to try and break into my network, so I took it down.
-If there is enough interest from the handfull of Iridium feeders, I can put it back up and just let a few people know about it.
+If there is enough interest from the handfull of Iridium feeders, I can put it back up and just let a few people know about it.   
+Sep 2022. Its back!
 
 ## Terminal Four - Sending me your map data.   
-Almost there: make a copy of the python UDP script `cp ~/acars.py ~/map.py`   
-Now edit that new file: `nano ~/map.py` and change the port number to the one I give you.   
+Almost there: DM or email me and ask for the map.py script that will allow you to send your local map data to the global map. (URL only for Iridium feeder sharers).  
 Next run this command: 
 ```pip install https://github.com/joh/when-changed/archive/master.zip```   
 This will install a python script that will look for changes to a file. 
