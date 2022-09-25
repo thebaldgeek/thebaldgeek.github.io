@@ -122,22 +122,18 @@ If there is enough interest from the handfull of Iridium feeders, I can put it b
 Sep 2022. Its back!
 
 ## Terminal Four - Sending me your map data.   
-Almost there: DM or email me and ask for the map.py script that will allow you to send your local map data to the global map. (URL only for Iridium feeder sharers).  
+Almost there: DM on Twitter / Discord or email me and ask for the map2.py script that will allow you to send your local map data to the global map. (URL only for Iridium feeder sharers).  
 Next run this command: 
 ```pip install https://github.com/joh/when-changed/archive/master.zip```   
 This will install a python script that will look for changes to a file. 
 Now go to where it was installed:  
 ```cd /home/ubuntu/.local/bin```   
-Now run the file watch which will send me your sats.json once a minute and your coverage will be added to the master map on my site:
+Now run the file watch which will send me your sats.json rougly once a minute and your coverage will be added to the master map on my site:
 
-```./when-changed ~/iridium-toolkit-master/html/sats.json cat ~/iridium-toolkit-master/html/sats.json |  python3 ~/map.py```
-
-So, to wrap this up... you need 4 terminal (PuTTY or what ever) sessions:    
-1. ```iridium-extractor -D 4 --multi-frame /usr/src/gr-iridium/examples/rtl-sdr.conf | python3 -u ~/iridium-toolkit-master/iridium-parser.py -o zmq```  
-2. ```python3 -u ~/iridium-toolkit-master/reassembler.py -m acars zmq: | python3 /home/ubuntu/acars.py```   
-3. `./example.sh`   
-4. ```./when-changed ~/iridium-toolkit-master/html/sats.json cat ~/iridium-toolkit-master/html/sats.json |  python3 ~/map.py```
-
+```./when-changed /usr/src/iridium-toolkit/html/sats.json cat /usr/src/iridium-toolkit/html/sats.json |  python3 ~/map2.py```
+   
+Really really stop reading now.   
+   
 ## Pipe and tee   
 We are going to pipe the data into Node-RED via UDP.   
 To do this, we need a way to get the stdout data into a UDP stream, we will [use the iridiumlive python code](https://github.com/microp11/iridiumlive/blob/master/udp-for-il.py) to do that.   
