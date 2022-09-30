@@ -1,29 +1,42 @@
-# Iridium ACARS and SBD Decoding.   
+# Iridium ACARS Decoding.   
    
 Navigation: [home](README.md)  
 
-There is a solid amount of ACARS messages being sent via the Iridium satellite constellation. Currently there are a few stations scattered around mainland USA and a few around Europe / UK which are seeing around 15,000 messages a day.  
-In Feb 2022 we just started looking at it seriously for the first time, so all this is very new and thus a bit rough around the edges, but here are some tips to get you started. If you want to get technical, [this doc](https://www.icao.int/safety/acp/inactive%20working%20groups%20library/acp-wg-m-iridium-3/ird-swg03-wp05-draft%20iridium%20ams(r)s%20tech%20manual%20-%20021506.pdf) is a good read.   
-Sep 2022 Iridium has picked up a LOT of interest in the past few weeks with some very interesting posts on the ACARS groups.io email list.
-Seems that a good amount of military aircaft (All USAF KC-135) are going to be moving from Inmarsat L-Band to Iridium. I'd like to be ready for the migration.   
+There is a solid amount of ACARS messages being sent via the Iridium satellite constellation.   
+To set expectations, there are no position reports, so no plotting pixels on a map, also the way Iridium works, routing messages between satellites in LEO to the nearest sat that can 'see' a ground station (Only 3-4 on the planet), you often only get a fragment of the ACARS message. And voice? Very delayed, very time consuming, very CPU intensive for just a few seconds of a random unknown call audio (ie, more than just aircraft voice calls are carried by Iridium, so you cant just decode aircraft calls), so we are not even going to discuss it.   
+ Currently there are a few avgeek ground stations scattered around mainland USA and a few around Europe / UK which are seeing around 15,000 messages a day.  
+In Feb 2022 we just started looking at it seriously, so all this is very new and thus a bit rough around the edges, but here are some tips to get you started. If you want to get technical, [this doc](https://www.icao.int/safety/acp/inactive%20working%20groups%20library/acp-wg-m-iridium-3/ird-swg03-wp05-draft%20iridium%20ams(r)s%20tech%20manual%20-%20021506.pdf) is a good read.   
 
+Sep 2022 Iridium has picked up a LOT of interest in the past few weeks with some very interesting posts on the ACARS groups.io email list.
+Seems that a good amount of military aircraft (All USAF KC-135) are going to be moving from Inmarsat L-Band to Iridium.   
+## Parts required to build an Iridium ground station
 ### Antenna   
-I started out using the RTLSDR v2 patch antenna since its only meh at Inmarsat and so I had an unused one kicking around. While not the best antenna for Iridium (its directional and has a SAW filter in the LNA), its not too bad and given it's price and availability, if its all you can get, then give it a go by mounting it outside, looking straight up ie, flat, or angled in any direction that does not have obstuctions (trees etc).  
+I started out using the RTLSDR v2 patch antenna since its only meh at Inmarsat and so I had an unused one kicking around. While not the best antenna for Iridium (its directional and has a SAW filter in the LNA), its not too bad and given it's price and availability, if its all you can get, then give it a go by mounting it outside, looking straight up ie, flat, or angled in any direction that does not have obstructions (trees etc).  
+Some people have built an L-Band antenna, since it has less forward gain, the home made ones are an option.  
 I jumped on eBay and picked up an iridium dome antenna and will report back on how it goes once we get some air time with it.   
-Do note that there are very few _active_ iridium antennas since transmitting up to the satellites is very common. That said, I have found one that I really like: [HC610](https://www.google.com/search?q=HC610&sourceid=chrome&ie=UTF-8). (There is also a passive version of this antenna, so that might be an eaiser to find buy than this active one). Be sure and enable the Bias-T on your SDR, or use a physical Bias-T power injector (which is what I do because I am testing a lot of different SDRs and they all are a pain to turn the bias-T on in the config file - some don't even support Bias-T).   
+Do note that there are very few _active_ iridium antennas since transmitting up to the satellites is very common. That said, I have found one that I really like: [HC610](https://www.google.com/search?q=HC610&sourceid=chrome&ie=UTF-8). (There is also a passive version of this antenna, so that might be an easier to find buy than this active one).   
+Be sure and enable the Bias-T on your SDR, or use a physical Bias-T power injector (which is what I do because I am testing a lot of different SDRs and they all are a pain to turn the bias-T on in the config file - some don't even support Bias-T).   
 ### LNA   
 There are a few wide band amplifiers that cover 1.6Ghz, but the Nooelec Iridium LNA has amazing performance. Well worth the money and Bias-T hassels to drive this amplifier. 
 ### SDR   
 I normally like the RTLSDR v3 for this sort of thing (all things ACARS and L-Band). Its very affordable and very quick and clean to get running. The problem with the RTLSDR is that it only covers around 2Mhz bandwidth and that is only a very small number of the Iridium data channels.  
 I am testing the LimeSDR (v1), RSP1a, Airspy R2 and the Airspy Mini and am getting good numbers from most of these, easily more than 4x the data from the RTLSDR. Note that those stations using an Airspy R2 at around 8Mhz bandwidth have the best message rate of all the stations so far.   
+The RSP1a is a viable option if not for the horribly unstable API Linux driver they ship. Very CPU intense (wasteful) and as I said, very crash prone. The hardware is great, the Linux software is a dumpster fire. (And its not just 1 or 2 of us running Iridium that has found this. 100% of people that have tried it on Iridium and dumpHFDL have had driver issues and complaints).
 
-To be clear. You require a 10Mhz bandwidth SDR _and_ a computer to drive it to get all the data channels on Iridium. (Again, to be clear, the Raspberry Pi 4 is just not powerfull enough for Iridium).   
+To be clear. You require a 10Mhz bandwidth SDR _and_ a computer to drive it to get all the data channels on Iridium. (Again, to be clear, the Raspberry Pi 4 is just not powerful enough for Iridium).   
   
-### MUCCC - iridium-toolkit and gr-iridium    
-If you want to build from source the repo can be found on the [Chaos Computer Club München](https://github.com/muccc) GitHub. I really don't recomend building from source, gnu-radio is not trivial to build and nor is the gr-iridium toolkit    
+### Software. MUCCC - iridium-toolkit and gr-iridium    
+If you want to build from source the repo can be found on the [Chaos Computer Club München](https://github.com/muccc) GitHub. I really don't recommend building from source, gnu-radio is not trivial to build and nor is the gr-iridium toolkit. Ubuntu 22 is getting a bit better with gnuradio being in the repo, but there are still some hopes to jump through to get all the pieces and parts working together.    
    
 Note that none of the Iridium tools use a gui, so you must run it all via the desktop shell terminal on the DragonOS computer (or via PuTTY with DragonOS). I did my testing on a VMware instance on my Windows PC since you need USB 3.0 to drive your SDR to the required 10Mhz BW.   
-
+### Computer - CPU power is critical   
+The decoding of such a wind bandwidth of such bursty data is very CPU intense. You will need a USB 3.0 port to pass the data smoothly (USB 2.0 is a massive bottle neck).    
+For starters, the Raspberry Pi4 does NOT have enough power to decode more than about 2mhz, ie, the output of the RTLSDR v3. Sure, you can get started and see a few messages, but you will be missing out on over 80% of the aircraft in your area and you will have to chose between getting ACARS and seeing your map coverage, one or the other, the Pi4 and v3 can not decode both.    
+Our KBOS station is running: i3-12100 CPU, H670 chipset. That seems to be doing the job very well.    
+A few other stations are using old laptops, i5, i7 and are working well.    
+RAM is not critical, around 2mb or more is enough. HDD requires a minimum of 32GB.  
+Personally  I am running DragonOS_Focal on a VMware player machine on my Windows PC and am very happy.
+## Getting Started
 Once you install DragonOS_Focal on an i5 or better x86 computer with a USB 3.0 port, you are ready to start.  
 
 For now you are going to open a few terminals, we are working on an script to run it and keep it running (it does crash now and then), but for now, this is the best way to get going.....
@@ -118,7 +131,7 @@ Stop reading here, the notes below are mostly wrong and are just for history.
 
 ------------------------------
 Note that I used to run a global Iridium coverage map, but the URL was getting 'attacked' to try and break into my network, so I took it down.
-If there is enough interest from the handfull of Iridium feeders, I can put it back up and just let a few people know about it.   
+If there is enough interest from the handful of Iridium feeders, I can put it back up and just let a few people know about it.   
 Sep 2022. Its back!
 
 ## Terminal Four - Sending me your map data.   
