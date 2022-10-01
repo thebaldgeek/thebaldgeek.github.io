@@ -17,7 +17,8 @@ I jumped on eBay and picked up an iridium dome antenna and will report back on h
 Do note that there are very few _active_ iridium antennas since transmitting up to the satellites is very common. That said, I have found one that I really like: [HC610](https://www.google.com/search?q=HC610&sourceid=chrome&ie=UTF-8). (There is also a passive version of this antenna, so that might be an easier to find buy than this active one).   
 Be sure and enable the Bias-T on your SDR, or use a physical Bias-T power injector (which is what I do because I am testing a lot of different SDRs and they all are a pain to turn the bias-T on in the config file - some don't even support Bias-T).   
 ### LNA   
-There are a few wide band amplifiers that cover 1.6Ghz, but the Nooelec Iridium LNA has amazing performance. Well worth the money and Bias-T hassels to drive this amplifier. 
+There are a few wide band amplifiers that cover 1.6Ghz, but the Nooelec Iridium+IR LNA has amazing performance. Well worth the money and Bias-T hassels to drive this amplifier.   
+Note there are a few NooElects that seem to cover this band, they don't. Be sure and get the +IR, not just the +. They are over a gig apart and the + will do a rotten job on Iridium vs the +IR.
 ### SDR   
 I normally like the RTLSDR v3 for this sort of thing (all things ACARS and L-Band). Its very affordable and very quick and clean to get running. The problem with the RTLSDR is that it only covers around 2Mhz bandwidth and that is only a very small number of the Iridium data channels.  
 I am testing the LimeSDR (v1), RSP1a, Airspy R2 and the Airspy Mini and am getting good numbers from most of these, easily more than 4x the data from the RTLSDR. Note that those stations using an Airspy R2 at around 8Mhz bandwidth have the best message rate of all the stations so far.   
