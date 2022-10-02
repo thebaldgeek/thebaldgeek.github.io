@@ -47,7 +47,14 @@ If you know and love docker, then there that option as well [SDR Enthusiasts](ht
 
 [Airframes.io](https://app.airframes.io/about) supports feeds from all three, personally I like dumpvdl2 as it has a much richer output that I find very helpful (noise floor and signal data just to name two).    
 
-## Building / Installing the Software   
+## Building / Installing the Software  
+If you just want to get going - and who doesnt... just go here and run the script you want....   
+- https://app.airframes.io/about
+- https://github.com/sdr-enthusiasts
+- https://github.com/wiedehopf/adsb-wiki/wiki/acarsdec-install
+- https://github.com/wiedehopf/adsb-wiki/wiki/vdlm2dec-install
+- https://github.com/wiedehopf/adsb-wiki/wiki/dumpvdl2-install   
+   
 You can script the following commands, but I like to copy paste each one to ensure it runs without error.    
 If you are installing on an existing ADSB setup, you can skip the first part since you already have the SDR drivers installed and working.  
 
