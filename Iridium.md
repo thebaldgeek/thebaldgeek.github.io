@@ -73,36 +73,36 @@ You will spend a fair bit of time looking at these numbers scroll past as you se
 
 ## Terminal Two
 Type `nano acars.py`, then copy/paste in this text:    
-```#!/usr/bin/env python3
-
-import sys
-import select
-import time
-import socket
-
-
-ap = ("thebaldgeek.net", 123456)
-sk = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
-def sendOverUdp(line):
-    try:
-        bytes = str.encode(line)
-        print(len(bytes))
-        if len(bytes) < 65300 :
-           sk.sendto(bytes, ap)
-    except Exception as e:
-        print(e)
-
-def no_input():
-    print('no input')
-
-while True:
-    line = sys.stdin.readline()
-    if line:
-        sendOverUdp(line)
-    else:
-        time.sleep(1)
-else:
-    no_input()   
+```#!/usr/bin/env python3   
+   
+import sys   
+import select   
+import time   
+import socket   
+   
+   
+ap = ("thebaldgeek.net", 123456)   
+sk = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)   
+def sendOverUdp(line):   
+    try:   
+        bytes = str.encode(line)   
+        print(len(bytes))   
+        if len(bytes) < 65300 :   
+           sk.sendto(bytes, ap)   
+    except Exception as e:   
+        print(e)  
+   
+def no_input():   
+    print('no input')   
+   
+while True:   
+    line = sys.stdin.readline()   
+    if line:   
+        sendOverUdp(line)   
+    else:   
+        time.sleep(1)   
+else:   
+    no_input()    
 ```
      
 Change the `thebaldgeek.net` to what ever host you want to send your UDP ACARS messages to, and also change the port number from 123456 to the port you are using or thebaldgeek gives you. Then save and exit nano.   
