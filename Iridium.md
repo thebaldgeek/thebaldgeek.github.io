@@ -73,7 +73,8 @@ You will spend a fair bit of time looking at these numbers scroll past as you se
 
 ## Terminal Two
 Type `nano acars.py`, then copy/paste in this text:    
-```#!/usr/bin/env python3   
+```   
+#!/usr/bin/env python3   
    
 import sys   
 import select   
