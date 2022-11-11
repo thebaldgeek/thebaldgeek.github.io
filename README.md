@@ -1,8 +1,8 @@
-# Using Node-RED to manage ADSC, ADSB, ACARS, VDL2, Iridium, HF-DL and other aircraft type messages.
+# Decoding ADSC, ADSB, ACARS, VDL2, Iridium, HF-DL and other aircraft type messages.
 
 Navigation: [Inmarsat](Inmarsat.md) : [L-Band](L-Band.md) : [C-Band](C-Band.md) :  [VHF-ACARS/VDL2](vhf-acars.md) : [Iridium](Iridium.md) : [STDC](stdc.md) : [Jaero](jaero.md) : [SDRReceiver](SDRReceiver.md) : [DragonOS](DragonOS.md) : [autoTLE](autoTLE.md) : [OpenSkyAPI](OpenSkyAPI.md) : [VRS](vrs.md) : [MQTT](mqtt.md) : [Raspberry Pi](raspberrypi.md) : [Telegram Bot](telegram.md) : [UAV-Drone](UAV-Drone.md) : [Squawk](Squawk.md) 
 
-# Node-RED Dashboard - The main website
+# The main website
 
 Live ACARS, VDL2, HF-DL, Inmarsat C-Band, L-Band and Iridium messages for most of the planet - broken down into different bands and types of aircraft's (like Military, Bizjets, UAV etc).  
 <a href="https://acars.adsbexchange.com/" rel="noopener" target="_blank">https://acars.adsbexchange.com/</a>   
@@ -32,7 +32,9 @@ I am happy to help those that try and help themselves.
 Check back often, this site is being updated randomly.   
 
 I am pretty active on [Twitter](https://twitter.com/thebaldgeek) if thats your thing.     
-Tip, my Tweets are public, so you don't need a Twitter account to read them.   
+Tip, my Tweets are public, so you don't need a Twitter account to read them.  
+Free Twitter reader can be found [here](https://bird.trom.tf/search?f=tweets&q=thebaldgeek)   
+Not as active, but am also on <a rel="me" href="https://ioc.exchange/@thebaldgeek">Mastodon</a>   
     
 For ACARS data and feeding, please support [airframes.io](https://app.airframes.io/about) You can also follow them on Twitter [AirframesIO](https://twitter.com/AirframesIO)   
 #thebaldgeek can be also found on the adsbexchange Discord server - mostly in the ACARS channels.
