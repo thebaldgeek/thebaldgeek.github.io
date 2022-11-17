@@ -26,8 +26,11 @@ A good starter is [RG-8x](https://www.amazon.com/s?k=rg-8x&crid=3QO4RHETIF7KL&sp
 Note, be very careful about running an LNA. ACARS is close to the FM band and you may overload the front of the SDR and make things worse. Look at your SDR waterfall software if you can to see what the RF interference in your area is like and see how well you are picking up the ACARS/VDL bursts. I personally have had both success and failure running the [GPIO filtered airband LNA](https://gpio.com/products/airband-filtered-low-noise-amplifier?variant=19591697301526). In one location it was great and made a worthy addition, in another it made the signal useless. It was an expensive test. Your milage may vary.  
 
 ## Software   
-There is one supported decoder for ACARS and two decoders for VDL2. All of which only run on Linux. (There are some Windows options, Blackcat and MultiPSK, both are outside the scope of this page - neither of them can feed airframes.io).   
-If you know and love docker, then there that option as well [SDR Enthusiasts](https://github.com/sdr-enthusiasts) is a good way to combine your ADSB data with your ACARS data in your location.
+We often get the question which should you chose, ACARS or VDL. The answer depends on where you live and the aircraft traffic/age of aircraft in your area. You may have to run each for a few hours/days and just get a feel for the sorts of numbers of each modes message rate. If you can run three dongles and 1-3 antennas, pick up all you can, but 1 antenna and 1 dongle can still give really important data from your location. (Note that ACARS is like ADSB, we need lots of stations to give global coverage, so no matter where you live, we can use the data!)   
+
+There is one supported decoder for ACARS and two decoders for VDL2. All of which only run on Linux. None of them have a graphic interface, so there is no need to run a desktop distro if you don't want to.   
+(There are some Windows options, Blackcat and MultiPSK, both are outside the scope of this page - neither of them can feed airframes.io).   
+If you know and love docker, then there is that option as well [SDR Enthusiasts](https://github.com/sdr-enthusiasts) is a good way to combine your ADSB data with your ACARS data in your location.
 
 [acarsdec](https://github.com/TLeconte/acarsdec) is a multi-channel acars decoder with built-in rtl_sdr, airspy front end or sdrplay device.   
 [vdlm2dec](https://github.com/TLeconte/vdlm2dec) can decode up to 8 frequencies simultaneously ( but in the same 2Mhz range ) It decodes ARINC-622 ATS applications (ADS-C, CPDLC) via libacars library.    
@@ -48,7 +51,7 @@ If you know and love docker, then there that option as well [SDR Enthusiasts](ht
 [Airframes.io](https://app.airframes.io/about) supports feeds from all three, personally I like dumpvdl2 as it has a much richer output that I find very helpful (noise floor and signal data just to name two).    
 
 ## Building / Installing the Software  
-If you just want to get going - and who doesnt... just go here and run the script you want....   
+If you just want to get going - and who doesnt... just go here and run the script for the decoder you want....   
 
 - [https://github.com/wiedehopf/adsb-wiki/wiki/acarsdec-install](https://github.com/wiedehopf/adsb-wiki/wiki/acarsdec-install)
 - [https://github.com/wiedehopf/adsb-wiki/wiki/vdlm2dec-install](https://github.com/wiedehopf/adsb-wiki/wiki/vdlm2dec-install)
@@ -56,7 +59,9 @@ If you just want to get going - and who doesnt... just go here and run the scrip
     
 To find out more about feeding the main airframes.io website, check out these links:   
 - [https://app.airframes.io/about](https://app.airframes.io/about)
-- [https://github.com/sdr-enthusiasts](https://github.com/sdr-enthusiasts)
+- [https://github.com/sdr-enthusiasts](https://github.com/sdr-enthusiasts)   
+   
+### The following is the long-hand way of installing the decoders. Its not recommended other than people that are comfortable in the Linux command line and have a specific reason to installed the decoders by hand.
 
 You can script the following commands, but I like to copy paste each one to ensure it runs without error.    
 If you are installing on an existing ADSB setup, you can skip the first part since you already have the SDR drivers installed and working.  
