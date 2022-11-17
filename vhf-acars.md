@@ -49,12 +49,15 @@ If you know and love docker, then there that option as well [SDR Enthusiasts](ht
 
 ## Building / Installing the Software  
 If you just want to get going - and who doesnt... just go here and run the script you want....   
-- https://app.airframes.io/about
-- https://github.com/sdr-enthusiasts
-- https://github.com/wiedehopf/adsb-wiki/wiki/acarsdec-install
-- https://github.com/wiedehopf/adsb-wiki/wiki/vdlm2dec-install
-- https://github.com/wiedehopf/adsb-wiki/wiki/dumpvdl2-install   
-   
+
+- [https://github.com/wiedehopf/adsb-wiki/wiki/acarsdec-install](https://github.com/wiedehopf/adsb-wiki/wiki/acarsdec-install)
+- [https://github.com/wiedehopf/adsb-wiki/wiki/vdlm2dec-install](https://github.com/wiedehopf/adsb-wiki/wiki/vdlm2dec-install)
+- [https://github.com/wiedehopf/adsb-wiki/wiki/dumpvdl2-install   ](https://github.com/wiedehopf/adsb-wiki/wiki/dumpvdl2-install)   
+    
+To find out more about feeding the main airframes.io website, check out these links:   
+- [https://app.airframes.io/about](https://app.airframes.io/about)
+- [https://github.com/sdr-enthusiasts](https://github.com/sdr-enthusiasts)
+
 You can script the following commands, but I like to copy paste each one to ensure it runs without error.    
 If you are installing on an existing ADSB setup, you can skip the first part since you already have the SDR drivers installed and working.  
 
