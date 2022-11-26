@@ -212,6 +212,11 @@ Now run the file watch which will send me your sats.json rougly once a minute an
 ```./when-changed /usr/src/iridium-toolkit/html/sats.json cat /usr/src/iridium-toolkit/html/sats.json |  python3 ~/map2.py```
    
 Really really stop reading now.   
+## Getting the lastest version    
+cd ~
+wget https://github.com/muccc/iridium-toolkit/archive/refs/heads/master.zip
+unzip master.zip   
+Now path to where that unzipped ie, /home/yourusername/iridium-toolkit-master/   
    
 ## Pipe and tee   
 We are going to pipe the data into Node-RED via UDP.   
