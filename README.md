@@ -22,6 +22,10 @@ If you have an ADSC C-Band satellite dish setup and would like to feed your data
 ## About this website  
 This website is just a brain dump and rough help notes to assist others in getting the hardware and software together to receive and decode ACARS messages from the main modes/frequencies.    
 Its not perfect, its not finished, its not polished..... in time, these pages will fade as more help docs are written over at airframes.io
+   
+# About ACARS    
+Please take the time to [read this ACARS description](https://www.pentestpartners.com/security-blog/introduction-to-acars/). Its one of the best overviews from signal to data I have ever come across.    
+
 
 ###  READ THIS!
 
