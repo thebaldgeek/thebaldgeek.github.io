@@ -8,7 +8,7 @@ You can quickly visit https://sondehub.org and find your location and see what f
 Its a lot of fun to track these flights and then sometimes you can go to where they land and recover the sondes (scoring yourself a little GPS, temperature/humidity sensor and 400Mhz transmitter - many of which can run modified firmware and pressed into other uses.)   
 This page is less about the chasing and recovering the sonde (there are many websites and Facebook groups dedicated to that aspect of the hobby) and more about setting up the station and getting more station centric data from the payload data stream.  
 
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/recovery3.jpg" height="580">   
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/recovery3.jpg" height="320">   
    
 
 ## Software -> auto_rx     
@@ -37,7 +37,7 @@ This is the current popular LNA for radiosonde work, there is talk of a new sond
 Ok, now that we have an outdoor antenna mounted up as high as you can, quality LNA, good coax and your SDR connected to the software, we wait.    
 The twice a day launches usually happen around zero and 12 UTC. But at times of unusual weather or if you live near a rocket launch site, you may catch many more flights at all times of the day or night.   
 Jan 2023 we had some nasty weather in California and my station logged the following flights over about 24 hours.    
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/badweather.png" height="580">   
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/badweather.png" height="420">   
      
 ## station.conf file tweaks     
 We will now review the auto_rx station.conf file.
@@ -45,8 +45,10 @@ I use nano to edit mine, you can use what ever your comfortable in.
 
 The first thing to consider is the gain settings.   
 Most people run AGC or -1. These are the valid RTL gain values:    
-```# SDR Gain Setting
-# 0.0 0.9 1.4 2.7 3.7 7.7 8.7 12.5 14.4 15.7 16.6 19.7 20.7 22.9 25.4 28.0 29.7 32.8 33.8 36.4 37.2 38.6 40.2 42.1 43.4 43.9 44.5 48.0 49.6```
+```
+# SDR Gain Setting
+0.0 0.9 1.4 2.7 3.7 7.7 8.7 12.5 14.4 15.7 16.6 19.7 20.7 22.9 25.4 28.0 29.7 32.8 33.8 36.4 37.2 38.6 40.2 42.1 43.4 43.9 44.5 48.0 49.6
+```
 I usually copy these into the file at the gain setting area to keep them handy.   
 Be sure and set `bias = True` if you need your SDR to power the LNA. Be sure and use an SDR that has a Bias-T output and is powerful enough to drive the LNA.
 One of the best ways I have found to find the best gain for your setup is to plug the dongle into a laptop and run some SDR software to see the sonde signal during a flight and then just adjust the gain for the best signal to noise and make a note of the that gain value and then put it in the station.conf file and restart auto_rx.    
@@ -58,7 +60,9 @@ Be sure and look at the notes in the file and set your mix and max frequencies t
     
 Next up is the only/never/always scan section.   
 Since I see some common spikes in my area that never seem to go away unless I disconnect the antenna I have added those to the never_scan section, but before you do that, I suggest you make careful note for a few weeks of all the sonde frequencies in use in your area to make sure you don't accidentally add one of those to the never_scan list.  
-The list should be comma separated, something like this (don't use these!): ```never_scan = [403.2,403.06,405.76,401.92,404.97]
+The list should be comma separated, something like this (don't use these!):   
+ ```
+never_scan = [403.2,403.06,405.76,401.92,404.97]
 ```   
 If you don't have more than about 5-8 constant spikes, there is probably no need to record them and lock them out.   
     
@@ -108,8 +112,7 @@ Note which port on your splitter has the power pass.
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4waytvsplitter.jpg" height="580">   
 Note in this photo of my splitter it is the port on the very left. What ever SDR Sn you put  SDR you will need to ensure has the bias-t turned on to run your LNA. Note which serial number you put in there so you can set the `bias = True` command in the station.conf file with the correct SDR.   
 My 4 SDR station .conf looks like this:    
-```
-[sdr_1]
+```[sdr_1]
 device_idx = 401
 ppm = 0
 # SDR Gain Setting
@@ -145,8 +148,8 @@ bias = False
 Note I put the AGC on comment so I can test either setting pretty quick.   
 I also updated my station antenna description to reflect that Im using 4 SDR's.   
     
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrandmap.png" height="580">   
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrdecode.png" height="580">
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrandmap.png" height="320">   
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrdecode.png" height="320">
    
 The order of operations for auto_rx now becomes something like this.   
 The lowest SN SDR will be scanning. When it finds a peak with sonde data on it, it passes it off to the next highest SN SDR and goes back to scanning.   
