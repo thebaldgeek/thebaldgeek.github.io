@@ -143,14 +143,15 @@ device_idx = 404
 ppm = 0
 #gain = -1
 gain = 40.2
-bias = False
-```
+bias = False```
+
 Note I put the AGC on comment so I can test either setting pretty quick.   
 I also updated my station antenna description to reflect that Im using 4 SDR's.   
-    
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrandmap.png" height="320">   
+
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrandmap.png" height="320">
+
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrdecode.png" height="320">
-   
+  
 The order of operations for auto_rx now becomes something like this.   
 The lowest SN SDR will be scanning. When it finds a peak with sonde data on it, it passes it off to the next highest SN SDR and goes back to scanning.   
 If it finds another it will check if the next highest SN is already decoding, if so, it passes it up to the next highest serial number and goes back to scanning.  
