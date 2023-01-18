@@ -3,10 +3,10 @@
 Navigation: [home](README.md)  
 
 Radiosondes or weather balloons are launched around twice a day from a lot of different locations around the world.  
-You can quickly visit https://sondehub.org and find your location and see what flights are going on around you. Zoom out and find the little gray circle that is a launch site (usually near or on large airports) and then right click on the circle and check out the frequency of launches and the history of flights from that site.  
+You can quickly visit (https://sondehub.org) and find your location and see what flights are going on around you. Zoom out and find the little gray circle that is a launch site (usually near or on large airports) and then right click on the circle and check out the frequency of launches and the history of flights from that site.  
 
 Its a lot of fun to track these flights and then sometimes you can go to where they land and recover the sondes (scoring yourself a little GPS, temperature/humidity sensor and 400Mhz transmitter - many of which can run modified firmware and pressed into other uses.)   
-This page is less about the chasing and recovering the sonde (there are many websites and Facebook groups dedicated to that aspect of the hobby) and more about setting up the station and getting more station centric data from the payload data stream.  
+While a lot of fun, this page is less about the chasing and recovering the sonde (there are many websites and Facebook groups dedicated to that aspect of the hobby) and more about setting up the station, improving and measuring changes to the station by getting more station centric data from the payload data stream.  
 
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/recovery3.jpg" height="320">   
    
@@ -14,7 +14,7 @@ This page is less about the chasing and recovering the sonde (there are many web
 ## Software -> auto_rx     
 There are a few different sonde decoder software packages, some for Windows, some for Linux, a quick Google search can guide you on them, this page is going to focus on the Linux only 'auto_rx' package.   
 You can run auto_rx on a Raspberry Pi 3/4 or x86 computer running Ubuntu or Debian. (Other distros might be possible, but I don't have any experience on them).   
-The auto_rx people have done a great job writing up the code and installation guide, you can visit the wiki here: https://github.com/projecthorus/radiosonde_auto_rx/wiki    
+The auto_rx people have done a great job writing up the code and installation guide, you can visit the wiki here: (https://github.com/projecthorus/radiosonde_auto_rx/wiki)    
 Some notes: I am not a fan of docker, so usually go with the native build. One comment on Docker.... You can not install their Docker container on an x86 computer, the Docker 'image' is CPU architecture specific and its been built only for the Raspberry Pi CPU so you will get an error trying to run their Docker container on anything else.   
 The wiki native install guide is very clear and results in a smooth install.   
 I recommend getting up and running with just the one RTLSDR v3 dongle at first. Do note that while the Airspy Mini and R2 SDR's are supported, its somewhat more complicated and fragile to get and keep running and so I have not ventured into those hardware platforms.    
@@ -31,7 +31,7 @@ Coax is not too critical at 400Mhz. Many use good quality 75 Ohm tv coax.
     
 LNA. There is no question a good quality LNA mounted at the antenna will make a huge difference in the range and amount of data packets you decode from any given flight.   
 While you can use a general wide band LNA that are very cheap and popular, a filtered LNA will always bring better results.    
-https://store.uputronics.com/index.php?route=product/product&product_id=54   
+(https://store.uputronics.com/index.php?route=product/product&product_id=54)   
 This is the current popular LNA for radiosonde work, there is talk of a new sonde specific LNA in the works, but it has not been released yet.
      
 Ok, now that we have an outdoor antenna mounted up as high as you can, quality LNA, good coax and your SDR connected to the software, we wait.    
@@ -85,7 +85,9 @@ If so, its time for.....
 ## More SDRs. More sonde flights    
 If you are lucky enough to live in an area that see's perhaps a few sondes a day, you might like to add more SDR's to your setup.  
     
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrandsplitter.png" height="580"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrsinhub.png" height="580"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/44sdrsaplitter.png" height="580">    
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrandsplitter.jpg" height="320">   
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrsinhub.jpg" height="320">   
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrsaplitter.jpg" height="320">    
     
 You can go with 2 or more SDR's. As many as you have signal strength to drive through the 3db to 6db of loss that the splitter introduces
 A critical aspect of running more than one SDR is to set the serial numbers. Here is how to do that.....    
@@ -150,7 +152,7 @@ I also updated my station antenna description to reflect that Im using 4 SDR's.
 
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrandmap.png" height="320">
 
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrdecode.png" height="320">
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/decodelasvegas.png" height="320">
   
 The order of operations for auto_rx now becomes something like this.   
 The lowest SN SDR will be scanning. When it finds a peak with sonde data on it, it passes it off to the next highest SN SDR and goes back to scanning.   
