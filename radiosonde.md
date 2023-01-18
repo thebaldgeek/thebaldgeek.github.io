@@ -198,4 +198,7 @@ While these screenshots only show one elevation and one antenna, we only have a 
     
 ## Main page table, radar and elevation    
 On the main page we have a few things worth pointing out.    
-
+Front and center is the past 40 flights. The purpose of this table is a few points of helpful information.  
+Firstly, if you are running more than 1 SDR, we have which one did the decoding, then the model of the sonde and the frequency that it was transmitting on. This is a critical bit of information if you are using the 'never_scan' feature of auto_rx. Next is the SNR, distance, azimuth, elevation and altitude from the first data packets you decoded. This will show, over time, those data points from when your station firs acquires the sonde.  
+Clicking on any of the table column names will sort that column ascending or descending.  
+At the end of the table is the link to take you to the sondehub URL for that flight.   
