@@ -164,5 +164,7 @@ Its default is 180 seconds, you can see I have bumped it up since I have 4 SDRs 
 This time extension is also helpful for me as there are lot of mountains around my location and the sondes will drop into my noise floor while they go behind a peak.
      
 ## Quantifying station changes    
-One of the many challengers facing the serious sonde station owner is knowing how well their station is performing and the time it takes to measure each change.   
-Since each sonde flight will be slightly or very different distances and altitiudes from the antenna it can be tough to average all those flights out and see if a gain or antenna change really is helping or hindering.
+Two of the many challengers facing the serious sonde station owner is knowing how well their station is performing and the time it takes to measure each change.   
+Since each sonde flight will be slightly or very different distances and altitudes from the antenna it can be tough to average all those flights out and see if a gain or antenna change really is helping or hindering.   
+To this end a few guys from the North America Radiosonde Facebook group got together off-group and started talking about how to measure and normalize the data from the many flights over a week or month and visualize that data in a way that would help the station owner ensure their station was running a the very peak it could.   
+I brought Node-RED to the table and a plan was hatched to use the auto_rx Chasemapper UDP data stream to build some data dashboards.    
