@@ -116,7 +116,7 @@ Note which port on your splitter has the power pass.
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4waytvsplitter.jpg" height="580">   
 Note in this photo of my splitter it is the port on the very left. What ever SDR Sn you put  SDR you will need to ensure has the bias-t turned on to run your LNA. Note which serial number you put in there so you can set the `bias = True` command in the station.conf file with the correct SDR.   
 My 4 SDR station .conf looks like this:    
-``` [sdr_1]
+```[sdr_1]
 device_idx = 401
 ppm = 0
 # SDR Gain Setting
