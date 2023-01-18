@@ -211,5 +211,13 @@ At the end of the table is the link to take you to the sondehub URL for that fli
 Next, top left is the radar scope. Here you have a top down view with your antenna in the center. Going out from the antenna is distance mapped with bearing to the sonde with 5deg resolution and the normalized SNR for that distance and bearing.   
 Do note that you can click on the small square title box and toggle that plot on/off.   
 The purpose of this radar plot is to help the station owner to see their all time max distance and what SNR it was for that direction. Again, local and distant obstructions will be visible, along with typical flight patterns.   
+
 Lastly, the elevation scatter plot.  
-This provides a cross section of your antenna gain/lobes. The difference between this scatter plot and the one on each SDR page is that this one is the master of all the SDR's and is using the inverse square law to normalize the SNR regardless of the sondes distance at each elevation. 
+This provides a cross section of your antenna gain/lobes. The difference between this scatter plot and the one on each SDR page is that this one is the master of all the SDR's and is using the inverse square law to normalize the SNR regardless of the sondes distance at each elevation.  
+   
+## Installing Node-RED   
+To run the software you will need to install Node-RED.  
+Also note that the dashboards only work with the auto_rx Chasemapper UDP output.   
+For installing the Node-RED software, their website has all you need to get running (Personal note, I have had nothing but trouble running it on Docker), [Install Node-RED](https://nodered.org/docs/getting-started/)    
+Once you have it installed and can see your editor, you can import the flow for the radiosonde dashboard.   
+Once imported, just add your home lat/lon and alt to the marked node, hit deploy and wait for your first flight.
