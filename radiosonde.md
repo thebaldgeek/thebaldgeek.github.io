@@ -85,9 +85,9 @@ If so, its time for.....
 ## More SDRs. More sonde flights    
 If you are lucky enough to live in an area that see's perhaps a few sondes a day, you might like to add more SDR's to your setup.  
     
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrandsplitter.jpg" height="320">   
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrsinhub.jpg" height="320">   
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrsaplitter.jpg" height="320">    
+<img src="https://github.com/thebaldgeek/thebaldgeek.github.io/blob/main/img/radiosonde/4sdrsandsplitter.jpg" height="320">   
+<img src="https://github.com/thebaldgeek/thebaldgeek.github.io/blob/main/img/radiosonde/4sdrsinhub.jpg" height="320">   
+<img src="https://github.com/thebaldgeek/thebaldgeek.github.io/blob/main/img/radiosonde/4sdrsaplitter.jpg" height="320">    
     
 You can go with 2 or more SDR's. As many as you have signal strength to drive through the 3db to 6db of loss that the splitter introduces
 A critical aspect of running more than one SDR is to set the serial numbers. Here is how to do that.....    
@@ -162,3 +162,7 @@ This timeout is adjustable just under the min and max frequency setting:
 ```rx_timeout = 900```  
 Its default is 180 seconds, you can see I have bumped it up since I have 4 SDRs I can afford to keep listening to each sonde longer before giving up and going back in the 'not tasked' pool and wait for the 'scanning' SDR to hand it a task.  
 This time extension is also helpful for me as there are lot of mountains around my location and the sondes will drop into my noise floor while they go behind a peak.
+     
+## Quantifying station changes    
+One of the many challengers facing the serious sonde station owner is knowing how well their station is performing and the time it takes to measure each change.   
+Since each sonde flight will be slightly or very different distances and altitiudes from the antenna it can be tough to average all those flights out and see if a gain or antenna change really is helping or hindering.
