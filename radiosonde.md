@@ -85,9 +85,11 @@ If so, its time for.....
 ## More SDRs. More sonde flights    
 If you are lucky enough to live in an area that see's perhaps a few sondes a day, you might like to add more SDR's to your setup.  
     
-<img src="https://github.com/thebaldgeek/thebaldgeek.github.io/blob/main/img/radiosonde/4sdrsandsplitter.jpg" height="320">   
-<img src="https://github.com/thebaldgeek/thebaldgeek.github.io/blob/main/img/radiosonde/4sdrsinhub.jpg" height="320">   
-<img src="https://github.com/thebaldgeek/thebaldgeek.github.io/blob/main/img/radiosonde/4sdrsaplitter.jpg" height="320">    
+ 
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrsandsplitter.jpg" height="320">
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrsinhub.jpg" height="320">
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrsaplitter.jpg" height="320">
+  
     
 You can go with 2 or more SDR's. As many as you have signal strength to drive through the 3db to 6db of loss that the splitter introduces
 A critical aspect of running more than one SDR is to set the serial numbers. Here is how to do that.....    
@@ -168,3 +170,16 @@ Two of the many challengers facing the serious sonde station owner is knowing ho
 Since each sonde flight will be slightly or very different distances and altitudes from the antenna it can be tough to average all those flights out and see if a gain or antenna change really is helping or hindering.   
 To this end a few guys from the North America Radiosonde Facebook group got together off-group and started talking about how to measure and normalize the data from the many flights over a week or month and visualize that data in a way that would help the station owner ensure their station was running a the very peak it could.   
 I brought Node-RED to the table and a plan was hatched to use the auto_rx Chasemapper UDP data stream to build some data dashboards.    
+     
+I want to make it very clear that the small group of RF junkies were hyper focused on NOT reproducing or duplicating any of the existing functionally that already exists in the very awesome auto_rx. For example, there was talk about logging the data to a CSV file, but auto_rx already does that. Same with the distance plot, auto_rx already has a great map that shows the stations max range and typical coverage.... What that plot lacks is the signal strength for those range plots.
+
+## Lat/Lon and SNR    
+The key information in the UDP stream is the sondes position and your SDR's SNR (signal to noise ratio) for each data packet that is received and correctly decoded.  
+Using this we can tell how far away the sonde is from your antenna and what the elevation the sonde is in relation to your antenna.  
+The challenge is that the intensity of radio waves over distance obeys the inverse square law, that is to say, the signals intensity is inversely proportional to the square of the distance the sonde is from your antenna.   
+In short, double the distance and you get four times less signal.   
+Of course all of this just boils down to a few math problems and math that has been well proven and there are many resources around on the Internet to help get the cold hard numbers out of the data.   
+    
+## How to see the data    
+Once we have the core numbers: distance, elevation, bearing (azimuth), SNR and normalized SNR for distance we are ready to do something with them.    
+First up, something that looks like it does the same (only worse) than sondehub, that is a plot of the sondes weather data.   
