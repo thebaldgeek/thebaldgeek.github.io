@@ -205,3 +205,9 @@ Front and center is the past 40 flights. The purpose of this table is a few poin
 Firstly, if you are running more than 1 SDR, we have which one did the decoding, then the model of the sonde and the frequency that it was transmitting on. This is a critical bit of information if you are using the 'never_scan' feature of auto_rx. Next is the SNR, distance, azimuth, elevation and altitude from the first data packets you decoded. This will show, over time, those data points from when your station firs acquires the sonde.  
 Clicking on any of the table column names will sort that column ascending or descending.  
 At the end of the table is the link to take you to the sondehub URL for that flight.   
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/radarscope.png" height="420">   
+Next, top left is the radar scope. Here you have a top down view with your antenna in the center. Going out from the antenna is distance mapped with bearing to the sonde with 5deg resolution and the normalized SNR for that distance and bearing.   
+Do note that you can click on the small square title box and toggle that plot on/off.   
+The purpose of this radar plot is to help the station owner to see their all time max distance and what SNR it was for that direction. Again, local and distant obstructions will be visible, along with typical flight patterns.   
+Lastly, the elevation scatter plot.  
+This provides a cross section of your antenna gain/lobes.
