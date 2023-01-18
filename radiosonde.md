@@ -116,7 +116,8 @@ Note which port on your splitter has the power pass.
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4waytvsplitter.jpg" height="580">   
 Note in this photo of my splitter it is the port on the very left. What ever SDR Sn you put  SDR you will need to ensure has the bias-t turned on to run your LNA. Note which serial number you put in there so you can set the `bias = True` command in the station.conf file with the correct SDR.   
 My 4 SDR station .conf looks like this:    
-```[sdr_1]
+```
+[sdr_1]
 device_idx = 401
 ppm = 0
 # SDR Gain Setting
@@ -147,7 +148,8 @@ device_idx = 404
 ppm = 0
 #gain = -1
 gain = 40.2
-bias = False```
+bias = False
+```
 
 Note I put the AGC on comment so I can test either setting pretty quick.   
 I also updated my station antenna description to reflect that Im using 4 SDR's.   
@@ -183,3 +185,10 @@ Of course all of this just boils down to a few math problems and math that has b
 ## How to see the data    
 Once we have the core numbers: distance, elevation, bearing (azimuth), SNR and normalized SNR for distance we are ready to do something with them.    
 First up, something that looks like it does the same (only worse) than sondehub, that is a plot of the sondes weather data.   
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/firsthumidity.png" height="320">   
+We have altitude in blue, humidity in orange, distance in yellow and raw SNR in green.   
+The first thing that will jump out to sonde trackers is the clear slow rise in the blue alt, then the burst and rapid descent. And yes, your quite right, sondehub has this data at the bottom of the main map window, so why do we have it here. Well, simply because the sondehub data is from all the stations hearing that sonde, and thus there are no gaps in the data, unlike this graph. Here the station owner only sees the sonde data his station decoded and if there were any issues, there are gaps in this graph that the owner would not other wise know about. Of course, simply knowing is just the start, now the hunt for why the data drops out flight after flight at the same time/elevation or bearing can be tricky to track down, but is of great interest to those trying to engineer a station to catch all the data it can.    
+So thats why that graph is on the page.    
+
+# Raw SNR vs Elevation    
+To the right of that sonde weather data line chart
