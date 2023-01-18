@@ -148,8 +148,7 @@ device_idx = 404
 ppm = 0
 #gain = -1
 gain = 40.2
-bias = False
-```
+bias = False```
 
 Note I put the AGC on comment so I can test either setting pretty quick.   
 I also updated my station antenna description to reflect that Im using 4 SDR's.   
@@ -185,10 +184,19 @@ Of course all of this just boils down to a few math problems and math that has b
 ## How to see the data    
 Once we have the core numbers: distance, elevation, bearing (azimuth), SNR and normalized SNR for distance we are ready to do something with them.    
 First up, something that looks like it does the same (only worse) than sondehub, that is a plot of the sondes weather data.   
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/firsthumidity.png" height="320">   
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/firsthumidity.png" height="420">   
 We have altitude in blue, humidity in orange, distance in yellow and raw SNR in green.   
 The first thing that will jump out to sonde trackers is the clear slow rise in the blue alt, then the burst and rapid descent. And yes, your quite right, sondehub has this data at the bottom of the main map window, so why do we have it here. Well, simply because the sondehub data is from all the stations hearing that sonde, and thus there are no gaps in the data, unlike this graph. Here the station owner only sees the sonde data his station decoded and if there were any issues, there are gaps in this graph that the owner would not other wise know about. Of course, simply knowing is just the start, now the hunt for why the data drops out flight after flight at the same time/elevation or bearing can be tricky to track down, but is of great interest to those trying to engineer a station to catch all the data it can.    
 So thats why that graph is on the page.    
 
 # Raw SNR vs Elevation    
-To the right of that sonde weather data line chart
+To the right of that sonde weather data line chart is the raw per flight elevation and SNR scatter plot.   
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/antennanodesfromsonde.png" height="420">  
+The point of this graph is to better visualize the antenna 'gain' profile with the knowledge firmly in mind that you are also going to see any signal obstructions like houses, trees and mountain ranges between the sonde and the station antenna at that elevation.   
+That said, over many flights you can start to see how the antenna profile from the scatter plot matches the antenna model:   
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/antenanodestypical.png" height="420">   
+While these screenshots only show one elevation and one antenna, we only have a few people running the Node-RED software and so far, the results are in line with what we expect to see.   
+    
+## Main page table, radar and elevation    
+On the main page we have a few things worth pointing out.    
+
