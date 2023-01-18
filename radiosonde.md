@@ -117,38 +117,38 @@ Note which port on your splitter has the power pass.
 Note in this photo of my splitter it is the port on the very left. What ever SDR Sn you put  SDR you will need to ensure has the bias-t turned on to run your LNA. Note which serial number you put in there so you can set the `bias = True` command in the station.conf file with the correct SDR.   
 My 4 SDR station .conf looks like this:   
 
-`[sdr_1]
-device_idx = 401
-ppm = 0
-# SDR Gain Setting
-# 0.0 0.9 1.4 2.7 3.7 7.7 8.7 12.5 14.4 15.7 16.6 19.7 20.7 22.9 25.4 28.0 29.7 32.8 33.8 36.4 37.2 38.6 40.2 42.1 43.4 43.9 44.5 48.0 49.6
-#gain = -1
-gain = 40.2
-bias = True
+    [sdr_1]
+    device_idx = 401
+    ppm = 0
+    # SDR Gain Setting
+    # 0.0 0.9 1.4 2.7 3.7 7.7 8.7 12.5 14.4 15.7 16.6 19.7 20.7 22.9 25.4 28.0 29.7 32.8 33.8 36.4 37.2 38.6 40.2 42.1 43.4 43.9 44.5 48.0 49.6
+    #gain = -1
+    gain = 40.2
+    bias = True
 
-[sdr_2]
-# As above, for the next SDR, if used. Note the warning about serial numbers.
-device_idx = 402
-ppm = 0
-#gain = -1
-gain = 40.2
-bias = False
+    [sdr_2]
+    # As above, for the next SDR, if used. Note the warning about serial numbers.
+    device_idx = 402
+    ppm = 0
+    #gain = -1
+    gain = 40.2
+    bias = False
 
-[sdr_3]
-# As above, for the next SDR, if used. Note the warning about serial numbers.
-device_idx = 403
-ppm = 0
-#gain = -1
-gain = 40.2
-bias = False
+    [sdr_3]
+    # As above, for the next SDR, if used. Note the warning about serial numbers.
+    device_idx = 403
+    ppm = 0
+    #gain = -1
+    gain = 40.2
+    bias = False
 
-[sdr_4]
-# As above, for the next SDR, if used. Note the warning about serial numbers.
-device_idx = 404
-ppm = 0
-#gain = -1
-gain = 40.2
-bias = False`
+    [sdr_4]
+    # As above, for the next SDR, if used. Note the warning about serial numbers.
+    device_idx = 404
+    ppm = 0
+    #gain = -1
+    gain = 40.2
+    bias = False
 
 Note I put the AGC on comment so I can test either setting pretty quick.   
 I also updated my station antenna description to reflect that Im using 4 SDR's.   
@@ -208,4 +208,4 @@ Next, top left is the radar scope. Here you have a top down view with your anten
 Do note that you can click on the small square title box and toggle that plot on/off.   
 The purpose of this radar plot is to help the station owner to see their all time max distance and what SNR it was for that direction. Again, local and distant obstructions will be visible, along with typical flight patterns.   
 Lastly, the elevation scatter plot.  
-This provides a cross section of your antenna gain/lobes.
+This provides a cross section of your antenna gain/lobes. The difference between this scatter plot and the one on each SDR page is that this one is the master of all the SDR's and is using the inverse square law to normalize the SNR regardless of the sondes distance at each elevation. 

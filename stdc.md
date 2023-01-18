@@ -2,13 +2,13 @@
    
 Navigation: [home](README.md)  
 
-STDC provides a range of messages to ships. They are 'official' messages rather than personal email or text messages.   
+STDC provides a range of messages to ships. These channel contain 'official' messages rather than personal email or text messages.   
 These messages can be decoded via a few different software packages, some Linux only, some Windows only, some cross platform.   
 All these programs decode the same 1200 bps DBPSK Network Control Station Channel (NCSC).   
 The main frequencies are known as Enhanced Group Call (EGC), which allows official broadcast messages to be sent to ships located anywhere within a satellite's coverage.   
 The usual four Inmarsat geostationary satellites provide worldwide coverage for these types of broadcasts.    
    
-You will find them on the following frequenices:   
+You will find them on the following frequencies:   
    
 98w. 4F3. AOR-W: 1537.70 MHz   
    
@@ -21,8 +21,8 @@ You will find them on the following frequenices:
 Most people seem to be using the RTLSDR v3 patch antenna but a ~7 turn RHCP helix with LNA would be better, or a 3-4 turn LHCP helix pointing at a dish would be better still.   
 The SDR need be nothing more expensive than the usual RTLSDR V3 silver dongle.    
 Use some quality coax (not the needle thin RTLSDR junk that comes with the patch antenna - throw it out and get some better quality coax). and you should have a very solid decode rate consisting of about 100+ messages per day.   
-The signal is easy to find as it is a continous carrier even when no messages are being sent.   
-For the Linux decoders, usually a Raspberry Pi 4 is capable of decoding the stream. Most require either a GUI or a GUI SDR (with waterfall) software, so a desktop enviroment is required (DragonOS_Pi64 is highly recomended).   
+The signal is easy to find as it is a continuos carrier even when no messages are being sent.   
+For the Linux decoders, usually a Raspberry Pi 4 is capable of decoding the stream. Most require either a GUI or a GUI SDR (with waterfall) software, so a desktop environment is required (DragonOS_Pi64 is highly recommended).   
    
 Software options:   
     
