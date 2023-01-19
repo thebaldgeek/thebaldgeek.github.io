@@ -37,7 +37,7 @@ The Nooelec XTR SDR's have been called out in the Facebook group as being more s
 The NooElec v5 is currently being tested with good initial results.    
 The RadarBox airband dongle is so deaf at every frequency known that most have given up on them.  
 
-# Coax
+### Coax
 Coax type is slightly critical at 400Mhz. Mostly it comes down the length required to go from the antenna to the SDR. (Personal rant here, please don't fall into the common trap of thinking less coax length and long USB cable is better - its not. Sure a few feet of USB extension to get the SDR away from the RF noisy computer is ok and often a good thing, but a long USB cable is always a poor substitute for good quality coax).  
 Many use good quality 75 Ohm tv coax for shorter runs (Say, less than 50 ft).    
 
