@@ -252,13 +252,15 @@ Different antenna types have different vertical lobes and with radiosonde tracki
 ## Installing Node-RED   
 To run the software you will need to install Node-RED.  
 Also note that the dashboards only work with the auto_rx Chasemapper UDP output. It will not work with any of the other sonde software packages.   
-   
+
 For installing the Node-RED software, their website has all you need to get running (Personal note, I have had nothing but trouble running it on Docker), [Install Node-RED](https://nodered.org/docs/getting-started/)    
 Once you have it installed and can see your editor, you can import the flow for the radiosonde dashboard.   
 Once imported, just add your home lat/lon and alt to the marked node, update your SDR serial numbers in the marked node, hit deploy and wait for your first flight.  
    
-To install node-red on Raspberry Pi
+To install node-red on Raspberry Pi   
+
     run “bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)”
     sudo systemctl enable nodered.service
     node-red-start  
+
 That should get you up and running pretty quick.
