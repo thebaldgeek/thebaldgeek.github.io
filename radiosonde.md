@@ -5,19 +5,19 @@ Navigation: [home](README.md)
 Radiosondes or weather balloons are launched around twice a day from a lot of different locations around the world.  
 You can visit [sondehub](https://sondehub.org) and find your location to see what flights are going on around you. Zoom out and find the little gray circle that is a launch site (usually near or on airports) and then right click on the circle and check out the frequency of launches and the history of flights from that site.  
 
-Its a lot of fun to track these flights and sometimes you can go to where they land and recover the sondes (scoring yourself a little GPS, temperature/humidity sensor and 400Mhz transmitter - many of which can run modified firmware and pressed into other uses.)   
+Its a lot of fun to track these flights and sometimes you can go to where they land and recover the sondes (scoring yourself a little GPS, temperature/humidity sensor and 400Mhz transmitter - many of which can run modified firmware and pressed into other uses. [RS41 firmware](https://github.com/mikaelnousiainen/RS41ng) and [DFM-17 mods](https://wiki.recessim.com/view/DFM-17_Radiosonde)   
 While recovering a sonde is lot of fun, this page is less about the chasing and recovering the sonde (there are many websites and Facebook groups dedicated to that aspect of the hobby) and more about setting up the station, improving and measuring changes to the station by getting more station centric data from the payload data stream.  
 
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/recovery3.jpg" height="320">   
    
 
 ## Software -> auto_rx     
-There are a few different sonde decoder software packages that you can download. Some for Windows, some for Linux, some decode a lot of different models of sonde data, some only one or two. A quick Google search can guide you on them, this page is going to focus on the Linux only 'auto_rx' package.   
+There are a few different sonde decoder software packages that you can download. Some for Windows, some for Linux, some decode a lot of different models of sonde data, some only one or two. A quick Google search can guide you on them, this page is going to focus on the Linux only 'radiosonde_auto_rx' package.   
 You can run auto_rx on a Raspberry Pi 3/4 or x86 computer running Ubuntu or Debian. (Other distros might be possible, but I don't have any experience with them).   
-The auto_rx people have done a great job writing up the code and installation guide, you can visit the wiki here: [auto_rx wiki](https://github.com/projecthorus/radiosonde_auto_rx/wiki)    
+The auto_rx people have done a great job writing up the code and installation guide, you can visit the wiki here: [radiosonde_auto_rx wiki](https://github.com/projecthorus/radiosonde_auto_rx/wiki)    
 Some notes: I am not a fan of Docker, so usually go with the native build. One comment on Docker.... You can not install their Docker container on a x86 computer, the Docker 'image' is CPU architecture specific and its been built only for the Raspberry Pi CPU so you will get an error trying to run their Docker container on anything else.   
 Do note that auto_rx does not need a gui or desktop, so you can run a headless install on your computer and just use a web browser to view the auto_rx interface from any other computer / tablet on your local network.   
-The wiki native install guide is very clear and results in a smooth install.   
+The wiki native install guide is very clear and results in a smooth install. Just be sure to read all the way through before starting and don't proced to the next step if you get an error on the current step - I have never had any issues thus far.   
 
 I recommend getting up and running with just the one RTLSDR v3 dongle at first. Do note that while the Airspy Mini and R2 SDR's are sort of supported, its somewhat more complicated and fragile to get going and keep running and so I have not ventured into those hardware platforms. If you want to have a go at running them at some point in the future, the instructions are further down their [Wiki](https://github.com/projecthorus/radiosonde_auto_rx/wiki/Network-SDR-Decoding-Instructions)  
 
