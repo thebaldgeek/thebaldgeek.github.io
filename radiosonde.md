@@ -3,7 +3,7 @@
 Navigation: [home](README.md)  
 
 Radiosondes or weather balloons are launched around twice a day from a lot of different locations around the world.  
-You can visit [sondehub](https://sondehub.org) and find your location to see what flights are going on around you. Zoom out and find the little gray circle that is a launch site (usually near or on airports) and then right click on the circle and check out the frequency of launches and the history of flights from that site.  
+You can visit [sondehub](https://sondehub.org) and find your location to see what flights are going on around you. Zoom out and find the little gray circle that is a launch site (usually near or on airports) and then right click on the circle and check out the frequency of launches and the history of flights from that site to see where sondes have landed in the past.  
 
 Its a lot of fun to track these flights and sometimes you can go to where they land and recover the sondes (scoring yourself a little GPS, temperature/humidity sensor and 400Mhz transmitter - many of which can run modified firmware and pressed into other uses. [RS41 firmware](https://github.com/mikaelnousiainen/RS41ng) and [DFM-17 mods](https://wiki.recessim.com/view/DFM-17_Radiosonde)   
 While recovering a sonde is lot of fun, this page is less about the chasing and recovering the sonde (there are many websites and Facebook groups dedicated to that aspect of the hobby) and more about setting up the station, improving and measuring changes to the station by getting more station centric data from the payload data stream.  
@@ -15,15 +15,15 @@ While recovering a sonde is lot of fun, this page is less about the chasing and 
 There are a few different sonde decoder software packages that you can download. Some for Windows, some for Linux, some decode a lot of different models of sonde data, some only one or two. A quick Google search can guide you on them, this page is going to focus on the Linux only 'radiosonde_auto_rx' package.   
 You can run auto_rx on a Raspberry Pi 3/4 or x86 computer running Ubuntu or Debian. (Other distros might be possible, but I don't have any experience with them).   
 The auto_rx people have done a great job writing up the code and installation guide, you can visit the wiki here: [radiosonde_auto_rx wiki](https://github.com/projecthorus/radiosonde_auto_rx/wiki)    
-Some notes: I am not a fan of Docker, so usually go with the native build. One comment on Docker.... You can not install their Docker container on a x86 computer, the Docker 'image' is CPU architecture specific and its been built only for the Raspberry Pi CPU so you will get an error trying to run their Docker container on anything else.   
+Some notes: I am not a fan of Docker, so usually go with the native build. One comment on Docker.... You can not install the radiosonde_auto_rx Docker container on a x86 computer, the Docker 'image' is CPU architecture specific and its been built only for the Raspberry Pi CPU so you will get an error trying to run their Docker container on anything else.   
 Do note that auto_rx does not need a gui or desktop, so you can run a headless install on your computer and just use a web browser to view the auto_rx interface from any other computer / tablet on your local network.   
-The wiki native install guide is very clear and results in a smooth install. Just be sure to read all the way through before starting and don't proced to the next step if you get an error on the current step - I have never had any issues thus far.   
+The wiki native install guide is very clear and results in a smooth install. Just be sure to read all the way through before starting and don't proceed to the next step if you get an error on the current step - I have not had any issues thus far following the native guide.   
 
 I recommend getting up and running with just the one RTLSDR v3 dongle at first. Do note that while the Airspy Mini and R2 SDR's are sort of supported, its somewhat more complicated and fragile to get going and keep running and so I have not ventured into those hardware platforms. If you want to have a go at running them at some point in the future, the instructions are further down their [Wiki](https://github.com/projecthorus/radiosonde_auto_rx/wiki/Network-SDR-Decoding-Instructions)  
 
 Also note that things like RSP1a, HackRF and other such SDR's are not supported, only the NooElec and RTLSDR type receivers are supported out of the box at this time.   
 
-At this time you can leave the SDR at its default serial number of usually 00000001 or what ever serial you have changed it to. You will need to know its sn# as part of the install so make note of it when you get to the step of running `rtl_test`.    
+At first you can leave the SDR at its default serial number of usually 00000001 or what ever serial you have changed it to. You will need to know its sn# as part of the install so make note of it when you get to the step of running `rtl_test`.    
 
 ## Hardware  
 ### Antenna  
@@ -36,7 +36,7 @@ A lot of people get started with a ham radio dual band 70cm/2m vertical. Many al
 The SDR type is pretty much pre-chosen for us.   
 The blue ADSB dongles are no good, they have a filter in them that will reject the sondes 400Mhz signal. The orange 978 or 1090 dongles are ok, they have an amplifier and no filter, so that will get you running Ok as well.   
 
-The Nooelec XTR SDR's have been called out in the Facebook group as being more sensitive than the RTLSDR v3, but do note that they come with the downside of having a large center spike or spur and often two smaller ones on each side of the large center one. If your launch sites uses a sonde frequency on or even near those spurs, the 'gain' in sensitivity will be lost. I have seen this issue several times in helping people setup their stations with the XTR.   
+The Nooelec XTR SDR's have been called out in the Facebook group as being more sensitive than the RTLSDR v3, but do note that they come with the downside of having a large center spike or spur and often two smaller ones on each side of the large center one. If your launch sites uses a sonde frequency on or even near those spurs, the 'gain' in sensitivity will be lost. I have seen this issue several times in helping people setup their stations with the XTR. Tip, if you want to use an XTR SDR use the sondehub website to see if the sondes in your area transmit close to any of the spikes to see if you are going to miss their signal.   
 The NooElec v5 is currently being tested with good initial results.    
 The RadarBox airband dongle is so deaf at every frequency known that most have given up using them for any purpose.  
 
@@ -45,14 +45,14 @@ Coax type is slightly critical at 400Mhz. Mostly it comes down the length requir
 Many use good quality 75 Ohm tv coax for shorter runs (Say, 50 ft or less).    
 
 ### LNA - Low Noise Amplifier    
-LNA. There is no question a good quality LNA mounted at the antenna will make a huge difference in the range and amount of data packets you decode from any given flight.   
+LNA. There is no question that a good quality LNA mounted at the antenna will make a huge difference in the range and amount of data packets you decode from any given flight.   
 While you could use a general wide band LNA that are very cheap and popular, a filtered LNA will always bring better results.    
 [Uptronics SAW + LNA](https://store.uputronics.com/index.php?route=product/product&product_id=54) This is the current popular LNA for radiosonde work, there is talk of a new sonde specific LNA in the works, but it has not been released yet.
 
 ## What will you see?  
 Ok, now that we have an outdoor antenna mounted up as high as you can, quality LNA, good coax and your SDR connected to the software, we wait.    
-The twice a day launches usually happen around zero and 1200 UTC. But at times of unusual weather or if you live near a rocket launch site, you may catch many more flights at all times of the day or night.   
-Jan 2023 we had some nasty weather in California and my station logged the following flights over about 24 hours.    
+The twice a day launches usually happen around zero and 1200 UTC. But at times of unusual weather or if you live near a rocket launch site, you may catch many more flights at any time of the day or night.   
+Jan 2023 we had some nasty weather in California and my station logged the following flights over 24 hours.    
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/badweather.png" height="420">   
      
 ## station.conf file tweaks     
@@ -67,8 +67,10 @@ Most people run AGC or -1. These are the valid RTL gain values:
 ```
 I usually copy these into the file at the gain setting area to keep them handy.   
 Be sure and set `bias = True` if you need your SDR to power the LNA. Be sure and use an SDR that has a Bias-T output and is powerful enough to drive the LNA. (Side note, my distaste for software/dongle Bias-T is famous. Spend the few bucks and get a physical Bias-T injector and save your self so much stress and lost time by using something that is physical, has a power LED on it and will deliver the current required by the LNA at 5vdc (not the usual 4.3v from the dongle)).  
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/biast.png" height="220">  
+   
 
-One of the best ways I have found to find the best gain for your setup is to plug the dongle into a laptop and run some SDR software to see the sonde signal during a flight and then just adjust the gain for the best signal to noise and make a note of the that gain value and then put it in the station.conf file and restart auto_rx.    
+One of the best ways I have found to find the best gain for your setup is to plug the dongle into a laptop and run some SDR software to see the sonde signal during a flight and then just adjust the gain for the best signal to noise and make a note of the that gain value and then put it in the station.conf file and restart auto_rx. (ie, raise the gain till the noise floor just starts to rise and the signal does not get any bigger)    
 This can be tricky if you don't have a laptop and are running a headless Pi.   
 In this case, careful notes and some experimentation over time will be required. More tools to help with this process further down the page.   
     
@@ -82,7 +84,9 @@ The list should be comma separated, something like this (don't use these!):
 never_scan = [403.2,403.06,405.76,401.92,404.97]
 ```   
 If you don't have more than about 5-8 constant spikes, there is probably no need to record them and lock them out.   
+Tip, use the left side top menu from auto_rx while its scanning and take a note of the peaks it finds. Track them for about an hour and you will know what peaks are in your area and the ones you might like to put on the `never_scan` list.    
     
+
 Next is station location.   
 Its very important to fill out this section, but as it says in the comments, it does not have to be super accurate.   
 A nearby cross road is fine. I find the alt to be important and helpful to be accurate. It should be in meters and include your antenna hight.   
@@ -107,9 +111,11 @@ If you are lucky enough to live in an area that see's perhaps a few sondes a day
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrsandsplitter.jpg" height="320">
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrsinhub.jpg" height="320">
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrsaplitter.jpg" height="320">
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrsbiast.jpg" height="320">
   
     
-You can go with 2 or more SDR's. As many as you have signal strength to drive through the 3db to 6db of loss that the splitter introduces
+You can go with 2 or more SDR's. As many as you have signal strength to drive through the 3db to 6db of loss that the splitter introduces.   
+
 A critical aspect of running more than one SDR is to set each SDRs serial number. Here is how to do that.....    
     
 First, stop auto_rx from running. (how you do this will depend on how you installed it and are running it).  
@@ -134,11 +140,11 @@ Ok, now plug all 4 into your powered USB hub and plug it into the computer and i
 BTW, we are running all 4 in a *powered* USB2.0 hub in a Raspberry Pi 4 and have no issues with all 4 decoding at the same time. The CPU use goes up of course, but there is no problem decoding that many on a Pi4 or better.     
 
 We are almost ready to go....    
-Note which port on your splitter has the power pass.   
+If you insist on running dongle Bias-T make a note which port on your splitter has the power pass.   
 
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4waytvsplitter.jpg" height="580">   
 
-Note in this photo of my splitter it is the port on the very left. What ever SDR Sn you put on that port you will need to ensure that one has the bias-t turned on to run your LNA. Note which serial number you put in there so you can set the `bias = True` command in the station.conf file with the correct SDR. (I only mention this because people like pain and suffering and will insist on using software bias-t and bring all the problems with that setup - if you use a physical Bias-T injector, you don't need a splitter with a power pass port. Have I mentioned how many times trying to use the dongle bias-T has caused issues?).   
+Note how in this photo of my splitter it is the port on the very left. What ever SDR Sn you put on that port you will need to ensure that one has the bias-t turned on to run your LNA. Note which serial number you put in there so you can set the `bias = True` command in the station.conf file with the correct SDR. (I only mention this because people like pain and suffering and will insist on using the software bias-t and bring all the problems with that setup - if you use a physical Bias-T injector, you don't need a splitter with a power pass port. Have I mentioned how many times trying to use the dongle bias-T has caused issues?).   
 
 You will now need to change your station.conf file to account for the number of SDRs you are running.      
 My 4 SDR station .conf looks like this:   
@@ -176,10 +182,10 @@ My 4 SDR station .conf looks like this:
     gain = 40.2
     bias = False
 
-Note I put the AGC on comment so I can test either gain setting pretty quick. I simply have to stop auto_rx, swap the # comment around and restart auto_rx, I can do this several times in a sonde flight to quickly test gain changes.   
+Note I put the AGC on comment so I can test either gain setting pretty quick. I simply have to stop auto_rx, swap the # comment around and restart auto_rx, I can do this several times in a sonde flight to quickly test gain changes. Since you never know which SDR will be scanning and which will be decoding, they should all be the same gain value.   
 
 I also updated my station antenna description to reflect that Im using 4 SDR's.  
-Once you have the SDRs setup in the conf file its just a matter of waiting and before long you will see things like the follow two maps... lots of sonde data flowing into your station. 
+Once you have the SDRs setup in the conf file its just a matter of waiting and before long you will see things like the following two maps... lots of sonde data flowing into your station. East Coast and West Coast stations with 4 SDRs.  
 
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrandmap.png" height="320">
 
@@ -188,10 +194,11 @@ Once you have the SDRs setup in the conf file its just a matter of waiting and b
 The order of operations for auto_rx now becomes something like this.   
 The lowest serial number SDR will be scanning. When it finds a peak with sonde data on it, it passes it off to the next highest SN SDR and keeps scanning.   
 If it finds another sonde it will check if the next highest SN is already decoding, if so, it passes it up to the next highest serial number and goes back to scanning.  
-If all three are decoding and it finds another sonde to decode, it will stop scanning and start decoding with no more SDR's left, your station can not scan for a 5th or more sondes till one of the current decoding SDR's timeouts and it will become the scanner at that time. So yes, be aware that you can not control exactly which SDR will be the 'scanner' SDR at any given time. Thats the main reason I find it 'important' to use 4 SDRs of the same type and gain setting.     
+If all three are decoding and it finds another sonde to decode, it will stop scanning and start decoding with no more SDR's left, your station can not scan for a 5th or more sondes till one of the current decoding SDR's timeouts and it will then become the scanner at that time. So yes, be aware that you can not control exactly which SDR will be the 'scanner' SDR at any given time. Thats the main reason I find it 'important' to use 4 SDRs of the same type and gain setting.     
 
 This 'lost signal' timeout is adjustable in the station.conf file just under the min and max frequency setting section. It looks like this;      
 ```rx_timeout = 900```  
+
 Its default is 180 seconds, you can see I have bumped it up since I have 4 SDRs I can afford to keep listening to each sonde longer before giving up and going back in the 'not tasked' pool and wait for the 'scanning' SDR to hand it a sonde to decode.     
 This time extension is also helpful for me as there are lot of mountains around my location and the sondes will drop into my noise floor while they go behind a peak and I want to stay on frequency so I can pick up decoding as soon as they float out of the shadow of the mountain peak.
      
