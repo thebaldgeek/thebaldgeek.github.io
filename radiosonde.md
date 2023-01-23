@@ -204,7 +204,7 @@ This time extension is also helpful for me as there are lot of mountains around 
      
 ## Quantifying station changes    
 Two of the many challenge's facing the serious sonde station owner is quantifying how well their station is performing and the time it takes to measure each change.   
-Since each sonde flight will be slightly or very different distances and altitudes from the antenna it can be tough to mentally average all those flights out and see if a gain or antenna change really is helping or hindering.   
+Since each sonde flight will have slightly or very different distances and altitudes from the antenna it can be tough to mentally average all those flights out and see if a gain or antenna change really is helping or hindering.   
 
 To this end a few guys from the North America Radiosonde Facebook group got together off-group and started talking about how to measure and normalize the data from the many flights over a week or month and visualize that data in a way that would help the station owner ensure their station was running a the very peak it could.   
 I brought Node-RED to the table and a plan was hatched to use the auto_rx Chasemapper UDP data stream to build some data dashboards.    
@@ -271,8 +271,7 @@ To run the software you will need to install Node-RED.
 Also note that the dashboards only work with the auto_rx Chasemapper UDP output. It will not work with any of the other sonde software packages.   
 
 For installing the Node-RED software, their website has all you need to get running (Personal note, I have had nothing but trouble running it on Docker), [Install Node-RED](https://nodered.org/docs/getting-started/)    
-Once you have it installed and can see your editor, you can import the flow for the radiosonde dashboard.   
-Once imported, just add your home lat/lon and alt to the marked node, update your SDR serial numbers in the marked node, hit deploy and wait for your first flight.  
+ 
    
 To install node-red on Raspberry Pi   
 
@@ -280,7 +279,12 @@ To install node-red on Raspberry Pi
     sudo systemctl enable nodered.service
     node-red-start  
 
-That should get you up and running pretty quick.   
+That should get you up and running pretty quick. You just need to open a web browser to that computers IP address and port 1880.       
+Once you have that running the next task is to install the nodes we need.    
+Click on the Node-RED menu on the top right, then 'Manage Pallet'. The click on the install tab and type dashboard. Wait for it to install, then search for 'Nostalgia'. Wait for that to install.    
+    
+Once you have those nodes installed, you can import the flow for the radiosonde dashboard.   
+Once imported, just add your home lat/lon and alt to the marked node, update your SDR serial numbers in the marked node, hit deploy and wait for your first flight. 
 
 ## Building a MySondeGo    
 Buy yourself a TTGO board for 400Mhz and flash the firmware. Lots more notes and a how to guide to come.....
