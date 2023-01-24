@@ -31,6 +31,20 @@ Depending on how far away the sondes tend to float past your location will depen
 If you are very close by, a simple indoor vertical whip might be enough to get your first bit of data, but most people reading this want to push their range a bit more and so will run an outdoor antenna. There are only a few off the shelf options here. The sondes in use in North America transmit between 400Mhz and 406Mhz. There are not a lot of off the shelf antennas that are built pre-tuned for this range. (A lot more will be said about antennas further down the page). And yes, you are quite right, the discone will cover that range, but please keep reading....   
 
 A lot of people get started with a ham radio dual band 70cm/2m vertical. Many also press a typical wide band 'scanner' vertical antenna into use, and all are fine starter antennas.   
+   
+After a lot of looking, I found this (interesting antenna on Amazon)[https://www.amazon.com/dp/B08DNRF2XY]   
+It has length adjustable top and bottom elements with a loading coil in the middle.   
+
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/markings.jpg" height="320"> 
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/nanovna400.jpg" height="320"> 
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/installed.jpg" height="320"> 
+
+A few comments about this antenna.   
+1. The markings are not very accurate. You will need to own a NanoVNA to tune this antenna for 402Mhz. Just going by the markings wont get you close.    
+2. Its a bit flimsy. Not an issue for me in mild Southern California weather, but just the same, once I had it tuned, I drilled and put pop rivets in each element. Time will tell how it holds up.    
+So far, after ~2 months testing, I am very happy with its performance.   
+    
+The key to your station is the antenna. Good gain and no major lobes or too much sky gain is very important.
 
 ### SDR
 The SDR type is pretty much pre-chosen for us.   
@@ -269,6 +283,8 @@ Different antenna types have different vertical lobes and with radiosonde tracki
 ## Installing Node-RED   
 To run the software you will need to install Node-RED.  
 Also note that the dashboards only work with the auto_rx Chasemapper UDP output. It will not work with any of the other sonde software packages.   
+You do not have to install Node-RED on the same computer as radiosonde_auto_rx, it can be run on any computer that is on the same network as auto_rx. Do note that the Node-RED program has to be running all the time to catch data from each sonde flight as it happens live.    
+Lastly, note that the individual SDR line graphs will only be built in your web browser while the flight is happening. If you open your dashboard after the flight, only the elevation scatter plot will be populated. (And the main page table, radar and master elevation scatter plot). What most of us do is open all 4 SDR pages in the one browser when we want to log/watch a flight. Close them when done so the graph does not log flight after flight and use up your computers memory.
 
 For installing the Node-RED software, their website has all you need to get running (Personal note, I have had nothing but trouble running it on Docker), [Install Node-RED](https://nodered.org/docs/getting-started/)    
  
@@ -281,7 +297,7 @@ To install node-red on Raspberry Pi
 
 That should get you up and running pretty quick. You just need to open a web browser to that computers IP address and port 1880.       
 Once you have that running the next task is to install the nodes we need.    
-Click on the Node-RED menu on the top right, then 'Manage Pallet'. The click on the install tab and type dashboard. Wait for it to install, then search for 'Nostalgia'. Wait for that to install.    
+Click on the Node-RED menu on the top right, then 'Manage Pallet'. The click on the install tab and type 'node-red-dashboard'. Wait for it to install, then search for 'node-red-contrib-nostalgic'. Wait for that to install.    
     
 Once you have those nodes installed, you can import the flow for the radiosonde dashboard.   
 Once imported, just add your home lat/lon and alt to the marked node, update your SDR serial numbers in the marked node, hit deploy and wait for your first flight. 
