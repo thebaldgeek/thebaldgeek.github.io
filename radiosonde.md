@@ -40,23 +40,24 @@ It has length adjustable elements top and bottom of a center loading coil.
 <a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/installed.jpg"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/installed.jpg" height="320"/></a>  
 
 A few comments about this antenna.   
-1. The markings are not very accurate. You will need to own a NanoVNA to tune this antenna for 402Mhz. Just going by the markings wont get you close.    
+1. The markings are not very accurate. You will need to own or borrow a NanoVNA to tune this antenna for 402Mhz. Just going by the markings wont get you anything like close to being tuned for the frequency you want.    
 2. Its a bit flimsy. Not an issue for me in mild Southern California weather, but just the same, once I had it tuned, I drilled and put pop rivets in each element. Time will tell how it holds up.    
-So far, after ~2 months testing, I am very happy with its performance.   
+So far, after ~2 months testing, I am very happy with its performance from being barely at roof height in a pretty dense suburban install.   
+
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/jan23rangeplot.png"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/jan23rangeplot.png" height="320"/></a> 
     
-The key to your station is the antenna. Good gain and no major lobes or too much sky gain is very important.
+The key to your station performance is the antenna. Good gain and no major lobes or too much sky gain is very important.
 
 ### SDR
 The SDR type is pretty much pre-chosen for us.   
 The blue ADSB dongles are no good, they have a filter in them that will reject the sondes 400Mhz signal. The orange 978 or 1090 dongles are ok, they have an amplifier and no filter, so that will get you running Ok as well.   
 
-The Nooelec XTR SDR's have been called out in the Facebook group as being more sensitive than the RTLSDR v3, but do note that they come with the downside of having a large center spike or spur and often two smaller ones on each side of the large center one. If your launch sites uses a sonde frequency on or even near those spurs, the 'gain' in sensitivity will be lost. I have seen this issue several times in helping people setup their stations with the XTR. Tip, if you want to use an XTR SDR use the sondehub website to see if the sondes in your area transmit close to any of the spikes to see if you are going to miss their signal.   
-The NooElec v5 is currently being tested with good initial results.    
+The Nooelec XTR SDR's have been called out in the Facebook group as being more sensitive than the RTLSDR v3, but do note that they come with the downside of having a large center spike or spur and often two smaller ones on each side of the large center one. If your launch sites uses a sonde frequency on or even near those spurs, any 'gain' in sensitivity will be lost. I have seen this issue several times in helping people setup their stations with the XTR. Tip, if you want to use an XTR SDR use the sondehub website to see if the sondes in your area transmit close to any of the spikes to see if you are going to miss their signal.   
 The RadarBox airband dongle is so deaf at every frequency known that most have given up using them for any purpose.  
 
 ### Coax
 Coax type is slightly critical at 400Mhz. Mostly it comes down the length required to go from the antenna to the SDR. (Personal rant here, please don't fall into the common trap of thinking less coax length and long USB cable is better - its not. Sure a few feet of USB extension to get the SDR away from the RF noisy computer is ok and often a good thing, but a long USB cable is always a poor substitute for good quality coax).  
-Many use good quality 75 Ohm tv coax for shorter runs (Say, 50 ft or less).    
+Many use good quality 75 Ohm tv coax for shorter runs (Say, 50 ft or less). You can 'get away' with this slight variation in impedance since the SDR is not 50 Ohm input and we are not transmitting.    
 
 ### LNA - Low Noise Amplifier    
 LNA. There is no question that a good quality LNA mounted at the antenna will make a huge difference in the range and amount of data packets you decode from any given flight.   
@@ -89,7 +90,7 @@ This can be tricky if you don't have a laptop and are running a headless Pi.
 In this case, careful notes and some experimentation over time will be required. More tools to help with this process further down the page.   
     
 Next up in the .conf file is the sonde frequency settings.    
-Be sure and look at the notes in the file and set your min and max frequencies to follow the advice.   
+Be sure and look at the notes in the file and set your min and max frequencies to follow the advice in this comment section of the file.   
     
 Next up is the only/never/always scan section.   
 Since I see some common spikes in my area that never seem to go away unless I disconnect the antenna I have added those to the never_scan section, but before you do that, I suggest you make careful note for a few weeks of all the sonde frequencies in use in your area to make sure you don't accidentally add one of those to the never_scan list.  
@@ -98,7 +99,7 @@ The list should be comma separated, something like this (don't use these!):
 never_scan = [403.2,403.06,405.76,401.92,404.97]
 ```   
 If you don't have more than about 5-8 constant spikes, there is probably no need to record them and lock them out.   
-Tip, use the left side top menu from auto_rx while its scanning and take a note of the peaks it finds. Track them for about an hour and you will know what peaks are in your area and the ones you might like to put on the `never_scan` list.    
+Tip, use the left side top menu from auto_rx while its scanning and take a note of the peaks it finds. Track them for about an hour in a text document and you will know what peaks are in your area and the ones you might like to put on the `never_scan` list.    
     
 
 Next is station location.   
@@ -112,7 +113,7 @@ I find the email notifications helpful and enjoy them, note you should use a thr
 (If I get time I will show how I use Telegram via Node-RED for my launch notifications).   
 
 ## Single SDR Operation    
-auto_rx will now start scanning the frequency range you have specified and any peaks will be analyzed for a short time to see if they contain any of its known sonde type modulated data. If so, the first data packets it finds it will stop the scanning process and just listen to that one frequency to decode the data.   
+auto_rx will now start scanning the frequency range you have specified and any peaks found will be analyzed for a short time to see if they contain any of its known sonde type modulated data. If so, the first data packets it finds it will stop the scanning process and just listen to that one frequency to decode the data from the sonde.   
 It will camp on that frequency till the sonde signal drops below your noise floor for 180 seconds (adjustable and we will talk about that timeout value in a moment).   
 Once the 180 second timer is up, the SDR will go back into scan mode.   
 Over the space of a few weeks while you get the feel for the flight patterns you will find if you have the chance to hear more than one sonde at a time.   
@@ -170,7 +171,7 @@ My 4 SDR station .conf looks like this:
     # 0.0 0.9 1.4 2.7 3.7 7.7 8.7 12.5 14.4 15.7 16.6 19.7 20.7 22.9 25.4 28.0 29.7 32.8 33.8 36.4 37.2 38.6 40.2 42.1 43.4 43.9 44.5 48.0 49.6
     #gain = -1
     gain = 40.2
-    bias = True
+    bias = False
 
     [sdr_2]
     # As above, for the next SDR, if used. Note the warning about serial numbers.
@@ -210,7 +211,7 @@ The lowest serial number SDR will be scanning. When it finds a peak with sonde d
 If it finds another sonde it will check if the next highest SN is already decoding, if so, it passes it up to the next highest serial number and goes back to scanning.  
 If all three are decoding and it finds another sonde to decode, it will stop scanning and start decoding with no more SDR's left, your station can not scan for a 5th or more sondes till one of the current decoding SDR's timeouts and it will then become the scanner at that time. So yes, be aware that you can not control exactly which SDR will be the 'scanner' SDR at any given time. Thats the main reason I find it 'important' to use 4 SDRs of the same type and gain setting.     
 
-This 'lost signal' timeout is adjustable in the station.conf file just under the min and max frequency setting section. It looks like this;      
+The 'lost signal' timeout is adjustable in the station.conf file just under the min and max frequency setting section. It looks like this;      
 ```rx_timeout = 900```  
 
 Its default is 180 seconds, you can see I have bumped it up since I have 4 SDRs I can afford to keep listening to each sonde longer before giving up and going back in the 'not tasked' pool and wait for the 'scanning' SDR to hand it a sonde to decode.     
@@ -257,6 +258,9 @@ That said, over many flights you can start to see how the antenna profile from t
 
 While these screenshots only show one flights elevation and one antenna model so far the results are in line with what we expect to see. ie, they are predictable and understandable plots that are in line with the antenna type and laws of physics.   
 Its like we are using the sondes as our own full size antenna testing range.    
+
+Keep in mind that this scatter plot is per sonde flight and is automatically cleared (reset) as soon as that SDR starts to decode a different sonde serial number.   
+This scatter plot is not normalized for distance since its the current sonde flight (raw) elevation vs SNR (signal to noise ratio) data.
     
 ## Main page table, radar and elevation    
 On the main page we have a few things worth pointing out.    
@@ -267,13 +271,13 @@ Firstly, if you are running more than 1 SDR, the table shows which one did the d
 Next is the SNR, distance, azimuth, elevation and altitude from the first data packets you decoded. This will show, over time, those data points from when your station first acquires the sonde so as you tweak your station you can see if the distance or angle is better (or worse).   
 
 Clicking on any of the table column names will sort that column ascending or descending.  
-At the end of the table is the link to take you to the sondehub URL for that flight.   
+At the right hand end of the table is the link to take you to the sondehub URL for that flight.   
 
 <a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/radarscope.png"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/radarscope.png" height="420"/></a>   
 
 Next, top left is the radar scope. Here you have a top down view with your antenna in the center. Going out from the antenna is distance mapped with bearing to the sonde with 5deg resolution and the normalized SNR for that distance and bearing.   
 Do note that you can click on the small square title box and toggle that plot on/off.   
-The purpose of this radar plot is to help the station owner to see their all time max distance and what SNR it was for that direction. It will also show any local and distant obstructions, along with typical flight patterns.   
+The purpose of this radar plot is to help the station owner to see their stations distance and what SNR it was for that direction. It will also show any local and distant obstructions, along with typical flight patterns.   
 
 Lastly, the elevation scatter plot.  
 This provides a cross section of your antenna gain/lobes. The difference between this scatter plot and the one on each SDR page is that this one is the master of all the SDR's over all the flights and is using the inverse square law to normalize the SNR regardless of the sondes distance at each elevation.   
@@ -283,7 +287,7 @@ Different antenna types have different vertical lobes and with radiosonde tracki
 ## Installing Node-RED   
 To run the software you will need to install Node-RED.  
 Also note that the dashboards only work with the auto_rx Chasemapper UDP output. It will not work with any of the other sonde software packages.   
-You do not have to install Node-RED on the same computer as radiosonde_auto_rx, it can be run on any computer that is on the same network as auto_rx. Do note that the Node-RED program has to be running all the time to catch data from each sonde flight as it happens live.    
+You do not have to install Node-RED on the same computer as radiosonde_auto_rx, it can be run on any computer that is on the same network as auto_rx. Do note that the Node-RED program has to be running all the time to catch data from each sonde flight as it happens live. Node-RED can run on Windows or Linux (or Mac).    
 Lastly, note that the individual SDR line graphs will only be built in your web browser while the flight is happening. If you open your dashboard after the flight, only the elevation scatter plot will be populated. (And the main page table, radar and master elevation scatter plot). What most of us do is open all 4 SDR pages in the one browser when we want to log/watch a flight. Close them when done so the graph does not log flight after flight and use up your computers memory.
 
 For installing the Node-RED software, their website has all you need to get running (Personal note, I have had nothing but trouble running it on Docker), [Install Node-RED](https://nodered.org/docs/getting-started/)    
