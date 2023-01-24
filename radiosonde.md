@@ -5,10 +5,10 @@ Navigation: [home](README.md)
 Radiosondes or weather balloons are launched around twice a day from a lot of different locations around the world.  
 You can visit [sondehub](https://sondehub.org) and find your location to see what flights are going on around you. Zoom out and find the little gray circle that is a launch site (usually near or on airports) and then right click on the circle and check out the frequency of launches and the history of flights from that site to see where sondes have landed in the past.  
 
-Its a lot of fun to track these flights and sometimes you can go to where they land and recover the sondes (scoring yourself a little GPS, temperature/humidity sensor and 400Mhz transmitter - many of which can run modified firmware and pressed into other uses. [RS41 firmware](https://github.com/mikaelnousiainen/RS41ng) and [DFM-17 mods](https://wiki.recessim.com/view/DFM-17_Radiosonde)   
+Its a lot of fun to track these flights and sometimes you can go to where they land and recover the sondes (scoring yourself a little GPS, temperature/humidity sensor and 400Mhz transmitter - many of which can run modified firmware and pressed into other uses. For example here is some [RS41 firmware](https://github.com/mikaelnousiainen/RS41ng) and [DFM-17 mods](https://wiki.recessim.com/view/DFM-17_Radiosonde)   
 While recovering a sonde is lot of fun, this page is less about the chasing and recovering the sonde (there are many websites and Facebook groups dedicated to that aspect of the hobby) and more about setting up the station, improving and measuring changes to the station by getting more station centric data from the payload data stream.  
 
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/recovery3.jpg" height="320">   
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/recovery3.jpg"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/recovery3.jpg" height="320">   
    
 
 ## Software -> auto_rx     
@@ -21,7 +21,7 @@ The wiki native install guide is very clear and results in a smooth install. Jus
 
 I recommend getting up and running with just the one RTLSDR v3 dongle at first. Do note that while the Airspy Mini and R2 SDR's are sort of supported, its somewhat more complicated and fragile to get going and keep running and so I have not ventured into those hardware platforms. If you want to have a go at running them at some point in the future, the instructions are further down their [Wiki](https://github.com/projecthorus/radiosonde_auto_rx/wiki/Network-SDR-Decoding-Instructions)  
 
-Also note that things like RSP1a, HackRF and other such SDR's are not supported, only the NooElec and RTLSDR type receivers are supported out of the box at this time.   
+Also note that hardware like RSP1a, HackRF and other such SDR's are not supported, only the NooElec and RTLSDR type receivers are supported out of the box at this time.   
 
 At first you can leave the SDR at its default serial number of usually 00000001 or what ever serial you have changed it to. You will need to know its sn# as part of the install so make note of it when you get to the step of running `rtl_test`.    
 
@@ -32,12 +32,12 @@ If you are very close by, a simple indoor vertical whip might be enough to get y
 
 A lot of people get started with a ham radio dual band 70cm/2m vertical. Many also press a typical wide band 'scanner' vertical antenna into use, and all are fine starter antennas.   
    
-After a lot of looking, I found this (interesting antenna on Amazon)[https://www.amazon.com/dp/B08DNRF2XY]   
-It has length adjustable top and bottom elements with a loading coil in the middle.   
+After a lot of looking, I found this [interesting antenna on Amazon](https://www.amazon.com/dp/B08DNRF2XY)   
+It has length adjustable elements top and bottom of a center loading coil.   
 
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/markings.jpg" height="320"> 
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/nanovna400.jpg" height="320"> 
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/installed.jpg" height="320"> 
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/markings.jpg"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/markings.jpg" height="320"/></a> 
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/nanovna400.jpg"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/nanovna400.jpg" height="320"/></a> 
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/installed.jpg"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/installed.jpg" height="320"/></a>  
 
 A few comments about this antenna.   
 1. The markings are not very accurate. You will need to own a NanoVNA to tune this antenna for 402Mhz. Just going by the markings wont get you close.    
@@ -67,7 +67,7 @@ While you could use a general wide band LNA that are very cheap and popular, a f
 Ok, now that we have an outdoor antenna mounted up as high as you can, quality LNA, good coax and your SDR connected to the software, we wait.    
 The twice a day launches usually happen around zero and 1200 UTC. But at times of unusual weather or if you live near a rocket launch site, you may catch many more flights at any time of the day or night.   
 Jan 2023 we had some nasty weather in California and my station logged the following flights over 24 hours.    
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/badweather.png" height="420">   
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/badweather.png"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/badweather.png" height="420"/></a>   
      
 ## station.conf file tweaks     
 We will now review the auto_rx station.conf file.
@@ -81,7 +81,7 @@ Most people run AGC or -1. These are the valid RTL gain values:
 ```
 I usually copy these into the file at the gain setting area to keep them handy.   
 Be sure and set `bias = True` if you need your SDR to power the LNA. Be sure and use an SDR that has a Bias-T output and is powerful enough to drive the LNA. (Side note, my distaste for software/dongle Bias-T is famous. Spend the few bucks and get a physical Bias-T injector and save your self so much stress and lost time by using something that is physical, has a power LED on it and will deliver the current required by the LNA at 5vdc (not the usual 4.3v from the dongle)).  
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/biast.png" height="220">  
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/biast.png"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/biast.png" height="220"/></a>  
    
 
 One of the best ways I have found to find the best gain for your setup is to plug the dongle into a laptop and run some SDR software to see the sonde signal during a flight and then just adjust the gain for the best signal to noise and make a note of the that gain value and then put it in the station.conf file and restart auto_rx. (ie, raise the gain till the noise floor just starts to rise and the signal does not get any bigger)    
@@ -122,10 +122,10 @@ If so, its time for.....
 If you are lucky enough to live in an area that see's perhaps a few sondes a day at the same time, you might like to add more SDR's to your setup.  
     
  
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrsandsplitter.jpg" height="320">
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrsinhub.jpg" height="320">
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrsaplitter.jpg" height="320">
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrsbiast.jpg" height="320">
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrsandsplitter.jpg"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrsandsplitter.jpg" height="320"/></a>
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrsinhub.jpg"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrsinhub.jpg" height="320"/></a>
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrsaplitter.jpg"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrsaplitter.jpg" height="320"/></a>
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrsbiast.jpg"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrsbiast.jpg" height="320"/></a>
   
     
 You can go with 2 or more SDR's. As many as you have signal strength to drive through the 3db to 6db of loss that the splitter introduces.   
@@ -156,7 +156,7 @@ BTW, we are running all 4 in a *powered* USB2.0 hub in a Raspberry Pi 4 and have
 We are almost ready to go....    
 If you insist on running dongle Bias-T make a note which port on your splitter has the power pass.   
 
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4waytvsplitter.jpg" height="580">   
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4waytvsplitter.jpg"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4waytvsplitter.jpg" height="580"/></a>   
 
 Note how in this photo of my splitter it is the port on the very left. What ever SDR Sn you put on that port you will need to ensure that one has the bias-t turned on to run your LNA. Note which serial number you put in there so you can set the `bias = True` command in the station.conf file with the correct SDR. (I only mention this because people like pain and suffering and will insist on using the software bias-t and bring all the problems with that setup - if you use a physical Bias-T injector, you don't need a splitter with a power pass port. Have I mentioned how many times trying to use the dongle bias-T has caused issues?).   
 
@@ -201,9 +201,9 @@ Note I put the AGC on comment so I can test either gain setting pretty quick. I 
 I also updated my station antenna description to reflect that Im using 4 SDR's.  
 Once you have the SDRs setup in the conf file its just a matter of waiting and before long you will see things like the following two maps... lots of sonde data flowing into your station. East Coast and West Coast stations with 4 SDRs.  
 
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrandmap.png" height="320">
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrandmap.png"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/4sdrandmap.png" height="320"/></a>
 
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/decodelasvegas.png" height="320">
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/decodelasvegas.png"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/decodelasvegas.png" height="320"/></a>
   
 The order of operations for auto_rx now becomes something like this.   
 The lowest serial number SDR will be scanning. When it finds a peak with sonde data on it, it passes it off to the next highest SN SDR and keeps scanning.   
@@ -236,7 +236,7 @@ Of course all of this just boils down to a few math problems and math that has b
 Once we have the core numbers: distance, elevation, bearing (azimuth), SNR and normalized SNR for distance we are ready to do something with them.    
 First up, something that looks like it does the same job (only worse) than sondehub, that is a plot of the sondes weather data.  
 
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/firsthumidity.png" height="420">   
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/firsthumidity.png"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/firsthumidity.png" height="420"/></a>   
 
 We have altitude in light blue, humidity in orange, distance in yellow and raw SNR in green.   
 The first thing that will jump out to sonde trackers is the clear slow rise in the blue alt, then the burst and rapid descent. And yes, your quite right, sondehub has this data at the bottom of the main map window, so why do we have it here seemingly duplicating functionally and breaking our 'dont reproduce' rule?  
@@ -248,12 +248,12 @@ So thats why that graph is on the page, to show any missing data points.
 # Raw SNR vs Elevation    
 To the right of that sonde weather data line chart is the raw per flight elevation and SNR scatter plot.   
 
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/antennanodesfromsonde.png" height="420">  
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/antennanodesfromsonde.png"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/antennanodesfromsonde.png" height="420"/></a>  
 
 The point of this graph is to better visualize the antenna 'gain' profile with the knowledge firmly in mind that you are also going to see any signal obstructions like houses, trees and mountain peaks between the sonde and the station antenna at that elevation and bearing.   
 That said, over many flights you can start to see how the antenna profile from the scatter plot matches the antenna model:   
 
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/antenanodestypical.png" height="420">   
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/antenanodestypical.png"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/antenanodestypical.png" height="420"/></a>   
 
 While these screenshots only show one flights elevation and one antenna model so far the results are in line with what we expect to see. ie, they are predictable and understandable plots that are in line with the antenna type and laws of physics.   
 Its like we are using the sondes as our own full size antenna testing range.    
@@ -269,7 +269,7 @@ Next is the SNR, distance, azimuth, elevation and altitude from the first data p
 Clicking on any of the table column names will sort that column ascending or descending.  
 At the end of the table is the link to take you to the sondehub URL for that flight.   
 
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/radarscope.png" height="420">   
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/radarscope.png"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/radarscope.png" height="420"/></a>   
 
 Next, top left is the radar scope. Here you have a top down view with your antenna in the center. Going out from the antenna is distance mapped with bearing to the sonde with 5deg resolution and the normalized SNR for that distance and bearing.   
 Do note that you can click on the small square title box and toggle that plot on/off.   
