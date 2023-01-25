@@ -1,0 +1,2079 @@
+[
+    {
+        "id": "888786c5.d5aab8",
+        "type": "subflow",
+        "name": "FIFO",
+        "info": "# FIFO\n## First in First Out subflow\nThis flow receives a series of msg.payloads and builds a queue using FIFO (First in First out) method. The LIFO size is configurabe through subflow enviroment variables.\n\n### Input\n`msg.topic == put`\nWill add the `msg.payload` to the end of the array. Everytime a new item is received the second output sends the complete queue.\n\n`msg.topic == get`\nWill remove the first item of the stack and will send it in the first output\n\n`msg.topic == list`\nSends the complete list on the second output.\n\n### Output 1\nThe first item on the top of the stack. It is sent only when `msg.topic == get`.\n\n### Output 2\nThe complete queue in Array format. It is sent everytime a new item is added, removed or when `msg.topic == list`\n\n### Status\nAlways show the queue size.\n\n### Enviroment Variables\n`Buffer_Size` defines the size of the queue. If a new item arrives and the queue is full, the oldest item will be removed.",
+        "category": "",
+        "in": [
+            {
+                "x": 140,
+                "y": 120,
+                "wires": [
+                    {
+                        "id": "5ce94b12.5c1c44"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 720,
+                "y": 60,
+                "wires": [
+                    {
+                        "id": "a6ca9e09.83012",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 900,
+                "y": 100,
+                "wires": [
+                    {
+                        "id": "d22ee914.d446d8",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "Buffer_Size",
+                "type": "num",
+                "value": "6"
+            }
+        ],
+        "icon": "font-awesome/fa-ellipsis-v",
+        "status": {
+            "x": 1040,
+            "y": 140,
+            "wires": [
+                {
+                    "id": "ad0059b4.1b2978",
+                    "port": 0
+                }
+            ]
+        }
+    },
+    {
+        "id": "5ce94b12.5c1c44",
+        "type": "switch",
+        "z": "888786c5.d5aab8",
+        "name": "Topic",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "get",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "put",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "list",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 270,
+        "y": 120,
+        "wires": [
+            [
+                "a6ca9e09.83012"
+            ],
+            [
+                "feb761ec.4c293"
+            ],
+            [
+                "d22ee914.d446d8"
+            ],
+            [
+                "d22ee914.d446d8"
+            ]
+        ]
+    },
+    {
+        "id": "feb761ec.4c293",
+        "type": "function",
+        "z": "888786c5.d5aab8",
+        "name": "put",
+        "func": "var queue = flow.get(\"queue\")\n\n\nif (!Array.isArray(queue)){\n    queue = [];\n}else if ( queue.length >= env.get(\"Buffer_Size\") ){\n    queue.pop(1);\n}\n\nqueue.unshift(msg.payload);\n\nflow.set(\"queue\", queue);\nmsg.payload = queue;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 550,
+        "y": 100,
+        "wires": [
+            [
+                "d22ee914.d446d8"
+            ]
+        ]
+    },
+    {
+        "id": "a6ca9e09.83012",
+        "type": "function",
+        "z": "888786c5.d5aab8",
+        "name": "get",
+        "func": "var queue = flow.get(\"queue\")\nvar item;\n\nif (!Array.isArray(queue)){\n    queue = [];\n}else{\n    item = queue.pop(1);\n}\n\n\nflow.set(\"queue\", queue)\nmsg.payload = item;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 550,
+        "y": 60,
+        "wires": [
+            [
+                "d22ee914.d446d8"
+            ]
+        ]
+    },
+    {
+        "id": "d22ee914.d446d8",
+        "type": "change",
+        "z": "888786c5.d5aab8",
+        "name": "list",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "queue",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 750,
+        "y": 140,
+        "wires": [
+            [
+                "ad0059b4.1b2978"
+            ]
+        ]
+    },
+    {
+        "id": "ad0059b4.1b2978",
+        "type": "change",
+        "z": "888786c5.d5aab8",
+        "name": "Count",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$count(msg.payload)\t",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 930,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "eab0e96cb03fc583",
+        "type": "udp in",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "iface": "",
+        "port": "55673",
+        "ipv": "udp4",
+        "multicast": "false",
+        "group": "",
+        "datatype": "utf8",
+        "x": 80,
+        "y": 180,
+        "wires": [
+            [
+                "f307eff1395f4ed4",
+                "60a128368d42dc57"
+            ]
+        ]
+    },
+    {
+        "id": "f307eff1395f4ed4",
+        "type": "json",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 250,
+        "y": 180,
+        "wires": [
+            [
+                "83f26ce8aef04971"
+            ]
+        ]
+    },
+    {
+        "id": "83f26ce8aef04971",
+        "type": "function",
+        "z": "cb74b638399634a9",
+        "name": "Set home lat/lon/alt",
+        "func": "// @ts-nocheck\n// Set accurate (no one can see this but you) lat lon alt for your antenna location\n// Alt should be in meters and be very accurate to the antenna (ie add tower height)\nvar home = { h_lat: 33.11111111111111, h_lon: -117.22222222222222, h_alt: 256 };\n\n// ----- Should not need to change code below this ----- //\n// calculates look angles between two points\n// returns {elevention: 0, azimut: 0, bearing: \"\", range: 0}\n//\n// based on earthmath.py\n// Copyright 2012 (C) Daniel Richman; GNU GPL 3\n// Mark Jessop 2018-06-30\n// K6WZD 2022-12/2023-01 (For Node-RED radiosonde dashboard)\nfunction twoDig(val) { return (('0' + val).slice(-2)); }\nvar d = new Date();\nmsg.dts = twoDig(d.getUTCHours()) + ':' + twoDig(d.getUTCMinutes()) + ':' + twoDig(d.getUTCSeconds()) + 'Z ' + twoDig(d.getUTCDate()) + '-' + twoDig((d.getUTCMonth() + 1)) + '-' + d.getUTCFullYear();\nmsg.tstring = ('0' + ((d.getHours() + 11) % 12 + 1)).slice(-2) + ':';\nmsg.tstring += ('0' + d.getMinutes()).slice(-2) + ((d.getHours() >= 12) ? 'PM ' : 'AM ');\nvar sonde = { s_lat: msg.payload.latitude, s_lon: msg.payload.longitude, s_alt: msg.payload.altitude };\nvar radius = 6371000.0;\nvar DEG_TO_RAD = Math.PI / 180.0;\nvar h_lat = (home.h_lat) * (Math.PI / 180.0);\nvar s_lat = (sonde.s_lat) * (Math.PI / 180.0);\nvar h_lon = (home.h_lon) * (Math.PI / 180.0);\nvar s_lon = (sonde.s_lon) * (Math.PI / 180.0);\nvar d_lon = s_lon - h_lon;\nvar sa = Math.cos(s_lat) * Math.sin(d_lon);\nvar sb = (Math.cos(h_lat) * Math.sin(s_lat)) - (Math.sin(h_lat) * Math.cos(s_lat) * Math.cos(d_lon));\nvar bearing = Math.atan2(sa, sb);\nvar aa = Math.sqrt((sa ** 2) + (sb ** 2));\nvar ab = (Math.sin(h_lat) * Math.sin(s_lat)) + (Math.cos(h_lat) * Math.cos(s_lat) * Math.cos(d_lon));\nvar angle_at_centre = Math.atan2(aa, ab);\nvar great_circle_distance = angle_at_centre * radius;\nvar ta = radius + home.h_alt;\nvar tb = radius + sonde.s_alt;\nvar ea = (Math.cos(angle_at_centre) * tb) - ta;\nvar eb = Math.sin(angle_at_centre) * tb;\nvar dist = Math.sqrt((ta ** 2) + (tb ** 2) - 2 * tb * ta * Math.cos(angle_at_centre));\nmsg.elevation = Math.atan2(ea, eb) * (180.0 / Math.PI);\n// Give a bearing in range 0 <= b < 2pi\nbearing += (bearing < 0) ? 2 * Math.PI : 0;\nbearing /= DEG_TO_RAD;\nmsg.bearing = bearing;\n\n// Clean up distance and convert to miles but keep orignal meters value\nmsg.mdistance = dist;\ndist = dist * 0.000621371;\ndist = dist.toFixed(2);\nmsg.distance = parseFloat(dist);\n//normialize the distance for the drop in snr\nmsg.ndist = Math.sqrt(dist);\n\n//normalise the SNR values. (RF is double the distance, half the signal strength)\nmsg.nsnr = Math.sqrt(msg.payload.snr); // - 20*Math.log10(msg.mdistance / 5000);\n// Keep the snr for later\nmsg.snr = msg.payload.snr;\n\n// convert sonde altitide to feet\ns_alt = (sonde.s_alt * 3.28084).toFixed(2);\nmsg.s_alt = parseFloat(s_alt);\n\n\n// Clean up sonde temperature, convert to F\ntemp = (msg.payload.temp * 9 / 5) + 32;\ntemp = temp.toFixed(2);\nmsg.s_temp = parseFloat(temp);\n\n//convert sonde speed from kph to mph\nmsg.s_speed = msg.payload.speed * 0.6214;\nmsg.s_speed = msg.s_speed.toFixed(1);\n\nmsg.sondehub = \"https://sondehub.org/\" + msg.payload.callsign;\nmsg.sondecard = \"https://sondehub.org/card/\" + msg.payload.callsign;\n\n// Two formats of time (reminder: you can get sonde time from msg.payload.time)\nmsg.date_time_utc = msg.dts;\nmsg.time_local = msg.tstring;\n\n// Outputs from this node:\n//msg.bearing\n//msg.distance\n//msg.elevation\n//msg.s_alt\n//msg.s_temp\n//msg.dts\n\n// if using worldmap node, copy this function node, uncomment the following and feed into worldmap\n/*\nmsg.payload = {\n    layer: \"sonde\",\n    name: msg.payload.callsign,\n    lat: msg.payload.latitude,\n    lon: msg.payload.longitude,\n    speed: msg.s_speed,\n    heading: msg.payload.heading,\n    alt: msg.s_alt,\n    ttl: \"900\",\n    icon: \"arrow\",\n    iconColor: \"red\",\n    label: \"time: \" + msg.time_local + \" alt: \" + msg.s_alt + \" speed: \" + msg.s_speed + \" snr: \" + msg.payload.snr + \" LOS: \" + msg.distance\n};\n*/\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 180,
+        "wires": [
+            [
+                "fbe38e49ad13acce",
+                "57af179678f666c3"
+            ]
+        ]
+    },
+    {
+        "id": "94b16437258855c2",
+        "type": "comment",
+        "z": "cb74b638399634a9",
+        "name": "Set home lat/lon in this node",
+        "info": "",
+        "x": 420,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "1d6ea58ae5d1d159",
+        "type": "comment",
+        "z": "cb74b638399634a9",
+        "name": "Set SDR serial # in this node",
+        "info": "",
+        "x": 640,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "57af179678f666c3",
+        "type": "switch",
+        "z": "cb74b638399634a9",
+        "name": "Which SDR?",
+        "property": "payload.sdr_device_idx",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "401",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "402",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "403",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "404",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 630,
+        "y": 180,
+        "wires": [
+            [
+                "3baf28fdb51474dc",
+                "3a494b790733a07e",
+                "60810ecb8e80aecd",
+                "6fd73ef1b580ed82"
+            ],
+            [
+                "5912bd2d12150c0d",
+                "ec9e6075118eea3a",
+                "99bd366074a48709",
+                "2ee57e835da17053"
+            ],
+            [
+                "1f9be83558a78756",
+                "a1c6bbe3b9d93744",
+                "9653f631a12df0e0",
+                "c21dffd42a9d8d7c"
+            ],
+            [
+                "622d3fbbe58a6a24",
+                "56e15789e0e96e69",
+                "4cffaa111ca7ab8a",
+                "345cc76f1621ab57"
+            ]
+        ]
+    },
+    {
+        "id": "fbe38e49ad13acce",
+        "type": "link out",
+        "z": "cb74b638399634a9",
+        "name": "RS all SDRs",
+        "mode": "link",
+        "links": [
+            "3f78dffe50f44e8c"
+        ],
+        "x": 575,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "60810ecb8e80aecd",
+        "type": "function",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "func": "msg.topic = \"put\";\nmsg.elevation = msg.elevation.toFixed(2);\nmsg.bearing = msg.bearing.toFixed(0);\nmsg.payload = {\n    Time: msg.date_time_utc,\n    Model: msg.payload.model,\n    Freq: msg.payload.freq,\n    SNR: msg.snr,\n    Dist: msg.distance,\n    SDR: msg.payload.sdr_device_idx,\n    ALT: msg.s_alt,\n    Elev: msg.elevation,\n    Bear: msg.bearing,\n    Link: msg.sondehub,\n    Card: msg.sondecard\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 825,
+        "y": 100,
+        "wires": [
+            [
+                "0962f7c7aa3111d4"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "0962f7c7aa3111d4",
+        "type": "rbe",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "sondehub",
+        "topi": "topic",
+        "x": 875,
+        "y": 100,
+        "wires": [
+            [
+                "4b3f8a21d12d9a1f",
+                "e45a6d335436b6af",
+                "fa2c60787c0ac0d1"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "99bd366074a48709",
+        "type": "function",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "func": "msg.topic = \"put\";\nmsg.elevation = msg.elevation.toFixed(2);\nmsg.bearing = msg.bearing.toFixed(0);\nmsg.payload = {\n    Time: msg.date_time_utc,\n    Model: msg.payload.model,\n    Freq: msg.payload.freq,\n    SNR: msg.snr,\n    Dist: msg.distance,\n    SDR: msg.payload.sdr_device_idx,\n    ALT: msg.s_alt,\n    Elev: msg.elevation,\n    Bear: msg.bearing,\n    Link: msg.sondehub,\n    Card: msg.sondecard\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 825,
+        "y": 140,
+        "wires": [
+            [
+                "1b24c3ce0ed5bc97"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "1b24c3ce0ed5bc97",
+        "type": "rbe",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "sondehub",
+        "topi": "topic",
+        "x": 875,
+        "y": 140,
+        "wires": [
+            [
+                "49dfc076d3066897",
+                "e45a6d335436b6af",
+                "1bc368c38755c83a"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "1f9be83558a78756",
+        "type": "function",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "func": "msg.topic = \"put\";\nmsg.elevation = msg.elevation.toFixed(2);\nmsg.bearing = msg.bearing.toFixed(0);\nmsg.payload = {\n    Time: msg.date_time_utc,\n    Model: msg.payload.model,\n    Freq: msg.payload.freq,\n    SNR: msg.snr,\n    Dist: msg.distance,\n    SDR: msg.payload.sdr_device_idx,\n    ALT: msg.s_alt,\n    Elev: msg.elevation,\n    Bear: msg.bearing,\n    Link: msg.sondehub,\n    Card: msg.sondecard\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 825,
+        "y": 180,
+        "wires": [
+            [
+                "3935b13cee637af1"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "3935b13cee637af1",
+        "type": "rbe",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "sondehub",
+        "topi": "topic",
+        "x": 875,
+        "y": 180,
+        "wires": [
+            [
+                "80774190fcd18587",
+                "27681bdcc98b8191",
+                "e45a6d335436b6af"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "622d3fbbe58a6a24",
+        "type": "function",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "func": "msg.topic = \"put\";\nmsg.elevation = msg.elevation.toFixed(2);\nmsg.bearing = msg.bearing.toFixed(0);\nmsg.payload = {\n    Time: msg.date_time_utc,\n    Model: msg.payload.model,\n    Freq: msg.payload.freq,\n    SNR: msg.snr,\n    Dist: msg.distance,\n    SDR: msg.payload.sdr_device_idx,\n    ALT: msg.s_alt,\n    Elev: msg.elevation,\n    Bear: msg.bearing,\n    Link: msg.sondehub,\n    Card: msg.sondecard\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 825,
+        "y": 220,
+        "wires": [
+            [
+                "dbfbdfaf1574628a"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "dbfbdfaf1574628a",
+        "type": "rbe",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "sondehub",
+        "topi": "topic",
+        "x": 875,
+        "y": 220,
+        "wires": [
+            [
+                "97cf457802c9c8d7",
+                "35871c354d0f054a",
+                "e45a6d335436b6af"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "e45a6d335436b6af",
+        "type": "subflow:888786c5.d5aab8",
+        "z": "cb74b638399634a9",
+        "name": "40",
+        "env": [
+            {
+                "name": "Buffer_Size",
+                "value": "40",
+                "type": "num"
+            }
+        ],
+        "x": 1030,
+        "y": 200,
+        "wires": [
+            [],
+            [
+                "776aa8008c7dcab5",
+                "efca96f5a61c87cf"
+            ]
+        ]
+    },
+    {
+        "id": "3baf28fdb51474dc",
+        "type": "delay",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "15",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 840,
+        "y": 260,
+        "wires": [
+            [
+                "b75e9e19667519a3",
+                "67b269b886e7b9ad"
+            ]
+        ]
+    },
+    {
+        "id": "b75e9e19667519a3",
+        "type": "function",
+        "z": "cb74b638399634a9",
+        "name": "create payload",
+        "func": "\nmsg.payload1 = {}\nmsg.payload1.first = msg.snr;\nmsg.payload1.second = msg.distance;\nmsg.payload1.third = msg.s_alt;\nmsg.payload1.forth = msg.s_temp;\nmsg.payload1.fifth = msg.payload.humidity;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 260,
+        "wires": [
+            [
+                "ac56de2bad96515d"
+            ]
+        ]
+    },
+    {
+        "id": "3a494b790733a07e",
+        "type": "delay",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "2",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 840,
+        "y": 340,
+        "wires": [
+            [
+                "c29909a294de3468"
+            ]
+        ]
+    },
+    {
+        "id": "c29909a294de3468",
+        "type": "function",
+        "z": "cb74b638399634a9",
+        "name": "Build SDR 1 dataset",
+        "func": "// this is where you define the legend for \n// the datasets\nvar title1 = \"SDR One - Sonde SN: \" + msg.payload.callsign + \" Elevation\";\nvar legend1 = \"SNR vs Elevation\";\n\n// variables to be used\nvar x, y, r, data1;\n// get or create the data string array with at least one value in it\ndata1 = flow.get('data1') || [{ 'x': 0, 'y': 0, 'r': 1 }];\n//node.warn(typeof (data1));\n\n//node.warn(\"db1=\"+data1);\nx = msg.payload.snr;\ny = msg.elevation.toFixed(2);\n//node.warn(typeof (y));\nr = (2);\ndata1.push({ 'x': x, 'y': y, 'r': r });\nif (data1.length > 5000) data1.shift();\n\ndata1[data1.length - 1][\"r\"] = 6;\n// iterate through the array to generate the string\nvar datastr = \"\";\nfor (var i = 0; i < data1.length; i++)\n    datastr += JSON.stringify(data1[i]) + ',';\ndata1[data1.length - 1][\"r\"] = 2;\n\n// trim off the trailing comma\ndatastr = datastr.substring(0, datastr.length - 1);\n\n// now we build msg.payload\nmsg.payload = {\n    \"title1\": title1,\n    \"legend1\": legend1,\n    \"data1\": datastr\n};\n\nflow.set(\"data1\", data1);\ndata1.push({ 'x': 0, 'y': 0, 'r': 1 });\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1060,
+        "y": 340,
+        "wires": [
+            [
+                "48ad05615ce4caf9"
+            ]
+        ]
+    },
+    {
+        "id": "48ad05615ce4caf9",
+        "type": "template",
+        "z": "cb74b638399634a9",
+        "name": "sdr 1 elev",
+        "field": "template",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<canvas id=\"sdroneelev\" width=\"100\" height=\"100\"></canvas>\n\n<script>\n  new Chart(document.getElementById(\"sdroneelev\"), {\n    type: 'bubble',\n    data: {\n      labels: \"label\",\n      datasets: [\n        {\n          label: \"{{{payload.legend1}}}\",\n          backgroundColor: \"rgb(99, 255, 206, 1.0000)\",\n          borderColor: \"#000\",\n          data: [\n            {{{payload.data1}}}\n\n          ]\n        } \n      ]\n    },\n    options: {\n        animation: false,\n        legend: {\n            display: true,\n            labels: {\n                fontColor: 'rgb(99, 255, 206)'\n            }\n        },\n    title: {\n        display: true,\n        text: '{{{payload.title1}}}'\n      }, scales: {\n        yAxes: [{ \n          scaleLabel: {\n            display: true,\n            labelString: \"Elevation\"\n          }\n        }],\n        xAxes: [{ \n          scaleLabel: {\n            display: true,\n            labelString: \"SNR\"\n          }\n        }]\n      }\n    }\n});\n\n</script>",
+        "output": "str",
+        "x": 1260,
+        "y": 340,
+        "wires": [
+            [
+                "9739e8b54ce4e45a"
+            ]
+        ]
+    },
+    {
+        "id": "67b269b886e7b9ad",
+        "type": "nostalgic",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "outputProp": "nostalgic",
+        "interval": 1,
+        "resend": true,
+        "attach": true,
+        "x": 1020,
+        "y": 380,
+        "wires": [
+            [
+                "d56507c253d032b7"
+            ]
+        ]
+    },
+    {
+        "id": "d56507c253d032b7",
+        "type": "ui_text",
+        "z": "cb74b638399634a9",
+        "group": "c4e0681d0d14d28a",
+        "order": 5,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Last heard: ",
+        "format": "{{msg.nostalgic}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 1270,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "79574610f3dcd818",
+        "type": "ui_button",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "group": "c4e0681d0d14d28a",
+        "order": 9,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "Clear elevation",
+        "tooltip": "Will auto clear for each sonde SN#.",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "date",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 1040,
+        "y": 420,
+        "wires": [
+            [
+                "fa2c60787c0ac0d1"
+            ]
+        ]
+    },
+    {
+        "id": "fa2c60787c0ac0d1",
+        "type": "change",
+        "z": "cb74b638399634a9",
+        "name": "Clear SDR1 elev plot",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "data1",
+                "pt": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1300,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a4bdb48641bded4f",
+        "type": "ui_text",
+        "z": "cb74b638399634a9",
+        "group": "c4e0681d0d14d28a",
+        "order": 3,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Refresh browser tab to clear line graph",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 1110,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "5912bd2d12150c0d",
+        "type": "delay",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "15",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 840,
+        "y": 520,
+        "wires": [
+            [
+                "f69fbc8eedddbdb3",
+                "e9d9dbc835546b0a"
+            ]
+        ]
+    },
+    {
+        "id": "f69fbc8eedddbdb3",
+        "type": "function",
+        "z": "cb74b638399634a9",
+        "name": "create payload",
+        "func": "\nmsg.payload2 = {}\nmsg.payload2.first = msg.snr;\nmsg.payload2.second = msg.distance;\nmsg.payload2.third = msg.s_alt;\nmsg.payload2.forth = msg.s_temp;\nmsg.payload2.fifth = msg.payload.humidity;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 520,
+        "wires": [
+            [
+                "2b1ede2a74758116"
+            ]
+        ]
+    },
+    {
+        "id": "ec9e6075118eea3a",
+        "type": "delay",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "2",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 840,
+        "y": 600,
+        "wires": [
+            [
+                "531f76461c75892e"
+            ]
+        ]
+    },
+    {
+        "id": "531f76461c75892e",
+        "type": "function",
+        "z": "cb74b638399634a9",
+        "name": "Build SDR 2 dataset",
+        "func": "// this is where you define the legend for \n// the datasets\nvar title2 = \"SDR Two - Sonde SN: \" + msg.payload.callsign + \" Elevation\";\nvar legend2 = \"SNR vs Elevation\";\n\n// variables to be used\nvar x, y, r, data2;\n// get or create the data string array with at least one value in it\ndata2 = flow.get('data2') || [{ 'x': 0, 'y': 0, 'r': 1 }];\n//node.warn(typeof (data2));\n\n//node.warn(\"db1=\"+data2);\nx = msg.snr;\ny = msg.elevation.toFixed(2);\n//node.warn(typeof (y));\nr = (2);\ndata2.push({ 'x': x, 'y': y, 'r': r });\nif (data2.length > 5000) data2.shift();\n\ndata2[data2.length - 1][\"r\"] = 6;\n// iterate through the array to generate the string\nvar datastr = \"\";\nfor (var i = 0; i < data2.length; i++)\n    datastr += JSON.stringify(data2[i]) + ',';\ndata2[data2.length - 1][\"r\"] = 2;\n\n// trim off the trailing comma\ndatastr = datastr.substring(0, datastr.length - 1);\n\n// now we build msg.payload\nmsg.payload = {\n    \"title2\": title2,\n    \"legend2\": legend2,\n    \"data2\": datastr\n};\n\nflow.set(\"data2\", data2);\ndata2.push({ 'x': 0, 'y': 0, 'r': 1 });\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1060,
+        "y": 600,
+        "wires": [
+            [
+                "48fa26d91f579860"
+            ]
+        ]
+    },
+    {
+        "id": "48fa26d91f579860",
+        "type": "template",
+        "z": "cb74b638399634a9",
+        "name": "SDR 2 elev",
+        "field": "template",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<canvas id=\"sdrtwoelev\" width=\"100\" height=\"100\"></canvas>\n\n<script>\n  new Chart(document.getElementById(\"sdrtwoelev\"), {\n    type: 'bubble',\n    data: {\n      labels: \"label2\",\n      datasets: [\n        {\n          label: \"{{{payload.legend2}}}\",\n          backgroundColor: \"rgb(99, 255, 206, 1.0000)\",\n          borderColor: \"#000\",\n          data: [\n            {{{payload.data2}}}\n\n          ]\n        } \n      ]\n    },\n    options: {\n        animation: false,\n        legend: {\n            display: true,\n            labels: {\n                fontColor: 'rgb(99, 255, 206)'\n            }\n        },\n    title: {\n        display: true,\n        text: '{{{payload.title2}}}'\n      }, scales: {\n        yAxes: [{ \n          scaleLabel: {\n            display: true,\n            labelString: \"Elevation\"\n          }\n        }],\n        xAxes: [{ \n          scaleLabel: {\n            display: true,\n            labelString: \"SNR\"\n          }\n        }]\n      }\n    }\n});\n\n</script>\n",
+        "output": "str",
+        "x": 1270,
+        "y": 600,
+        "wires": [
+            [
+                "c7b0cc4d7e7604b2"
+            ]
+        ]
+    },
+    {
+        "id": "e9d9dbc835546b0a",
+        "type": "nostalgic",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "outputProp": "nostalgic",
+        "interval": 1,
+        "resend": true,
+        "attach": true,
+        "x": 1020,
+        "y": 640,
+        "wires": [
+            [
+                "d1e9f6633c8d63e0"
+            ]
+        ]
+    },
+    {
+        "id": "d1e9f6633c8d63e0",
+        "type": "ui_text",
+        "z": "cb74b638399634a9",
+        "group": "90fb9a11a275ccfb",
+        "order": 5,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Last heard: ",
+        "format": "{{msg.nostalgic}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 1270,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "373d7702ec70763d",
+        "type": "ui_button",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "group": "90fb9a11a275ccfb",
+        "order": 9,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "Clear elevation",
+        "tooltip": "Will auto clear for each sonde SN#.",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "date",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 1040,
+        "y": 680,
+        "wires": [
+            [
+                "1bc368c38755c83a"
+            ]
+        ]
+    },
+    {
+        "id": "1bc368c38755c83a",
+        "type": "change",
+        "z": "cb74b638399634a9",
+        "name": "Clear SDR2 elev plot",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "data2",
+                "pt": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1300,
+        "y": 680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b16d7f37b99c3c32",
+        "type": "ui_text",
+        "z": "cb74b638399634a9",
+        "group": "90fb9a11a275ccfb",
+        "order": 3,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Refresh browser tab to clear line graph",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 1110,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "a1c6bbe3b9d93744",
+        "type": "delay",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "15",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 840,
+        "y": 780,
+        "wires": [
+            [
+                "56e33d5b56acdbf9",
+                "031efc33635d8884"
+            ]
+        ]
+    },
+    {
+        "id": "56e33d5b56acdbf9",
+        "type": "function",
+        "z": "cb74b638399634a9",
+        "name": "create payload",
+        "func": "\nmsg.payload3 = {}\nmsg.payload3.first = msg.snr;\nmsg.payload3.second = msg.distance;\nmsg.payload3.third = msg.s_alt;\nmsg.payload3.forth = msg.s_temp;\nmsg.payload3.fifth = msg.payload.humidity;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 780,
+        "wires": [
+            [
+                "876611a9eed7765b"
+            ]
+        ]
+    },
+    {
+        "id": "9653f631a12df0e0",
+        "type": "delay",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "2",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 840,
+        "y": 860,
+        "wires": [
+            [
+                "8c4845b80eaf9e10"
+            ]
+        ]
+    },
+    {
+        "id": "8c4845b80eaf9e10",
+        "type": "function",
+        "z": "cb74b638399634a9",
+        "name": "Build SDR 3 dataset",
+        "func": "// this is where you define the legend for \n// the datasets\nvar title3 = \"SDR Three - Sonde SN: \" + msg.payload.callsign + \" Elevation\";\nvar legend3 = \"SNR vs Elevation\";\n\n// variables to be used\nvar x, y, r, data3;\n// get or create the data string array with at least one value in it\ndata3 = flow.get('data3') || [{ 'x': 0, 'y': 0, 'r': 1 }];\n//node.warn(typeof (data3));\n\n//node.warn(\"db1=\"+data3);\nx = msg.snr;\ny = msg.elevation.toFixed(2);\n//node.warn(typeof (y));\nr = (2);\ndata3.push({ 'x': x, 'y': y, 'r': r });\nif (data3.length > 5000) data3.shift();\n\ndata3[data3.length - 1][\"r\"] = 6;\n// iterate through the array to generate the string\nvar datastr = \"\";\nfor (var i = 0; i < data3.length; i++)\n    datastr += JSON.stringify(data3[i]) + ',';\ndata3[data3.length - 1][\"r\"] = 2;\n\n// trim off the trailing comma\ndatastr = datastr.substring(0, datastr.length - 1);\n\n// now we build msg.payload\nmsg.payload = {\n    \"title3\": title3,\n    \"legend3\": legend3,\n    \"data3\": datastr\n};\n\nflow.set(\"data3\", data3);\ndata3.push({ 'x': 0, 'y': 0, 'r': 1 });\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1060,
+        "y": 860,
+        "wires": [
+            [
+                "ed2ff58a349cbe58"
+            ]
+        ]
+    },
+    {
+        "id": "ed2ff58a349cbe58",
+        "type": "template",
+        "z": "cb74b638399634a9",
+        "name": "SDR 3 elev",
+        "field": "template",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<canvas id=\"sdrthreeelev\" width=\"100\" height=\"100\"></canvas>\n\n<script>\n  new Chart(document.getElementById(\"sdrthreeelev\"), {\n    type: 'bubble',\n    data: {\n      labels: \"label3\",\n      datasets: [\n        {\n          label: \"{{{payload.legend3}}}\",\n          backgroundColor: \"rgb(99, 255, 206, 1.0000)\",\n          borderColor: \"#000\",\n          data: [\n            {{{payload.data3}}}\n\n          ]\n        } \n      ]\n    },\n    options: {\n        animation: false,\n        legend: {\n            display: true,\n            labels: {\n                fontColor: 'rgb(99, 255, 206)'\n            }\n        },\n    title: {\n        display: true,\n        text: '{{{payload.title3}}}'\n      }, scales: {\n        yAxes: [{ \n          scaleLabel: {\n            display: true,\n            labelString: \"Elevation\"\n          }\n        }],\n        xAxes: [{ \n          scaleLabel: {\n            display: true,\n            labelString: \"SNR\"\n          }\n        }]\n      }\n    }\n});\n\n</script>\n",
+        "output": "str",
+        "x": 1270,
+        "y": 860,
+        "wires": [
+            [
+                "afb15833a5593855"
+            ]
+        ]
+    },
+    {
+        "id": "031efc33635d8884",
+        "type": "nostalgic",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "outputProp": "nostalgic",
+        "interval": 1,
+        "resend": true,
+        "attach": true,
+        "x": 1020,
+        "y": 900,
+        "wires": [
+            [
+                "8dd68b174ec90923"
+            ]
+        ]
+    },
+    {
+        "id": "8dd68b174ec90923",
+        "type": "ui_text",
+        "z": "cb74b638399634a9",
+        "group": "21171ba5dcada8f2",
+        "order": 5,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Last heard: ",
+        "format": "{{msg.nostalgic}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 1270,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "b48696634768f9b0",
+        "type": "ui_button",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "group": "21171ba5dcada8f2",
+        "order": 9,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "Clear elevation",
+        "tooltip": "Will auto clear for each sonde SN#.",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "date",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 1040,
+        "y": 940,
+        "wires": [
+            [
+                "27681bdcc98b8191"
+            ]
+        ]
+    },
+    {
+        "id": "27681bdcc98b8191",
+        "type": "change",
+        "z": "cb74b638399634a9",
+        "name": "Clear SDR3 elev plot",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "data3",
+                "pt": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1300,
+        "y": 940,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "db5649ef514d5aac",
+        "type": "ui_text",
+        "z": "cb74b638399634a9",
+        "group": "21171ba5dcada8f2",
+        "order": 3,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Refresh browser tab to clear line graph",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 1110,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "56e15789e0e96e69",
+        "type": "delay",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "15",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 840,
+        "y": 1060,
+        "wires": [
+            [
+                "d56c8bacf95445b4",
+                "acf93d6e1a6a6c14"
+            ]
+        ]
+    },
+    {
+        "id": "d56c8bacf95445b4",
+        "type": "function",
+        "z": "cb74b638399634a9",
+        "name": "create payload",
+        "func": "\nmsg.payload4 = {}\nmsg.payload4.first = msg.snr;\nmsg.payload4.second = msg.distance;\nmsg.payload4.third = msg.s_alt;\nmsg.payload4.forth = msg.s_temp;\nmsg.payload4.fifth = msg.payload.humidity;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 1060,
+        "wires": [
+            [
+                "fa27bb4804344ea0"
+            ]
+        ]
+    },
+    {
+        "id": "4cffaa111ca7ab8a",
+        "type": "delay",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "2",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 840,
+        "y": 1140,
+        "wires": [
+            [
+                "fef550c0ae492c85"
+            ]
+        ]
+    },
+    {
+        "id": "fef550c0ae492c85",
+        "type": "function",
+        "z": "cb74b638399634a9",
+        "name": "Build SDR 4 dataset",
+        "func": "// this is where you define the legend for \n// the datasets\nvar title4 = \"SDR Four - Sonde SN: \" + msg.payload.callsign + \" Elevation\";\nvar legend4 = \"SNR vs Elevation\";\n\n// variables to be used\nvar x, y, r, data4;\n// get or create the data string array with at least one value in it\ndata4 = flow.get('data4') || [{ 'x': 0, 'y': 0, 'r': 1 }];\n//node.warn(typeof (data4));\n\n//node.warn(\"db1=\"+data4);\nx = msg.snr;\ny = msg.elevation.toFixed(2);\n//node.warn(typeof (y));\nr = (2);\ndata4.push({ 'x': x, 'y': y, 'r': r });\nif (data4.length > 5000) data4.shift();\n\ndata4[data4.length - 1][\"r\"] = 6;\n// iterate through the array to generate the string\nvar datastr = \"\";\nfor (var i = 0; i < data4.length; i++)\n    datastr += JSON.stringify(data4[i]) + ',';\ndata4[data4.length - 1][\"r\"] = 2;\n\n// trim off the trailing comma\ndatastr = datastr.substring(0, datastr.length - 1);\n\n// now we build msg.payload\nmsg.payload = {\n    \"title4\": title4,\n    \"legend4\": legend4,\n    \"data4\": datastr\n};\n\nflow.set(\"data4\", data4);\ndata4.push({ 'x': 0, 'y': 0, 'r': 1 });\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1060,
+        "y": 1140,
+        "wires": [
+            [
+                "66b5053fbc4cadd0"
+            ]
+        ]
+    },
+    {
+        "id": "66b5053fbc4cadd0",
+        "type": "template",
+        "z": "cb74b638399634a9",
+        "name": "SDR 4 elev",
+        "field": "template",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<canvas id=\"sdrfourelev\" width=\"100\" height=\"100\"></canvas>\n\n<script>\n  new Chart(document.getElementById(\"sdrfourelev\"), {\n    type: 'bubble',\n    data: {\n      labels: \"label4\",\n      datasets: [\n        {\n          label: \"{{{payload.legend4}}}\",\n          backgroundColor: \"rgb(99, 255, 206, 1.0000)\",\n          borderColor: \"#000\",\n          data: [\n            {{{payload.data4}}}\n\n          ]\n        } \n      ]\n    },\n    options: {\n        animation: false,\n        legend: {\n            display: true,\n            labels: {\n                fontColor: 'rgb(99, 255, 206)'\n            }\n        },\n    title: {\n        display: true,\n        text: '{{{payload.title4}}}'\n      }, scales: {\n        yAxes: [{ \n          scaleLabel: {\n            display: true,\n            labelString: \"Elevation\"\n          }\n        }],\n        xAxes: [{ \n          scaleLabel: {\n            display: true,\n            labelString: \"SNR\"\n          }\n        }]\n      }\n    }\n});\n\n</script>\n",
+        "output": "str",
+        "x": 1270,
+        "y": 1140,
+        "wires": [
+            [
+                "2cf8458580850b0a"
+            ]
+        ]
+    },
+    {
+        "id": "acf93d6e1a6a6c14",
+        "type": "nostalgic",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "outputProp": "nostalgic",
+        "interval": 1,
+        "resend": true,
+        "attach": true,
+        "x": 1020,
+        "y": 1180,
+        "wires": [
+            [
+                "c744ec4ddd0505cf"
+            ]
+        ]
+    },
+    {
+        "id": "c744ec4ddd0505cf",
+        "type": "ui_text",
+        "z": "cb74b638399634a9",
+        "group": "3664b6bbda4d3679",
+        "order": 5,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Last heard: ",
+        "format": "{{msg.nostalgic}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 1270,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "0861782307282ec5",
+        "type": "ui_button",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "group": "3664b6bbda4d3679",
+        "order": 9,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "Clear elevation",
+        "tooltip": "Will auto clear for each sonde SN#.",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "date",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 1040,
+        "y": 1220,
+        "wires": [
+            [
+                "35871c354d0f054a"
+            ]
+        ]
+    },
+    {
+        "id": "35871c354d0f054a",
+        "type": "change",
+        "z": "cb74b638399634a9",
+        "name": "Clear SDR4 elev plot",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "data4",
+                "pt": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1300,
+        "y": 1220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "624f96c65858dcab",
+        "type": "ui_text",
+        "z": "cb74b638399634a9",
+        "group": "3664b6bbda4d3679",
+        "order": 3,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Refresh browser tab to clear line graph",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 1110,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "3f78dffe50f44e8c",
+        "type": "link in",
+        "z": "cb74b638399634a9",
+        "name": "RS graphs",
+        "links": [
+            "fbe38e49ad13acce"
+        ],
+        "x": 775,
+        "y": 1340,
+        "wires": [
+            [
+                "b83c8275421a46d8",
+                "48c846663e7fbf22"
+            ]
+        ]
+    },
+    {
+        "id": "48c846663e7fbf22",
+        "type": "function",
+        "z": "cb74b638399634a9",
+        "name": "Build total dataset",
+        "func": "// @ts-nocheck\n// this is where you define the legend for \n// the meldatasets\nvar title = \"Maximum Normalized SNR vs Elevation\";\nvar legend = \"SNR at Elevation\";\n\n// variables to be used\nvar snr, elv, r, meldata;\n// get or create the meldata string array with at least one value in it\nvar meldata = flow.get('meldata') || [{ 'x': 0, 'y': 0, 'r': 1 }];\n//node.warn(typeof (meldata));\n\n//node.warn(\"db1=\"+meldata1);\nsnr = msg.nsnr.toFixed(2);\n//elv = msg.elevation.toFixed(1);\n//tofixed(1) was too course toFixed(2) was too fine. Lets go in the middle...\nelv = (Math.round(msg.elevation * 5) / 5).toFixed(1);\n//node.warn(elv);\n\nr = (2);\n\n// check to see if this elevation is already stored in `meldata`\nvar flag = false;\nfor (var i = 0; i < meldata.length; i++) {\n    if (meldata[i].y == elv) { // if this elevation is found\n        if (meldata[i].x < snr) meldata[i].x = snr; // check to see if it has a stronger snr\n        flag = true; // mark that it has been found, so it should not be added\n        break; // no need to check the other array elements\n    }\n}\nif (!flag) meldata.push({ 'x': snr, 'y': elv, 'r': r });\n\n// trim the meldata array if it gets too long\nif (meldata.length > 2000) meldata.shift();\n\n\n// iterate through the array to generate the string\nvar meldatastr = \"\";\nfor (var i = 0; i < meldata.length; i++)\n    meldatastr += JSON.stringify(meldata[i]) + ',';\n\n// trim off the trailing comma\nmeldatastr = meldatastr.substring(0, meldatastr.length - 1);\n\n// now we build msg.payload\nmsg.payload = {\n    \"title\": title,\n    \"legend\": legend,\n    \"meldata\": meldatastr\n};\n\nflow.set(\"meldata\", meldata);\n//meldata.push({ 'x': 0, 'y': 0, 'r': 1 });\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1050,
+        "y": 1320,
+        "wires": [
+            [
+                "f53041abaf25af90"
+            ]
+        ]
+    },
+    {
+        "id": "f53041abaf25af90",
+        "type": "template",
+        "z": "cb74b638399634a9",
+        "name": "max elev&SNR plot",
+        "field": "template",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<canvas id=\"bubble-chart\" width=\"100\" height=\"100\"></canvas>\n\n<script>\n  new Chart(document.getElementById(\"bubble-chart\"), {\n    type: 'bubble',\n    data: {\n      labels: \"label\",\n      datasets: [\n        {\n          label: \"{{{payload.legend}}}\",\n          backgroundColor: \"rgb(99, 255, 206, 1.0000)\",\n          borderColor: \"#000\",\n          data: [\n            {{{payload.meldata}}}\n\n          ]\n        } \n      ]\n    },\n    options: {\n        animation: false,\n        legend: {\n            display: true,\n            labels: {\n                fontColor: 'rgb(99, 255, 206)'\n            }\n        },\n    title: {\n        display: true,\n        text: '{{{payload.title}}}'\n      }, scales: {\n        yAxes: [{ \n          scaleLabel: {\n            display: true,\n            labelString: \"Elevation\"\n          }\n        }],\n        xAxes: [{ \n          scaleLabel: {\n            display: true,\n            labelString: \"Normalized SNR\"\n          }\n        }]\n      }\n    }\n});\n\n</script>\n",
+        "output": "str",
+        "x": 1290,
+        "y": 1320,
+        "wires": [
+            [
+                "d1f5dd2d28c82467"
+            ]
+        ]
+    },
+    {
+        "id": "b83c8275421a46d8",
+        "type": "function",
+        "z": "cb74b638399634a9",
+        "name": "Build total dataset",
+        "func": "// @ts-nocheck\n\nmsg.topic = \"RadioSonde\"\n\n// variables to be used\nvar azm = msg.bearing.toFixed(0);\nvar snr = msg.payload.snr;\nvar dist = msg.ndist;\n    //clean up the bearing and 'lock' it to the nearest 5, ie the reslution of the radar graph\nazm = Math.round(azm / 5) * 5\n\n// get or create the data arrays\nvar snrdata = flow.get('snrdata') || [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];\nvar distdata = flow.get('distdata') || [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];\n\n// node.warn(azdata.length);\n// node.warn(\"snr: \" + snr + \", azm: \" + msg.payload.bearing);\n\n// check to see if this bearing is already stored\n//if (azdata[Math.round(azm/15)] < snr) azdata[Math.round(azm/15)] = Number(snr.toFixed(3));\n// if (snrdata[azm/5] < snr) snrdata[azm/5] = Number(snr.toFixed(3));\n\n// Save dist and snr when this is a new max distance.\nif (distdata[azm / 5] < dist) {\n    distdata[azm / 5] = Number(dist.toFixed(1));\n    snrdata[azm / 5] = Number(snr.toFixed(3));\n}\n\nvar m = {};\nm.labels = [\"0\",\"5\",\"10\",\"15\",\"20\",\"25\",\"30\",\"35\",\"40\",\"45\",\"50\",\"55\",\"60\",\"65\",\"70\",\"75\",\"80\",\"85\",\"90\",\"95\",\"100\",\"105\",\"110\",\"115\",\"120\",\"125\",\"130\",\"135\",\"140\",\"145\",\"150\",\"155\",\"160\",\"165\",\"170\",\"175\",\"180\",\"185\",\"190\",\"195\",\"200\",\"205\",\"210\",\"215\",\"220\",\"225\",\"230\",\"235\",\"240\",\"245\",\"250\",\"255\",\"260\",\"265\",\"270\",\"275\",\"280\",\"285\",\"290\",\"295\",\"300\",\"305\",\"310\",\"315\",\"320\",\"325\",\"330\",\"335\",\"340\",\"345\",\"350\",\"355\"];\nm.data = [snrdata, distdata];\nm.series = ['SNR','Distance'];\n\nflow.set(\"snrdata\", snrdata);\nflow.set(\"distdata\", distdata);\nreturn {payload:[m]};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1050,
+        "y": 1380,
+        "wires": [
+            [
+                "2d7b94e1f49af480"
+            ]
+        ]
+    },
+    {
+        "id": "48478788853fb093",
+        "type": "ui_button",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "group": "563ad72f72e9c95e",
+        "order": 26,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "Clear elevation",
+        "tooltip": "Take screenshot first!!",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "date",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 1040,
+        "y": 1440,
+        "wires": [
+            [
+                "037bbf84a6f9812f"
+            ]
+        ]
+    },
+    {
+        "id": "abb88bcb71e18c7c",
+        "type": "ui_button",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "group": "563ad72f72e9c95e",
+        "order": 28,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "Clear Radar",
+        "tooltip": "Take screenshot first!",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "date",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 1030,
+        "y": 1480,
+        "wires": [
+            [
+                "3057a8a9e7f591ee"
+            ]
+        ]
+    },
+    {
+        "id": "3057a8a9e7f591ee",
+        "type": "change",
+        "z": "cb74b638399634a9",
+        "name": "delete snr and dist radar data",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "snrdata",
+                "pt": "flow"
+            },
+            {
+                "t": "delete",
+                "p": "distdata",
+                "pt": "flow"
+            },
+            {
+                "t": "delete",
+                "p": "bearing",
+                "pt": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1270,
+        "y": 1480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "037bbf84a6f9812f",
+        "type": "change",
+        "z": "cb74b638399634a9",
+        "name": "",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "meldata",
+                "pt": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1240,
+        "y": 1440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2d7b94e1f49af480",
+        "type": "ui_chart",
+        "z": "cb74b638399634a9",
+        "name": "radar plot",
+        "group": "563ad72f72e9c95e",
+        "order": 2,
+        "width": 13,
+        "height": 8,
+        "label": "SNR / Distance & Azimuth",
+        "chartType": "radar",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Waiting for sonde data from either SDR",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": "30",
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#002aff",
+            "#00ff00",
+            "#808080",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1480,
+        "y": 1380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d1f5dd2d28c82467",
+        "type": "ui_template",
+        "z": "cb74b638399634a9",
+        "group": "563ad72f72e9c95e",
+        "name": "Master Elevation Plot",
+        "order": 11,
+        "width": 13,
+        "height": 13,
+        "format": "Waiting for sonde data from any SDR",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1520,
+        "y": 1320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "345cc76f1621ab57",
+        "type": "ui_text",
+        "z": "cb74b638399634a9",
+        "group": "3664b6bbda4d3679",
+        "order": 7,
+        "width": 12,
+        "height": 1,
+        "name": "Sonde Data",
+        "label": "",
+        "format": "Sn: {{msg.payload.callsign}}  Type: {{msg.payload.model}} Freq: {{msg.payload.freq}} Frame: {{msg.payload.frame}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 1490,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "2cf8458580850b0a",
+        "type": "ui_template",
+        "z": "cb74b638399634a9",
+        "group": "3664b6bbda4d3679",
+        "name": "SDR 4 Elevation Plot",
+        "order": 2,
+        "width": 13,
+        "height": 13,
+        "format": "Waiting for sonde data from SDR 4",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1520,
+        "y": 1140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fa27bb4804344ea0",
+        "type": "ui_template",
+        "z": "cb74b638399634a9",
+        "group": "3664b6bbda4d3679",
+        "name": "SDR4 Line Graph",
+        "order": 1,
+        "width": 17,
+        "height": 13,
+        "format": "<canvas id=\"sdrChartFour\" width=\"100\" height=\"50\"></canvas>\n<script>\n    var textcolor = getComputedStyle(document.documentElement).getPropertyValue('--nr-dashboard-widgetTextColor');\nvar gridcolor = getComputedStyle(document.documentElement).getPropertyValue('--nr-dashboard-groupBorderColor');\nvar linecolors = ['#009900','#889900','#85C1E9','#505DFF', '#ff8f50']\nvar maxDataPoints = 500\n\nvar ctxFour = document.getElementById('sdrChartFour').getContext('2d');\nvar chartFour = new Chart(ctxFour, {\n    // The type of chart we want to create\n    type: 'line',\n\n    // The data for our dataset\n    data: {\n        labels: [\"snr\", \"los\", \"alt\",\"temp\", \"humidity\"],\n        datasets: [\n            {\n                label: 'snr',\n                backgroundColor: linecolors[0],\n                borderColor: linecolors[0],\n                data: [],\n                pointRadius: 1,\n                yAxisID: 'right-y-axis-0',\n                steppedLine: false,\n                fill: false,\n                borderWidth: 1\n            },\n            {\n                label: 'los',\n                backgroundColor: linecolors[1],\n                borderColor: linecolors[1],\n                data: [],\n                pointRadius: 2,\n                yAxisID: 'right-y-axis-1',\n                steppedLine: false,\n                fill: false,\n                borderWidth: 1\n            },\n            {\n                label: 'alt',\n                backgroundColor: linecolors[2],\n                borderColor: linecolors[2],\n                data: [],\n                pointRadius: 3,\n                yAxisID: 'right-y-axis-2',\n                steppedLine: false,\n                fill: false,\n                borderWidth: 1\n            },\n            {\n                label: 'temp',\n                backgroundColor: linecolors[3],\n                borderColor: linecolors[3],\n                data: [],\n                pointRadius: 1,\n                yAxisID: 'right-y-axis-3',\n                steppedLine: false,\n                fill: false,\n                borderWidth: 1\n            },\n            {\n            label: 'humidity',\n            backgroundColor: linecolors[4],\n            borderColor: linecolors[4],\n            data: [],\n            pointRadius: 1,\n            yAxisID: 'right-y-axis-4',\n            steppedLine: false,\n            fill: false,\n            borderWidth: 1\n            }\n        ]\n    },\n\n    // Configuration options go here\n    options: {\n            responsive: true,\n            maintainAspectRatio: false,\n                title: {\n                    display: true,\n                    //text: 'SDR Two - SN: 'msg.payload.callsign' current flight - snr, los, alt, temp'\n                    text: 'SDR Four - current flight - snr, los, alt, temp, humidity'\n                },\n            \n\n        scales: {\n            yAxes: [\n                {\n                    stacked: true,\n                    gridLines :{display:false},\n                    id: 'right-y-axis-0',\n                    type: 'linear',\n                    position: 'right',\n                    \n                    ticks: {\n                        fontColor: linecolors[0],\n                    max: 30,\n                    min: 0\n                        \n                    }\n                },\n                {\n                    gridLines :{zeroLineColor:gridcolor,color:gridcolor,lineWidth:0.5},\n                    id: 'right-y-axis-1',\n                    type: 'linear',\n                    \n                    position: 'right',\n                    ticks: {\n                        fontColor:linecolors[1],\n                        max: 250,\n                        min: 0                   \n                        \n                    }\n                },\n                {\n                    id: 'right-y-axis-2',\n                    position: 'right',\n                    ticks: {\n                        fontColor:linecolors[2],\n                        max: 120000,\n                        min: 0                   \n                        \n                    }\n                },\n                {\n                    id: 'right-y-axis-3',\n                    position: 'right',\n                    ticks: {\n                        fontColor:linecolors[3],\n                        max: 70,\n                        min: -100                   \n                        \n                    }\n                },\n                {\n                id: 'right-y-axis-4',\n                position: 'right',\n                ticks: {\n                fontColor:linecolors[4],\n                max: 100,\n                min: 0\n                \n                    }\n                }\n            ],\n            xAxes: [\n                {\n                    gridLines :{zeroLineColor:gridcolor,color:gridcolor,lineWidth:0.5},\n                    type: 'time',\n                    distribution: 'series',\n                    time:{\n                        displayFormats: {\n                            quarter: 'MMM YYYY',\n                            millisecond:'h:mm:ss',\n                            second:\t'h:mm:ss',\n                            minute:\t'h:mm',\n                            hour:\t'h'                        \n                        }\n                    },\n                    \n                    ticks: {\n                        fontColor:textcolor\n                    }\n                }\n            ]\n        }\n    }\n});\nfunction addData(chartFour, data, label) {\n    chartFour.data.datasets.forEach((dataset) => {\n        if(dataset.label == label){\n            dataset.data.push(data);\n        }\n        if(dataset.data.length > maxDataPoints){\n            dataset.data.shift()\n        }\n    });\n    chartFour.update(0);//0 means no animation\n}\n(function(scope) {\n  scope.$watch('msg', function(msg) {\n    if (msg) {\n      // Do something when msg arrives\n      addData(chartFour,{x:new Date(),y:msg.payload4.first},\"snr\")\n      addData(chartFour,{x:new Date(),y:msg.payload4.second},\"los\")\n      addData(chartFour,{x:new Date(),y:msg.payload4.third},\"alt\")\n      addData(chartFour,{x:new Date(),y:msg.payload4.forth},\"temp\")\n      addData(chartFour,{x:new Date(),y:msg.payload4.fifth},\"humidity\")\n\n    }\n  });\n})(scope);\n</script>",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 1510,
+        "y": 1060,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c21dffd42a9d8d7c",
+        "type": "ui_text",
+        "z": "cb74b638399634a9",
+        "group": "21171ba5dcada8f2",
+        "order": 7,
+        "width": 12,
+        "height": 1,
+        "name": "Sonde Data",
+        "label": "",
+        "format": "Sn: {{msg.payload.callsign}}  Type: {{msg.payload.model}} Freq: {{msg.payload.freq}} Frame: {{msg.payload.frame}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 1490,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "afb15833a5593855",
+        "type": "ui_template",
+        "z": "cb74b638399634a9",
+        "group": "21171ba5dcada8f2",
+        "name": "SDR 3 Elevation Plot",
+        "order": 2,
+        "width": 13,
+        "height": 13,
+        "format": "Waiting for sonde data from SDR 3",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1520,
+        "y": 860,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "876611a9eed7765b",
+        "type": "ui_template",
+        "z": "cb74b638399634a9",
+        "group": "21171ba5dcada8f2",
+        "name": "SDR3 Line Graph",
+        "order": 1,
+        "width": 17,
+        "height": 13,
+        "format": "<canvas id=\"sdrChartThree\" width=\"100\" height=\"50\"></canvas>\n<script>\n    var textcolor = getComputedStyle(document.documentElement).getPropertyValue('--nr-dashboard-widgetTextColor');\nvar gridcolor = getComputedStyle(document.documentElement).getPropertyValue('--nr-dashboard-groupBorderColor');\nvar linecolors = ['#009900','#889900','#85C1E9','#505DFF', '#ff8f50']\nvar maxDataPoints = 500\n\nvar ctxThree = document.getElementById('sdrChartThree').getContext('2d');\nvar chartThree = new Chart(ctxThree, {\n    // The type of chart we want to create\n    type: 'line',\n\n    // The data for our dataset\n    data: {\n        labels: [\"snr\", \"los\", \"alt\",\"temp\", \"humidity\"],\n        datasets: [\n            {\n                label: 'snr',\n                backgroundColor: linecolors[0],\n                borderColor: linecolors[0],\n                data: [],\n                pointRadius: 1,\n                yAxisID: 'right-y-axis-0',\n                steppedLine: false,\n                fill: false,\n                borderWidth: 1\n            },\n            {\n                label: 'los',\n                backgroundColor: linecolors[1],\n                borderColor: linecolors[1],\n                data: [],\n                pointRadius: 2,\n                yAxisID: 'right-y-axis-1',\n                steppedLine: false,\n                fill: false,\n                borderWidth: 1\n            },\n            {\n                label: 'alt',\n                backgroundColor: linecolors[2],\n                borderColor: linecolors[2],\n                data: [],\n                pointRadius: 3,\n                yAxisID: 'right-y-axis-2',\n                steppedLine: false,\n                fill: false,\n                borderWidth: 1\n            },\n            {\n                label: 'temp',\n                backgroundColor: linecolors[3],\n                borderColor: linecolors[3],\n                data: [],\n                pointRadius: 1,\n                yAxisID: 'right-y-axis-3',\n                steppedLine: false,\n                fill: false,\n                borderWidth: 1\n            },\n            {\n            label: 'humidity',\n            backgroundColor: linecolors[4],\n            borderColor: linecolors[4],\n            data: [],\n            pointRadius: 1,\n            yAxisID: 'right-y-axis-4',\n            steppedLine: false,\n            fill: false,\n            borderWidth: 1\n            }\n        ]\n    },\n\n    // Configuration options go here\n    options: {\n            responsive: true,\n            maintainAspectRatio: false,\n                title: {\n                    display: true,\n                    //text: 'SDR Two - SN: 'msg.payload.callsign' current flight - snr, los, alt, temp'\n                    text: 'SDR Three - current flight - snr, los, alt, temp, humidity'\n                },\n            \n\n        scales: {\n            yAxes: [\n                {\n                    stacked: true,\n                    gridLines :{display:false},\n                    id: 'right-y-axis-0',\n                    type: 'linear',\n                    position: 'right',\n                    \n                    ticks: {\n                        fontColor: linecolors[0],\n                    max: 30,\n                    min: 0\n                        \n                    }\n                },\n                {\n                    gridLines :{zeroLineColor:gridcolor,color:gridcolor,lineWidth:0.5},\n                    id: 'right-y-axis-1',\n                    type: 'linear',\n                    \n                    position: 'right',\n                    ticks: {\n                        fontColor:linecolors[1],\n                        max: 250,\n                        min: 0                   \n                        \n                    }\n                },\n                {\n                    id: 'right-y-axis-2',\n                    position: 'right',\n                    ticks: {\n                        fontColor:linecolors[2],\n                        max: 120000,\n                        min: 0                   \n                        \n                    }\n                },\n                {\n                    id: 'right-y-axis-3',\n                    position: 'right',\n                    ticks: {\n                        fontColor:linecolors[3],\n                        max: 70,\n                        min: -100                   \n                        \n                    }\n                },\n                {\n                id: 'right-y-axis-4',\n                position: 'right',\n                ticks: {\n                fontColor:linecolors[4],\n                max: 100,\n                min: 0\n                \n                    }\n                }\n            ],\n            xAxes: [\n                {\n                    gridLines :{zeroLineColor:gridcolor,color:gridcolor,lineWidth:0.5},\n                    type: 'time',\n                    distribution: 'series',\n                    time:{\n                        displayFormats: {\n                            quarter: 'MMM YYYY',\n                            millisecond:'h:mm:ss',\n                            second:\t'h:mm',\n                            minute:\t'h:mm',\n                            hour:\t'h'                        \n                        }\n                    },\n                    \n                    ticks: {\n                        fontColor:textcolor\n                    }\n                }\n            ]\n        }\n    }\n});\nfunction addData(chartThree, data, label) {\n    chartThree.data.datasets.forEach((dataset) => {\n        if(dataset.label == label){\n            dataset.data.push(data);\n        }\n        if(dataset.data.length > maxDataPoints){\n            dataset.data.shift()\n        }\n    });\n    chartThree.update(0);//0 means no animation\n}\n(function(scope) {\n  scope.$watch('msg', function(msg) {\n    if (msg) {\n      // Do something when msg arrives\n      addData(chartThree,{x:new Date(),y:msg.payload3.first},\"snr\")\n      addData(chartThree,{x:new Date(),y:msg.payload3.second},\"los\")\n      addData(chartThree,{x:new Date(),y:msg.payload3.third},\"alt\")\n      addData(chartThree,{x:new Date(),y:msg.payload3.forth},\"temp\")\n      addData(chartThree,{x:new Date(),y:msg.payload3.fifth},\"humidity\")\n\n    }\n  });\n})(scope);\n</script>",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 1510,
+        "y": 780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2ee57e835da17053",
+        "type": "ui_text",
+        "z": "cb74b638399634a9",
+        "group": "90fb9a11a275ccfb",
+        "order": 7,
+        "width": 12,
+        "height": 1,
+        "name": "Sonde Data",
+        "label": "",
+        "format": "Sn: {{msg.payload.callsign}}  Type: {{msg.payload.model}} Freq: {{msg.payload.freq}} Frame: {{msg.payload.frame}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 1490,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "c7b0cc4d7e7604b2",
+        "type": "ui_template",
+        "z": "cb74b638399634a9",
+        "group": "90fb9a11a275ccfb",
+        "name": "SDR 2 Elevation Plot",
+        "order": 2,
+        "width": 13,
+        "height": 13,
+        "format": "Waiting for sonde data from SDR 2",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1520,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2b1ede2a74758116",
+        "type": "ui_template",
+        "z": "cb74b638399634a9",
+        "group": "90fb9a11a275ccfb",
+        "name": "SDR2 Line Graph",
+        "order": 1,
+        "width": 17,
+        "height": 13,
+        "format": "<canvas id=\"sdrChartTwo\" width=\"100\" height=\"50\"></canvas>\n<script>\n    var textcolor = getComputedStyle(document.documentElement).getPropertyValue('--nr-dashboard-widgetTextColor');\nvar gridcolor = getComputedStyle(document.documentElement).getPropertyValue('--nr-dashboard-groupBorderColor');\nvar linecolors = ['#009900','#889900','#85C1E9','#505DFF', '#ff8f50']\nvar maxDataPoints = 500\n\nvar ctxTwo = document.getElementById('sdrChartTwo').getContext('2d');\nvar chartTwo = new Chart(ctxTwo, {\n    // The type of chart we want to create\n    type: 'line',\n\n    // The data for our dataset\n    data: {\n        labels: [\"snr\", \"los\", \"alt\",\"temp\", \"humidity\"],\n        datasets: [\n            {\n                label: 'snr',\n                backgroundColor: linecolors[0],\n                borderColor: linecolors[0],\n                data: [],\n                pointRadius: 1,\n                yAxisID: 'right-y-axis-0',\n                steppedLine: false,\n                fill: false,\n                borderWidth: 1\n            },\n            {\n                label: 'los',\n                backgroundColor: linecolors[1],\n                borderColor: linecolors[1],\n                data: [],\n                pointRadius: 2,\n                yAxisID: 'right-y-axis-1',\n                steppedLine: false,\n                fill: false,\n                borderWidth: 1\n            },\n            {\n                label: 'alt',\n                backgroundColor: linecolors[2],\n                borderColor: linecolors[2],\n                data: [],\n                pointRadius: 3,\n                yAxisID: 'right-y-axis-2',\n                steppedLine: false,\n                fill: false,\n                borderWidth: 1\n            },\n            {\n                label: 'temp',\n                backgroundColor: linecolors[3],\n                borderColor: linecolors[3],\n                data: [],\n                pointRadius: 1,\n                yAxisID: 'right-y-axis-3',\n                steppedLine: false,\n                fill: false,\n                borderWidth: 1\n            },\n            {\n            label: 'humidity',\n            backgroundColor: linecolors[4],\n            borderColor: linecolors[4],\n            data: [],\n            pointRadius: 1,\n            yAxisID: 'right-y-axis-4',\n            steppedLine: false,\n            fill: false,\n            borderWidth: 1\n            }\n        ]\n    },\n\n    // Configuration options go here\n    options: {\n            responsive: true,\n            maintainAspectRatio: false,\n                title: {\n                    display: true,\n                    //text: 'SDR Two - SN: 'msg.payload.callsign' current flight - snr, los, alt, temp'\n                    text: 'SDR Two - current flight - snr, los, alt, temp, humidity'\n                },\n            \n\n        scales: {\n            yAxes: [\n                {\n                    stacked: true,\n                    gridLines :{display:false},\n                    id: 'right-y-axis-0',\n                    type: 'linear',\n                    position: 'right',\n                    \n                    ticks: {\n                        fontColor: linecolors[0],\n                    max: 30,\n                    min: 0\n                        \n                    }\n                },\n                {\n                    gridLines :{zeroLineColor:gridcolor,color:gridcolor,lineWidth:0.5},\n                    id: 'right-y-axis-1',\n                    type: 'linear',\n                    \n                    position: 'right',\n                    ticks: {\n                        fontColor:linecolors[1],\n                        max: 250,\n                        min: 0                   \n                        \n                    }\n                },\n                {\n                    id: 'right-y-axis-2',\n                    position: 'right',\n                    ticks: {\n                        fontColor:linecolors[2],\n                        max: 120000,\n                        min: 0                   \n                        \n                    }\n                },\n                {\n                    id: 'right-y-axis-3',\n                    position: 'right',\n                    ticks: {\n                        fontColor:linecolors[3],\n                        max: 70,\n                        min: -100                   \n                        \n                    }\n                },\n                {\n                id: 'right-y-axis-4',\n                position: 'right',\n                ticks: {\n                fontColor:linecolors[4],\n                max: 100,\n                min: 0\n                \n                    }\n                }\n            ],\n            xAxes: [\n                {\n                    gridLines :{zeroLineColor:gridcolor,color:gridcolor,lineWidth:0.5},\n                    type: 'time',\n                    distribution: 'series',\n                    time:{\n                        displayFormats: {\n                            quarter: 'MMM YYYY',\n                            millisecond:'h:mm:ss',\n                            second:\t'h:mm',\n                            minute:\t'h:mm',\n                            hour:\t'h'                        \n                        }\n                    },\n                    \n                    ticks: {\n                        fontColor:textcolor\n                    }\n                }\n            ]\n        }\n    }\n});\nfunction addData(chartTwo, data, label) {\n    chartTwo.data.datasets.forEach((dataset) => {\n        if(dataset.label == label){\n            dataset.data.push(data);\n        }\n        if(dataset.data.length > maxDataPoints){\n            dataset.data.shift()\n        }\n    });\n    chartTwo.update(0);//0 means no animation\n}\n(function(scope) {\n  scope.$watch('msg', function(msg) {\n    if (msg) {\n      // Do something when msg arrives\n      addData(chartTwo,{x:new Date(),y:msg.payload2.first},\"snr\")\n      addData(chartTwo,{x:new Date(),y:msg.payload2.second},\"los\")\n      addData(chartTwo,{x:new Date(),y:msg.payload2.third},\"alt\")\n      addData(chartTwo,{x:new Date(),y:msg.payload2.forth},\"temp\")\n      addData(chartTwo,{x:new Date(),y:msg.payload2.fifth},\"humidity\")\n\n    }\n  });\n})(scope);\n</script>",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 1510,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6fd73ef1b580ed82",
+        "type": "ui_text",
+        "z": "cb74b638399634a9",
+        "group": "c4e0681d0d14d28a",
+        "order": 7,
+        "width": 12,
+        "height": 1,
+        "name": "Sonde Data",
+        "label": "",
+        "format": "Sn: {{msg.payload.callsign}}  Type: {{msg.payload.model}} Freq: {{msg.payload.freq}} Frame: {{msg.payload.frame}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 1490,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "9739e8b54ce4e45a",
+        "type": "ui_template",
+        "z": "cb74b638399634a9",
+        "group": "c4e0681d0d14d28a",
+        "name": "SDR 1 Elevation Plot",
+        "order": 2,
+        "width": 13,
+        "height": 13,
+        "format": "Waiting for sonde data from SDR 1",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1520,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ac56de2bad96515d",
+        "type": "ui_template",
+        "z": "cb74b638399634a9",
+        "group": "c4e0681d0d14d28a",
+        "name": "SDR1 Line Graph",
+        "order": 1,
+        "width": 17,
+        "height": 13,
+        "format": "<canvas id=\"sdrChartOne\" width=\"100\" height=\"50\"></canvas>\n<script>\n    var textcolor = getComputedStyle(document.documentElement).getPropertyValue('--nr-dashboard-widgetTextColor');\nvar gridcolor = getComputedStyle(document.documentElement).getPropertyValue('--nr-dashboard-groupBorderColor');\nvar linecolors = ['#009900','#889900','#85C1E9','#505DFF', '#ff8f50']\nvar maxDataPoints = 500\n\nvar ctxOne = document.getElementById('sdrChartOne').getContext('2d');\nvar chartOne = new Chart(ctxOne, {\n    // The type of chart we want to create\n    type: 'line',\n\n    // The data for our dataset\n    data: {\n        labels: [\"snr\", \"los\", \"alt\",\"temp\", \"humidity\"],\n        datasets: [\n            {\n                label: 'snr',\n                backgroundColor: linecolors[0],\n                borderColor: linecolors[0],\n                data: [],\n                pointRadius: 1,\n                yAxisID: 'right-y-axis-0',\n                steppedLine: false,\n                fill: false,\n                borderWidth: 1\n            },\n            {\n                label: 'los',\n                backgroundColor: linecolors[1],\n                borderColor: linecolors[1],\n                data: [],\n                pointRadius: 2,\n                yAxisID: 'right-y-axis-1',\n                steppedLine: false,\n                fill: false,\n                borderWidth: 1\n            },\n            {\n                label: 'alt',\n                backgroundColor: linecolors[2],\n                borderColor: linecolors[2],\n                data: [],\n                pointRadius: 3,\n                yAxisID: 'right-y-axis-2',\n                steppedLine: false,\n                fill: false,\n                borderWidth: 1\n            },\n            {\n                label: 'temp',\n                backgroundColor: linecolors[3],\n                borderColor: linecolors[3],\n                data: [],\n                pointRadius: 1,\n                yAxisID: 'right-y-axis-3',\n                steppedLine: false,\n                fill: false,\n                borderWidth: 1\n            },\n            {\n            label: 'humidity',\n            backgroundColor: linecolors[4],\n            borderColor: linecolors[4],\n            data: [],\n            pointRadius: 1,\n            yAxisID: 'right-y-axis-4',\n            steppedLine: false,\n            fill: false,\n            borderWidth: 1\n            }\n        ]\n    },\n\n    // Configuration options go here\n    options: {\n            responsive: true,\n            maintainAspectRatio: false,\n                title: {\n                    display: true,\n                    //text: 'SDR One - SN: 'msg.payload.callsign' current flight - snr, los, alt, temp'\n                    text: 'SDR One - current flight - snr, los, alt, temp, humidity'\n                },\n            \n\n        scales: {\n            yAxes: [\n                {\n                    stacked: true,\n                    gridLines :{display:false},\n                    id: 'right-y-axis-0',\n                    type: 'linear',\n                    position: 'right',\n                    \n                    ticks: {\n                        fontColor: linecolors[0],\n                    max: 30,\n                    min: 0\n                        \n                    }\n                },\n                {\n                    gridLines :{zeroLineColor:gridcolor,color:gridcolor,lineWidth:0.5},\n                    id: 'right-y-axis-1',\n                    type: 'linear',\n                    \n                    position: 'right',\n                    ticks: {\n                        fontColor:linecolors[1],\n                        max: 250,\n                        min: 0                   \n                        \n                    }\n                },\n                {\n                    id: 'right-y-axis-2',\n                    position: 'right',\n                    ticks: {\n                        fontColor:linecolors[2],\n                        max: 120000,\n                        min: 0                   \n                        \n                    }\n                },\n                {\n                    id: 'right-y-axis-3',\n                    position: 'right',\n                    ticks: {\n                        fontColor:linecolors[3],\n                        max: 70,\n                        min: -100                   \n                        \n                    }\n                },\n                {\n                id: 'right-y-axis-4',\n                position: 'right',\n                ticks: {\n                fontColor:linecolors[4],\n                max: 100,\n                min: 0\n                \n                    }\n                }\n            ],\n            xAxes: [\n                {\n                    gridLines :{zeroLineColor:gridcolor,color:gridcolor,lineWidth:0.5},\n                    type: 'time',\n                    distribution: 'series',\n                    time:{\n                        displayFormats: {\n                            quarter: 'MMM YYYY',\n                            millisecond:'h:mm:ss',\n                            second:\t'h:mm',\n                            minute:\t'h:mm',\n                            hour:\t'h'                        \n                        }\n                    },\n                    \n                    ticks: {\n                        fontColor:textcolor\n                    }\n                }\n            ]\n        }\n    }\n});\nfunction addData(chartOne, data, label) {\n    chartOne.data.datasets.forEach((dataset) => {\n        if(dataset.label == label){\n            dataset.data.push(data);\n        }\n        if(dataset.data.length > maxDataPoints){\n            dataset.data.shift()\n        }\n    });\n    chartOne.update(0);//0 means no animation\n}\n(function(scope) {\n  scope.$watch('msg', function(msg) {\n    if (msg) {\n      // Do something when msg arrives\n      addData(chartOne,{x:new Date(),y:msg.payload1.first},\"snr\")\n      addData(chartOne,{x:new Date(),y:msg.payload1.second},\"los\")\n      addData(chartOne,{x:new Date(),y:msg.payload1.third},\"alt\")\n      addData(chartOne,{x:new Date(),y:msg.payload1.forth},\"temp\")\n      addData(chartOne,{x:new Date(),y:msg.payload1.fifth},\"humidity\")\n\n    }\n  });\n})(scope);\n</script>",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 1510,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "776aa8008c7dcab5",
+        "type": "ui_table",
+        "z": "cb74b638399634a9",
+        "group": "563ad72f72e9c95e",
+        "name": "All Past Flights table",
+        "order": 1,
+        "width": 16,
+        "height": 21,
+        "columns": [
+            {
+                "field": "Time",
+                "title": "Time",
+                "width": "160",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "SDR",
+                "title": "SDR",
+                "width": "65",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "Model",
+                "title": "Model",
+                "width": "80",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "Freq",
+                "title": "Freq",
+                "width": "100",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "SNR",
+                "title": "SNR",
+                "width": "65",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "Dist",
+                "title": "Dist",
+                "width": "80",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "Bear",
+                "title": "Az",
+                "width": "60",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "Elev",
+                "title": "Elev",
+                "width": "70",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "ALT",
+                "title": "ALT",
+                "width": "90",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "Link",
+                "title": "Link",
+                "width": "",
+                "align": "left",
+                "formatter": "link",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            }
+        ],
+        "outputs": 0,
+        "cts": false,
+        "x": 1520,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "c4e0681d0d14d28a",
+        "type": "ui_group",
+        "name": "SDR 1",
+        "tab": "d91b109e62250cbb",
+        "order": 2,
+        "disp": false,
+        "width": "30",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "90fb9a11a275ccfb",
+        "type": "ui_group",
+        "name": "SDR 2",
+        "tab": "30f648f9431275ea",
+        "order": 4,
+        "disp": false,
+        "width": "30",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "21171ba5dcada8f2",
+        "type": "ui_group",
+        "name": "SDR3",
+        "tab": "cfa818b5eac83e44",
+        "order": 1,
+        "disp": false,
+        "width": "30",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "3664b6bbda4d3679",
+        "type": "ui_group",
+        "name": "SDR4",
+        "tab": "aee488a24da22c10",
+        "order": 1,
+        "disp": false,
+        "width": "30",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "563ad72f72e9c95e",
+        "type": "ui_group",
+        "name": "Radiosonde",
+        "tab": "83013e2b8dbfdd2a",
+        "order": 1,
+        "disp": false,
+        "width": "30",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d91b109e62250cbb",
+        "type": "ui_tab",
+        "name": "SDR 1 - 401",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "30f648f9431275ea",
+        "type": "ui_tab",
+        "name": "SDR 2 - 402",
+        "icon": "dashboard",
+        "order": 3,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "cfa818b5eac83e44",
+        "type": "ui_tab",
+        "name": "SDR 3 - 403",
+        "icon": "dashboard",
+        "order": 4,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "aee488a24da22c10",
+        "type": "ui_tab",
+        "name": "SDR 4 - 404",
+        "icon": "dashboard",
+        "order": 5,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "83013e2b8dbfdd2a",
+        "type": "ui_tab",
+        "name": "radiosonde",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
