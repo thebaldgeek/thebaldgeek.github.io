@@ -62,7 +62,8 @@ Many use good quality 75 Ohm tv coax for shorter runs (Say, 50 ft or less). You 
 ### LNA - Low Noise Amplifier    
 LNA. There is no question that a good quality LNA mounted at the antenna will make a huge difference in the range and amount of data packets you decode from any given flight.   
 While you could use a general wide band LNA that are very cheap and popular, a filtered LNA will always bring better results.    
-[Uptronics SAW + LNA](https://store.uputronics.com/index.php?route=product/product&product_id=54) This is the current popular LNA for radiosonde work, there is talk of a new sonde specific LNA in the works, but it has not been released yet.
+[Uptronics SAW + LNA](https://store.uputronics.com/index.php?route=product/product&product_id=54) Here is a [PDF](https://store.uputronics.com/files/HAB-FPA403.pdf) with some details on this LNA.   
+This is the current popular LNA for radiosonde work, there is talk of a new sonde specific LNA in the works, but it has not been released yet.
 
 ## What will you see?  
 Ok, now that we have an outdoor antenna mounted up as high as you can, quality LNA, good coax and your SDR connected to the software, we wait.    
@@ -282,7 +283,14 @@ The purpose of this radar plot is to help the station owner to see their station
 Lastly, the elevation scatter plot.  
 This provides a cross section of your antenna gain/lobes. The difference between this scatter plot and the one on each SDR page is that this one is the master of all the SDR's over all the flights and is using the inverse square law to normalize the SNR regardless of the sondes distance at each elevation.   
 What you are looking for here is to ensure your antenna type and mount is giving a nice fat lobe at the elevation that you see the most flights at.   
-Different antenna types have different vertical lobes and with radiosonde tracking, you want to select and tune your antenna to give its best performance (gain) for the elevation that you see the most sonde flights at.
+Different antenna types have different vertical lobes and with radiosonde tracking, you want to select and tune your antenna to give its best performance (gain) for the elevation that you see the most sonde flights at.   
+
+## Heat Map   
+Not included in the instructions bellow, but just so you know.... Node-RED has a great map plotting node called [worldmap](https://flows.nodered.org/node/node-red-contrib-web-worldmap)   
+If you import this node and tweak the flow a little you can plot the sonde flights that your station picks up. We did not include it as it duplicates a lot of functionality that sondehub and auto_rx include with one exception.....    
+Worldmap can create heat maps like this:  
+
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/heatmapoflfights.png"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/heatmapoflfights.png" height="420"/></a> 
    
 ## Installing Node-RED   
 To run the software you will need to install Node-RED.  
@@ -302,8 +310,9 @@ To install node-red on Raspberry Pi
 That should get you up and running pretty quick. You just need to open a web browser to that computers IP address and port 1880.       
 Once you have that running the next task is to install the nodes we need.    
 Click on the Node-RED menu on the top right, then 'Manage Pallet'. The click on the install tab and type 'node-red-dashboard'. Wait for it to install, then search for 'node-red-contrib-nostalgic'. Wait for that to install.    
+Next go to flows.nodered and import this [FIFO subflow](https://flows.nodered.org/flow/d7eea525606ea45a7c850976a85b349e)
     
-Once you have those nodes installed, you can import the flow for the radiosonde dashboard.   
+Once you have those nodes installed, you can [import the flow](https://github.com/thebaldgeek/thebaldgeek.github.io/blob/main/img/radiosonde/radiosonde_auto_rx.json) for the radiosonde dashboard.   
 Once imported, just add your home lat/lon and alt to the marked node, update your SDR serial numbers in the marked node, hit deploy and wait for your first flight. 
 
 ## Building a MySondeGo    
