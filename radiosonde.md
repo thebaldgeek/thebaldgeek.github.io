@@ -15,7 +15,7 @@ While recovering a sonde is lot of fun, this page is less about the chasing and 
 There are a few different sonde decoder software packages that you can download. Some for Windows, some for Linux, some decode a lot of different models of sonde data, some only one or two. A quick Google search can guide you on them, this page is going to focus on the Linux only 'radiosonde_auto_rx' package.   
 You can run auto_rx on a Raspberry Pi 3/4 or x86 computer running Ubuntu or Debian. (Other distros might be possible, but I don't have any experience with them).   
 The auto_rx people have done a great job writing up the code and installation guide, you can visit the wiki here: [radiosonde_auto_rx wiki](https://github.com/projecthorus/radiosonde_auto_rx/wiki)    
-Some notes: I am not a fan of Docker, so usually go with the native build. One comment on Docker.... You can not install the radiosonde_auto_rx Docker container on a x86 computer, the Docker 'image' is CPU architecture specific and its been built only for the Raspberry Pi CPU so you will get an error trying to run their Docker container on anything else.   
+Some notes: I am not a fan of Docker, so usually go with the native build. But that said, Im told Docker is the smoothest way to install and keep things updated.
 Do note that auto_rx does not need a gui or desktop, so you can run a headless install on your computer and just use a web browser to view the auto_rx interface from any other computer / tablet on your local network.   
 The wiki native install guide is very clear and results in a smooth install. Just be sure to read all the way through before starting and don't proceed to the next step if you get an error on the current step - I have not had any issues thus far following the native guide.   
 
@@ -55,6 +55,21 @@ The blue ADSB dongles are no good, they have a filter in them that will reject t
 The Nooelec XTR SDR's have been called out in the Facebook group as being more sensitive than the RTLSDR v3, but do note that they come with the downside of having a large center spike or spur and often two smaller ones on each side of the large center one. If your launch sites uses a sonde frequency on or even near those spurs, any 'gain' in sensitivity will be lost. I have seen this issue several times in helping people setup their stations with the XTR. Tip, if you want to use an XTR SDR use the sondehub website to see if the sondes in your area transmit close to any of the spikes to see if you are going to miss their signal.   
 The RadarBox airband dongle is so deaf at every frequency known that most have given up using them for any purpose.  
 
+A word on SDR sensitivity or noise figure.   
+Looking just at the SDR as the driver of the entire stations sensitivity is 'Ok' if the SDR is the only thing after antenna. But since this page is about eeking the most performance possible out of the antenna, then using an LNA or Low Noise Amplifier at the antenna is a must.   
+When you do that, then the system noise figure (which is the primary driver for sensitivity) will be set by the preamplifier closest to the antenna.   
+Adding more and more gain after that doesn't necessarily help things and will generally lead to more intermodulation distortion.   
+
+Its also important to look at the auto_rx spectrum now and then or an SDR waterfall that is using the same SDR and antenna.   
+Here is a site with very bad radio interference (RFI).  
+
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/badrfi.png"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/badrfi.png" height="320"/></a> 
+
+This is a snapshot from a different site on what the sonde waterfall pattern looks like.   
+
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/sondewaterfall.png"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/sondewaterfall.png" height="320"/></a> 
+
+
 ### Coax
 Coax type is slightly critical at 400Mhz. Mostly it comes down the length required to go from the antenna to the SDR. (Personal rant here, please don't fall into the common trap of thinking less coax length and long USB cable is better - its not. Sure a few feet of USB extension to get the SDR away from the RF noisy computer is ok and often a good thing, but a long USB cable is always a poor substitute for good quality coax).  
 Many use good quality 75 Ohm tv coax for shorter runs (Say, 50 ft or less). You can 'get away' with this slight variation in impedance since the SDR is not 50 Ohm input and we are not transmitting.    
@@ -63,7 +78,7 @@ Many use good quality 75 Ohm tv coax for shorter runs (Say, 50 ft or less). You 
 LNA. There is no question that a good quality LNA mounted at the antenna will make a huge difference in the range and amount of data packets you decode from any given flight.   
 While you could use a general wide band LNA that are very cheap and popular, a filtered LNA will always bring better results.    
 [Uptronics SAW + LNA](https://store.uputronics.com/index.php?route=product/product&product_id=54) Here is a [PDF](https://store.uputronics.com/files/HAB-FPA403.pdf) with some details on this LNA.   
-This is the current popular LNA for radiosonde work, there is talk of a new sonde specific LNA in the works, but it has not been released yet.
+
 
 ## What will you see?  
 Ok, now that we have an outdoor antenna mounted up as high as you can, quality LNA, good coax and your SDR connected to the software, we wait.    
@@ -315,5 +330,11 @@ Next go to flows.nodered and import this [FIFO subflow](https://flows.nodered.or
 Once you have those nodes installed, you can [import the flow](https://github.com/thebaldgeek/thebaldgeek.github.io/blob/main/img/radiosonde/radiosonde_auto_rx.json) for the radiosonde dashboard.   
 Once imported, just add your home lat/lon and alt to the marked node, update your SDR serial numbers in the marked node, hit deploy and wait for your first flight. 
 
-## Building a MySondeGo    
-Buy yourself a TTGO board for 400Mhz and flash the firmware. Lots more notes and a how to guide to come.....
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HGJWTNL65R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-HGJWTNL65R');
+</script>
