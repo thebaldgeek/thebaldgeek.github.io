@@ -228,7 +228,7 @@ I brought Node-RED to the table and a plan was hatched to use the auto_rx Chasem
 I want to make it very clear that the small group of RF enthusiasts were hyper focused on NOT reproducing or duplicating any of the existing functionally that already exists in the very awesome auto_rx. For example, there was talk about logging the data to a CSV file, but auto_rx already does that. Same with the distance plot, auto_rx already has a great map that shows the stations max range and typical coverage.... What that plot lacks is the signal strength for those range plots.
 
 ## Lat/Lon and SNR    
-The key information in the auto_rx Chasemappa UDP stream is the sondes position and your SDR's SNR (signal to noise ratio) for each data packet that is received and correctly decoded.  
+The key information in the auto_rx Chasemapper UDP stream is the sondes position and your SDR's SNR (signal to noise ratio) for each data packet that is received and correctly decoded.  
 Using this we can tell how far away the sonde is from your antenna and what the elevation the sonde is in relation to your antenna.  
 The challenge is that the intensity of radio waves over distance obeys the inverse square law, that is to say, the signals intensity is inversely proportional to the square of the distance the sonde is from your antenna.   
 In short, double the distance and you get four times less signal.   
