@@ -2,8 +2,15 @@
    
 Navigation: [home](README.md)  
 
-Radio waves can go a long way on HF. Its also cheaper than satellite time.   
+Radio waves can go a long way on HF. Its also cheaper than satellite data.   
 HFDL starnds for "High Frequency Data Link".
+
+HF antennas, longer is better than shorter.  
+Airspy or RSP1a SDR.
+
+dumphfdl   
+
+VRS basestation
 
 
 
