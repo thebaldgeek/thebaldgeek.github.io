@@ -90,7 +90,7 @@ The five groups have been very carefully chosen to not overload the Pi 4. If you
 You can of course just comment out an entire group and not scan it.   
     
 Ok, here is the script:    
-https://github.com/wiedehopf/hfdlscript/blob/main/hfdl.sh  
+[https://github.com/wiedehopf/hfdlscript/blob/main/hfdl.sh](https://github.com/wiedehopf/hfdlscript/blob/main/hfdl.sh)  
 Read the comments at the start.   
 Tweak the feeds as you need.   
 If your pi user is not 'pi', then change the pathing in the file to suit your username.  
