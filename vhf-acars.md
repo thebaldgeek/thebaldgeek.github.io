@@ -53,7 +53,7 @@ We have an orange (dev 0, sn 978) and two RTL's with their default serials.
 And the error at the bottom is because the 'rtl_test' command tries to grab a free SDR to test it, so since they are all in use, it gets grumpy.  
 Lets fix it shall we.   
 The way you change the SDR serial is to use the `rtl_eeprom` command.  
-Since everything is already plugged in, lets just 'mow the lawn' and fix those zero serial numbers. In my case, I would do the following:   
+Since everything is already plugged in, lets just 'mow the lawn' and fix those too many zero serial numbers. In my case, I would do the following:   
 `rtl_eeprom -d 1 -s 131`   
 Answer Y to the 'are you sure' prompt.
 Then do the next one:    
@@ -111,14 +111,14 @@ To find out more about feeding the main airframes.io website, check out these li
 Ok, so things are installed and they are installed as a service so will auto start after a reboot or power cycle, so lets take a look at our config options.    
 
 ### ACARS   
-Lets edit the ACARS decoder conf file first (if you are not running this, dumpvdl is next).  
+Lets edit the ACARS decoder conf file first (if you are not running this, dumpvdl2 is next).  
 
 `sudo nano /etc/default/acarsdec`  
 
     OPTIONS0= -v -o 4 -j feed.acars.io:5550
 
     # station name for acars.io:
-    OPTIONS1= -i TBG-ACARS-YBCS
+    OPTIONS1= -i TBG-ACARS-xxxx
 
     # gain for rtl-sdr, for example 43.9 and -10 or 55 for AGC
     OPTIONS2= -g 55
@@ -140,14 +140,14 @@ From the top.....
 First up, thanks for not commenting this out and supporting the whole ACARS community by feeding airframes.   
 ### Station id
 Next is the station name that will show up in airframes.io.   
-When this decoder starts up, it has a random name in here, you really need to change it.    
+When this decoder starts up, it has a random name in here, you really need to change it. Please DON'T use the one in my example here, xxxx is not an airport ICAO for a start....       
 I really like the format of some initials (ham call sign perhaps), then the type of data, then your nearest large airport code.   
 Some of the guys swap the order of the airport and type, or drop the type totally. So you have options, but please think about it for yourself, chose a system of naming that works for you and stick with it. Saves the airframes guys a ton of work renaming your feeds when you change your mind. Hint. Take a look at the [airframes feeder page](https://app.airframes.io/stations) for other examples.  
 ### Gain
 Next up is the gain settings.  
 Default is AGC or auto gain control. This is Ok to start with, but just like ADSB, max gain is not usually the best and we will talk more about this setting and how to tune your station at some point 'soon'.    
 ### Sample rate      
-Default is ok, higher sample is higher CPU use, so if you maxed out on a Pi, tweak at the risk of dropping decodes.   
+Default is ok, higher sample is higher CPU use, so if your maxed out on a Pi, tweak at the risk of dropping decodes.   
 ### Node-RED feed?   
 Next you can chose to feed your Node-RED dashboard / logger / alerter what ever.   
 If you don't want to do this, just leave it commented out.   
