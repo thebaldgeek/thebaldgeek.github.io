@@ -300,6 +300,26 @@ This provides a cross section of your antenna gain/lobes. The difference between
 What you are looking for here is to ensure your antenna type and mount is giving a nice fat lobe at the elevation that you see the most flights at.   
 Different antenna types have different vertical lobes and with radiosonde tracking, you want to select and tune your antenna to give its best performance (gain) for the elevation that you see the most sonde flights at.   
 
+## Terrain  
+As mentioned a few times, the natural landscape (and man made stuff of course) is going to play a part in how far you can see a sonde in any given direction.   
+There are two tools that we have found to be very helpful in figuring out if you have an antenna / system issue or a mountain that needs moving....     
+### Heywhatsthat    
+This is a very common website used in all kinds of radio works. I first found out about it via the ADSB aircraft tracking guys.   
+[Heywhatsthat](https://www.heywhatsthat.com/) will show you a 3D profile around a given point, but also of great value is a plot of the range you can 'see' from your location.   
+
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/heywhatsthat.png"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/heywhatsthat.png" height="420"/></a> 
+
+You can tweak the heights via the 'Up in the air' option. Here are two plots at 40,000 ft (orange) and 100,000 ft (blue) from our station in Southern California.   
+You can clearly see the bite out of our coverage to the south east which matches the bite out of the radiosonde_auto_rx coverage plot. Not a lot we can do about it (other than get the antenna lot higher, but alas... HOA... ).    
+
+### Solwise    
+This is a UK website (with global maps) that you can use to draw a cross section between your station and a sonde at different hights.  
+Check out the [solwise.co.uk](https://www.solwise.co.uk/wireless-elevationtool.html) website and make your self a cross section of your trouble bearings like this...   
+
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/lineofsignt.png"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/lineofsight.png" height="420"/></a> 
+
+Follow the directions under the map, it clearly shows why I have trouble to my south. The sonde has to be very high to clear that peak before I can get much signal.
+
 ## Heat Map   
 Not included in the instructions bellow, but just so you know.... Node-RED has a great map plotting node called [worldmap](https://flows.nodered.org/node/node-red-contrib-web-worldmap)   
 If you import this node and tweak the flow a little you can plot the sonde flights that your station picks up. We did not include it as it duplicates a lot of functionality that sondehub and auto_rx include with one exception.....    
@@ -318,7 +338,7 @@ For installing the Node-RED software, their website has all you need to get runn
    
 To install node-red on Raspberry Pi   
 
-    run “bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)”
+    bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
     sudo systemctl enable nodered.service
     node-red-start  
 
@@ -328,7 +348,8 @@ Click on the Node-RED menu on the top right, then 'Manage Pallet'. The click on 
 Next go to flows.nodered and import this [FIFO subflow](https://flows.nodered.org/flow/d7eea525606ea45a7c850976a85b349e)
     
 Once you have those nodes installed, you can [import the flow](https://github.com/thebaldgeek/thebaldgeek.github.io/blob/main/img/radiosonde/radiosonde_auto_rx.json) for the radiosonde dashboard.   
-Once imported, just add your home lat/lon and alt to the marked node, update your SDR serial numbers in the marked node, hit deploy and wait for your first flight. 
+Once imported, just add your home lat/lon and alt to the marked node, update your SDR serial numbers in the marked node, hit deploy.   
+Open a new tab and go to that computers IP:1880/ui/ and wait for your first flight. 
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HGJWTNL65R"></script>
