@@ -69,6 +69,40 @@ This is a snapshot from a different site on what the sonde waterfall pattern loo
 
 <a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/sondewaterfall.png"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/sondewaterfall.png" height="320"/></a> 
 
+### SDR spectrum with no antenna  
+There is a bit of talk - and not without cause - on the spikes that 'naturally' exist in the SDR output.   
+So lets take a look at the following SDR's that are in typical use with auto_rx.   
+
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/sdr.png"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/sdr.png" height="420"/></a>   
+
+Now, lets take a look at each one without an antenna connected.    
+
+First the new kid on the block, the NooElec V5  
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/nooelecv5.png"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/nooelecv5.png" height="320"/></a> 
+   
+Next up is the NooElec with the extended receive range (not needed for radiosonde work, but this SDR has nice sensitivity at 400Mhz) For some, the two side spurs (honestly, they are so wide, you cant just call them spikes at this point) will not be an issue. For some locations, they will be if your sondes are on those three (including the main spike) frequencies. Keep reading, more to come on this issue.   
+
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/xtr.png"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/xtr.png" height="320"/></a> 
+
+Next is the NooElec XTR but with a permanently on (physical) Bias-T output of just under 5v. The added Bias-T makes things a bit ugly - remember, no antenna on these tests, all done within minutes of each other - so once again, SDR generated (from the USB port power) Bias-T makes things ugly, keep reading for more on this.   
+
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/nooelecteextr.png"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/nooelecteextr.png" height="320"/></a> 
+    
+Next up, an SDR that perhaps not many in the radiosonde world have seen, but is super popular in the aircraft monitoring world.      
+Its an RTL2832U SDR with a built in LNA (Low Noise Amplifier) right on the SDR. Bias-T is not an option with this SDR (yay), and there is real concern on the usefulness on having an amplifier right at the SDR after all the noise of the coax is added and 'worse' if you have an LNA at the antenna (the correct place to put it), but I include it here as there are a lot of aircraft enthusiasts that also track sondes.   
+Clearly, that extra gain brings some birdies with it.    
+
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/978.png"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/978.png" height="320"/></a>  
+
+Last up, the old faithful.    
+RTLSDR v 3.  The software bias-T is turned off for this test (as it should be all the time).   
+
+<a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/rtlsdrv3.png"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/radiosonde/rtlsdrv3.png" height="320"/></a>   
+    
+Overall note, there are some small birdies around in each screenshot as a result of my horrible test location.    
+These spectrums are a sort of 'worst case' situation and should only be a guide to picking an SDR for your station/location.   
+Also do note that center (and twin subs) will move a bit at your location due to computer, voltage, USB etc variations. They generally don't move once the SDR is in and warmed up, but they will be slightly different from SDR to SDR of the same type. 
+   
 
 ### Coax
 Coax type is slightly critical at 400Mhz. Mostly it comes down the length required to go from the antenna to the SDR. (Personal rant here, please don't fall into the common trap of thinking less coax length and long USB cable is better - its not. Sure a few feet of USB extension to get the SDR away from the RF noisy computer is ok and often a good thing, but a long USB cable is always a poor substitute for good quality coax).  
