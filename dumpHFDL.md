@@ -36,7 +36,9 @@ You will need libacars so lets get the dependencies and get that built.
 
 Ok now we need SoapySDR, so lets build that.
 
+    cd ~
     git clone https://github.com/pothosware/SoapySDR.git   
+    cd SoapySDR
     mkdir build   
     cd build   
     cmake ..   
@@ -47,6 +49,7 @@ Ok now we need SoapySDR, so lets build that.
 Ok now you need to install the Soapy driver for your SDR, if you are using an Airspy, Google it, sorry, cant help.   
 If you are using an SDRPlay device, here is how to install their API/driver (this is for a Pi (ARM) use your CPU file (try dropping the '-ARM-' from the file name here) from SDRPlay if on x86)   
 
+    cd ~
     wget https://www.sdrplay.com/software/SDRplay_RSP_API-ARM-3.09.1.run   
     chmod 755 ./SDRplay_RSP_API-ARM-3.09.1.run  
     ./SDRplay_RSP_API-ARM-3.09.1.run  
