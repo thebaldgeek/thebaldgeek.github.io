@@ -6,11 +6,11 @@ Radio waves can go a long way on HF. Its also cheaper than satellite data.
 HFDL stands for "High Frequency Data Link".
 
 ## Antenna   
-HF antennas, longer is better than shorter. End fed long wire or HF whip on a very good ground plane for example.  
+HF antennas, longer is better than shorter. End fed long wire, active loop or HF whip on a very good ground plane for example.  
 
 ## SDR
 Airspy or SDRPlay devices (ie RSP1a).   
-Airspy is more stable, the SDRPlay API is a known CPU hog and very crash prone, that said a ton of people are using the RSP1a with a Raspberry Pi 4 (forget about using any CPU lower than a Pi 4 on HFDL - its pretty CPU intense - and on the Pi 4, don't scan too much, its very easy to overwhelm the CPU and drop samples - keep reading).   
+Airspy is more stable, the SDRPlay API is a known CPU hog and very crash prone, that said a ton of people are using the RSP1a with a Raspberry Pi 4 (forget about using any CPU lower than a Pi 4 on HFDL - its pretty CPU intense - and on the Pi 4, don't scan too much, its very easy to overwhelm the CPU and or USB port and drop samples - keep reading).   
 Some people have tried using the RTLSDR v3 in HF mode, its very deaf on HF and they were not happy with the performance even at the price.   
 Some have also tried using an up converter on the front of them and were frustrated needing to add/subtract an offset required to all the HFDL ground station frequencies.
 
@@ -45,6 +45,16 @@ Ok now we need SoapySDR, so lets build that.
     make -j4   
     sudo make install   
     sudo ldconfig #needed on debian systems   
+
+Now that the framework is built, we can put the module in.  
+
+    git clone https://github.com/pothosware/SoapySDRPlay.git ./SoapySDRPlay
+    cd SoapySDRPlay
+    mkdir build
+    cd build
+    cmake ..
+    make
+    sudo make install
 
 Ok now you need to install the Soapy driver for your SDR, if you are using an Airspy, Google it, sorry, cant help.   
 If you are using an SDRPlay device, here is how to install their API/driver (this is for a Pi (ARM) use your CPU file (try dropping the '-ARM-' from the file name here) from SDRPlay if on x86)   
@@ -81,7 +91,18 @@ Lets test it out
 
 You may or may not get any hits on those ground station frequencies depending on your antenna and time of day and it could take many many minutes for something to show up, so take a breath or just keep pounding onwards with the autoscan script.....   
 
-When (not if, when) the sdrplay_api hangs up, you can kill it with `sudo systemctl stop sdrplay.service` and wait a solid 30 seconds (no, not kidding, its a mess and it takes time to die, if you restart it too quick you will need to do a full reboot) and then start it again with `sudo systemctl start sdrplay.service`. Yes, I know about the 'restart' option, but that does not wait the 30 seconds and thus messes things up more than it helps.
+When (not if, when) the sdrplay_api hangs up, you can kill it with `sudo systemctl stop sdrplay.service` and wait a solid 30 seconds (no, not kidding, its a mess and it takes time to die, if you restart it too quick you will need to do a full reboot) and then start it again with `sudo systemctl start sdrplay.service`. Yes, I know about the 'restart' option, but that does not wait the 30 seconds and thus messes things up more than it helps.   
+Here is a little script I call `restartapi.sh` make it by doing `nano restartapi.sh` then copy in the following:   
+
+    sudo kill $(ps -e | grep dumphfdl | awk '{print $1}')
+    sudo systemctl stop sdrplay
+    sudo pkill sdrplay_apiService
+    sudo rm -f /dev/shm/Glbl\\sdrSrv*
+    sudo systemctl start sdrplay
+ 
+ Save with ctrl+o, then enter, then ctrl+x
+ Then make it runable with `chmod 766 restartapi.sh` now you can run it anytime with `sudo ./restartapi.sh` or even put in your sudo crontab to run every few hours.
+
 
 ## Auto Scan Script   
 
