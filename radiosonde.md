@@ -378,7 +378,7 @@ To install node-red on Raspberry Pi
 
 That should get you up and running pretty quick. You just need to open a web browser to that computers IP address and port 1880.       
 Once you have that running the next task is to install the nodes we need.    
-Click on the Node-RED menu on the top right, then 'Manage Pallet'. The click on the install tab and type 'node-red-dashboard'. Wait for it to install, then search for 'node-red-contrib-nostalgic'. Wait for that to install.    
+Click on the Node-RED menu on the top right, then 'Manage Pallet'. The click on the install tab and type 'node-red-dashboard'. Wait for it to install, then search for 'node-red-contrib-nostalgic'. Wait for that to install. Lastly search for ui_table and install that one.       
 Next go to flows.nodered and import this [FIFO subflow](https://flows.nodered.org/flow/d7eea525606ea45a7c850976a85b349e)
     
 Once you have those nodes installed, you can [import the flow](https://github.com/thebaldgeek/thebaldgeek.github.io/blob/main/img/radiosonde/radiosonde_auto_rx.json) for the radiosonde dashboard.   
