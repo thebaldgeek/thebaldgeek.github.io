@@ -382,8 +382,8 @@ Click on the Node-RED menu on the top right, then 'Manage Pallet'. The click on 
 Next go to flows.nodered and import this [FIFO subflow](https://flows.nodered.org/flow/d7eea525606ea45a7c850976a85b349e)
     
 Once you have those nodes installed, you can [import the flow](https://github.com/thebaldgeek/thebaldgeek.github.io/blob/main/img/radiosonde/radiosonde_auto_rx.json) for the radiosonde dashboard.   
-Once imported, just add your home lat/lon and alt to the marked node, update your SDR serial numbers in the marked node, hit deploy.   
-Open a new tab and go to that computers IP:1880/ui/ and wait for your first flight. 
+Once imported, just add your home lat/lon and alt to the marked node. Get your SDR serial number(s) from the auto_rx webpage (hint, its the number after the # and there will be 1 for each SDR you have), then update your SDR serial numbers in the marked node, (hint, over write the 401 etc with your numbers, as many as you have) hit the big red deploy in the top right as usual.   
+Open a new tab and go to that computers IP:1880/ui/ and wait for your first flight. Hint, page menu is in the top left. Open the SDR ones and leave them open to view flight data. Refresh that tab when you want to start logging again. 
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HGJWTNL65R"></script>
