@@ -108,8 +108,8 @@ else:
      
    Change the `thebaldgeek.net` to what ever host you want to send your UDP ACARS messages to, and also change the port number from 123456 to the port you are using or thebaldgeek gives you. Then save and exit nano.   
 Next run this command:   
-```python3 -u /usr/src/iridium-toolkit/reassembler.py -i zmq: -m acars -a json --station YOUname-IRIDIUM-YOUairport | python3 ~/acars.py```  (Swap out 'ubuntu' for your username. Swap out YOUname for say your ham call or some short name, swap out YOUairport for your nearest large airport ICAO code and let me know what it is).
-Do note that nothing will show in this terminal until you pickup your first ACARS message. Depending on how much Iridium aircraft there are in your area, it could take a moment or a few minutes, then a single number will show up, you will see a number for every message. The number is the size of the ACARS message once its decoded.  
+```python3 -u /usr/src/iridium-toolkit/reassembler.py -i zmq: -m acars -a json --station YOUname-IRIDIUM-YOUairport | python3 ~/acars.py```  (Swap out YOUname for say your ham call or your initials, swap out YOUairport for your nearest large airport ICAO code (mine is KRIV) and let me know what it is so I can filter out your data for you).
+Do note that nothing will show in this terminal until you pickup your first ACARS message. Depending on how many Iridium aircraft there are in your area, it could take a moment or a few minutes, then a single number will show up, you will see a number for every message. The number is the size of the ACARS message once its decoded.  
     
 ## Terminal Two point Five    
 if you want to see your ACARS messages stream past, then open another terminal and just connect without the pipe to the acars.py, like this.....    

@@ -79,7 +79,7 @@ There is one supported decoder for ACARS and two decoders for VDL2. All of which
 If you know and love docker, then there is that option as well [SDR Enthusiasts](https://github.com/sdr-enthusiasts) is a good way to combine your ADSB data with your ACARS data in your location. Do note that even with Docker it's best to serialize your SDRs, so jump down to that bit if you want to know how to do that.
 
 [acarsdec](https://github.com/TLeconte/acarsdec) is a multi-channel (in the same 2Mhz range) acars decoder with built-in rtl_sdr, airspy front end or sdrplay device.   
-[vdlm2dec](https://github.com/TLeconte/vdlm2dec) can decode up to 8 frequencies simultaneously ( but in the same 2Mhz range ) It decodes ARINC-622 ATS applications (ADS-C, CPDLC) via libacars library.    
+[vdlm2dec](https://github.com/TLeconte/vdlm2dec) can decode up to 8 frequencies simultaneously ( but in the same 2Mhz range ) using the typical RTLSDR hardware. It decodes ARINC-622 ATS applications (ADS-C, CPDLC) via libacars library. It can also send VDL aircraft positions to a local VRS map if thats your thing.    
 [dumpvdl2](https://github.com/szpajder/dumpvdl2) Has the following features: 
 * RTLSDR (via rtl-sdr library)
 * Mirics SDR (via libmirisdr-4)
@@ -210,9 +210,9 @@ Ok, you kept reading.... Here is your reward.
 
 ## Plotting dumpvdl position data on a map  
 
-Yes, its possible to plot dumpVDL positions on a map like VRS.   
-The flow outline goes like this.... Use Node-RED to get the lat/lon data out of any dumpvdl aircraft messages and convert them into VRS 'basestation' format and then add a new receiver to VRS to take the UDP data flow from that Node-RED code.    
-The interesting part is that the JSON output from dumpvdl can have any one of (so far I have seen) 12,000 keys. Of those 12,000 I have found around 640 that have aircraft lat/lon data in them. Finding and plotting those is your challenge.   
+Yes, its possible to plot dumpVDL positions on a map like VRS. If you are using vdl2dec, just use the -s option and setup an SBS receiver on your local VRS.      
+If you are using dumpvdl, the flow outline goes like this.... Use Node-RED to get the lat/lon data out of any dumpvdl aircraft messages and convert them into VRS 'basestation' format and then add a new receiver to VRS to take the UDP data flow from that Node-RED code.    
+The interesting part is that the JSON output from dumpvdl can have any one of (so far I have seen) 12,000 keys. Of those 12,000 I have found around 640 that have aircraft lat/lon data in them. Finding and plotting those is your challenge. I don't know how many of those 640 the vdl2dec is using to plot its positions.       
 Here is a screenshot from a guy in Ireland that is running such a flow in his Raspberry Pi that is also doing the dumpvdl decoding.   
 
 <a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/dumpvdlonvrs.png"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/dumpvdlonvrs.png" height="580"/></a>   
