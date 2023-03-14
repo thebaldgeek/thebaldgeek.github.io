@@ -126,6 +126,60 @@ In the terminal run the example file: `sudo ./example.sh`
 At this point, you can visit your PC's IP address from any browser on your network and look for the map, so in my case `http://192.168.1.122:8888/map.html`  
 Let that run. You should see the sats and beams update around once a minute.   
      
+## Is it working? Tuning by numbers  
+Iridium is a bit of an odd mode. It really rewards a bad antenna and poor performing SDR. What do I mean by that?   
+The worse the antenna, the better your numbers look.   
+A poor performing antenna or a bad (low) gain setting on the SDR means there are very few bursts of data being received so your computer decodes them just fine and thus you get some great 'Ok' numbers.  
+As you get your antenna type/location dialed and get your SDR gain dialed, your computer CPU use will go up and your 'Ok' numbers might go down if your USB port or CPU starts to choke.   
+   
+    1678802073 | i: 255/s | i_avg: 343/s | q_max:   14 | i_ok:  86% | o:  638/s | ok:  98% | ok: 250/s | ok_avg:  74% | ok:   39410936 | ok_avg: 254/s | d: 0
+    1678802074 | i: 335/s | i_avg: 343/s | q_max:   17 | i_ok:  88% | o:  844/s | ok: 102% | ok: 343/s | ok_avg:  74% | ok:   39411280 | ok_avg: 254/s | d: 0
+    1678802075 | i: 398/s | i_avg: 343/s | q_max:   19 | i_ok:  77% | o: 1007/s | ok:  93% | ok: 373/s | ok_avg:  74% | ok:   39411654 | ok_avg: 254/s | d: 0
+    1678802076 | i: 365/s | i_avg: 343/s | q_max:   15 | i_ok:  80% | o:  909/s | ok:  97% | ok: 354/s | ok_avg:  74% | ok:   39412010 | ok_avg: 254/s | d: 0
+    1678802077 | i: 476/s | i_avg: 343/s | q_max:   20 | i_ok:  55% | o: 1108/s | ok:  61% | ok: 293/s | ok_avg:  74% | ok:   39412304 | ok_avg: 254/s | d: 0
+
+Here is a slug of my station numbers. I am using my station as its currently one of the best performing stations on the site (for now).   
+Lets break down the numbers and see what we can learn about tuning up a station....   
+
+Column Mnemonic Explanation
+1 time Current time in seconds (unix time)
+2 input number of "bursts" detected in the last second
+3 input average average of 2 since program start
+4 queue max High-water mark of the sum of the queue size(s) in the last second (see -q)
+5 in ok% Percentage of bursts with at least one ok frame relative to 2
+6 out Number of "frames" after splitting bursts into frames
+7 ok% Percentage of "ok" frames(8) relative to 2
+8 ok Number of frames in the last second that could be extracted & demodulated
+9 ok% average average of 7 since program start
+10 ok total Total number of ok frames since program start
+11 ok avg average of 8 since program start
+12 drops Total number of candidate bursts that had to be dropped due to queue full (i.e. CPU being too slow)
+
+Lets break down the table a bit.  
+1 = time. There are some concern's about this time being different across computers. Each ACARS is timestamped on my site, so for now, thats the setup.
+2 = raw bursts. This is a big key to how well your front end is working. The more bursts you see, the better your antenna and SDR gain is dialed.
+But do note that this number will go up and down as the LEO satellites fly past over head. You need to keep a mental track of this number, but is first number is the one that will 'hurt'. If you are only seeing 10 to 80 bursts typically, your system will seem to be working great and you will have a high 'Ok' number, you will even see some map coverage, but your ACARS message rate will be very low. ie, low volume of data in, low volume of data out.   
+3 = average of 2. Helpful since the sats are really moving.
+4 = Bursts you PC cant process. Helpful to know how hard your CPU is backlogged.
+5 = Not all bursts have data. More bursts more data, more struggles to decode the data.
+6 = How well your computer has pulled the data out.
+7 = Live Ok data to bursts. Over 100% means you caught up on some backlog from 4.
+8 = This should match 1 very close. ie every burst you caught in the last hour was able to be examined.
+9 = Running total of how you are keeping up.
+10 = Total number of frames decoded. Just a big (hopefully) number that goes up over time.
+11 = Important number. Higher is better. It should be over 200 ideally.
+12 = Dropped frames. Should be zero ideally.
+
+Lets try and break that down even more.....
+2 Should be well north of 100. North of 250 would be better still. Use antenna type, placement, LNA type/filtering (GPS and Iridium are close, a filtered LNA helps Iridium) and SDR gain to get up there.
+5 should be over 50%. ie lots of Ok frames in your bursts.
+9 should be as high as your computer can push it. 
+11 should be north of 200.
+12 should be zero.
+
+
+
+
 ## The Fun Part    
 Now that you have a UDP stream of ACARS messages you can perhaps use Node-RED to view them, or save them to your hard drive to view with your text filter software / application.   
 Very soon airframes.io will start ingesting Iridium data and when that happens you will be part of a global system using this very challenging mode.    
