@@ -53,6 +53,12 @@ You will know if your CPU is up to the task based on how many dropped frames you
 ## Getting Started
 Once you install DragonOS_FocalX on an i5 or better x86 computer with a USB 3.0 port, you are ready to start.  
 
+The very first thing you need to do is run the command (not as sudo, just as your user - this is important its done just as your usual username/command prompt) `volk_profile`   
+What this does is run a whole bunch of math problems in diffrent ways and figures out your CPU profile and the fastest way it computes stuff.    
+It then writes its profile to your userID and then when you run Iridium and other SDR stuff on DragonOS this profile is used and so you end up with a much more efficent computer.    
+This should be done on every PC and every fresh install of DragonOS.    
+Do note it takes about 10 to 20 minutes and you should ovid doing much on the computer while it runs. Just step away and let it do its thing.   
+
 For now you are going to open a few terminals, we are working on an script to run it and keep it running (it does crash now and then), but for now, this is the best way to get going.....   
 This guide assumes that you would like to share your Iridium data with the world and thus send it to thebaldgeek so it can be added to the main Iridium page and more. You can also open another terminal and use the same process to send data to yourself on another UDP port number in another terminal.
  
@@ -61,15 +67,39 @@ You will have one terminal to parse the raw data and another terminal to decode 
 
 # Lots of terminals   
 ## Terminal One   
+The airspy R2 is a very popular SDR for Iridium for good reason. It has a nice stable driver, is affordable, in stock and covers the required 10Mhz.   
+If you are using the R2, here is a great starter conf file....   
+Open a blank file from your home directory and copy it in....    
+    cd ~    
+    nano r2.conf   
+Copy paste in this tex and save it with ctrl+o to write it and then ctrl+x to exit out of the editor.    
+    [soapy-source]  
+    driver=airspy  
+    device_args='bitpack=1,biastee=false'  
+    
+    sample_rate=10000000  
+    center_freq=1622000000  
+    bandwidth=10000000  
+    
+    # Linearity Gain  
+    gain=16  
+    
+    [demodulator]  
+    decimation=4  
+   
+I know that none reading this will need the software Bias-T, so it can be left as 'false' <grin> Ok, so set it 'true' to get your LNA working (and good luck with that).   
+   
 Run the extractor from any directory: (This assumes you are testing with an RTL-SDR V3, change the .conf file to match your SDR and edit it to turn on the Bias-T if required).    
-```iridium-extractor -D 4 --multi-frame /usr/src/gr-iridium/examples/rtl-sdr.conf | python3 -u /usr/src/iridium-toolkit/iridium-parser.py -o zmq```  
-To be clear, if you not using an RTLSDR look in the /usr/src/gr-iridium/examples/ directory and find your SDR and tweak that file to best set it up.   
+```iridium-extractor -D 4 --multi-frame ~/r2.conf | python3 -u /usr/src/iridium-toolkit/iridium-parser.py -o zmq```  
+To be clear, if you not using an R2 look/path that command in the /usr/src/gr-iridium/examples/ directory and find your SDR and tweak that file to best set it up.   
 You are going to get a line of data per second:   
 ```1666645162 | i: 351/s | i_avg: 392/s | q_max:   24 | i_ok:  79% | o:  751/s | ok:  82% | ok: 291/s | ok_avg:  85% | ok:   31170861 | ok_avg: 334/s | d: 8260```  
-See the MUCCC GitHub page linked above for a full breakdown on each of these values and their meaning.  
+Either see the MUCCC GitHub page linked above or scroll down a bit for a full breakdown on each of these values and their meaning.  
+   
+You are going to need to tweak your gain and antenna placement (hint, inside a double glazed window is not going to give very good numbers at all, the foil coating will block most of the L-Band signal, trust me on this, better in the middle of a wall or even in an attic) to get good numbers. Just a reminder, max gain is not always best gain. (Tip, the Airspy R2 gain is from 1 to 21).  
 
 You want to see 60% to 100% in the `ok_ave:` part. Lower number means more bad packets and you need to fix your antenna, coax, LNA or gain in the .conf file.   
-You will spend a fair bit of time looking at these numbers scroll past as you set up and tune your station. The key value to tweak is the gain. Try both higher and lower, but max may not be the best out the gate. Test each gain change over at least 1 hour to give time for few satellites to pass over your station location.   
+You will spend a fair bit of time looking at these numbers scroll past as you set up and tune your station. The key value to tweak is the gain. Try both higher and lower, but max may not be the best out the gate. Test each gain change over at least 1 hour to give time for few satellites to pass over your station location. This is not a quick fix game, take your time, the satellites are in a LEO and don't always pass directly over your location.      
 
 ## Terminal Two
 Type `nano acars.py`, then copy/paste in this text:    
@@ -109,7 +139,7 @@ else:
    Change the `thebaldgeek.net` to what ever host you want to send your UDP ACARS messages to, and also change the port number from 123456 to the port you are using or thebaldgeek gives you. Then save and exit nano.   
 Next run this command:   
 ```python3 -u /usr/src/iridium-toolkit/reassembler.py -i zmq: -m acars -a json --station YOUname-IRIDIUM-YOUairport | python3 ~/acars.py```  (Swap out YOUname for say your ham call or your initials, swap out YOUairport for your nearest large airport ICAO code (mine is KRIV) and let me know what it is so I can filter out your data for you).
-Do note that nothing will show in this terminal until you pickup your first ACARS message. Depending on how many Iridium aircraft there are in your area, it could take a moment or a few minutes, then a single number will show up, you will see a number for every message. The number is the size of the ACARS message once its decoded.  
+Do note that nothing will show in this terminal until you pickup your first ACARS message. Depending on how many Iridium aircraft there are in your area, it could take a moment or a few minutes or even an hour, then a single number will show up, you will see a number for every message. The number is the size of the ACARS message once its decoded.  
     
 ## Terminal Two point Five    
 if you want to see your ACARS messages stream past, then open another terminal and just connect without the pipe to the acars.py, like this.....    
@@ -121,14 +151,15 @@ Now, we need to get the map running: (This is optional, but cool to see)
 ```sudo nano example.sh```    
 On the second bottom line, if not already done, add a 3 at the end of the word python and be sure and change the IP address for your PC (your PC might not be 192.168.1.122), so it should read ```python3 -m http.server --bind 192.168.1.22 8888```     
 Save and exit nano    
-  
+Tip you can find your IP address by the command `ip address` it will be in there.   
+
 In the terminal run the example file: `sudo ./example.sh`  
 At this point, you can visit your PC's IP address from any browser on your network and look for the map, so in my case `http://192.168.1.122:8888/map.html`  
 Let that run. You should see the sats and beams update around once a minute.   
      
 ## Is it working? Tuning by numbers  
 Iridium is a bit of an odd mode. It really rewards a bad antenna and poor performing SDR. What do I mean by that?   
-The worse the antenna, the better your numbers look.   
+The worse the antenna, the better your 'Ok' numbers look.   
 A poor performing antenna or a bad (low) gain setting on the SDR means there are very few bursts of data being received so your computer decodes them just fine and thus you get some great 'Ok' numbers.  
 As you get your antenna type/location dialed and get your SDR gain dialed, your computer CPU use will go up and your 'Ok' numbers might go down if your USB port or CPU starts to choke.   
    
@@ -182,10 +213,10 @@ Lets try and break that down even more.....
 
 ## The Fun Part    
 Now that you have a UDP stream of ACARS messages you can perhaps use Node-RED to view them, or save them to your hard drive to view with your text filter software / application.   
-Very soon airframes.io will start ingesting Iridium data and when that happens you will be part of a global system using this very challenging mode.    
+airframes.io has an ingester script, so reach out to me or Kevin to get that. Please feed Kevin (and me if you like) because when you do that you will be part of a global system using this very challenging mode.    
 Speaking of 'fun', it seems that once again and aircraft builders are tormenting AVGEEKS the world over as they use different ICAO/Rego/ModeS combos in their messages to identify their aircraft.    
-thebaldgeek is keeping a list of unknown aircraft and if you like tracking down those sorts of things, everyone would love your help to figure out the ones in the table. Once they are 'known', their Iridium 'code' is put in a CSV file and used site wide for identifying the aircraft no mater what mode they show up on.   
-At the moment, ADSBEx does not include these...aaahhh... 'special' codes, so acars.adsbexchange is the only place these Iridium aircraft are decoded and put into tables / database.   
+thebaldgeek is keeping a list of 'unknown' aircraft and if you like tracking down those sorts of things, everyone would love your help to figure out the ones in the table. Once they are 'known', their Iridium 'code' is put in a CSV file and used site wide for identifying the aircraft no mater what mode they show up on.   
+At the moment, ADSBEx (or any other flight tracking service) does not include these...aaahhh... 'special' Iridium codes, so acars.adsbexchange is the only place these Iridium aircraft are decoded and put into tables / database.   
 thebaldgeek is sharing these codes with the airframes.io guys as he does not want to be a data island and wants to share all the information he can so more people can benefit.   
 
 
@@ -252,10 +283,10 @@ Stop reading here, the notes below are mostly wrong and are just for history.
 ------------------------------
 Note that I used to run a global Iridium coverage map, but the URL was getting 'attacked' to try and break into my network, so I took it down.
 If there is enough interest from the handful of Iridium feeders, I can put it back up and just let a few people know about it.   
-Sep 2022. Its back!
+Sep 2022. Its back! Feeder only perk. Follow me on Twitter to see regular map updates.   
 
 ## Terminal Four - Sending me your map data.   
-Almost there: DM on Twitter / Discord or email me and ask for the map2.py script that will allow you to send your local map data to the global map. (URL only for Iridium feeder sharers).  
+Almost there: Copy your acars.py script like this `cp acars.py map.py` and edit just the port number that I will give you and this will allow you to send your local map data to the global map. (URL only for Iridium feeder sharers).  
 Next run this command: 
 ```pip install https://github.com/joh/when-changed/archive/master.zip```   
 This will install a python script that will look for changes to a file. 
@@ -263,7 +294,7 @@ Now go to where it was installed:
 ```cd /home/ubuntu/.local/bin```   
 Now run the file watch which will send me your sats.json rougly once a minute and your coverage will be added to the master map on my site:
 
-```./when-changed /usr/src/iridium-toolkit/html/sats.json cat /usr/src/iridium-toolkit/html/sats.json |  python3 ~/map2.py```
+```./when-changed /usr/src/iridium-toolkit/html/sats.json cat /usr/src/iridium-toolkit/html/sats.json |  python3 ~/map.py```
    
 Really really stop reading now.   
 ## Getting the lastest version    
