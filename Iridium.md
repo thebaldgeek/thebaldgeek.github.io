@@ -73,6 +73,7 @@ Open a blank file from your home directory and copy it in....
     cd ~    
     nano r2.conf   
 Copy paste in this tex and save it with ctrl+o to write it and then ctrl+x to exit out of the editor.    
+
     [soapy-source]  
     driver=airspy  
     device_args='bitpack=1,biastee=false'  
