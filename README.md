@@ -43,6 +43,7 @@ I am pretty active on [Twitter](https://twitter.com/thebaldgeek) if thats your t
 Tip, my Tweets are public, so you don't need a Twitter account to read them.  
 Free Twitter reader can be found [here](https://bird.trom.tf/search?f=tweets&q=thebaldgeek)   
 Not as active, but am also on <a rel="me" href="https://ioc.exchange/@thebaldgeek">Mastodon</a>   
+If you want more of a traditional forums, then we have that as well, join us over at  <a rel="me" href="https://community.airframes.io/">airframes community</a>   
     
 For ACARS data and feeding, please support [airframes.io](https://app.airframes.io/about) You can also follow them on Twitter [AirframesIO](https://twitter.com/AirframesIO)   
 #thebaldgeek can be also found on the adsbexchange Discord server - mostly in the ACARS channels.
