@@ -35,4 +35,5 @@ stdcdec Command line. Linux. (Free)
     
 It should be noted that none of these software packages other than satdump share their decoded messages very gracefully. I have had to use Node-RED and do some ugly workarounds to get the messages moved from the decoders to a web dashboard.   
 This may not be an issue in your use case, but bears mentioning as the real power of receiving any of these satcom message streams is being able to filter and alert on messages of interest. 
-Lastly, after months of logging the 4-5 'private' message channels on three of the satellites I can safely say the message contents just don't warrent the CPU cycles. Its mostly 'The fish are over here' in different launguages.
+Lastly, after months of logging the 4-5 'private' message channels on three of the satellites I can safely say the message contents just don't warrent the CPU cycles. Its mostly 'The fish are over here' in different launguages.   
+All 4 satellite feeds are avliable on the main site, just click the menu and its the last page at the bototm. 
