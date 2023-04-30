@@ -18,7 +18,7 @@ You will find them on the following frequencies:
    
 143e. 4F1. POR: 1541.45 MHz   
     
-Most people seem to be using the RTLSDR v3 patch antenna but a ~7 turn RHCP helix with LNA would be better, or a 3-4 turn LHCP helix pointing at a dish would be better still.   
+Most people seem to be using the RTLSDR v3 patch antenna but a ~7 turn RHCP helix with LNA would be better, or a 3-4 turn LHCP helix pointing at a small dish also works. The signal is very strong and robust, so you don't need huge amounts of gain.   
 The SDR need be nothing more expensive than the usual RTLSDR V3 silver dongle.    
 Use some quality coax (not the needle thin RTLSDR junk that comes with the patch antenna - throw it out and get some better quality coax). and you should have a very solid decode rate consisting of about 100+ messages per day.   
 The signal is easy to find as it is a continuos carrier even when no messages are being sent.   
@@ -26,11 +26,13 @@ For the Linux decoders, usually a Raspberry Pi 4 is capable of decoding the stre
    
 Software options:   
     
+satdump. (Free) Linux or Windows. Low CPU use with CLI option. Rock solid performance with JSON output via UDP makes this app the clear top choice.   
 InmarsatDecoder (~$50USD) Windows.   
 Teckmanoid (~$50USD) Crossplatform (Java required)   
 Scytale-C (Free) Crossplatform with some work.    
 SDR++ STD-C demodulator plug-in and QT Inmarsat-C Parser. (Free). Linux only   
 stdcdec Command line. Linux. (Free)
     
-It should be noted that none of these software packages share their decoded messages very gracefully. I have had to use Node-RED and do some ugly workarounds to get the messages moved from the decoders to a web dashboard.   
+It should be noted that none of these software packages other than satdump share their decoded messages very gracefully. I have had to use Node-RED and do some ugly workarounds to get the messages moved from the decoders to a web dashboard.   
 This may not be an issue in your use case, but bears mentioning as the real power of receiving any of these satcom message streams is being able to filter and alert on messages of interest. 
+Lastly, after months of logging the 4-5 'private' message channels on three of the satellites I can safely say the message contents just don't warrent the CPU cycles. Its mostly 'The fish are over here' in different launguages.
