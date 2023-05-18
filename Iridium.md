@@ -44,25 +44,48 @@ Note that none of the Iridium tools use a gui, so you must run it all via the de
 ### Computer - CPU power is critical   
 The decoding of such a wide bandwidth of such bursty data is very CPU intense. You will need a USB 3.0 port to pass the data smoothly (USB 2.0 is a bit of a bottle neck).    
 For starters, the Raspberry Pi4 does NOT have enough power to decode more than about 2mhz, ie, the output of the RTLSDR v3. So yes, you can get started and see a few messages, but you will be missing out on over 80% of the aircraft in your area and you will have to chose between getting ACARS and seeing your map coverage, one or the other, the Pi4 and RTLSDR v3 can not decode both. (Look down this page a bit to see why, the map data is at one end and ACARS data at the other end of the 10Mhz spread).       
-Our KBOS station is running: i3-12100 CPU, H670 chipset. That seems to be doing the job very well. A few other stations are running the Beelink NUC clones and seem to be very happy reporting good decode rates.    
+Our KBOS station is running: i3-12100 CPU, H670 chipset. That seems to be doing the job very well. A few other stations are running the Beelink NUC or Trigkey NUC clones and seem to be very happy reporting good decode rates.    
 A few other stations are using old laptops, i5, i7 and are working well. One reported his very old i7 could not keep up and he had to upgrade the system he ran the Iridium code on.        
-RAM is not critical, around 2mb or more is enough. HDD space requires a minimum of 32GB for DragonOS_Focal.  
-Personally I am running DragonOS_Focal on a VMware player machine on my Windows PC and am very happy.   
+RAM is not as critical, around 2-4mb or more is enough. HDD space requires a minimum of 32GB for DragonOS_Focal.  
+Personally I am running DragonOS_Focal on a VMware player machine on my Windows PC sharing 6 cores and am very happy.   
 You will know if your CPU is up to the task based on how many dropped frames you see. Roughly the make/break is to have a 'ok_ave' of more than 70%.   
 
 ## Getting Started
 Once you install DragonOS_FocalX on an i5 or better x86 computer with a USB 3.0 port, you are ready to start.  
 
-The very first thing you need to do is run the command (not as sudo, just as your user - this is important its done just as your usual username/command prompt) `volk_profile`   
-What this does is run a whole bunch of math problems in diffrent ways and figures out your CPU profile and the fastest way it computes stuff.    
-It then writes its profile to your userID and then when you run Iridium and other SDR stuff on DragonOS this profile is used and so you end up with a much more efficent computer.    
+The very first thing you MUST do is run the command (not as sudo, just as your user - this is important its done just as your usual username/command prompt) `volk_profile`   
+What this does is run a whole bunch of math problems in different ways and figures out your CPU profile and the fastest way it computes stuff.    
+It then writes its profile to your userID and then when you run Iridium and other SDR stuff on DragonOS this profile is used and so you end up with a much more effective math computer.    
 This should be done on every PC and every fresh install of DragonOS.    
 Do note it takes about 10 to 20 minutes and you should ovid doing much on the computer while it runs. Just step away and let it do its thing.   
+      
+## View your Iridium spectrum!
+Once that is done the next critical step is to view the Iridium RF spectrum from your antenna/LNA/coax/SDR installation.   
+This is a very critical step as you may not see a problem just from looking at the gr-iridium decoder numbers (more, much more about them down the page).   
+For example, if you happen to have some sort of burst interference in your install/area, the decoder will have very hight CPU use, but your decoded data numbers will be poor and you won't know why.    
+So, if you are running DragonOS, then open SDR++ from the start menu, select Airspy from the radio list and start viewing the spectrum / waterfall at the Iridium center frequency.   
+Here is what my HC610 antenna and LimeSDR looks like.     
+     
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/iridium/krivspec.png" height="287">   
+    
+Note that it's important you set the bandwidth to 10Mhz just like the gr-iridium decoder will use.    
+Note that the gain for the Lime is different from the Airspy. For the R2 you probably will be around the 17 gain value - but do keep reading!   
+It helps if you set the display to FFT Hold so you can see the peaks of the Iridium data bursts. (This is actually a pretty important visual aid).    
+Now the spectrum. You should see the little burst frames floating down. You might also see (hope not) some continuous carriers. It's important to know that Iridium does not have ANY continuous carriers, so any have are in your area. You can see that I have about 3. Disconnecting the antenna removes 2 of them. So one is from the USB on my SDR setup. Those other 2 are RF interference in my area. I could try and track them down, but .... yeah...   
+The key to look for is if you have any pulsing or bursting interference. I waited till a few Iridium Nextgen satellites passed over before taking the screenshot, those narrow bursts that come and go are fine, but anything that flutters all the time is bad. Very bad. Much much worse than a carrier as the gr-iridium decoder will spend endless CPU cycles trying to decode it and your station will suffer. So those you MUST find and fix.    
+     
+## Gain setting.    
+Setting the gain is critical with any SDR install, be it voice, or data, HF, VHF or satcom.    
+Move the gain to zero. Ignore the waterfall, just look at the spectrum.    
+Slowly move the gain up. Look at both the noise floor and the peaks of the signals.    
+As you move the gain all the way to max you will see the noise floor keep rising, but the signal peaks will at some point stop getting higher. They will just get crushed between the rising noise floor and their max height will just remain. This is where the peak hold is helpful with Iridium, so you can see what the peak of the bursts are.     
+Move the gain up and down very slowly, one click at a time till you have the tallest hight on the signals and lowest noise floor. Make a note of that number.   
 
+## Decoding ACARS.   
 For now you are going to open a few terminals, we are working on an script to run it and keep it running (it does crash now and then), but for now, this is the best way to get going.....   
 This guide assumes that you would like to share your Iridium data with the world and thus send it to thebaldgeek so it can be added to the main Iridium page and more. You can also open another terminal and use the same process to send data to yourself on another UDP port number in another terminal.
  
-Here is the big picture, we are going to make a python file (acars.py) that will take the output from the Iridium decoder and send it via UDP to my ingest server.
+Here is the big picture, we are going to make a python file (acars.py) that will take the output from the Iridium decoder and send it via UDP to thebaldgeek ingest server. (Note, this WONT work for airframes.io).
 You will have one terminal to parse the raw data and another terminal to decode the ACARS messages and to send the data to my site. (Optionally, there is a third terminal for your local map if you would like to see your coverage).   
 
 # Lots of terminals   
@@ -85,12 +108,12 @@ Copy paste in this tex and save it with ctrl+o to write it and then ctrl+x to ex
     # Linearity Gain  
     gain=16  
     
-    [demodulator]  
-    decimation=4  
+  
    
 I know that none reading this will need the software Bias-T, so it can be left as 'false' <grin> Ok, so set it 'true' to get your LNA working (and good luck with that).   
+Change the gain to the number you noted from testing in SDR++.    
    
-Run the extractor from any directory: (This assumes you are testing with an RTL-SDR V3, change the .conf file to match your SDR and edit it to turn on the Bias-T if required).    
+Run the extractor from any directory: (This assumes you are using the Airspy R2 with the config file we just made, change the .conf file to match your SDR and edit it to turn on the Bias-T if required).    
 ```iridium-extractor -D 4 --multi-frame ~/r2.conf | python3 -u /usr/src/iridium-toolkit/iridium-parser.py -o zmq```  
 To be clear, if you not using an R2 look/path that command in the /usr/src/gr-iridium/examples/ directory and find your SDR and tweak that file to best set it up.   
 You are going to get a line of data per second:   
@@ -99,8 +122,10 @@ Either see the MUCCC GitHub page linked above or scroll down a bit for a full br
    
 You are going to need to tweak your gain and antenna placement (hint, inside a double glazed window is not going to give very good numbers at all, the foil coating will block most of the L-Band signal, trust me on this, better in the middle of a wall or even in an attic) to get good numbers. Just a reminder, max gain is not always best gain. (Tip, the Airspy R2 gain is from 1 to 21).  
 
-You want to see 60% to 100% in the `ok_ave:` part. Lower number means more bad packets and you need to fix your antenna, coax, LNA or gain in the .conf file.   
-You will spend a fair bit of time looking at these numbers scroll past as you set up and tune your station. The key value to tweak is the gain. Try both higher and lower, but max may not be the best out the gate. Test each gain change over at least 1 hour to give time for few satellites to pass over your station location. This is not a quick fix game, take your time, the satellites are in a LEO and don't always pass directly over your location.      
+You want to keep reading as your Iridium station will live or die by understanding these numbers.   
+You will spend a fair bit of time looking at these numbers scroll past as you set up and tune your station. Test each station/software/hardware change over at least 1 hour to give time for few satellites to pass over your station location. This is not a quick fix game, take your time, the satellites are in a LEO and don't always pass directly over your location.      
+
+If you want to feed thebaldgeek your Iridium ACARS data (please consider it, its the only site so far that does the Iridium aircraft registration lookup and splits civil / military into tables) then you will need to create the following file and DM thebaldgeek to get the port number to feed your data.
 
 ## Terminal Two
 Type `nano acars.py`, then copy/paste in this text:    
@@ -142,27 +167,31 @@ Next run this command:
 ```python3 -u /usr/src/iridium-toolkit/reassembler.py -i zmq: -m acars -a json --station YOUname-IRIDIUM-YOUairport | python3 ~/acars.py```  (Swap out YOUname for say your ham call or your initials, swap out YOUairport for your nearest large airport ICAO code (mine is KRIV) and let me know what it is so I can filter out your data for you).
 Do note that nothing will show in this terminal until you pickup your first ACARS message. Depending on how many Iridium aircraft there are in your area, it could take a moment or a few minutes or even an hour, then a single number will show up, you will see a number for every message. The number is the size of the ACARS message once its decoded.  
     
+If you want to feed airframes.io your Iridium ACARS data contact them or thebaldgeek. There are three scripts floating around at the moment to feed them and I'm honestly not sure what the state of play is currently (May 2023).   
+
 ## Terminal Two point Five    
 if you want to see your ACARS messages stream past, then open another terminal and just connect without the pipe to the acars.py, like this.....    
 ```python3 -u /usr/src/iridium-toolkit/reassembler.py -m acars zmq:```    
 
 ## Terminal Three - Your local map.    
-Now, we need to get the map running: (This is optional, but cool to see)   
+Now, if you want to get your local map running: (Its really just a satellite spot beam map, NOT a station coverage map. This is optional, but cool to see).   
 ```cd /usr/src/iridium-toolkit/html```      
 ```sudo nano example.sh```    
-On the second bottom line, if not already done, add a 3 at the end of the word python and be sure and change the IP address for your PC (your PC might not be 192.168.1.122), so it should read ```python3 -m http.server --bind 192.168.1.22 8888```     
+On the second bottom line, if not already done, add a 3 at the end of the word python and be sure and change the IP address for your PC (your PC might not be 192.168.1.122), so it should read  
+ ```python3 -m http.server --bind 192.168.1.22 8888```     
 Save and exit nano    
 Tip you can find your IP address by the command `ip address` it will be in there.   
 
 In the terminal run the example file: `sudo ./example.sh`  
 At this point, you can visit your PC's IP address from any browser on your network and look for the map, so in my case `http://192.168.1.122:8888/map.html`  
 Let that run. You should see the sats and beams update around once a minute.   
-     
+Keep reading much further down if you would like to share your map with thebaldgeeks current global Iridium map (please and thanks).    
+
 ## Is it working? Tuning by numbers  
 Iridium is a bit of an odd mode. It really rewards a bad antenna and poor performing SDR. What do I mean by that?   
 The worse the antenna, the better your 'Ok' numbers look.   
-A poor performing antenna or a bad (low) gain setting on the SDR means there are very few bursts of data being received so your computer decodes them just fine and thus you get some great 'Ok' numbers.  
-As you get your antenna type/location dialed and get your SDR gain dialed, your computer CPU use will go up and your 'Ok' numbers might go down if your USB port or CPU starts to choke.   
+A poor performing antenna or a bad (low) gain setting on the SDR means there are very few bursts of data being received so your computer decodes them just fine and thus you get some great 'Ok' numbers, but low burst numbers and low ACARS numbers. So really understanding these numbers is key.  
+As you get your antenna type/location dialed and get your SDR gain dialed using SDR++, your computer CPU use will go up and your 'Ok' numbers might go down if your USB port or CPU starts to choke. We are looking for the best burst to Ok number ballance for your CPU.   
    
     1678802073 | i: 255/s | i_avg: 343/s | q_max:   14 | i_ok:  86% | o:  638/s | ok:  98% | ok: 250/s | ok_avg:  74% | ok:   39410936 | ok_avg: 254/s | d: 0
     1678802074 | i: 335/s | i_avg: 343/s | q_max:   17 | i_ok:  88% | o:  844/s | ok: 102% | ok: 343/s | ok_avg:  74% | ok:   39411280 | ok_avg: 254/s | d: 0
@@ -170,51 +199,48 @@ As you get your antenna type/location dialed and get your SDR gain dialed, your 
     1678802076 | i: 365/s | i_avg: 343/s | q_max:   15 | i_ok:  80% | o:  909/s | ok:  97% | ok: 354/s | ok_avg:  74% | ok:   39412010 | ok_avg: 254/s | d: 0
     1678802077 | i: 476/s | i_avg: 343/s | q_max:   20 | i_ok:  55% | o: 1108/s | ok:  61% | ok: 293/s | ok_avg:  74% | ok:   39412304 | ok_avg: 254/s | d: 0
 
-Here is a slug of my station numbers. I am using my station as its currently one of the best performing stations on the site (for now).   
+Here is a slug of my station numbers. I am using my station as its currently one of the better performing stations on the site (for now).   
 Lets break down the numbers and see what we can learn about tuning up a station....   
 
 Column Mnemonic Explanation
 1 time Current time in seconds (unix time)   
-2 input number of "bursts" detected in the last second   
-3 input average average of 2 since program start   
-4 queue max High-water mark of the sum of the queue size(s) in the last second (see -q)   
-5 in ok% Percentage of bursts with at least one ok frame relative to 2   
-6 out Number of "frames" after splitting bursts into frames   
-7 ok% Percentage of "ok" frames(8) relative to 2   
-8 ok Number of frames in the last second that could be extracted & demodulated   
-9 ok% average average of 7 since program start   
-10 ok total Total number of ok frames since program start   
-11 ok avg average of 8 since program start   
-12 drops Total number of candidate bursts that had to be dropped due to queue full (i.e. CPU being too slow)   
+2 i: Live input number of "bursts" detected in the last second. Will change a large amount as the satellites pass over head.   
+3 i_ave: Running average of 2 since program start. If you don't have any interference, higher is better. North of 100 at the very least.   
+4 q_max: High-water mark of the sum of the queue size(s) in the last second. ie bursts your CPU has not been able to process and so has put in a que for latter processing.   
+5 i_ok: Percentage of bursts with at least one ok frame relative to 2. Not all bursts have frame decodable data, so this is of interest, but not critical as there is nothing we can do either way.   
+6 o: Number of "frames" after splitting bursts into frames. Not of much use to station owners.   
+7 ok: Percentage of "ok" frames(8) relative to 2. Since each burst can have up to 4 frames of data, this Ok% can go above 100%   
+8 ok: Number of frames in the last second that could be extracted & demodulated   
+9 ok_ave: Average average of 7 since program start   
+10 ok: Total number of ok frames since program start   
+11 ok_ave: Running average of 8 since program start   
+12 d: Total number of candidate bursts that had to be dropped due to queue (4) full (i.e. CPU being too slow)   
    
-Lets break down the table a bit.   
-1 = time. There are some concern's about this time being different across computers. Each ACARS is timestamped on my site, so for now, thats the setup.  
-2 = raw bursts. This is a big key to how well your front end is working. The more bursts you see, the better your antenna and SDR gain is dialed.  
-But do note that this number will go up and down as the LEO satellites fly past over head. You need to keep a mental track of this number, but is first number is the one that will 'hurt'. If you are only seeing 10 to 80 bursts typically, your system will seem to be working great and you will have a high 'Ok' number, you will even see some map coverage, but your ACARS message rate will be very low. ie, low volume of data in, low volume of data out.   
-3 = average of 2. Helpful since the sats are really moving.  
-4 = Bursts you PC cant process. Helpful to know how hard your CPU is backlogged.  
-5 = Not all bursts have data. More bursts more data, more struggles to decode the data.  
-6 = How well your computer has pulled the data out.  
-7 = Live Ok data to bursts. Over 100% means you caught up on some backlog from 4.  
-8 = This should match 1 very close. ie every burst you caught in the last hour was able to be examined.  
-9 = Running total of how you are keeping up.  
-10 = Total number of frames decoded. Just a big (hopefully) number that goes up over time.  
-11 = Important number. Higher is better. It should be over 200 ideally.  
-12 = Dropped frames. Should be zero ideally.  
+Lets break down the table a bit into human terms (if we can).   
+1 = time. There are some concern's about this time being different across computers. This is understandable as not all computers are running NTP (time sync). Each ACARS is timestamped on my site, so for now, thats the setup.  
+2 i: = Raw bursts. This is a big key to how well your front end is working. The more bursts you see, the better your antenna and SDR gain is dialed.     
+Do note that this number will go up and down as the LEO satellites fly past over head. And not just the number or azimuth of the satellite, but also the amount of traffic on that satellite at the time.  You need to keep a mental track of this number, but is first number is the one that gives the best metric of how well the RF aspect of your station is working.   
+If you are only seeing 10 to 80 bursts typically, your system will seem to be working great and you will have a high 'Ok' number, you will even see some map coverage, but your ACARS message rate will be very low. ie, low volume of data in, low volume of data out.   
+3 i_ave: = average of 2. Helpful since the sats are really moving and the amount of traffic on any given sat changes from moment to moment.  
+4 q_max: = Bursts you PC cant process. Helpful to know how hard your CPU is backlogged. Should be less than 20 most of the time. High numbers indicate not enough CPU power to decode the bursts.  
+5 i_ok: = We cant do anything about this number. Not all bursts have decodable data in them.  
+6 o: = How well your computer has pulled frame data out of the burst. Not always linked to CPU, not really much use to the station owner.  
+7 ok: = Live Ok frames of data in each burst. Since each burst can have 4 frames, you can see more than 100%, which is pretty cool.        
+8 ok: = This will somewhat reflect 2. High number in, high samples decoded, low in, low decoded. However, its also linked to the amount of data in each burst.   
+9 ok_avg: = Running total of how your CPU is keeping up with 1 and 4, but also to some extent 7. So good bursts in (clean RF), small que depth and good amount of decodable frame data in any given burst that your CPU could decode.       
+10 = Total number of frames decoded. Just a big (hopefully) number that goes up over time. (Note, worth considering having a batch job to stop/start the extractor at midnight so this number does not get too large and it might be nice to log the daily total - on the to-do list).      
+11 = Important number. Higher is better. Really a heath check on all the preceding numbers (and the last one).  
+12 = Dropped frames. Should be zero ideally. If consistently showing a value, your CPU is underpowered for your location/data rate.   
   
 Lets try and break that down even more.....  
-2 Should be well north of 100. North of 250 would be better still. Use antenna type, placement, LNA type/filtering (GPS and Iridium are close, a filtered LNA helps Iridium) and SDR gain to get up there.  
-5 should be over 50%. ie lots of Ok frames in your bursts.  
+2, 3 and 5 (i, i_ave and i_ok) are RF metrics. They show how well your location, antenna, LNA, coax are working. Should be well north of 100. North of 250 would be better still. Use antenna type, placement, LNA type/filtering (GPS and Iridium are close, a filtered LNA helps Iridium) and SDR gain to get up there.  
+4 and 12 (q_max and d) are CPU metrics. If you have North of 20-30 in your que and dropped samples, your CPU is just not up to the job.  
 9 should be as high as your computer can push it.   
-11 should be north of 200.  
-12 should be zero.  
 
 
-
-
-## The Fun Part    
+## The Fun Part. ACARS messages!    
 Now that you have a UDP stream of ACARS messages you can perhaps use Node-RED to view them, or save them to your hard drive to view with your text filter software / application.   
-airframes.io has an ingester script, so reach out to me or Kevin to get that. Please feed Kevin (and me if you like) because when you do that you will be part of a global system using this very challenging mode.    
+airframes.io has an ingest script, so reach out to me or Kevin to get that. Please feed Kevin (and me if you like) because when you do that you will be part of a global system using this very challenging mode.    
 Speaking of 'fun', it seems that once again and aircraft builders are tormenting AVGEEKS the world over as they use different ICAO/Rego/ModeS combos in their messages to identify their aircraft.    
 thebaldgeek is keeping a list of 'unknown' aircraft and if you like tracking down those sorts of things, everyone would love your help to figure out the ones in the table. Once they are 'known', their Iridium 'code' is put in a CSV file and used site wide for identifying the aircraft no mater what mode they show up on.   
 At the moment, ADSBEx (or any other flight tracking service) does not include these...aaahhh... 'special' Iridium codes, so acars.adsbexchange is the only place these Iridium aircraft are decoded and put into tables / database.   
