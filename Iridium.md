@@ -30,9 +30,10 @@ If you are using an active antenna or LNA be sure and enable the Bias-T on your 
 Bottom line, you want an L-band RHCP omni directorial antenna with a clear view of the sky, good LNA and good quality coax for Iridium.   
 
 ### LNA   
-There are a few wide band amplifiers that cover 1.6Ghz, most are pretty crap since they run wide open an have far too much gain. Best LNA is an L-Band specific one.    
+There are a few wide band amplifiers that cover 1.6Ghz, most are pretty noisy since they run wide open (unfiltered) and have far too much gain. Best LNA for Iridium is an L-Band specific one.    
 The Nooelec Iridium+IR LNA has amazing performance. Well worth the money and Bias-T hassels to drive this amplifier.   
-At a quick glance, you may assume that there are a few Nooelects that seem to cover this band, they don't all cover the full range of Iridium frequencies. Nooelec have a really helpful [page on their SAWbird LNA range](https://support.nooelec.com/hc/en-us/articles/360011133694-SAWbird-LNA-Filters), take some time to read it before making your purchase. Here is a tip, Iridium is really loud. You may not need the extra gain of the + LNA version. Also note that the + draws an extra 150mA. So for example, if you are using an RSP1a SDR, its Bias-T can only supply 50mA, so the base SAWbird LNA is (should be - might be) fine at 30mA draw, the + at 180mA will not work. In the case of Iridium, the extra 10db gain is probably not needed so this combo would work fine depending on your antenna, coax quality and length. (Of course, once again, to really press this home, you can and should just use a physical Bias-T and not have to worry about any of this).   
+At a quick glance, you may assume that there are a few Nooelects that seem to cover this band, but they don't all cover the full range of Iridium frequencies. Nooelec have a really helpful [page on their SAWbird LNA range](https://support.nooelec.com/hc/en-us/articles/360011133694-SAWbird-LNA-Filters), take some time to read it before making your purchase. Here is a tip, Iridium is pretty loud. You may not need the extra gain of the + LNA version. Also note that the + draws an extra 150mA. So for example, if you are using an RSP1a SDR, its Bias-T can only supply 50mA, so the base SAWbird LNA is (should be - might be) fine at 30mA draw, the + at 180mA will not work. In the case of Iridium, the extra 10db gain is probably not needed so this combo would work fine depending on your antenna, coax quality and length. (Of course, once again, to really press this home, you can and should just use a physical Bias-T and not have to worry about any of this).   
+Of course, if you are using the HC-610 antenna, you don't need an LNA (And for sure should not run an active antenna AND an LNA, that is not a good idea at all).
 
 ### SDR   
 I normally like the RTLSDR v3 for this sort of thing (all things ACARS and L-Band). Its very affordable and very quick and clean to get running. The problem with the RTLSDR is that it only covers around 2Mhz bandwidth and that is only a very small number of the Iridium data channels.  
@@ -342,6 +343,8 @@ Now run the file watch which will send me your sats.json rougly once a minute an
 May 2023 I had a chance to chat for many hours with one of the MUCCC guys and got a better feel for the scrolling numbers and so made a big update to this page around that time.    
 I have always wanted to extract them and plot them on a graph and it turns out that the MUCCC do just that, but in 24 hour retrospective batches. But, they did give me a few clues on how we might do it live.   
 That investigation is now on my to-do list. Yes, I will probably use Node-RED, but the method should apply no matter so will see what I can get running and will share any notes here on this page.
+    
+================================================================================
 
 Really really stop reading now.   
 ## Getting the lastest version    
