@@ -104,6 +104,8 @@ Then we started to dig into the bands and global locations and people asked cons
 We now have a script that will allow dumphfdl to run on a Pi4 and auto select one of 5 banks of frequencies every hour.   
 In short, it listens to each bank for a default of 2 minutes (but can be adjusted), counts (scores) how many messages of each type it hears and then at the end of the 10 minutes parks itself on the highest scoring bank for the remaining 50 minutes then does the scanning and scoring again at the top of the hour (or what ever you set the cronjob to run the script to be).    
 Why is that contentious then? Sounds perfect right? Well, avgeeks know best and if that is not how you want to run your station, then don't run the script or edit it to suit your needs. No hard feelings - honest.   
+     
+To run the script use `./scriptname.sh`
    
 ### Auto scan warning   
 If you are going to edit things, do so carefully.  
