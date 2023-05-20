@@ -46,15 +46,6 @@ Ok now we need SoapySDR, so lets build that.
     sudo make install   
     sudo ldconfig #needed on debian systems   
 
-Now that the framework is built, we can put the module in.  
-
-    git clone https://github.com/pothosware/SoapySDRPlay.git ./SoapySDRPlay
-    cd SoapySDRPlay
-    mkdir build
-    cd build
-    cmake ..
-    make
-    sudo make install
 
 Ok now you need to install the Soapy driver for your SDR, if you are using an Airspy, Google it, sorry, cant help.   
 If you are using an SDRPlay device, here is how to install their API/driver (this is for a Pi (ARM) use your CPU file (try dropping the '-ARM-' from the file name here) from SDRPlay if on x86)   
@@ -68,7 +59,7 @@ If you are using an SDRPlay device, here is how to install their API/driver (thi
     mkdir build  
     cd build  
     cmake ..  
-    make install  
+    sudo make install  
 
 You can test and see if it finds your SoapySDR with `SoapySDR --find`   
 Also `SoapySDR --info` is helpful at times.   
