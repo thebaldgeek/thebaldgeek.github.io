@@ -168,6 +168,28 @@ Here is a great shot from a helix owner - looks like the ultimate L-Band antenna
 The gentleman that owns all the antennas kindly provided the numbers and used the same SDR and software to run the test for a few minutes on each antenna.   
 It clearly shows that a big high gain antenna like the yagi is king of the L-Band, but keep in mind that it has such a narrow beam width that you will probably need to 'track' the satellite to some extent to keep the signal peaked. Also don't forget that the yagi is not circular polarized so is losing some gain there as well.  
 It also shows that the data channels are not all equal. The 10500 and 8400 voice channels are the weakest. (And arguably the most interesting - despite the fact that I personally don't find one sided conversations interesting.)  
+   
+## Dream Antenna    
+If I could have a dream L-band antenna, it might go something like this:    
+In no order, my thoughts / wish-list:   
+1. Inmarsat only (Don't want to try and use it for Iridium as well like the rtlsdr v2 patch - ie an L-Band antenna that does everything not very well).   
+2. Filtered. SAW or otherwise. L-Band is busy/noisy. Want to keep as much out as we can.   
+3. ~14Mhz bandwidth.   
+4. 1537Mhz to 1550Mhz (roughly)   
+5. RHCP.   
+6. 30 to 50 deg beamwidth. (No less than 25 deg so no tracking is required).   
+7. 10+db gain. (Real gain, not after the LNA fake numbers).   
+8. 1 wavelength reflector (if required - ie if it ends up being a helix, but not locking the antenna into a given RHCP type of driven element).   
+9. Full water proof / snow proof / sun proof.   
+10. Tripod screw mounting (at the least). ie No suction cup option - ie a beefy antenna that works better than a light weight patch.   
+11. Two power options. Bias-T and external volts. (External could be USBC or DC socket).   
+12. Wide range bias T power voltage. 3 to 15 vDC. The 3v min is important as many SDRs only output 3.5v-3.8v DC under load.   
+13. No LED. ie Don't make a xmas tree, and keep the power draw under ~50 to 100ma so most SDRs can drive it.   
+14. No supplied coax.   
+15. SMA female connector only.   
+16. Passive antenna option considered. (We can run our own LNA and thus Bias-T power no longer an issue. More affordable).   
+17. Different part number of a stubby LHCP antenna to fully illuminate a ~80cm or bigger dish. (Same LNA/pwer/connector etc).   
+   
 ## Which SDR?
    In regard to SDRs, I like the silver v3 RTL-SDR, but in this case, because of the requirement to use Bias-T to power the LNA, I use the Nooelect SmarTee SDR as it has Bias-T always on without needing to run the v3 bat file to turn it on. The performance of the two SDRs seems to be identical. With that said, I have had some issue using the SmarTee with [SDRReceiver](SDRReceiver.md) that I am still working through. Also note that I have tested the RSP1a on L-Band and the more expensive SDR showed no benefit at all over the cheaper RTLSDr v3. This is mostly due to the fact of using the LNA, a more sensitive SDR does not perform any better since the system noise is not limited by the SDR. In short, use the cheaper SDR on L-Band and the other on HF where the difference in performance between the two is dramatic.    
 ## Mounting       
