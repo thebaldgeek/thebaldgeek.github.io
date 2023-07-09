@@ -126,8 +126,8 @@ DO NOT FEED to a global feed or to any of the ADSB sites. Its not the same as AD
 Just configure a receiver location or use your current local one, being HF, it does not need to be very accurate.   
 Add a basestation feed.   
 I prefer to add a port and use 'client' (not the 'server' that is in the example) in the dumphfdl config.   
-Tick the 'is SatCom' so the aircraft hang around (hfdl like satcom only report now and then, if you don't plot longer, the aircraft drop off the map very quick - you can adjust the dwell time in the VRS settings under Jaero timeout.)  
-
+Tick the 'is SatCom' so the aircraft hang around (hfdl like satcom only report now and then, if you don't plot longer, the aircraft drop off the map very quick - you can adjust the dwell time in the VRS settings under Jaero timeout.)    
+Lastly, its CRITAL that each feed to VRS be on a unique port. You can NOT feed more than one dumpHFDL (or more of any basestation feed) to the same port on VRS. So each command for dumphfdl must have a unique port number in that command and the port number must match on VRS. Simply make a merged feed on VRS for all your dumpHFDL feeds.
 
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
