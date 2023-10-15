@@ -266,7 +266,9 @@ Please use the frequency list and screenshots together, the tables of frequencie
 1546,0850	APAC	143,5E	Aero-H+ (10500)	P-Chan	50	120	ARINC & SITA   
     
 
-### 4F2 83E (for now)   
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/143eL-Band.png" height="380"> 
+
+### 4F2 83E (No screenshot for now - mid Oct the satellite is still being repostioned over APAC)      
 1545,1600	IOE	83,5E	Aero-L(600)	      P-Chan	C5	305	SITA   
 1545,1650	IOE	83,5E	Aero-L(600)	      P-Chan	C5	305	SITA   
 1545,1850	IOE	83,5E	Aero-L(600)	      P-Chan	C5	305	SITA   
@@ -278,8 +280,6 @@ Please use the frequency list and screenshots together, the tables of frequencie
 1546,1075	IOE	83,5E	Aero-H+ (10500)	P-Chan	C5	305	SITA   
 1546,1225	IOE	83,5E	Aero-H+ (10500)	P-Chan	C5	305	SITA   
 
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/143eL-Band.png" height="380"> 
-     
 ## Software setup and tweaks    
 With the antenna mounted and the coax run, we can focus on the software side of things.   
 I am going to proceed as if you are going to set up and monitor all data channels around the clock and you are going to feed your data to your local Node-RED for message filtering (ie just Military aircraft) and reporting / alerting.   
