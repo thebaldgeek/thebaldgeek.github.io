@@ -202,6 +202,9 @@ Be sure and run some quality coax. The longer the length required to get from th
    Ok, so you have the antenna mounted and pointed roughly in the [right direction](Inmarsat.md), now where to tune the SDR software?
 
 ## Inmarsat L-Band Frequencies and Data Rates ##  
+Please NOTE!!! As of Oct 15th, the following screenshots are out of date/old/inaccurate - They are close, but not perfect.   
+Please use the frequency list and screenshots together, the tables of frequencies/modes are accurate and should be primary, but the screenshots are helpful to show what you should be looking for (at the frequencies shown in the text).   
+
 
 ### 4A4F4 25-East
 1545,1200	EMEA	25E	Aero-L(600)    	P-Chan	90	220	ARINC & SITA
