@@ -268,7 +268,7 @@ Please use the frequency list and screenshots together, the tables of frequencie
 
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/143eL-Band.png" height="380"> 
 
-### 6F1 83E (No screenshot for now - mid Oct the satellite is still being repostioned over APAC)      
+### 6F1 83E (No screenshot for now)      
 1545,1600	IOE	83,5E	Aero-L(600)	      P-Chan	C5	305	SITA   
 1545,1650	IOE	83,5E	Aero-L(600)	      P-Chan	C5	305	SITA   
 1545,1850	IOE	83,5E	Aero-L(600)	      P-Chan	C5	305	SITA   
