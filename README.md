@@ -27,9 +27,10 @@ I am happy to help those that try and help themselves.
    
 Check back often, this site is being updated randomly.   
 
-I am pretty active on [Twitter](https://twitter.com/thebaldgeek) if thats your thing.     
-Tip, my Tweets are public, so you don't need a Twitter account to read them.  
-Free Twitter reader can be found [here](https://bird.trom.tf/search?f=tweets&q=thebaldgeek)   
+I am pretty active on [Twitter](https://twitter.com/thebaldgeek).     
+No really. Sorry, but X is still the best place for avgeeks to exchange information. I have seen no changes to its effectiveness at all over the past 5 years.   
+The best way to keep updated with the goings on of ACARS is via X. Tip, my Tweets are public, so you don't need a Twitter account to read them.  
+Free Twitter reader can be found [here](https://nitter.net/thebaldgeek/with_replies)   
 Not as active, but am also on <a rel="me" href="https://ioc.exchange/@thebaldgeek">Mastodon</a>   
 Even less active, but also on https://staging.bsky.app/profile/thebaldgeek.bsky.social   
 If you want more of a traditional forums, then we have that as well, join us over at  <a rel="me" href="https://community.airframes.io/">airframes community</a>   
