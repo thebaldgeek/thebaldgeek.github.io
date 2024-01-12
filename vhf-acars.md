@@ -18,8 +18,8 @@ So, a full setup might consist of 2 x ACARS SDR and 1 x VDL2 SDR.
 * 1 x Antenna. There are some options here. ACARS/VDL is from around 130Mhz to 136Mhz. (If you want to listen to ATC, take that requirement into consideration as well).   
 Some have used an old ham 2m antenna, others a VHF 'scanner' antenna. Ovoid a discone, they are very low gain.   
 If you want the best, then the [PDP ACARS](https://dpdproductions.com/collections/aviation-base-mobile-antennas/products/acars-vertical-outdoor-base-antenna) antenna is the one to get.   
-These are well reviewed (I have not tried them): https://vinnant.sk/store/product/scanner-dual-airband   
-Another option (I hear good things about but not tried) is: https://www.sirioantenne.it/en/products/vhf    
+These [vinnant antennas](https://vinnant.sk/store/product/scanner-dual-airband) well reviewed (I have not tried them).      
+Another option (I hear good things about but not tried) is the [sirio](https://www.sirioantenne.it/en/products/vhf) airband antennas (lots of options here).    
 Here is an example of what NOT to buy. This airband antenna is BROKEN! [Amazon](https://www.amazon.com/dp/B07XNKX18D?ref_=cm_sw_r_ud_dp_QW7K7EJXCSYNG1BKXQTY)    
 Note that you can NOT use your existing ADSB one, the frequencies are not even close.  
 * 1 x coax cable, length for your installation. The good thing here is the frequency of ACARS is much lower than ADSB, so the coax loss is much lower. 
