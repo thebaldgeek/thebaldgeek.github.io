@@ -5,14 +5,15 @@ Navigation: [Inmarsat](Inmarsat.md) : [L-Band](L-Band.md) : [C-Band](C-Band.md) 
 # The main ACARS website
 
 You can search a lot of satcom ACARS feeds (and some HFDL / VHF VDL ones as well) on the site:-    
-[tbg1.airframes.io](https://tbg1.airframes.io/)  
-
+[tbg1.airframes.io](https://tbg1.airframes.io/)   
+Site menu is in the top left corner (three bars), be sure and check out all the pages, there is a bit of a mashup there - even some marine data.   
+   
 ## About this website  
 This website is just a brain dump and rough help notes to assist others in getting the hardware and software together to receive and decode ACARS messages from the main modes/frequencies.    
-Its not perfect, its not finished, its not polished..... in time, these pages will fade as more help docs are written over at airframes.io   
+Its not perfect, its not finished, its not polished, it never will be..... in time, these pages will fade as more help docs are written over at [docs.airframes.io](https://docs.airframes.io/)   
    
 # About ACARS    
-Please take the time to [read this ACARS description](https://www.pentestpartners.com/security-blog/introduction-to-acars/). Its one of the best overviews from signal to data I have ever come across.    
+Please take the time to [read this overview of ACARS](https://www.pentestpartners.com/security-blog/introduction-to-acars/). Its one of the best introductions of ACARS from signal to data I have ever come across.    
 
 
 ###  READ THIS!
@@ -23,20 +24,28 @@ The best way to put this is: `I don't know what I'm doing, but I know that I don
 
 ### Support or Contact   
 
-I am happy to help those that try and help themselves.  
+I am happy to help those that try and help themselves.... In other words, if you don't read these pages and ask questions that are clearly answered here then my responses will be limited.     
+   
+If you have some ideas about improving the site, here is my starting point - "A problem well stated is a problem half-solved. Charles Kettering - Inventer".   
+The better you can describe your suggestion, the better chance you have of seeing it show up on the site.    
+That said, do know that the website as it is now is under 'feature freeze'. The code base that Node-RED used to build it on is end of life. I will consider bug fixes, but new features will be warmly welcomed for v2 of the site which I am actively building. No ETA on its launch, but there are a lot of very compelling reasons why I am locking development of the v1 site and working on v2.
    
 Check back often, this site is being updated randomly.   
-
+    
 I am pretty active on [Twitter](https://twitter.com/thebaldgeek).     
 No really. Sorry, but X is still the best place for avgeeks to exchange information. I have seen no changes to its effectiveness at all over the past 5 years.   
-The best way to keep updated with the goings on of ACARS is via X. Tip, my Tweets are public, so you don't need a Twitter account to read them.  
+The best way to keep updated with the goings on of all things ACARS is via X. Tip, my Tweets are public, so you don't need a Twitter account to read them.  
 Free Twitter reader can be found [here](https://nitter.net/thebaldgeek/with_replies)   
+    
 Not as active, but am also on <a rel="me" href="https://ioc.exchange/@thebaldgeek">Mastodon</a>   
 Even less active, but also on https://staging.bsky.app/profile/thebaldgeek.bsky.social   
-If you want more of a traditional forums, then we have that as well, join us over at  <a rel="me" href="https://community.airframes.io/">airframes community</a>   
-    
-For ACARS data and feeding, please support [airframes.io](https://app.airframes.io/about) You can also follow them on Twitter [AirframesIO](https://twitter.com/AirframesIO)   
+   
+If you want more of a traditional forums, then airframesio have that as well, join us over at the [airframes community](https://community.airframes.io/)   
+The whole ACARS team is very active on the [airframes discord](https://discord.gg/g8P4QYDV)  
 
+For even more ACARS data (over 2 Billion ACARS messages stretching back a few years) and feeding, please support [airframes.io](https://app.airframes.io/about)   
+You can also follow them on Twitter [AirframesIO](https://twitter.com/AirframesIO)   
+   
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HGJWTNL65R"></script>
 <script>
