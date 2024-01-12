@@ -87,28 +87,33 @@ Once you have the LNB mounted on the scalar ring and the ring mounted to the thr
 The LNB needs around 18v to 21v DC to operate, this voltage will blow up your SDR dongle if you apply that voltage to it, so you need the diplexer to mix the 10Mhz GPSDO LO (Local Oscillator) and DC and send that to the LNB, but then to pass the just RF signal and block the voltage to the SDR.   
 Here is a condensed example of how the norsat is setup with the diplexer. There is no power supply here or SDR, but it should give you an idea of how the LNB and diplexer work together.   
 
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/exampenorsatconfig.png" height="250">   
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/exampenorsatconfig.png" height="480">   
 
    
-Ok, so the LNB is powered up and the system is ready to go.   
+Ok, so the LNB is powered up so now bolt the waveguide to the LNB and attach the scalar ring to the dish.    
+Here is an example.     
+   
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/norsatondish.png" height="320"> 
+
+ 
 If not already, place the dish pretty much in its final resting place. It should be level at the base in both axis. This is important because as you track in elevation, you don't an an azimuth component creeping in as it will move you off signal.    
 
 Don't secure the dish to the ground yet, you will need to pivot it to find the middle of the orbit. Look at the graph and see where the satellite is in its orbit and move the dish left and right while looking at the waterfall to find the edges of the signal.   
      
-It should go without saying, but clearly don't do this initial setup on a windy day and be sure to have a plan to mount the dish to the motor and mount with enough cement to survive your once every 100 year wind storm.
+It should go without saying, but clearly don't do this initial setup on a windy day and be sure to have a plan to mount the dish to the motor and mounted with enough cement to survive your once every 100 year wind storm.
 
 I put a tent peg in the ground and used a marker to show the edges of the orbit. Just use any method that works for you setup. You just want to be able to have top bottom left right marks for each of the 4 parts of the satellite orbit clearly defined so any mechanical limits / hard stops can be avoided.... This is more important than it first seems. The satellites do have a very long period drift. It takes a lot of fuel to keep them on station, so they ballance the life the satellite fuel with performance. That means how you set up the dish this week might be different in a month, in 6 months, in a year. You want to ensure you have plenty of free movement beyond just where the satellite is located right now.  
 
 ### SDR software.   
 
-This is a thorn in our side at the moment. In time we will move to [SDRReceiver](SDRReciver.md) but for now the quickest way to get going is to use SDR# or SDR-Console.  
+This is a bit of a thorn in our side at the moment. In time we will move to [SDRReceiver](SDRReciver.md) but for now the quickest way to get going is to use SDR# or SDR-Console.  
 Download it, unzip it and run the bat file to set up the SDR.  
 Then run zadig as admin and install the driver for the SDR.  
 Now run the SDR software.  
-Next, finding the right frequency. This has been pretty hard in the past. I am trying to get screen shots of all the Inmarsats so people know where to look and what they are looking for.
-Here is 98W 10500 burst waterfall.  All the Inmarsats ADSC looks like this. Just the frequency changes by a little. You should be able to see a pattern like this on every sat pretty close to this downconverted frequency. Note the small chirpy R and T channels on the left, they are of some value, but the bulk of the interesting data is in those big fat 10500 bursts, so focus on finding them for now.   
+Next, finding the right frequency. This has been pretty hard in the past since its hard to find an image of what you are looking for on the web. I am trying to get screen shots of all the Inmarsats so people know where to look and what they are looking for.
+Here is 98W 10500 burst waterfall.  All the Inmarsats ADSC look just like this. Just the frequency changes by a little. You should be able to see a pattern like this on every sat pretty close to this downconverted frequency. Note the small chirpy R and T channels on the left, they are of some value, but the bulk of the interesting data is in those big fat 10500 bursts, so focus on finding them for now.   
   
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/10500clean.gif" height="250">  
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/10500clean.gif" height="350">  
       
 From this waterfall we are not going to try and decode aircraft just yet (I know, your excited and want to see aircraft on a map, but that will come).  
 Try moving the horn in and out of the dish and moving the LNB dielectric around in the feed and seeing if you can get a better signal strength. the dielectric should be as far forward in the choke as you can and generally is perpendicular to the LNB feed.   
@@ -168,7 +173,7 @@ Program the motor to move up and down the exact same range. Bolt it to the dish.
 SDRReceiver is hard to setup on C-Band as most people like to see the waterfall as they setup each of the VFOs.
 Buy a copy of VAC so you can remove the audio watermark and have more than 3 virtual audio cables.   
 Use sdr-console. Put a VFO over each data channel. Assign a different VAC Line number to each VFO. Map/link that audio line number to each Jaero.   
-Configure Jaero for zero logging and uncheck local audio decoding. (uses way less CPU).    
+Configure Jaero for zero logging and uncheck local audio decoding. (Uses way less CPU).    
 Configure each jaero basestation output for a different port number in either VRS or readsb.   
 Configure all the Jaeros to use the same ACARS feed IP and port (say into Node-RED) for the ACARS. Please consider adding a second feed (type 'dumpJSON') to airframes.io.      
     
@@ -176,12 +181,14 @@ The 1200 burst data has a lot of small bizjet and military aircraft on it. Its a
 Here is an example screenshot.
     <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/1200example.png" height="350">   
    
-Each VFO here has a matching VAC and matching Jaero. This is in addition to the 10500 VFO/VAC/Jaeros you will be running. (Now you can better see why a fairly powerful computer is required for C-Band)
+Once again each VFO here has a matching VAC and matching Jaero. This is in addition to the 10500 VFO/VAC/Jaeros you will be running. (Now you can better see why a fairly powerful computer is required for C-Band).   
     
-Jan 2024. The Titanium LNB we were using for many years are no longer built.   
+# Jan 2024 LNB update   
+The Titanium LNB we were using for many years are no longer built.   
 Its important to note that both Titanium and norsat LNBs are not, were not, made _for_ ADSC work. It was just nice that we could (abuse) their primary TV use for ADSC reception.    
 Part of the reason that model is no longer made or sold is that 5G cell phones are very close to the 3.4Ghz ADSC frequencies and there is a strong chance of getting 5G interference. The new model Titanium LNB has a 5G filter that very aggressively filters out the weak ADSC signal. Also the new version LNB can not be modified for the GPSDO clock.   
 norsat also offer a 5G blocking LNB, I have not tested those and don't plan to at this stage (its very expensive to just buy these LNB for quick pass/fail tests). The non 5G filtered ones are working Ok. I have heard of some ADSC installations have so much 5G interference that they have had to shut down.   
+    
 All that said, I am going to leave these old photos and details about replacing the crystal with the external 10Mhz GPSDO signal as it served us well for many years and could be of use for other applications.   
 
 # GPSDO (GPS Disciplined Oscillator) Modified LNB    

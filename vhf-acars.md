@@ -15,12 +15,18 @@ The other 'fun' part here is that if the full spread of ACARS frequencies are in
 So, a full setup might consist of 2 x ACARS SDR and 1 x VDL2 SDR.
     
 ## Hardware BOM (Bill of materials)  
-* 1 x Antenna. There are some options here. Some have used an old ham 2m antenna, others a 'scanner' antenna. Ovoid a discone, they are very low gain. If you want the best, then the [PDP ACARS](https://dpdproductions.com/collections/aviation-base-mobile-antennas/products/acars-vertical-outdoor-base-antenna) antenna is the one to get. Here is an example of what NOT to buy. This airband antenna is BROKEN! [Amazon](https://www.amazon.com/dp/B07XNKX18D?ref_=cm_sw_r_ud_dp_QW7K7EJXCSYNG1BKXQTY) Note that you can NOT use your existing ADSB one, the frequencies are not even close.  
+* 1 x Antenna. There are some options here. ACARS/VDL is from around 130Mhz to 136Mhz. (If you want to listen to ATC, take that requirement into consideration as well).   
+Some have used an old ham 2m antenna, others a VHF 'scanner' antenna. Ovoid a discone, they are very low gain.   
+If you want the best, then the [PDP ACARS](https://dpdproductions.com/collections/aviation-base-mobile-antennas/products/acars-vertical-outdoor-base-antenna) antenna is the one to get.   
+These are well reviewed (I have not tried them): https://vinnant.sk/store/product/scanner-dual-airband   
+Another option (I hear good things about but not tried) is: https://www.sirioantenne.it/en/products/vhf    
+Here is an example of what NOT to buy. This airband antenna is BROKEN! [Amazon](https://www.amazon.com/dp/B07XNKX18D?ref_=cm_sw_r_ud_dp_QW7K7EJXCSYNG1BKXQTY)    
+Note that you can NOT use your existing ADSB one, the frequencies are not even close.  
 * 1 x coax cable, length for your installation. The good thing here is the frequency of ACARS is much lower than ADSB, so the coax loss is much lower. 
 A good starter is [RG-8x](https://www.amazon.com/s?k=rg-8x&crid=3QO4RHETIF7KL&sprefix=rg-%2Caps%2C212&ref=nb_sb_ss_ts-doa-p_7_3), a bit more harder to work with is [RG-213](https://www.amazon.com/s?k=rg-213&crid=2LGFNZMSJ9TVW&sprefix=rg-213%2Caps%2C126&ref=nb_sb_noss_1). ADSBExchange sell a range of coax cable types and lengths [Store](https://store.adsbexchange.com/collections/all)     
  Since its receive only, you can use good quality 75 ohm cable if you like [Amazon](https://www.amazon.com/s?k=75+ohm+outdoor+coax+cable&ref=nb_sb_noss)    
 * 1 x SMA splitter. You will need to split your antenna into 2 (or 3) SDRs if you plan to run both ACARS and VDL. [Amazon](https://www.amazon.com/Bingfu-Antenna-Splitter-Cellular-Amplifier/dp/B07STYNB6V/) This will get you started, if you need to split further, just look for the right combo of SMA male/female.    
-* 1 or 2 or 3 x SDR. [RTLSDRv3](https://www.amazon.com/RTL-SDR-Blog-RTL2832U-Software-Defined/dp/B0129EBDS2/) or you can go for the [Orange ADSBEx](https://store.adsbexchange.com/products/adsbexchange-com-orange-r860-rtl2832u-0-5-ppm-tcxo-sdr-w-amp). Do NOT use the blue dongles, they are filtered for ADSB and will not work on VHF-ACARS.   
+* 1 or 2 or 3 x SDR. [RTLSDRv3](https://www.amazon.com/RTL-SDR-Blog-RTL2832U-Software-Defined/dp/B0129EBDS2/) or you can go for the [Orange ADSBEx](https://store.adsbexchange.com/products/adsbexchange-com-orange-r860-rtl2832u-0-5-ppm-tcxo-sdr-w-amp). Do NOT use the blue dongles, they are filtered for 1090Mhz ADSB and will not work on VHF-ACARS.   
  * 1 x Raspbery Pi. You can use your existing ADSB Pi (Check the CPU load first), or put in a new Pi.  
  * 1 x [USB Powered Hub](https://www.amazon.com/Anker-7-Port-Adapter-Charging-iPhone/dp/B014ZQ07NE/). If you end up using 3 ACARS dongles and your ADSB dongle (and perhaps a 978 dongle) on the same Pi, you will for sure need to run a powered hub.  
 
@@ -50,7 +56,7 @@ Ok, so what do we have here?
 
 You can see the device id on the left, this matters because most decoders will use that, next the type and last the serial number.  
 We have an orange (dev 0, sn 978) and two RTL's with their default serials.   
-And the error at the bottom is because the 'rtl_test' command tries to grab a free SDR to test it, so since they are all in use, it gets grumpy.  
+And the error at the bottom is because the 'rtl_test' command tries to grab a free SDR to test it, so since they are all in use, it gets grumpy - just ignore it for now.  
 Lets fix it shall we.   
 The way you change the SDR serial is to use the `rtl_eeprom` command.  
 Since everything is already plugged in, lets just 'mow the lawn' and fix those too many zero serial numbers. In my case, I would do the following:   
@@ -60,7 +66,7 @@ Then do the next one:
 `rtl_eeprom -d 2 -s 136`   
 Answer Y to the question and we are nearly set.   
 If you read the prompt, it says to remove and replug to make the change, so thats a must.   
-What we did was to make one 130 (or Mhz for ACARS) and one 136 (or Mhx for VDL).   
+What we did was to make one 130 (or Mhz for ACARS) and one 136 (or Mhz for VDL).   
 (If you only have one SDR you can drop the '-d' part since it defaults the serial to the one and only SDR).     
 If you pull them both out and only plug in one, then do the `rtl_test` command, you can see which one you just plugged in.   
 LABEL IT!   
@@ -166,7 +172,11 @@ Ok so is it working?
 
 ## dumpVDL   
 `sudo nano /etc/default/dumpvdl2`  
-For details see the conf above. Its the same.   
+Here is an example of a config file for USA (frequencies will be different per location).    
+`DUMPVDL2_OPTIONS="--rtlsdr 1 --correction 2 --gain 32 --output decoded:json:udp:address=feed.airframes.io,port=5552 --station-id xxx-VDL2-yyyy 136650000 136800000 136975000"`   
+We are using USB device 1 here, use the rtl_test command to get the right one for your setup. I have a little PPM correction applied (+2). Gain set to 32. Feeding data to airframes and the three main frequencies in use here in USA (Some try and listen to more frequencies and only get overloaded duplicated messages with less main decodes since every added frequency reduces CPU and SDR/USB bandwidth for the real ones - ie, more is NOT better).   
+Change your station id to something sensible.    
+
 ### Restart the service to apply changes   
 `sudo systemctl restart dumpvdl2`   
 Ok so is it working?   
@@ -296,7 +306,7 @@ In that file, uncomment the DUMPVDL2_OPTIONS= and put your options from the test
   
 `DUMPVDL2_OPTIONS="--rtlsdr -0 --gain 42 --correction 7 --output decoded:text:udp:address=yourWebSite.com,port=112233 136725000 136775000 136800000 136975000"`   
    
-Here is an example command line that will filter out empty system pings and handshakes:       
+Here is an example command line that will filter out empty system pings and handshakes and log data to a dead log file that will never be used:       
 `dumpvdl2 --msg-filter all,-avlc_s,-acars_nodata,-gsif,-x25_control,-idrp_keepalive,-esis --rtlsdr 2 --gain 40 --correction -1 --output decoded:text:file:path=vdl.log,rotate=hourly 136650000 136975000 136800000`   
    
 Here is an example command to listen on a few ACARS fequenices:   
