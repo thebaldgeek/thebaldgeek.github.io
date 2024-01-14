@@ -32,8 +32,7 @@ That said, do know that the website as it is now is under 'feature freeze'. The 
    
 Check back often, this site is being updated randomly.   
     
-I am pretty active on [Twitter](https://twitter.com/thebaldgeek).     
-No really. Sorry, but X is still the best place for avgeeks to exchange information. I have seen no changes to its effectiveness at all over the past 5 years.   
+I am pretty active on [Twitter](https://twitter.com/thebaldgeek).       
 The best way to keep updated with the goings on of all things ACARS is via X. Tip, my Tweets are public, so you don't need a Twitter account to read them.  
 Free Twitter reader can be found [here](https://nitter.net/thebaldgeek/with_replies)   
     
@@ -42,8 +41,8 @@ Even less active, but also on https://staging.bsky.app/profile/thebaldgeek.bsky.
    
 If you want more of a traditional forums, then airframesio have that as well, join us over at the [airframes community](https://community.airframes.io/)   
 The whole ACARS team is very active on the [airframes discord](https://discord.gg/g8P4QYDV)  
-
-For even more ACARS data (over 2 Billion ACARS messages stretching back a few years) and feeding, please support [airframes.io](https://app.airframes.io/about)   
+    
+For even more searchable ACARS data (over 2 Billion ACARS messages stretching back a few years) and information on how to feed the different ACARS modes, please support [airframes.io](https://app.airframes.io/about)   
 You can also follow them on Twitter [AirframesIO](https://twitter.com/AirframesIO)   
    
 <!-- Global site tag (gtag.js) - Google Analytics -->

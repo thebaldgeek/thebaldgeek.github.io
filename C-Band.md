@@ -67,20 +67,32 @@ Before we leave the graph / where is the satellite topic, its also critical that
     
 ## Hardware BOM (Bill of materials)  
 1 x 2 meter (6 foot) C-Band satellite dish (Can be larger, but not smaller) Try and find a used C-Band TV dish. They can be found 2nd hand cheap from places like Facebook Marketplace and Craigslist in USA and places like that in other countries. [eBay](https://www.ebay.com/b/c-band-dish/bn_7024908961) I'd love an 8 foot if I was going to do it again and if I had the space, 10 to 12 foot. More than that would be beyond the point of diminishing returns.   
+   
 1 x 75 ohm TV coax cable. Triple or quad shield, length for your installation. [Amazon](https://www.amazon.com/s?k=75+ohm+outdoor+coax+cable&ref=nb_sb_noss)   
+   
 1 x Low Noise Block (LNB). Note, in the past we used Titanium LNBs, the original model is no longer sold and the new (2023+) model is not able to receive ADSC signals.   
 norsat 3.4Ghz to 4.2Ghz with external 10Mhz LO. There are different models (N type and F type connectors). Get used, new is too expensive.   
+   
 1 x Bias Tee diplexer. The norsats require ~20v DC and 10Mhz mixed and fed down the coax and the signal RF only to be split out for the SDR. Example: Mini-Circuits ZABT-2R12G+ (950Mhz to 2150Mhz).  
+   
 1 x dielectric. Small bit of blank (no copper on either side) circuit board or teflon. About the size of a matchbox but thinner. Needs to pressure fit in the throat of your waveguide to convert the mono LNB feed to circular (not optional - critical!!!).    
+    
 1 x Scalar ring / choke. The norsat LNBs do not include a wave guide. Get one to match your dish F/D ratio.    
+    
 1 x power injector. 18 to 21 volt. High quality. Must have very low switching noise if switch mode.   
+    
 1 x RTLSDR v3 dongle. (Silver or black flat rectangle shape one). Get the real thing from [RTL-SDR](https://www.rtl-sdr.com/buy-rtl-sdr-dvb-t-dongles/). V4 is snake oil. Do not buy.  
-1 x Computer (Junk store - aka your garage)  
+   
+1 x Computer (Junk store - aka your garage)   
+   
 1 x GPSDO module [Leo Bodnar](http://www.leobodnar.com/shop/index.php?main_page=product_info&cPath=107&products_id=301&zenid=7527c5a77e36a6c7028130804877017c)   
+   
 1 x power cable for motors and 5v DC supply for GPSDO - length for install [something like this](https://www.amazon.com/Multi-Core-Shielded-Anti-Interference-Control-Signal/dp/B09639HGN9)   
+   
 1 x Linear motor with resistance position feedback. Stroke length as per instructions [4'' example from Amazon](https://www.amazon.com/gp/product/B00NVI5RII/).  
+   
 1 x Microcontroller with 5 amp H-Bridge relays [Example from Amazon](https://www.amazon.com/s?k=h-bridge&ref=nb_sb_noss_1).   
-
+   
 ## Physical setup   
 Now that we accurately know where the satellite is and what time it is, we can start to set up the dish feed horn and pick up the 10500 signal.
 Once you have the LNB mounted on the scalar ring and the ring mounted to the three arms on the dish, run the coax cable back to the power supply and diplexer.
