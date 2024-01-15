@@ -28,19 +28,20 @@ I am happy to help those that try and help themselves.... In other words, if you
    
 If you have some ideas about improving the site, here is my starting point - "A problem well stated is a problem half-solved. Charles Kettering - Inventer".   
 The better you can describe your suggestion, the better chance you have of seeing it show up on the site.    
-That said, do know that the website as it is now is under 'feature freeze'. The code base that Node-RED used to build it on is end of life. I will consider bug fixes, but new features will be warmly welcomed for v2 of the site which I am actively building. No ETA on its launch, but there are a lot of very compelling reasons why I am locking development of the v1 site and working on v2.
+That said, do know that the website is now under 'feature freeze'.    
+The code base that Node-RED used to build it on is end of life. I will consider bug fixes, but new features will be warmly welcomed for v2 of the site which I am actively building. No ETA on its launch, but there are a lot of very compelling reasons why I am locking development of the v1 site and working on v2.
    
 Check back often, this site is being updated randomly.   
     
 I am pretty active on [X / Twitter](https://twitter.com/thebaldgeek).       
 The best way to keep updated with the goings on of all things ACARS is via X. There are many #osint folks on X that combine the usual ADSB (aircraft on a map) with ACARS to really amplify both sorces of data. The sum really is MUCH greater than the parts.   
-Do note that I don't Tweet actual OSINT information... My site/tweets/role is to provide the raw OSINT data. Ive found that most people that do osint often don't know where the data they use comes from, my goal is to help people understand how RF (radio frequency) signals can be converted into useful data for people to analyze.   
+Do note that I don't Tweet actual OSINT information... My site/tweets/role is to provide raw OSINT data. Ive found that most people that do osint often don't know where the data they use comes from, my goal is to help people understand how RF (radio frequency) signals can be converted into useful data for people to analyze.   
 Tip, my Tweets are public, so you don't need a Twitter account to read them.  
 Free Twitter reader can be found on [nitter](https://nitter.net/thebaldgeek/with_replies)   
     
 Not as active, but am also on <a rel="me" href="https://ioc.exchange/@thebaldgeek">Mastodon</a>   
 If you have 15 minutes to look at some real world examples of ACARS data, look back through the [Reddit ACARS](https://www.reddit.com/r/ACARS/) sub.   
-Even less active, but also on [BlueSky](https://staging.bsky.app/profile/thebaldgeek.bsky.social)   
+Less active, but I'm also on [BlueSky](https://staging.bsky.app/profile/thebaldgeek.bsky.social)   
 
    
 If you want more of a traditional forums, then airframesio have that as well, join us over at the [airframes community](https://community.airframes.io/)   
