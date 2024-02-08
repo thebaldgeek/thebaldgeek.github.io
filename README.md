@@ -45,7 +45,7 @@ Less active, but I'm also on [BlueSky](https://staging.bsky.app/profile/thebaldg
 
    
 If you want more of a traditional forums, then airframesio have that as well, join us over at the [airframes community](https://community.airframes.io/)   
-The whole ACARS team is very active on the [airframes discord](https://discord.gg/g8P4QYDV)  
+The whole ACARS team is very active on the [airframes discord](https://discord.com/invite/airframes)  
     
 For even more searchable ACARS data (over 2 Billion ACARS messages stretching back a few years) and information on how to feed the different ACARS modes, please support [airframes.io](https://app.airframes.io/about)   
 You can also follow them on Twitter [AirframesIO](https://twitter.com/AirframesIO)   
