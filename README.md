@@ -7,6 +7,9 @@ Navigation: [Inmarsat](Inmarsat.md) : [L-Band](L-Band.md) : [C-Band](C-Band.md) 
 You can search a lot of satcom ACARS feeds (and some HFDL / VHF VDL ones as well) on the site:-    
 [tbg1.airframes.io](https://tbg1.airframes.io/)   
 Site menu is in the top left corner (three bars), be sure and check out all the pages, there is a bit of a mashup there - even some marine data.   
+Please note that the website is now under 'feature freeze'.    
+The code base that Node-RED used to build it on is end of life. I will consider bug fixes, but new features will be warmly welcomed for v2 of the site which I am actively building. No ETA on its launch, but there are a lot of very compelling reasons why I am locking development of the v1 site and working on v2.   
+The main feature I am looking to impliment in v2 is to have the site responsive. The v1 site currently does not resize itself to match the browser resolution, thus its a real drag to use on a phone (which a crazy number of people do).
    
 ## About this website  
 This website is just a brain dump and rough help notes to assist others in getting the hardware and software together to receive and decode ACARS messages from the main modes/frequencies.    
@@ -28,8 +31,6 @@ I am happy to help those that try and help themselves.... In other words, if you
    
 If you have some ideas about improving the site, here is my starting point - "A problem well stated is a problem half-solved. Charles Kettering - Inventer".   
 The better you can describe your suggestion, the better chance you have of seeing it show up on the site.    
-That said, do know that the website is now under 'feature freeze'.    
-The code base that Node-RED used to build it on is end of life. I will consider bug fixes, but new features will be warmly welcomed for v2 of the site which I am actively building. No ETA on its launch, but there are a lot of very compelling reasons why I am locking development of the v1 site and working on v2.
    
 Check back often, this site is being updated randomly.   
     
