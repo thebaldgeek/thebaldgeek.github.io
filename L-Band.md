@@ -114,21 +114,35 @@ Assorted stainless nuts, bolts, screws. (<https://www.amazon.com/gp/product/B06X
 Order the 4mm copper tube off Amazon and the base is a stainless steel 8 inch pizza pan also from Amazon. The hardware is stainless steel from Home Depot or Amazon (2 large nuts and bolts for the 3D framework, two small nuts and bolts for the SMA bulkhead ). The antenna connector is a SMA male bulkhead connector from Amazon.   
 Note, the 8 inch pizza pan is the smallest you should go. The reflector is an important part of the antenna performance. You can go bigger to no benefit, but no smaller.    
 
-   ## Helix Build Tips   
+## Helix Build Tips   
       
 The key to building the antenna is to pre-form the copper on a cylinder that is very close to the final size.   
-As it happens, a Vegemite jar is perfect (I am Australian - I had it close to hand).   
-One big tip is to NOT straighten the copper tube from how its loosely coiled as shipped. Very carefully feed the inner edge out the bottom and keep the coil going in a RHCP open loose coil.   
+       
+One big tip is to NOT straighten the copper tube from how its loosely coiled as shipped. Very carefully feed the inner edge out the bottom of the packaged coil as it came and keep the coil going in a new RHCP open loose coil.   
 Once you have it as an open coil in the right direction, THEN preform it on your cylinder.   
 
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/lbandpreformcopperwind.png" height="320">  
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/helixininch.png" height="320">   
+    
+And I know the real world uses mm, so here it is (since I also know people don't want to read or convert units.....)    
+    
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/helixinmm.png" height="320">    
+    
+Even my wife understood that I needed something the size of the 3D print and the exact tube brand to form the coper on did not matter at all, so yeah, just find a tube the size of the holes on the 3D print and pre-form the coper to that size.    
+When you do that, its very low friction to just wind the coper onto the formwork, there is very littls stress or effort and your print wont break.
 
 Once you preform the copper to the right size, you can then wind it on the framework very smoothly.   
 Just work it up the 3D framework slowly, inching it from the top, middle and bottom to keep the tension even all the way up the formwork.  
 
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/lbandpreformcopper.png" height="460">  
     
-Trim the turns to roughly 7 and a bit turns (close to 8) and then drill the two large holes for the 3D frame in the reflector, then mark and drill the bulkhead connector mount near the left hand side support - you go near the left side of the frame so you can run the first 2/3rds of the copper parallel to the base, this improves the match and lowers the SWR. Solder the copper pipe to the connector and you are done building the antenna.   
+For the feed, you don't have to, but I used a small round file to get the coper end nice and snug to the SMA post.    
+
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/helixfeeddetail.png" height="460">
+    
+A touch of heat and solder and its very solid.
+     
+Trim the turns to roughly 7 and a bit turns (close to 8) and then drill the two large holes for the 3D frame in the reflector, then mark and drill the bulkhead connector mount near the left hand side support - you go near the left side of the frame so you can run the first 2/3rds of the copper parallel to the base, this improves the match and lowers the SWR. Solder the copper pipe to the connector and you are done building the antenna.  
+
 Once built, trim the total length to get the VNA dip on frequency and move the first 2/3rds of a turn close to the reflector to get the SWR nice and low and you are done.   
 
 
