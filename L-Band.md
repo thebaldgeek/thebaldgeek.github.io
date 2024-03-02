@@ -232,8 +232,11 @@ Be sure and run some quality coax. The longer the length required to get from th
 
 ## Inmarsat L-Band Frequencies and Data Rates ##  
 Please NOTE!!! As of Jan 15th 2024, the following screenshots are out of date/old/inaccurate - They are close, but not perfect.   
-Please use the frequency list!! They are very accurate. Use the screenshots get an idea of what things should look like, but use the frequency list, not the frequencies on the screenshots.   
-The tables of frequencies/modes are accurate and should be primary, but the screenshots are helpful to show what you should be looking for (at the frequencies shown in the text).   
+Please use the frequency list!! They are very accurate. Use the screenshots get an idea of what things should _look_ like, but USE the frequency LIST, not the frequencies on the screenshots.   
+The tables of frequencies/modes are accurate and should be primary, but the screenshots are helpful to show what you should be looking for (at the frequencies shown in the text).  
+   
+Provisional Inmarsat frequency list prepared in February 2024 by David L. Wilson and Sergi.vdl2   
+Huge thanks to these two guys for collecting and checking every single one of these frequencies!    
 
 
 ### 4A4F4 25-East   
