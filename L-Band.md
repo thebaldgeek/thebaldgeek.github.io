@@ -246,16 +246,66 @@ The tables of frequencies/modes are accurate and should be primary, but the scre
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/alphasatLband.PNG" height="400">       
 
 ### 3F5 54W  
-1545,0250	AORE	54W	Aero-L(600)	      P-Chan	44	104	ARINC   
-1545,0300	AORE	54W	Aero-L(600)	      P-Chan	43	103	SITA   
-1545,0350	AORE	54W	Aero-L(600)	      P-Chan	44	104	ARINC   
-1545,0400	AORE	54W	Aero-L(600)	      P-Chan	43	103	SITA   
-1546,0550	AORE	54W	Aero-H+ (10500)	P-Chan	44	104	ARINC   
-1546,0700	AORE	54W	Aero-H+ (10500)	P-Chan	43	103	SITA    
+Frequency   Region      Use                  Use     Hex Oct   Provider       GEO Location  Beam
+1545,0250	AORE	54W	Aero-L(600)	         P-Chan	44	104	ARINC   
+1545,0300	AORE	54W	Aero-L(600)	         P-Chan	43	103	SITA   
+1545,0350	AORE	54W	Aero-L(600)	         P-Chan	44	104	ARINC   
+1545,0400	AORE	54W	Aero-L(600)	         P-Chan	43	103	SITA   
+1546,0550	AORE	54W	Aero-H+ (10500)	   P-Chan	44	104	ARINC   
+1546,0700	AORE	54W	Aero-H+ (10500)	   P-Chan	43	103	SITA   
+1541,5050   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-5 N-America
+1541,5100   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-5 N-America
+1541,5150   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-5 N-America
+1541,5200   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-5 N-America
+1541,5250   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-5 N-America
+1541,5300   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-5 N-America
+1541,5350   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-5 N-America
+1541,5400   54W AORE    Aero voice(8400)AMB  C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-5 N-America
+1542,9750   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Global beam
+1542,9800   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Global beam
+1542,9850   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Global beam
+1543,4025   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-4 Mexico
+1543,4075   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-4 Mexico
+1543,4125   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-4 Mexico
+1543,4175   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-4 Mexico
+1543,4225   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-4 Mexico
+1543,4275   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-4 Mexico
+1543,4325   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-4 Mexico
+1543,4375   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-4 Mexico
+1546,8225   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-6 Europe
+1546,8275   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-6 Europe
+1546,8325   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-6 Europe
+1546,8375   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-6 Europe
+1546,8425   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-6 Europe
+1546,8475   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-6 Europe
+1546,8525   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-6 Europe
+1546,8575   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-6 Europe
+1547,4125   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-1 Brazil
+1547,4175   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-1 Brazil
+1547,4225   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-1 Brazil
+1547,4275   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-1 Brazil
+1547,4325   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-1 Brazil
+1547,4375   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-1 Brazil
+1547,4425   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-1 Brazil
+1547,4475   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-1 Brazil
+1549,7800   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-3 S-America
+1549,7850   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-3 S-America
+1549,7900   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-3 S-America
+1549,7950   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-3 S-America
+1550,4125   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-7 Africa
+1550,4175   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-7 Africa
+1550,4225   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-7 Africa
+1550,4275   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-7 Africa
+1550,4325   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-7 Africa
+1550,4375   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-7 Africa
+1550,4425   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-7 Africa
+1550,4475   54W AORE    Aero voice(8400)AMBE C-Chan   43/44 103/104 SITA/ARINC Burum, NL Spot beam-7 Africa
+ 
    
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/54wL-Band.png" height="380">  
 
 ### 4F3 98W  
+Frequency   Region      Use               Use     Hex Oct   Provider     GEO Loccation  Beam
 1545,0500	AORW	98W	Aero-L(600)	      P-Chan	05	005	SITA   
 1545,0600	AMER	98W	Aero-L(600)	      P-Chan	D0	320	ARINC & SITA   
 1545,0650	AMER	98W	Aero-L(600)	      P-Chan	D0	320	ARINC & SITA   
@@ -270,6 +320,15 @@ The tables of frequencies/modes are accurate and should be primary, but the scre
 1546,0200	AMER	98W	Aero-H+ (10500)	P-Chan	D0	320	ARINC & SITA   
 1546,0625	AORW	98W	Aero-H+ (10500)	P-Chan	02	002	ARINC   
 1546,0775	AORW	98W	Aero-H+ (10500)	P-Chan	05	005	SITA       
+1542,9375   AMER 98W    Aero voice(8400)AMBE C-Chan D0 320 ARINC & SITA Paumalu, HI Global beam   
+1542,9425   AMER 98W    Aero voice(8400)AMBE C-Chan D0 320 ARINC & SITA Paumalu, HI Global beam   
+1542,9475   AMER 98W    Aero voice(8400)AMBE C-Chan D0 320 ARINC & SITA Paumalu, HI Global beam   
+1542,9525   AMER 98W    Aero voice(8400)AMBE C-Chan D0 320 ARINC & SITA Paumalu, HI Global beam   
+1542,9575   AMER 98W    Aero voice(8400)AMBE C-Chan D0 320 ARINC & SITA Paumalu, HI Global beam   
+1542,9775   AORW 98W    Aero voice(8400)AMBE C-Chan 02/05 002/005 ARINC/SITA Laurentides, CA Global beam   
+1542,9825   AORW 98W    Aero voice(8400)AMBE C-Chan 02/05 002/005 ARINC/SITA Laurentides, CA Global beam   
+1542,9875   AORW 98W    Aero voice(8400)AMBE C-Chan 02/05 002/005 ARINC/SITA Laurentides, CA Global beam   
+1542,9925   AORW 98W    Aero voice(8400)AMBE C-Chan 02/05 002/005 ARINC/SITA Laurentides, CA Global beam   
   
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/98w_L-Band_rtlsdr_activepatch.PNG" height="380">  
 
