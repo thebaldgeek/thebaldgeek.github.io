@@ -236,17 +236,24 @@ Please use the frequency list!! They are very accurate. Use the screenshots get 
 The tables of frequencies/modes are accurate and should be primary, but the screenshots are helpful to show what you should be looking for (at the frequencies shown in the text).   
 
 
-### 4A4F4 25-East
-1545,1200	EMEA	25E	Aero-L(600)    	P-Chan	90	220	ARINC & SITA   
-1545,1250	EMEA	25E	Aero-L(1200)   	P-Chan	90	220	ARINC & SITA   
-1545,1300	EMEA	25E	Aero-L(600) 	   P-Chan	90	220	ARINC & SITA   
-1546,0125	EMEA	25E	Aero-H+ (10500)	P-Chan	90	220	ARINC & SITA   
-1546,0275	EMEA	25E	Aero-H+ (10500)	P-Chan	90	220	ARINC & SITA     
+### 4A4F4 25-East   
+Frequency   Region      Use               Use      Hex Oct  Provider       GEO Location      Beam    
+1545,1200	EMEA	25E	Aero-L(600)    	   P-Chan	90	220	ARINC & SITA     
+1545,1250	EMEA	25E	Aero-L(1200)   	   P-Chan	90	220	ARINC & SITA     
+1545,1300	EMEA	25E	Aero-L(600) 	      P-Chan	90	220	ARINC & SITA     
+1546,0125	EMEA	25E	Aero-H+ (10500)	   P-Chan	90	220	ARINC & SITA     
+1546,0275	EMEA	25E	Aero-H+ (10500)	   P-Chan	90	220	ARINC & SITA       
+1546,1425   25E   EMEA  Aero voice(8400)AMBE C-Chan   90 220   ARINC & SITA Fucino, IT Global beam  
+1546,1475   25E   EMEA  Aero voice(8400)AMBE C-Chan   90 220   ARINC & SITA Fucino, IT Global beam  
+1546,1525   25E   EMEA  Aero voice(8400)AMBE C-Chan   90 220   ARINC & SITA Fucino, IT Global beam   
+1546,1825   25E   EMEA  Aero voice(8400)AMBE C-Chan   90 220   ARINC & SITA Fucino, IT Global beam   
+1546,1875   25E   EMEA  Aero voice(8400)AMBE C-Chan   90 220   ARINC & SITA Fucino, IT Global beam   
+1546,1925   25E   EMEA  Aero voice(8400)AMBE C-Chan   90 220   ARINC & SITA Fucino, IT Global beam   
      
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/alphasatLband.PNG" height="400">       
 
 ### 3F5 54W  
-Frequency...Region......Use..................Use......Hex Oct..Provider........GEO Location...Beam
+Frequency   Region      Use                  Use      Hex Oct  Provider       GEO Location   Beam    
 1545,0250	AORE	54W	Aero-L(600)	         P-Chan	44	104	ARINC   
 1545,0300	AORE	54W	Aero-L(600)	         P-Chan	43	103	SITA   
 1545,0350	AORE	54W	Aero-L(600)	         P-Chan	44	104	ARINC   
@@ -305,7 +312,7 @@ Frequency...Region......Use..................Use......Hex Oct..Provider........G
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/54wL-Band.png" height="380">  
 
 ### 4F3 98W  
-Frequency   Region      Use               Use      Hex Oct  Provider    GEO Loccation     Beam   
+Frequency   Region      Use               Use      Hex Oct  Provider    GEO Loccation     Beam       
 1545,0500	AORW	98W	Aero-L(600)	      P-Chan	05	005	SITA   
 1545,0600	AMER	98W	Aero-L(600)	      P-Chan	D0	320	ARINC & SITA   
 1545,0650	AMER	98W	Aero-L(600)	      P-Chan	D0	320	ARINC & SITA   
@@ -333,41 +340,60 @@ Frequency   Region      Use               Use      Hex Oct  Provider    GEO Locc
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/98w_L-Band_rtlsdr_activepatch.PNG" height="380">  
 
 ### 4F1 143E  
-1545,0250	APAC	143,5E	Aero-L(600)	      P-Chan	50	120	ARINC & SITA   
-1545,0300	APAC	143,5E	Aero-L(600)	      P-Chan	82	202	ARINC   
-1545,0350	APAC	143,5E	Aero-L(600)	      P-Chan	82	202	ARINC   
-1545,0400	APAC	143,5E	Aero-L(600)	      P-Chan	85	205	SITA   
-1545,0450	APAC	143,5E	Aero-L(600)	      P-Chan	85	205	SITA   
-1545,0550	APAC	143,5E	Aero-L(600)	      P-Chan	50	120	ARINC & SITA   
-1545,0700	APAC	143,5E	Aero-L(1200)	   P-Chan	50	120	ARINC & SITA   
-1545,0950	APAC	143,5E	Aero-L(600)	      P-Chan	85	205	SITA   
-1545,1350	APAC	143,5E	Aero-L(600)	      P-Chan	50	120	ARINC & SITA   
-1545,1400	APAC	143,5E	Aero-L(600)	      P-Chan	50	120	ARINC & SITA   
-1545,1450	APAC	143,5E	Aero-L(600)	      P-Chan	50	120	ARINC & SITA   
-1545,1500	APAC	143,5E	Aero-L(600)	      P-Chan	50	120	ARINC & SITA   
-1545,1550	APAC	143,5E	Aero-L(600)	      P-Chan	85	205	SITA   
-1545,1800	APAC	143,5E	Aero-L(600)	      P-Chan	82	202	ARINC   
-1545,2100	APAC	143,5E	Aero-L(600)	      P-Chan	82	202	ARINC   
-1546,0050	APAC	143,5E	Aero-H+ (10500)	P-Chan	50	120	ARINC & SITA   
-1546,0350	APAC	143,5E	Aero-H+ (10500)	P-Chan	50	120	ARINC & SITA   
-1546,0550	APAC	143,5E	Aero-H+ (10500)	P-Chan	85	205	SITA   
-1546,0700	APAC	143,5E	Aero-H+ (10500)	P-Chan	82	202	ARINC   
-1546,0850	APAC	143,5E	Aero-H+ (10500)	P-Chan	50	120	ARINC & SITA   
-    
+Frequency   Region         Use                  Use      Hex Oct  Provider    GEO Location     Beam   
+1545,0250	APAC	143,5E	Aero-L(600)	         P-Chan	50	120	ARINC & SITA   
+1545,0300	APAC	143,5E	Aero-L(600)	         P-Chan	82	202	ARINC   
+1545,0350	APAC	143,5E	Aero-L(600)	         P-Chan	82	202	ARINC   
+1545,0400	APAC	143,5E	Aero-L(600)	         P-Chan	85	205	SITA   
+1545,0450	APAC	143,5E	Aero-L(600)	         P-Chan	85	205	SITA   
+1545,0550	APAC	143,5E	Aero-L(600)	         P-Chan	50	120	ARINC & SITA   
+1545,0700	APAC	143,5E	Aero-L(1200)	      P-Chan	50	120	ARINC & SITA   
+1545,0950	APAC	143,5E	Aero-L(600)	         P-Chan	85	205	SITA   
+1545,1350	APAC	143,5E	Aero-L(600)	         P-Chan	50	120	ARINC & SITA   
+1545,1400	APAC	143,5E	Aero-L(600)	         P-Chan	50	120	ARINC & SITA   
+1545,1450	APAC	143,5E	Aero-L(600)	         P-Chan	50	120	ARINC & SITA   
+1545,1500	APAC	143,5E	Aero-L(600)	         P-Chan	50	120	ARINC & SITA   
+1545,1550	APAC	143,5E	Aero-L(600)	         P-Chan	85	205	SITA   
+1545,1800	APAC	143,5E	Aero-L(600)	         P-Chan	82	202	ARINC   
+1545,2100	APAC	143,5E	Aero-L(600)	         P-Chan	82	202	ARINC   
+1546,0050	APAC	143,5E	Aero-H+ (10500)	   P-Chan	50	120	ARINC & SITA   
+1546,0350	APAC	143,5E	Aero-H+ (10500)	   P-Chan	50	120	ARINC & SITA   
+1546,0550	APAC	143,5E	Aero-H+ (10500)	   P-Chan	85	205	SITA   
+1546,0700	APAC	143,5E	Aero-H+ (10500)	   P-Chan	82	202	ARINC   
+1546,0850	APAC	143,5E	Aero-H+ (10500)	   P-Chan	50	120	ARINC & SITA   
+1542,9350   143,5E APAC    Aero voice(8400)AMBE C-Chan   50 120   ARINC & SITA Paumalu, HI Global beam
+1542,9400   143,5E APAC    Aero voice(8400)AMBE C-Chan   50 120   ARINC & SITA Paumalu, HI Global beam
+1542,9450   143,5E APAC    Aero voice(8400)AMBE C-Chan   50 120   ARINC & SITA Paumalu, HI Global beam
+1542,9500   143,5E APAC    Aero voice(8400)AMBE C-Chan   50 120   ARINC & SITA Paumalu, HI Global beam
+1542,9550   143,5E APAC    Aero voice(8400)AMBE C-Chan   50 120   ARINC & SITA Paumalu, HI Global beam
+1542,9600   143,5E APAC    Aero voice(8400)AMBE C-Chan   50 120   ARINC & SITA Paumalu, HI Global beam
+1542,9650   143,5E APAC    Aero voice(8400)AMBE C-Chan   50 120   ARINC & SITA Paumalu, HI Global beam
+1542,9700   143,5E APAC    Aero voice(8400)AMBE C-Chan   50 120   ARINC & SITA Paumalu, HI Global beam
+1542,9750   143,5E APAC    Aero voice(8400)AMBE C-Chan   82/85 202/205 ARINC/SITA Perth, AU Global beam
+1542,9800   143,5E APAC    Aero voice(8400)AMBE C-Chan   82/85 202/205 ARINC/SITA Perth, AU Global beam
+1542,9850   143,5E APAC    Aero voice(8400)AMBE C-Chan   82/85 202/205 ARINC/SITA Perth, AU Global beam
+1542,9950   143,5E APAC    Aero voice(8400)AMBE C-Chan   82/85 202/205 ARINC/SITA Perth, AU Global beam    
 
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/143eL-Band.png" height="380"> 
 
-### 6F1 83E (No screenshot for now)      
-1545,1600	IOE	83,5E	Aero-L(600)	      P-Chan	C5	305	SITA   
-1545,1650	IOE	83,5E	Aero-L(600)	      P-Chan	C5	305	SITA   
-1545,1850	IOE	83,5E	Aero-L(600)	      P-Chan	C5	305	SITA   
-1545,2150	IOE	83,5E	Aero-L(600)	      P-Chan	C1	301	ARINC   
-1545,2200	IOE	83,5E	Aero-L(600)	      P-Chan	C1	301	ARINC   
-1545,2250	IOE	83,5E	Aero-L(600)	      P-Chan	C1	301	ARINC   
-1546,0425	IOE	83,5E	Aero-H+ (10500)	P-Chan	C1	301	ARINC   
-1546,0925	IOE	83,5E	Aero-H+ (10500)	P-Chan	C1	301	ARINC   
-1546,1075	IOE	83,5E	Aero-H+ (10500)	P-Chan	C5	305	SITA   
-1546,1225	IOE	83,5E	Aero-H+ (10500)	P-Chan	C5	305	SITA   
+### 6F1 83E (No screenshot for now)       
+Frequency   Region      Use               Use      Hex Oct        Provider    GEO Location      Beam   
+1545,0050   83,5E       Aero-L(600)       Psmc2    C1 301         ARINC Perth, AU         Global beam      
+1545,1600   83,5E       Aero-L(600)       P-Chan   C5 305         SITA Perth, AU          Global beam      
+1545,1650   83,5E       Aero-L(600)       P-Chan   C5 305         SITA Perth, AU          Global beam      
+1545,1850   83,5E       Aero-L(600)       P-Chan   C5 305         SITA Perth, AU          Global beam      
+1545,2150   83,5E       Aero-L(600)       P-Chan   C1 301         ARINC Perth, AU         Global beam      
+1545,2200   83,5E       Aero-L(600)       P-Chan   C1 301         ARINC Perth, AU         Global beam   
+1545,2250   83,5E       Aero-L(600)       P-Chan   C1 301         ARINC Perth, AU         Global beam   
+1546,0425   83,5E       Aero-H+ (10500)   P-Chan   C1 301         ARINC Perth, AU         Global beam   
+1546,0925   83,5E       Aero-H+ (10500)   P-Chan   C1 301         ARINC Perth, AU         Global beam   
+1546,1075   83,5E       Aero-H+ (10500)   P-Chan   C5 305         SITA Perth, AU          Global beam   
+1546,1225   83,5E       Aero-H+ (10500)   P-Chan   C5 305         SITA Perth, AU          Global beam     
+1546,1575   83,5E       Aero voice(8400)AMBE C-Chan C1/C5 301/305 ARINC/SITA Perth, AU    Global beam      
+1546,1625   83,5E       Aero voice(8400)AMBE C-Chan C1/C5 301/305 ARINC/SITA Perth, AU    Global beam      
+1546,1675   83,5E       Aero voice(8400)AMBE C-Chan C1/C5 301/305 ARINC/SITA Perth, AU    Global beam      
+1546,1725   83,5E       Aero voice(8400)AMBE C-Chan C1/C5 301/305 ARINC/SITA Perth, AU    Global beam      
+1546,1775   83,5E       Aero voice(8400)AMBE C-Chan C1/C5 301/305 ARINC/SITA Perth, AU    Global beam       
 
 ## Software setup and tweaks    
 With the antenna mounted and the coax run, we can focus on the software side of things.   
