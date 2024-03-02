@@ -1,11 +1,9 @@
 # How to build an L-Band ground station.   
    
 Navigation: [home](README.md)  
-    
-Quick Links on this page:    
-[Frequency List][l1]   
-[SDR Selection][s1]   
 
+Tip: Right click images and open in new tab for full resolution.    
+      
 The easiest way to get started with satcom ACARS is to build an L-Band setup.   
 The clasic AERO ACARS L-Band data can be found around 1.5GHz and the signal footprint from each Inmarsat is broad enough that you do not require any antenna tracking. Simply point it at the middle of the satellite orbit and you can start receiving the signal and decoding ACARS messages.   
 To see what Inmarsat satellite(s) are over your location, review the [Inmarsat](Inmarsat.md) page.  
@@ -132,14 +130,14 @@ And I know the real world uses mm, so here it is (since I also know people don't
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/helixinmm.png" height="320">    
     
 Even my wife understood that I needed something the size of the 3D print and the exact tube brand to form the coper on did not matter at all, so yeah, just find a tube the size of the holes on the 3D print and pre-form the coper to that size.    
-When you do that, its very low friction to just wind the coper onto the formwork, there is very littls stress or effort and your print wont break.
+When you do that, its very low friction to just wind the coper onto the formwork, there is very little stress or effort and your print wont break.
 
 Once you preform the copper to the right size, you can then wind it on the framework very smoothly.   
 Just work it up the 3D framework slowly, inching it from the top, middle and bottom to keep the tension even all the way up the formwork.  
 
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/lbandpreformcopper.png" height="460">  
     
-For the feed, you don't have to, but I used a small round file to get the coper end nice and snug to the SMA post.    
+For the feed, you don't have to, but I used a small round file to get the coper end nice and snug to the SMA post before I heat the copper first, then solder the SMA center pin.    
 
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/helixfeeddetail.png" height="460">
     
@@ -147,7 +145,8 @@ A touch of heat and solder and its very solid.
      
 Trim the turns to roughly 7 and a bit turns (close to 8) and then drill the two large holes for the 3D frame in the reflector, then mark and drill the bulkhead connector mount near the left hand side support - you go near the left side of the frame so you can run the first 2/3rds of the copper parallel to the base, this improves the match and lowers the SWR. Solder the copper pipe to the connector and you are done building the antenna.  
 
-Once built, trim the total length to get the VNA dip on frequency and move the first 2/3rds of a turn close to the reflector to get the SWR nice and low and you are done.   
+Once built, trim the total length to get the VNA dip on frequency and move the first 2/3rds of a turn close to the reflector to get the SWR nice and low and you are done.   \
+If you don't have a VNA, just trim the top turn to exactly 7 turns, ie, on the left side of the support that the SMA is on and the helix will be really close and still work better than the RTLSDR Patch antenna.    
 
 
    <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/7turnhelixantennas.jpg" height="460">
@@ -222,14 +221,15 @@ In no order, my thoughts / wish-list:
 15. SMA female connector only.   
 16. Passive antenna option considered. (We can run our own LNA and thus Bias-T power no longer an issue. More affordable).   
 17. Different part number of a stubby LHCP antenna to fully illuminate a ~80cm or bigger dish. (Same LNA/pwer/connector etc).   
-[s1]     
+    
+        
 ## Which SDR?   
-   In regard to SDRs, I like the silver v3 RTL-SDR for L-Band, but in this case, because of the requirement to use Bias-T to power the LNA, I might also use the Nooelect SmarTee SDR as it has Bias-T always on without needing to run the v3 software bat file to turn it on. The performance of the two SDRs seems to be identical. With that said, I have had some issue using the SmarTee with [SDRReceiver](SDRReceiver.md) that I am still working through. Also note that I have tested the RSP1a on L-Band and the more expensive SDR showed no benefit at all over the cheaper RTLSDR v3. This is mostly due to the fact of using the LNA, a more sensitive SDR does not perform any better since the system noise is not limited by the SDR, its set by the LNA noise figure. In short, use the cheaper SDR on L-Band and the other on HF where the difference in performance between the two is dramatic.    
+In regard to SDRs, I like the silver v3 RTL-SDR for L-Band, but in this case, because of the requirement to use Bias-T to power the LNA, I might also use the Nooelect SmarTee SDR as it has Bias-T always on without needing to run the v3 software bat file to turn it on. The performance of the two SDRs seems to be identical. With that said, I have had some issue using the SmarTee with [SDRReceiver](SDRReceiver.md) that I am still working through. Also note that I have tested the RSP1a on L-Band and the more expensive SDR showed no benefit at all over the cheaper RTLSDR v3. This is mostly due to the fact of using the LNA, a more sensitive SDR does not perform any better since the system noise is not limited by the SDR, its set by the LNA noise figure. In short, use the cheaper SDR on L-Band and the other on HF where the difference in performance between the two is dramatic.    
 ## Mounting       
 How you mount the antenna is up to you. A few people have put them under a flowerpot and mounted them outside and used a bracket that is pointing at their satellite. 
 Some have attached them to camera tripods and used them inside their apartment's. In this case, you do not need to weatherproof the antenna, but it comes at a signal strength drop. Also experiment with positioning, a **window may not offer the best signal**. The reason for this is that a lot of windows have a Low-E coating. The metal coating really knocks back the L-Band signal. Often putting the antenna pointing out a wall or roof next to the window gives a better signal. No really. Trust me on this.      
 Bottom line, the antenna and LNA are *NOT* water proof and you must put it under cover.   
-## Coax
+## Coax   
 Be sure and run some quality coax. The longer the length required to get from the antenna to the SDR, the more you should spend on the coax. 1.5GHz is rather lossy, more so than the 1090MHz from an ADSB antenna that you might be used to. (And even more so than the VHF ACARS frequency of around 130MHz). If in doubt, LMR-400 is the coax to use.   
    
    Ok, so you have the antenna mounted and pointed roughly in the [right direction](Inmarsat.md).        
@@ -249,14 +249,13 @@ Please NOTE!!! As of Jan 15th 2024, the following screenshots are out of date/ol
 Please use the frequency list!! They are very accurate.   
 Use the screenshots get an idea of what things should _look_ like, but USE the frequency LIST, not the frequencies on the screenshots.   
 The tables of frequencies/modes are accurate and should be primary, but the screenshots are helpful to show what you should be looking for when you first get running.  
-   
+     
+# ACARS Frequency Lists for all Inmarsats   
 Provisional Inmarsat frequency list prepared in February 2024 by David L. Wilson and Sergi.vdl2   
 Huge thanks to these two guys for collecting and checking every single one of these frequencies!    
-
-[l1] ACARS Frequency Lists for all Inmarsats    
-
+   
 ### 4A4F4 25-East   
-Frequency   Region      Use               Use      Hex Oct  Provider       GEO Location      Beam    
+Frequency...Region......Use..................Use......Hex Oct..Provider......GEO Location......Beam    
 1545,1200	EMEA	25E	Aero-L(600)    	   P-Chan	90	220	ARINC & SITA     
 1545,1250	EMEA	25E	Aero-L(1200)   	   P-Chan	90	220	ARINC & SITA     
 1545,1300	EMEA	25E	Aero-L(600) 	      P-Chan	90	220	ARINC & SITA     
@@ -272,7 +271,7 @@ Frequency   Region      Use               Use      Hex Oct  Provider       GEO L
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/alphasatLband.PNG" height="400">       
 
 ### 3F5 54W  
-Frequency   Region      Use                  Use      Hex Oct  Provider       GEO Location   Beam    
+Frequency...Region......Use..................Use......Hex Oct..Provider......GEO Location......Beam     
 1545,0250	AORE	54W	Aero-L(600)	         P-Chan	44	104	ARINC   
 1545,0300	AORE	54W	Aero-L(600)	         P-Chan	43	103	SITA   
 1545,0350	AORE	54W	Aero-L(600)	         P-Chan	44	104	ARINC   
@@ -331,7 +330,7 @@ Frequency   Region      Use                  Use      Hex Oct  Provider       GE
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/54wL-Band.png" height="380">  
 
 ### 4F3 98W  
-Frequency   Region      Use               Use      Hex Oct  Provider    GEO Loccation     Beam       
+Frequency...Region......Use..................Use......Hex Oct..Provider......GEO Location......Beam         
 1545,0500	AORW	98W	Aero-L(600)	      P-Chan	05	005	SITA   
 1545,0600	AMER	98W	Aero-L(600)	      P-Chan	D0	320	ARINC & SITA   
 1545,0650	AMER	98W	Aero-L(600)	      P-Chan	D0	320	ARINC & SITA   
@@ -359,7 +358,7 @@ Frequency   Region      Use               Use      Hex Oct  Provider    GEO Locc
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/98w_L-Band_rtlsdr_activepatch.PNG" height="380">  
 
 ### 4F1 143E  
-Frequency   Region         Use                  Use      Hex Oct  Provider    GEO Location     Beam   
+Frequency...Region......Use..................Use......Hex Oct..Provider......GEO Location......Beam       
 1545,0250	APAC	143,5E	Aero-L(600)	         P-Chan	50	120	ARINC & SITA   
 1545,0300	APAC	143,5E	Aero-L(600)	         P-Chan	82	202	ARINC   
 1545,0350	APAC	143,5E	Aero-L(600)	         P-Chan	82	202	ARINC   
@@ -380,23 +379,23 @@ Frequency   Region         Use                  Use      Hex Oct  Provider    GE
 1546,0550	APAC	143,5E	Aero-H+ (10500)	   P-Chan	85	205	SITA   
 1546,0700	APAC	143,5E	Aero-H+ (10500)	   P-Chan	82	202	ARINC   
 1546,0850	APAC	143,5E	Aero-H+ (10500)	   P-Chan	50	120	ARINC & SITA   
-1542,9350   143,5E APAC    Aero voice(8400)AMBE C-Chan   50 120   ARINC & SITA Paumalu, HI Global beam
-1542,9400   143,5E APAC    Aero voice(8400)AMBE C-Chan   50 120   ARINC & SITA Paumalu, HI Global beam
-1542,9450   143,5E APAC    Aero voice(8400)AMBE C-Chan   50 120   ARINC & SITA Paumalu, HI Global beam
-1542,9500   143,5E APAC    Aero voice(8400)AMBE C-Chan   50 120   ARINC & SITA Paumalu, HI Global beam
-1542,9550   143,5E APAC    Aero voice(8400)AMBE C-Chan   50 120   ARINC & SITA Paumalu, HI Global beam
-1542,9600   143,5E APAC    Aero voice(8400)AMBE C-Chan   50 120   ARINC & SITA Paumalu, HI Global beam
-1542,9650   143,5E APAC    Aero voice(8400)AMBE C-Chan   50 120   ARINC & SITA Paumalu, HI Global beam
-1542,9700   143,5E APAC    Aero voice(8400)AMBE C-Chan   50 120   ARINC & SITA Paumalu, HI Global beam
-1542,9750   143,5E APAC    Aero voice(8400)AMBE C-Chan   82/85 202/205 ARINC/SITA Perth, AU Global beam
-1542,9800   143,5E APAC    Aero voice(8400)AMBE C-Chan   82/85 202/205 ARINC/SITA Perth, AU Global beam
-1542,9850   143,5E APAC    Aero voice(8400)AMBE C-Chan   82/85 202/205 ARINC/SITA Perth, AU Global beam
-1542,9950   143,5E APAC    Aero voice(8400)AMBE C-Chan   82/85 202/205 ARINC/SITA Perth, AU Global beam    
+1542,9350   143,5E APAC    Aero voice(8400)AMBE C-Chan   50 120   ARINC & SITA Paumalu, HI Global beam   
+1542,9400   143,5E APAC    Aero voice(8400)AMBE C-Chan   50 120   ARINC & SITA Paumalu, HI Global beam   
+1542,9450   143,5E APAC    Aero voice(8400)AMBE C-Chan   50 120   ARINC & SITA Paumalu, HI Global beam   
+1542,9500   143,5E APAC    Aero voice(8400)AMBE C-Chan   50 120   ARINC & SITA Paumalu, HI Global beam   
+1542,9550   143,5E APAC    Aero voice(8400)AMBE C-Chan   50 120   ARINC & SITA Paumalu, HI Global beam   
+1542,9600   143,5E APAC    Aero voice(8400)AMBE C-Chan   50 120   ARINC & SITA Paumalu, HI Global beam   
+1542,9650   143,5E APAC    Aero voice(8400)AMBE C-Chan   50 120   ARINC & SITA Paumalu, HI Global beam   
+1542,9700   143,5E APAC    Aero voice(8400)AMBE C-Chan   50 120   ARINC & SITA Paumalu, HI Global beam   
+1542,9750   143,5E APAC    Aero voice(8400)AMBE C-Chan   82/85 202/205 ARINC/SITA Perth, AU Global beam   
+1542,9800   143,5E APAC    Aero voice(8400)AMBE C-Chan   82/85 202/205 ARINC/SITA Perth, AU Global beam   
+1542,9850   143,5E APAC    Aero voice(8400)AMBE C-Chan   82/85 202/205 ARINC/SITA Perth, AU Global beam   
+1542,9950   143,5E APAC    Aero voice(8400)AMBE C-Chan   82/85 202/205 ARINC/SITA Perth, AU Global beam       
 
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/143eL-Band.png" height="380"> 
 
 ### 6F1 83E (No screenshot for now)       
-Frequency   Region      Use               Use      Hex Oct        Provider    GEO Location      Beam   
+Frequency...Region......Use..................Use......Hex Oct..Provider......GEO Location......Beam      
 1545,0050   83,5E       Aero-L(600)       Psmc2    C1 301         ARINC Perth, AU         Global beam      
 1545,1600   83,5E       Aero-L(600)       P-Chan   C5 305         SITA Perth, AU          Global beam      
 1545,1650   83,5E       Aero-L(600)       P-Chan   C5 305         SITA Perth, AU          Global beam      
