@@ -1,6 +1,10 @@
 # How to build an L-Band ground station.   
    
 Navigation: [home](README.md)  
+    
+Quick Links on this page:    
+[Frequency List][l1]   
+[SDR Selection][s1]   
 
 The easiest way to get started with satcom ACARS is to build an L-Band setup.   
 The clasic AERO ACARS L-Band data can be found around 1.5GHz and the signal footprint from each Inmarsat is broad enough that you do not require any antenna tracking. Simply point it at the middle of the satellite orbit and you can start receiving the signal and decoding ACARS messages.   
@@ -218,7 +222,7 @@ In no order, my thoughts / wish-list:
 15. SMA female connector only.   
 16. Passive antenna option considered. (We can run our own LNA and thus Bias-T power no longer an issue. More affordable).   
 17. Different part number of a stubby LHCP antenna to fully illuminate a ~80cm or bigger dish. (Same LNA/pwer/connector etc).   
-   
+[s1]     
 ## Which SDR?   
    In regard to SDRs, I like the silver v3 RTL-SDR for L-Band, but in this case, because of the requirement to use Bias-T to power the LNA, I might also use the Nooelect SmarTee SDR as it has Bias-T always on without needing to run the v3 software bat file to turn it on. The performance of the two SDRs seems to be identical. With that said, I have had some issue using the SmarTee with [SDRReceiver](SDRReceiver.md) that I am still working through. Also note that I have tested the RSP1a on L-Band and the more expensive SDR showed no benefit at all over the cheaper RTLSDR v3. This is mostly due to the fact of using the LNA, a more sensitive SDR does not perform any better since the system noise is not limited by the SDR, its set by the LNA noise figure. In short, use the cheaper SDR on L-Band and the other on HF where the difference in performance between the two is dramatic.    
 ## Mounting       
@@ -228,16 +232,28 @@ Bottom line, the antenna and LNA are *NOT* water proof and you must put it under
 ## Coax
 Be sure and run some quality coax. The longer the length required to get from the antenna to the SDR, the more you should spend on the coax. 1.5GHz is rather lossy, more so than the 1090MHz from an ADSB antenna that you might be used to. (And even more so than the VHF ACARS frequency of around 130MHz). If in doubt, LMR-400 is the coax to use.   
    
-   Ok, so you have the antenna mounted and pointed roughly in the [right direction](Inmarsat.md), now where to tune the SDR software?
+   Ok, so you have the antenna mounted and pointed roughly in the [right direction](Inmarsat.md).        
+     
+## Software setup and tweaks    
+With the antenna mounted and the coax run, we can focus on the software side of things.   
+I am going to proceed as if you are going to set up and monitor all data channels around the clock and you are going to feed your data to your local Node-RED for message filtering (ie just Military aircraft) and reporting / alerting.   
+
+In sort you need to run Jaero, thats the only software package that can decode the AERO data. You can run it on Windows or Linux.  
+You also need to run some SDR dongle sofware, on either Windows or Linux there are lots of options.    
+Each has their own page from my [Home](README.md) page.
+
+Last thing to do.... What frequencies are in use for the satellite you can see/hear?     
 
 ## Inmarsat L-Band Frequencies and Data Rates ##  
 Please NOTE!!! As of Jan 15th 2024, the following screenshots are out of date/old/inaccurate - They are close, but not perfect.   
-Please use the frequency list!! They are very accurate. Use the screenshots get an idea of what things should _look_ like, but USE the frequency LIST, not the frequencies on the screenshots.   
-The tables of frequencies/modes are accurate and should be primary, but the screenshots are helpful to show what you should be looking for (at the frequencies shown in the text).  
+Please use the frequency list!! They are very accurate.   
+Use the screenshots get an idea of what things should _look_ like, but USE the frequency LIST, not the frequencies on the screenshots.   
+The tables of frequencies/modes are accurate and should be primary, but the screenshots are helpful to show what you should be looking for when you first get running.  
    
 Provisional Inmarsat frequency list prepared in February 2024 by David L. Wilson and Sergi.vdl2   
 Huge thanks to these two guys for collecting and checking every single one of these frequencies!    
 
+[l1] ACARS Frequency Lists for all Inmarsats    
 
 ### 4A4F4 25-East   
 Frequency   Region      Use               Use      Hex Oct  Provider       GEO Location      Beam    
@@ -397,14 +413,6 @@ Frequency   Region      Use               Use      Hex Oct        Provider    GE
 1546,1675   83,5E       Aero voice(8400)AMBE C-Chan C1/C5 301/305 ARINC/SITA Perth, AU    Global beam      
 1546,1725   83,5E       Aero voice(8400)AMBE C-Chan C1/C5 301/305 ARINC/SITA Perth, AU    Global beam      
 1546,1775   83,5E       Aero voice(8400)AMBE C-Chan C1/C5 301/305 ARINC/SITA Perth, AU    Global beam       
-
-## Software setup and tweaks    
-With the antenna mounted and the coax run, we can focus on the software side of things.   
-I am going to proceed as if you are going to set up and monitor all data channels around the clock and you are going to feed your data to your local Node-RED for message filtering (ie just Military aircraft) and reporting / alerting.   
-
-In sort you need to run Jaero, thats the only software package that can decode the AERO data. You can run it on Windows or Linux.  
-You also need to run some SDR dongle sofware, on either Windows or Linux there are lots of options.    
-Each has their own page from my [Home](README.md) page.
 
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
