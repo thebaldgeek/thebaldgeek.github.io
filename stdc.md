@@ -36,4 +36,25 @@ stdcdec Command line. Linux. (Free)
 It should be noted that none of these software packages other than satdump share their decoded messages very gracefully. I have had to use Node-RED and do some ugly workarounds to get the messages moved from the decoders to a web dashboard.   
 This may not be an issue in your use case, but bears mentioning as the real power of receiving any of these satcom message streams is being able to filter and alert on messages of interest. 
 Lastly, after months of logging the 4-5 'private' message channels on three of the satellites I can safely say the message contents just don't warrent the CPU cycles. Its mostly 'The fish are over here' in different launguages.   
-All 4 satellite feeds are avliable on the main site, just click the menu and its the last page at the bototm. 
+All 4 satellite feeds are avliable on the main site, just click the menu and its the last page at the bototm.    
+    
+## Satdump tips    
+Get satdump for your system [from their github.](https://github.com/SatDump/SatDump)    
+Once built or installed, to get STDC data out via UDP stream, you need to edit the `Inmarsat.json` pipeline.   
+The file is in the `pipelines` directory in the satdump folder.   
+Open `Inmarsat.json` in your editor of choice.   
+Scroll down the file a little, your looking for the `inmarsat_stdc_parser` section.   
+I suggest you set `save_files` to false other wise you will forget and fill your hard drive - trust me on this one....      
+On the `udp_sinks` set the `test` sink `IP` address to where you want your decoded data to go and the port number to match your sink.   
+In my case, its a local 192.168 address of the PC running Node-RED and the port that the UDP in node is listening on.    
+Save the file.    
+    
+I usually run the GUI once to get the offset. (I don't know any other way of getting it).   
+Once you have the offset of the STDC signal, you can run the CLI version of satdump by something like this:    
+### Windows   
+`.\satdump.exe live inmarsat_stdc_c \tmp\ inmarsat_stdc_c --source rtlsdr --samplerate 250e3 --frequency 1537.73e6 --gain 37 --freq_shift 30475`   
+### Linux   
+``./satdump live inmarsat_std_c /tmp/satdump_out inmarsat_std_c --source rtlsdr --samplerate 250e3 --frequency 1541.49e6 --gain 32 --freq_shift 39143`   
+   
+Note how the frequency is not as per the list above, you want to move the STDC carrier away from the SDR center spike.   
+Thus needing the offset from the gui and putting that number in as the --freq_shift on the CLI.
