@@ -54,7 +54,7 @@ Once you have the offset of the STDC signal, you can run the CLI version of satd
 ### Windows   
 `.\satdump.exe live inmarsat_stdc_c \tmp\ inmarsat_stdc_c --source rtlsdr --samplerate 250e3 --frequency 1537.73e6 --gain 37 --freq_shift 30475`   
 ### Linux   
-``./satdump live inmarsat_std_c /tmp/satdump_out inmarsat_std_c --source rtlsdr --samplerate 250e3 --frequency 1541.49e6 --gain 32 --freq_shift 39143`   
+`./satdump live inmarsat_std_c /tmp/satdump_out inmarsat_std_c --source rtlsdr --samplerate 250e3 --frequency 1541.49e6 --gain 32 --freq_shift 39143`   
    
 Note how the frequency is not as per the list above, you want to move the STDC carrier away from the SDR center spike.   
 Thus needing the offset from the gui and putting that number in as the --freq_shift on the CLI.
