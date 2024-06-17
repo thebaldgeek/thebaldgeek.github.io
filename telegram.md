@@ -61,7 +61,7 @@ Here is an example command in action:
 First, we simply invoke `/help` and get the bot commands. Then we ask the bot to show us the current lighting map for the USA, then we ask the bot to show us where an aircraft is. (This is one of my favorit commands as it pulls so much together).  
    
 If you add any aviation commands to your chat bot, I'd love to hear about them. Check back to this page from time to time, I will add any extra commands (I have some ideas....).  
-Oh, and if clean up the TAF report formatting, I would be super appreciative if you shared that flow.
+Oh, and if you clean up the TAF report formatting, I would be super appreciative if you shared that flow.
 
 
 <!-- Global site tag (gtag.js) - Google Analytics -->

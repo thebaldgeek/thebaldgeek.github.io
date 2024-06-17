@@ -23,7 +23,11 @@ Then select UTC:
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/piutc.png" height="470">   
 
 - - - -
-  
+
+## Jume 2024. Ignore this section    
+ZeroTeir is on my nasty list after doing a bait-and-switch.    
+
+
 ## ZeroTeir ##
 I access all my remote Pis (and a few Windows PCs needed for Jaero etc) via ZeroTier.com can not speak more highly of it.  
 Here is how to quickly install it on a fresh Pi:  

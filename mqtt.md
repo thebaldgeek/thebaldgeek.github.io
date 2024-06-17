@@ -1,7 +1,13 @@
 # Moving ACARS data from Jaero to a remote server with MQTT.   
    
 Navigation: [home](README.md)  
-
+   
+## Jume 2024. Ignore this page    
+The nightly build of jaero now supports feeding hostnames.    
+This page is out of touch with reality.     
+     
+          
+          
 One of the problems with Jaero is that it can not use host names in any of its settings, only IP addresses.  
 At first we simply used my web IP address, but it changes about 2-4 times a year and so you need to change the IP in around 20-30 Jaeros at each ground station, that gets old pretty quick.   
 Thankfully most remote sites are happy to install Node-RED on the same Windows PC that they are running Jaero on (or a Pi on the same network) and so you can just put the Node-RED computer IP address into Jaero and you are done on that side of things.  

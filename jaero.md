@@ -6,8 +6,8 @@ The core of this whole C-Band and L-Band project is the software called Jaero.
 This page will grow over time. Check back now and then.  
 ## Download Jaero   
 (To use Jaero on Linux, check out [DragonOS](DragonOS.md))   
-Use the November 2021 1.0.4.13 dirty version, you don't need to install it, just run it from the directory you unzip it from.  
-This version fixes a lot things and most importantly it uses the latest libacars-2 version which itself has a lot of updates and bug fixes. It also allows you to use BaseStation.sqb for its logging aircraft database lookup (If you must log).   
+Use the November 2021 1.0.4.13 dirty version or anything newer, you don't need to install it, just run it from the directory you unzip it from.  
+This version fixes a lot things and most importantly it uses the latest libacars-2 version which itself has a lot of updates and bug fixes. It also allows you to use BaseStation.sqb for its logging aircraft database lookup (If you must log - but please don't use Jaero to do it, it slows the start up waaaay down and takes a LOT of CPU from the decoding once it finally gets running).   
 The 1.0.4.13 version of Jaero adds the ZMQ input for data. You should be using at least this version. There is a how-to page for setting up SDRReceiver on Windows or Linux [here](SDRReceiver.md)   
     
 # Getting Jaero  

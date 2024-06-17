@@ -4,6 +4,9 @@ Navigation: [home](README.md)
 
 Radio waves can go a long way on HF. Its also cheaper than satellite data.   
 HFDL stands for "High Frequency Data Link".
+    
+## July 2024. This page is out of date.    
+Ignore this entire page. Hit the airframes Discord server and ask about setting up HFDL there.   
 
 ## Antenna   
 HF antennas, longer is better than shorter. End fed long wire, active loop or HF whip on a very good ground plane for example.  
