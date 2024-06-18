@@ -4,13 +4,14 @@ Navigation: [Inmarsat](Inmarsat.md) : [L-Band](L-Band.md) : [C-Band](C-Band.md) 
 
 # The main ACARS website
 
-You can search a lot of satcom ACARS feeds (and some HFDL / VHF VDL ones as well) on the site:-    
+You can search and live view a lot of satcom ACARS feeds (and some HFDL / VHF VDL ones as well) on the site:-    
 [tbg1.airframes.io](https://tbg1.airframes.io/)   
-Site menu is in the top left corner (three bars), be sure and check out _all_ the pages, there is a bit of a mashup there - even some marine data. Also be SURE to scroll DOWN on all the pages, there are many tables below the fold on a lot of the pages.   
-    
-Please note that the website is now under 'feature freeze'.    
-The code base that Node-RED used to build it on is end of life. I will consider bug fixes but new features will only show up on v2 of the site which I am actively building. No ETA on its launch, but there are a lot of very compelling reasons why I am locking development of the v1 site and working on v2.   
-The main feature I am looking to impliment in v2 is to have the site responsive. The v1 site currently does not resize itself to match the browser resolution, thus its a real drag to use on a phone (which a crazy number of people do).
+       
+Please note that the website is a dumpster fire.   
+Yes, tbg is aware that it does not work for you.   
+tbg is also aware that the icons don't make sense for the page content.   
+No, tbg can't 'just give me the old site back'.     
+And yes, thebaldgeek is more aware than you can ever know that the site is not optimized for mobile or PC screen sizes.    
    
 ## About this website  
 This GitHub website is just a brain dump and rough help notes to assist others in getting the hardware and software together to receive and decode ACARS messages from the main modes/frequencies.    
@@ -22,7 +23,7 @@ Please take the time to [read this overview of ACARS](https://www.pentestpartner
 
 ###  READ THIS!
 
-My motto is 'fail fast, fail often'. I am NOT a programer. Do NOT use any of the code shown here. These pages and the code on them are for entertainment purposes only.   
+My motto is 'fail fast, fail often'. I am NOT a programer. Do NOT use the site. Do not read these pages. Please do continue to complain about them.  
 The best way to put this is: `I don't know what I'm doing, but I know that I don't know what I'm doing.`  
 
 
@@ -35,14 +36,14 @@ In other words, the better you can describe your suggestion, the better chance y
    
 Check back often, this site is being updated randomly.   
     
-I am pretty active on [X / Twitter](https://twitter.com/thebaldgeek).       
+I was pretty active on [X / Twitter](https://twitter.com/thebaldgeek).       
 The best way to keep updated with the goings on of all things ACARS is via X. There are many #osint folks on X that combine the usual ADSB (aircraft on a map) with ACARS to really amplify both sources of data. The sum really is MUCH greater than the parts.   
 Think of it this way:    
-ADSB is the what.    
-ACARS is the why.    
+ADSB is the where (when it works).    
+ACARS is the why it is where it is.    
 
 Do note that I don't Tweet actual OSINT information... My site/tweets/role is to provide raw OSINT data. Ive found that most people that do osint often don't know where the data they use comes from, my goal is to help people understand how RF (radio frequency) signals can be converted into useful data for people to analyze.   
-Tip, my Tweets are public, so you don't need an X / Twitter account to read them.  
+    
 Free X / Twitter reader can be found on [nitter](https://nitter.net/thebaldgeek/with_replies)   
     
 Not as active, but am also on <a rel="me" href="https://ioc.exchange/@thebaldgeek">Mastodon</a>   
