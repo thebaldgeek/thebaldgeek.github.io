@@ -31,17 +31,15 @@ A good starter is [RG-8x](https://www.amazon.com/s?k=rg-8x&crid=3QO4RHETIF7KL&sp
 
 Note, be very careful about running a VHF LNA. ACARS is close to the FM band and you may easily overload the RF front end of the SDR and make things worse. Look at your SDR waterfall software if you can to see what the RF interference in your area is like and see how well you are picking up the ACARS/VDL bursts. Most of the usual SDR software package have a waterfall feature where you can see a chunk of your frequency of interest.  
 I personally have had both success and failure running the [GPIO filtered airband LNA](https://gpio.com/products/airband-filtered-low-noise-amplifier?variant=19591697301526). In one location it was great and made a worthy addition, in another it made the signal useless. It was an expensive test. Your milage may vary.  
+    
 ## Serialize your SDRs before you start      
-If you jump right in and install the software, you are going to get frustrated. The decoders start up as soon as they are installed and will grab the first open SDR it can find. This may or may not be the SDR you want. So how can we tell each decoder (even ADSB or UAT) to use the correct SDR connected to the correct antenna? By setting different serial numbers in each SDR dongle.   
+If you have more than one SDR and you jump right in and install the software, you are going to get frustrated. The decoders start up as soon as they are installed and will grab the first open SDR it can find. This may or may not be the SDR you want. So how can we tell each decoder (even ADSB or UAT) to use the correct SDR connected to the correct antenna? By setting different serial numbers in each SDR dongle.   
 Because of course every SDR has the same serial number out of the box. Usually 000000000000000001 (I can never count how many zeros there are..... too many frankly) or if its an orange one it might have 978 or something else, and if its a blue one it might have 1090 or something else.   
 ### How to find your current serial numbers   
 
 Plug in any SDRs you want with any software currently running. We are going to have to break a few eggs to make things right.   
 Once you have done that, type at the linux command line `rtl_test`   
 You will see something like this come back:   
-
-Ok, so what do we have here?   
- 
 
     pi@acars-kriv:~ $ rtl_test  
     Found 3 device(s):  
@@ -52,7 +50,8 @@ Ok, so what do we have here?
     Using device 0: Generic RTL2832U
     usb_claim_interface error -6
     Failed to open rtlsdr device #0.
-
+     
+Ok, so what do we have here?   
 You can see the device id on the left, this matters because most decoders will use that, next the type and last the serial number.  
 We have an orange (dev 0, sn 978) and two RTL's with their default serials.   
 And the error at the bottom is because the 'rtl_test' command tries to grab a free SDR to test it, so since they are all in use, it gets grumpy - just ignore it for now.  
@@ -60,15 +59,16 @@ Lets fix it shall we.
 The way you change the SDR serial is to use the `rtl_eeprom` command.  
 Since everything is already plugged in, lets just 'mow the lawn' and fix those too many zero serial numbers. In my case, I would do the following:   
 `rtl_eeprom -d 1 -s 131`   
+Breakdown: -d for device. 1 for device 1 from the list. -s for serial. 131 is the serial number we are going to assign to SDR device 1 from the list.   
 Answer Y to the 'are you sure' prompt.
 Then do the next one:    
 `rtl_eeprom -d 2 -s 136`   
 Answer Y to the question and we are nearly set.   
 If you read the prompt, it says to remove and replug to make the change, so thats a must.   
-What we did was to make one 130 (or Mhz for ACARS) and one 136 (or Mhz for VDL).   
+What we did was to make SDR device one SN 130 (or Mhz for ACARS) and SDR device two SN 136 (or Mhz for VDL).   
 (If you only have one SDR you can drop the '-d' part since it defaults the serial to the one and only SDR).     
 If you pull them both out and only plug in one, then do the `rtl_test` command, you can see which one you just plugged in.   
-LABEL IT!   
+LABEL IT! No really, trust me, you will forget, write on it, engrage it, put some blue tape on it and write on that. Just put the SN on it already!       
 If it starts testing, just hit ctrl+c to exit the test.   
 Plug in the next one, type up arrow to get the test command again and hit enter and see what serial it is. Label it.   
 Ok, now we can start installing the software....
@@ -77,14 +77,14 @@ Ok, now we can start installing the software....
 ## Software   
 We often get the question which should you chose, ACARS or VDL. The answer depends on where you live and the aircraft traffic/age of aircraft in your area. You may have to run each for a few hours/days and just get a feel for the sorts of numbers of each modes message rate. If you can run three dongles and 1-3 antennas, pick up all you can, but 1 antenna and 1 dongle can still give really important data from your location. (Note that ACARS is like ADSB, we need lots of stations to give global coverage, so no matter where you live, we can use the data!)   
 Also do note that in your area perhaps not the whole spread for ACARS is in use, in this case you might just need two dongles, one for ACARS and one for VDL. So this is why I strongly suggest you test first.   
-Also I _strongly_ recommend that you look at the airframes.io [frequency report](https://github.com/airframesio/data/blob/master/airframes/reports/frequency-stats/airframes-frequency-stats-by-region-20220824-to-20220924.txt) It can help guide you as to what is in use in your area based on data from other feeders near you.
+Also I _strongly_ recommend that you look at the airframes.io [frequency report](https://github.com/airframesio/data/blob/master/airframes/reports/frequency-stats/airframes-frequency-stats-by-region-20220824-to-20220924.txt) It can help guide you as to what is in use in your area based on data from other feeders 'near' you.
 
-There is one supported decoder for ACARS and two decoders for VDL2. All of which only run on Linux. None of them have a graphic interface, so there is no need to run a desktop distro if you don't want to.   
+There is one supported decoder for ACARS and two decoders for VDL2. All of which _only_ run on Linux. None of them have a graphic interface, so there is no need to run a desktop distro if you don't want to. (Better if you don't, more CPU cycles to decode with).   
 (There are some Windows options, Blackcat and MultiPSK, both are outside the scope of this page - neither of them can feed airframes.io).   
-If you know and love docker, then there is that option as well [SDR Enthusiasts](https://github.com/sdr-enthusiasts) is a good way to combine your ADSB data with your ACARS data in your location. Do note that even with Docker it's best to serialize your SDRs, so jump down to that bit if you want to know how to do that.
+If you know and love docker, then there is that option as well [SDR Enthusiasts](https://github.com/sdr-enthusiasts) is a good way to combine your ADSB data with your ACARS data in your location. Do note that even with Docker it's best to serialize your SDRs, so do that bit at the very least.
 
 [acarsdec](https://github.com/TLeconte/acarsdec) is a multi-channel (in the same 2Mhz range) acars decoder with built-in rtl_sdr, airspy front end or sdrplay device.   
-[vdlm2dec](https://github.com/TLeconte/vdlm2dec) can decode up to 8 frequencies simultaneously ( but in the same 2Mhz range ) using the typical RTLSDR hardware. It decodes ARINC-622 ATS applications (ADS-C, CPDLC) via libacars library. It can also send VDL aircraft positions to a local VRS map if thats your thing.    
+[vdlm2dec](https://github.com/TLeconte/vdlm2dec) can decode up to 8 frequencies simultaneously (again, in the same 2Mhz range ) using the typical RTLSDR hardware. It decodes ARINC-622 ATS applications (ADS-C, CPDLC) via libacars library. It can also send VDL aircraft positions to a local VRS map if thats your thing.    
 [dumpvdl2](https://github.com/szpajder/dumpvdl2) Has the following features: 
 * RTLSDR (via rtl-sdr library)
 * Mirics SDR (via libmirisdr-4)
@@ -99,7 +99,7 @@ If you know and love docker, then there is that option as well [SDR Enthusiasts]
 * Supports message filtering by type or direction (uplink, downlink)
 * Can store raw frames in a binary file for later decoding or archiving purposes.
 
-[Airframes.io](https://app.airframes.io/about) supports feeds from all three, from the two VDL2 decoders personally I like dumpvdl2 as it has a much richer output that I find very helpful (noise floor and signal data just to name two).    
+[Airframes.io](https://app.airframes.io/about) supports feeds from all three, from the two VDL2 decoders personally I like dumpvdl2 as it has a much richer output that I find very helpful (noise floor and signal strength data just to name two).    
 
 ## Building / Installing the Software  
 If you just want to get going - and who doesn't... just go here and run the script for the decoder you want....   
@@ -173,7 +173,7 @@ Ok so is it working?
 `sudo nano /etc/default/dumpvdl2`  
 Here is an example of a config file for USA (frequencies will be different per location).    
 `DUMPVDL2_OPTIONS="--rtlsdr 1 --correction 2 --gain 32 --output decoded:json:udp:address=feed.airframes.io,port=5552 --station-id xxx-VDL2-yyyy 136650000 136800000 136975000"`   
-We are using USB device 1 here, use the rtl_test command to get the right one for your setup. I have a little PPM correction applied (+2). Gain set to 32. Feeding data to airframes and the three main frequencies in use here in USA (Some try and listen to more frequencies and only get overloaded duplicated messages with less main decodes since every added frequency reduces CPU and SDR/USB bandwidth for the real ones - ie, more is NOT better).   
+We are using USB device 1 here, use the 'rtl_test' command to get the right one for your setup. I have a little PPM correction applied (+2). Gain set to 32. Feeding data to airframes and the three main frequencies in use here in USA (Some try and listen to more frequencies and only get overloaded duplicated messages with less main decodes since every added frequency reduces CPU and SDR/USB bandwidth for the real ones - ie, more is NOT better).   
 Change your station id to something sensible.    
 A few other config examples further down the page.
 

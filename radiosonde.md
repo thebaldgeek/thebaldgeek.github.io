@@ -1,6 +1,10 @@
 # Radiosonde - Weather Balloon Decoding and Station Optimization.   
    
 Navigation: [home](README.md)  
+    
+## Jume 2024. Ignore this page   
+Docker is all the rage now. Also there is a new way to run the Airspy that tbg is not up to speed on.    
+    
 
 Radiosondes or weather balloons are launched around twice a day from a lot of different locations around the world.  
 You can visit [sondehub](https://sondehub.org) and find your location to see what flights are going on around you. Zoom out and find the little gray circle that is a launch site (usually near or on airports) and then right click on the circle and check out the frequency of launches and the history of flights from that site to see where sondes have landed in the past.  

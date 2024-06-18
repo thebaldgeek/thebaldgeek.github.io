@@ -2,9 +2,12 @@
    
 Navigation: [home](README.md)  
 
+## Jume 2024. Ignore this page   
+   
+
 One of the types of aircraft that warranted its very own page on the Node-RED dashboard is UAV or Drones or any of the other names they go under.   
 
-My site uses the ADSBExchange airframe database, drones are classed as different types in there. On top of that people (private and state backed) that build, fly and deploy UAV's don't tend to advertise it. The result of this is I have collected many ICAO hex codes over the past year that may or may not be flagged as UAV in the ADSBEx database.    
+My site uses the typical ADSB airframe database, drones are classed as different types in there. On top of that people (private and state backed) that build, fly and deploy UAV's don't tend to advertise it. The result of this is I have collected many ICAO hex codes over the past year that may or may not be flagged as UAV in the ADSB database.    
 
 Bottom line, I check for both type and ICAO.    
 

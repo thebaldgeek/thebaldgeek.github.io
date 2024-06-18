@@ -2,11 +2,9 @@
    
 Navigation: [home](README.md)  
 
-(I might do a page on ADSB feeders, but long story short, feed everyone except the obvious ones that give nothing in return (and I am not talking about 'enterprise' or 'business' account's, because they are nothing.))   
+## Jume 2024. Ignore this page   
+tbg has no idea if this API code still works after it broke around Jan 2024.   
     
-Unlike most other ADSB sites, OpenSky-network.org give API access to past data. 7 day airport arrival/departure history and 30 aircraft movement history.   
-You can easily use a Node-RED http node to do a GET on the URL and present the data in a table.   
-This helps give some more information as to where an aircraft of interest has been lately.
 
 If you are feeding OpenSky, you will have a user/pass. You will need to add these to the following flows.   
     

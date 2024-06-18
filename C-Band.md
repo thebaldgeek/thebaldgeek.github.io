@@ -83,7 +83,7 @@ norsat 3.4Ghz to 4.2Ghz with external 10Mhz LO. There are different models (N ty
     
 1 x RTLSDR v3 dongle. (Silver or black flat rectangle shape one). Get the real thing from [RTL-SDR](https://www.rtl-sdr.com/buy-rtl-sdr-dvb-t-dongles/). V4 is snake oil. Do not buy.  
    
-1 x Computer (Junk store - aka your garage)   
+1 x Computer (Junk store - aka your garage). Not too old and slow. C-Band takes some CPU grunt to decode. A Pi5 cant hack it for example.   
    
 1 x GPSDO module [Leo Bodnar](http://www.leobodnar.com/shop/index.php?main_page=product_info&cPath=107&products_id=301&zenid=7527c5a77e36a6c7028130804877017c)   
    

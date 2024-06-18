@@ -1,6 +1,10 @@
 # Care and feeding of DragonOS.   
    
 Navigation: [home](README.md)  
+   
+## Jume 2024. Ignore this page    
+tbg is out of touch with the latest builds of DragonOS as of about Jan 2024.   
+     
 
 No matter your interest in AERO data, be it HF-DL, VHF ACARS, L-Band Data, L-Band voice, Iridium, C-Band Data or C-Band voice or any combination (up to your CPUs ability to keep up), if you are running Linux, DragonOS should be strongly considered as you go-do distro to get up and running.  
 To this end, this page will try and help smooth out that process.   
