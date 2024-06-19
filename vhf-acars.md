@@ -5,8 +5,8 @@ Navigation: [home](README.md)
 ACARS is the messaging system that allows aircraft talk to and from the ground staff / systems.   
 
 There are two main ACARS modes on VHF.    
-ACARS between 129 Mhz and 131 Mhz (Doh! Just outside the span of a singe RTL SDR)    
-VDL2 between 136.6 Mhz and 136.9 Mhz    
+ACARS between 129 Mhz and 131 Mhz. (Doh! Just outside the 2Mhz span of a singe RTL SDR)    
+VDL2 between 136.6 Mhz and 136.9 Mhz.    
 Roughly you can think of ACARS as slightly older analog and VDL2 as digital.    
     
 The two different modes are in use to different amounts all over the world, its imposable for us (yet - the data will soon be there for us to say with more confidence) to tell you which to pick for your location. I suggest that you install both packages, run both for a week and compare numbers for your location. Perhaps, like me in California, both have high message rates on both modes and you will end up running a few SDR dongles. (I run 3 in the one Pi 3. Two for ACARS and one for VDL2).   
@@ -24,8 +24,8 @@ PSA: The AirNav RadarBox VHF airband antenna been found to either be broken (dea
 Note that you can NOT use your existing ADSB one, the frequencies are not even close.  
 * 1 x coax cable, length for your installation. The good thing here is the frequency of ACARS is much lower than ADSB, so the coax loss is much lower. 
 A good starter is [RG-8x](https://www.amazon.com/s?k=rg-8x&crid=3QO4RHETIF7KL&sprefix=rg-%2Caps%2C212&ref=nb_sb_ss_ts-doa-p_7_3), a bit more harder to work with is [RG-213](https://www.amazon.com/s?k=rg-213&crid=2LGFNZMSJ9TVW&sprefix=rg-213%2Caps%2C126&ref=nb_sb_noss_1). A lot of folks use [KMR240](https://www.amazon.com/gp/product/B09ZPCM98C) coax. Since its receive only, you can use good quality 75 ohm outdoor TV cable if you like [Amazon](https://www.amazon.com/s?k=75+ohm+outdoor+coax+cable&ref=nb_sb_noss). BTW, one of the reasons you can mix and match like this is because most SDRs are NOT 50 ohm input, they vary and its really not an issue.        
-* 1 x SMA splitter. You will need to split your antenna into 2 (or 3) SDRs if you plan to run both ACARS and VDL. [Amazon](https://www.amazon.com/Bingfu-Antenna-Splitter-Cellular-Amplifier/dp/B07STYNB6V/) This will get you started, if you need to split further, just look for the right combo of SMA male/female.    
-* 1 or 2 or 3 x SDR. [RTLSDRv3](https://www.amazon.com/RTL-SDR-Blog-RTL2832U-Software-Defined/dp/B0129EBDS2/) or you can go for the [Orange ADSBEx](https://store.adsbexchange.com/products/adsbexchange-com-orange-r860-rtl2832u-0-5-ppm-tcxo-sdr-w-amp). Do NOT use the blue dongles, they are filtered for 1090Mhz ADSB and will not work on VHF-ACARS.   
+* 1 x SMA splitter. You will need to split your antenna into 2 (or 3) SDRs if you plan to run both ACARS and VDL. [Amazon](https://www.amazon.com/Bingfu-Antenna-Splitter-Cellular-Amplifier/dp/B07STYNB6V/) This will get you started, if you need to split further, just look for the right combo of SMA male/female. If you are just decoding VDL with 1 antenna and 1 SDR, no splitter needed.       
+* 1 or 2 or 3 x SDR. [RTLSDRv3](https://www.amazon.com/RTL-SDR-Blog-RTL2832U-Software-Defined/dp/B0129EBDS2/) or you can go for the [Orange ADSBEx](https://store.adsbexchange.com/products/adsbexchange-com-orange-r860-rtl2832u-0-5-ppm-tcxo-sdr-w-amp). Do NOT use the blue dongles, they are filtered for 1090Mhz ADSB and will not work on VHF-ACARS. Ovoid the RTL-SDR v4. They are snake oil and offer no improvement for anything above HF.   
  * 1 x Raspbery Pi. You can use your existing ADSB Pi (Check the CPU load first), or put in a new Pi.  
  * 1 x [USB Powered Hub](https://www.amazon.com/Anker-7-Port-Adapter-Charging-iPhone/dp/B014ZQ07NE/). If you end up using 3 ACARS dongles and your ADSB dongle (and perhaps a 978 dongle) on the same Pi, you will for sure need to run a powered hub.  
 
@@ -221,13 +221,13 @@ Ok, you kept reading.... Here is your reward.
 ## Plotting dumpvdl position data on a map  
 
 Yes, its possible to plot dumpVDL positions on a map like VRS. If you are using vdl2dec, just use the -s option and setup an SBS receiver on your local VRS.      
-If you are using dumpvdl, the flow outline goes like this.... Use Node-RED to get the lat/lon data out of any dumpvdl aircraft messages and convert them into VRS 'basestation' format and then add a new receiver to VRS to take the UDP data flow from that Node-RED code.    
-The interesting part is that the JSON output from dumpvdl can have any one of (so far I have seen) 12,000 keys. Of those 12,000 I have found around 640 that have aircraft lat/lon data in them. Finding and plotting those is your challenge. I don't know how many of those 640 the vdl2dec is using to plot its positions.       
+If you are using dumpvdl, the flow outline goes like this.... Use Node-RED to get the lat/lon data out of any dumpvdl aircraft messages and convert them into VRS 'basestation' format and then add a new receiver to tar10909 or VRS to take the UDP data flow from that Node-RED code.    
+The interesting part is that the JSON output from dumpvdl can have any one of (so far I have logged) 12,000 keys. Of those 12,000 I have found around 640 that have aircraft lat/lon data in them. Finding and plotting those is your challenge. I don't know how many of those 640 the vdl2dec is using to plot its positions.       
 Here is a screenshot from a guy in Ireland that is running such a flow in his Raspberry Pi that is also doing the dumpvdl decoding.   
 
 <a target="_blank" href="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/dumpvdlonvrs.png"><img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/dumpvdlonvrs.png" height="580"/></a>   
 All these aircraft are from the dumpvdl decoder with position data in their ACARS messages.    
-ACARS position plotting is a bit tricky to do, but we are working on it and of course dumphfdl already provides a VRS basestation output, so thats very easy to get plotting and does not require any Node-RED at all.
+ACARS position plotting is a bit tricky to do, but we are working on it and of course dumphfdl already provides a tar1090 / VRS basestation output, so thats very easy to get plotting and does not require any Node-RED at all.
     
 ## Build from source    
 Ok, hardcore linux guys, this is for you.... 
@@ -246,7 +246,7 @@ All the following need to be done as root, so lets become sudo....
 
 If you have SDR software installed all ready, skip this section.  
 `cd /usr/src`  
-`git clone git://git.osmocom.org/rtl-sdr.git`  
+`git clone https://github.com/osmocom/rtl-sdr.git`  
 `cd rtl-sdr`  
 `mkdir build`  
 `cd build`  

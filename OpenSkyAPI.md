@@ -3,7 +3,7 @@
 Navigation: [home](README.md)  
 
 ## Jume 2024. Ignore this page   
-tbg has no idea if this API code still works after it broke around Jan 2024.   
+tbg has no idea if this API code still works after open-sky broke it around Jan 2024.   
     
 
 If you are feeding OpenSky, you will have a user/pass. You will need to add these to the following flows.   

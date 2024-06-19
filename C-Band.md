@@ -3,7 +3,7 @@
 Navigation: [home](README.md)  
 
 C-Band is the most difficult aspect of setting up and running a full satcom ground station, but because of this and the rich data it can provide, if you have the space, time and patience its probably the most rewarding of all the AERO frequencies that are in use.   
-I have seen many examples where having both C and L band data from the same Inmarsat has proven very effective, to the point of exciting, to see both sides of the avionics or aircrew / dispatch is just thrilling when it all comes together and works seamlessly.   
+I have seen many examples where having both C and L band data from the same Inmarsat has proven very effective.   
 
 Here is a random screen shot of the aircraft that my dish can pick up over the course of a day - you get an ebb and flow in the traffic you will see depending on the time of day and year. The mix of military vs civil will also change just like it does with ADSB.   
 
@@ -14,24 +14,24 @@ To see what Inmarsat satellite(s) are over your location, review the [Inmarsat](
 ## Start slowly.   
 It can be overwhelming and seem impossible to build a high performance C-Band ground station, but the truth is, you can start simple and just solve each issue as you feel the need. You don't have to do everything outlined on this page in a week. The other nice thing about this page is that you don't have to re-invent the wheel. You can just check things off the list as you go.   
 Lets break it down....    
-1. Find your satellite and make sure you have a good spot on your property to place the dish.
-2. Get some basic (Node-RED) graphing of the satellite orbit running.
-3. Buy a dish.
-4. Buy a feed (LNB), LNB power supply, some TV grade coax cable, SDR, computer.
-5. Get planes on a map.
-6. Get aircraft ACARS messages.
-7. Move the dish twice a day (for example, once before work, once after work). Get a feel for where you need to point the dish for each part of the satellite orbit, ie, top and bottom.    
-8. When you are sick of retuning your SDR frequencies for hot/cold (ie, day/night) cycles, buy a GPSDO and modify the LNB so you no longer have re-tune the SDR frequencies. Or ensure you buy an external LO LNB from the start and never have this issue.
-9. When you are sick of manually moving the dish, put a linear motor on it to track the satellite automatically.   
-10. Done. Sit back and enjoy the data. (Be aware, this last step could take a few years to get to - no, not kidding).
+1. Find your satellite and make sure you have a good spot on your property to place the dish.   
+2. Get some basic (Node-RED is just one option) graphing of the satellite orbit running.   
+3. Buy a dish.   
+4. Buy a feed (LNB), LNB power supply, some TV grade coax cable, SDR, computer.   
+5. Get some planes on a map for a few hours a day.   
+6. Get aircraft ACARS messages.   
+7. Move the dish twice a day (for example, once before work, once after work). Get a feel for where you need to point the dish for each part of the satellite orbit, ie, top and bottom.      
+8. When you are sick of retuning your SDR frequencies for hot/cold (ie, day/night) cycles, buy a GPSDO and modify the LNB so you no longer have re-tune the SDR frequencies. Or ensure you buy an external LO LNB from the start and never have this issue.   
+9. When you are sick of manually moving the dish, put a linear motor on it to track the satellite automatically.    
+10. Done. Sit back and enjoy the data. (Be aware, this last step could take many many months to get to - no, not kidding).   
 
 ## Dish size matters.
-You will need the space for a minimum of a 6ish foot (2.4 meter) dish. Some people will tell you that you can get away with a smaller dish, but the signal is going be so marginal that its hard to justify the time and money to setup something might only just work or will be frustrating to use. You may even end up either giving up, or buying a bigger dish, ie spending needless money on the smaller dish.      
-I also feel that most people will want a large enough dish that _all_ signals from the satellite can be recovered around the clock. If you are close to the equator (ie, under the satellite) then yes, perhaps something smaller might work.  
+You will need the space for a minimum of a 6ish foot (2.4 meter) dish. Some people will tell you that you can get away with a smaller dish, but the signal is going be so marginal that its hard to justify the time and money to setup something that will only bearly work or will be frustrating to use. You may even end up either giving up, or buying a bigger dish, ie spending needless money and time on the smaller dish.      
+I also feel that most people will want a large enough dish so that _all_ signals from the satellite can be recovered around the clock. If you are close to the equator (ie, under the satellite) then yes, perhaps something smaller might work.  
 Do your research, ask lots of questions from those that insist a smaller dish will 'work just fine', qualify their data quality.    
 Be sure and read this entire page before making the final decision of the final dish size, there are _three_ types of AERO Data from C-Band (10500, 1200 and 8400) and most people with smaller dishes only can pick up one (10500), they dismiss the other two with a wave of the hand 'There is nothing interesting using those weaker signals' ... You need to make that decision, not them ....   
 
-Having free and easy physical access to the dish is also important, you will be spending a lot of time working on it and adjusting it for the setup / commissioning period at all hours of the day and night. If it is on a roof where access is uncomfortable or dangerous in the dark, that is a no-go in my mind. You will need also run a coax and a few command and control cables to the dish and lastly some sort of power outlet or stable low voltage outlet will be required somewhat close to the dish.   
+Having free and easy physical access to the dish is also important, you will be spending a _lot_ of time working on it and adjusting it for the setup / commissioning period at all hours of the day and night. If it is on a roof where access is uncomfortable or dangerous in the dark, that is a no-go in my mind. You will need also run a coax and a few command and control cables to the dish and lastly some sort of power outlet or stable low voltage outlet will be required somewhat close to the dish.   
 
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/benadjustingdish.jpg" height="580">  
    
@@ -53,8 +53,8 @@ This can be hard to visualize and keep track of, so a more conventional graph is
 This is the graph that you will be spending a lot of time looking at.   
 The period of the graph at first should be pretty corse, at least 1 day, 2 at the most. If you want to track long term (monthly or longer) or short term (say a few minutes) you can, but be sure and have two versions of this graph, short and long period. I would not go less than a day since that is the orbit period and you will need some reference of time around that window.  
 In this image, the red plot is the elevation and the green is azimuth. Note the double dip in the azimuth. We will come back to this shortly.   
- My hope is that seeing the '8' graph and this graph next to each other will help you visualize the pattern your dish needs to track over the course of each daily cycle.  
- This graph will also help you understand that if the top of the orbit is around 11am, then it will be at the bottom of its orbit around 11pm, but only for a few weeks at at time, because its over a 23 hour 54 minute orbit, it will slowly drift, and so in a few months you will see the top/bottom time of the orbit move an hour or so.   
+My hope is that seeing the '8' graph and this graph next to each other will help you visualize the pattern your dish needs to track over the course of each daily cycle.  
+This graph will also help you understand that if the top of the orbit is around 11am, then it will be at the bottom of its orbit around 11pm, but only for a few weeks at at time, because its over a 23 hour 54 minute orbit, it will slowly drift, and so in a few months you will see the top/bottom time of the orbit move an hour or so.   
 
 I highly recommend you spend some time setting up this graph in either Node-RED or some other stable graphing software. You will need it running around the clock.
 This graph is critical to the ADSC ground station operator as it will show when the satellite is at the top of its orbit and at the bottom of its orbit and when the satellite is at the most left part and right part of its orbit. These are two very critical points of the orbit and you will be adjusting the dish at these points, so knowing ahead of time that you will need to setting an alarm for something like 3am and 3pm is very important.   
@@ -63,10 +63,10 @@ Optional, but to give you an idea of how important this whole orbit data is, her
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/98wdishstatus.png" height="380">   
 
 ## Auto update TLE
-Before we leave the graph / where is the satellite topic, its also critical that you are working with fresh TLE (Two Line Element) data for your satellite. By fresh, I have found that updating them every 24 hours is about right. I was doing it monthly for a while, but feel I have better 'lock' on the sat with 24 hour TLE. I have an example flow to get you started on this auto-update via Node-RED on the [autoTLE](autoTLE.md) page.   
+Before we leave the graph / where is the satellite topic, its also critical that you are working with fresh TLE (Two Line Element) data for your satellite. By fresh, I have found that updating them every 24 hours is about right. I was doing it monthly for a while, but feel I have better 'lock' on the sat with 24 hour TLE updates. I have an example flow to get you started on this auto-update via Node-RED on the [autoTLE](autoTLE.md) page.   
     
 ## Hardware BOM (Bill of materials)  
-1 x 2 meter (6 foot) C-Band satellite dish (Can be larger, but not smaller) Try and find a used C-Band TV dish. They can be found 2nd hand cheap from places like Facebook Marketplace and Craigslist in USA and places like that in other countries. [eBay](https://www.ebay.com/b/c-band-dish/bn_7024908961) I'd love an 8 foot if I was going to do it again and if I had the space, 10 to 12 foot. More than that would be beyond the point of diminishing returns.   
+1 x 2 meter (6 foot) C-Band satellite dish (Can be larger, but not smaller) Try and find a used C-Band TV dish around 7-8 foot (Bigger has more problems than its worth). They can be found 2nd hand cheap from places like Facebook Marketplace and Craigslist in USA and places like that in other countries. [eBay](https://www.ebay.com/b/c-band-dish/bn_7024908961) I'd love an 8 foot if I was going to do it again and if I had the space, 10 foot. More than that would be beyond the point of diminishing returns.   
    
 1 x 75 ohm TV coax cable. Triple or quad shield, length for your installation. [Amazon](https://www.amazon.com/s?k=75+ohm+outdoor+coax+cable&ref=nb_sb_noss)   
    
@@ -89,7 +89,7 @@ norsat 3.4Ghz to 4.2Ghz with external 10Mhz LO. There are different models (N ty
    
 1 x power cable for motors and 5v DC supply for GPSDO - length for install [something like this](https://www.amazon.com/Multi-Core-Shielded-Anti-Interference-Control-Signal/dp/B09639HGN9)   
    
-1 x Linear motor with resistance position feedback. Stroke length as per instructions [4'' example from Amazon](https://www.amazon.com/gp/product/B00NVI5RII/).  
+1 x Linear motor with resistance position feedback. Stroke length as per instructions [4'' example from Amazon](https://www.amazon.com/gp/product/B00NVI5RII/). Another similar motor with feedback: [linear actuator with potentiometer](https://www.robotshop.com/products/4-stroke-150-lbs-force-linear-actuator-w-potentiometer) (Do NOT buy the actuators with the pulse output!!)  
    
 1 x Microcontroller with 5 amp H-Bridge relays [Example from Amazon](https://www.amazon.com/s?k=h-bridge&ref=nb_sb_noss_1).   
    
@@ -114,13 +114,13 @@ Don't secure the dish to the ground yet, you will need to pivot it to find the m
      
 It should go without saying, but clearly don't do this initial setup on a windy day and be sure to have a plan to mount the dish to the motor and mounted with enough cement to survive your once every 100 year wind storm.
 
-I put a tent peg in the ground and used a marker to show the edges of the orbit. Just use any method that works for you setup. You just want to be able to have top bottom left right marks for each of the 4 parts of the satellite orbit clearly defined so any mechanical limits / hard stops can be avoided.... This is more important than it first seems. The satellites do have a very long period drift. It takes a lot of fuel to keep them on station, so they ballance the life the satellite fuel with performance. That means how you set up the dish this week might be different in a month, in 6 months, in a year. You want to ensure you have plenty of free movement beyond just where the satellite is located right now.  
+I put a tent peg in the ground and used a marker to show the edges of the orbit. Just use any method that works for you setup. You just want to be able to have top bottom left right marks for each of the 4 parts of the satellite orbit clearly defined so any mechanical limits / hard stops can be avoided.... This is more important than it first seems. The satellites do have a very long period drift. It takes a lot of fuel to keep them on station, so they ballance the life the satellite fuel with performance. That means how you set up the dish this week might be different in a month, in 6 months, in a year. You want to ensure you have plenty of free movement beyond just where the satellite is located right now so you can follow its drift in the year ahead.  
 
 ### SDR software.   
 
 This is a bit of a thorn in our side at the moment. In time we will move to [SDRReceiver](SDRReciver.md) but for now the quickest way to get going is to use SDR# or SDR-Console.  
 Download it, unzip it and run the bat file to set up the SDR.  
-Then run zadig as admin and install the driver for the SDR.  
+Then run zadig as admin and install the driver for the SDR. (If you have alreay done this, you don't need to do it twice).  
 Now run the SDR software.  
 Next, finding the right frequency. This has been pretty hard in the past since its hard to find an image of what you are looking for on the web. I am trying to get screen shots of all the Inmarsats so people know where to look and what they are looking for.
 Here is 98W 10500 burst waterfall.  All the Inmarsats ADSC look just like this. Just the frequency changes by a little. You should be able to see a pattern like this on every sat pretty close to this downconverted frequency. Note the small chirpy R and T channels on the left, they are of some value, but the bulk of the interesting data is in those big fat 10500 bursts, so focus on finding them for now.   
@@ -134,7 +134,7 @@ Even if the dish is not perfect on sat, you can still try and peak the LNB, then
 ## Azimuth Alignment
 Now is when the graph starts to come into play. We are first going to look at the graph and find the time when the azimuth is at its peak. We will then go outside with a laptop or computer that can view the waterfall and move the dish side to side and ensure the signal is peaked up left to right.   
 Tip, move the dish right till you just lose the signal, mark it, move it to the left, mark it. Now you know where the azimuth is located for the left (or right) for that part of the orbit. Now wait 12 hours when the satellite is at its right (or left) most and do the same again, move till loss of signal, mark, move the other way till loss, mark and find the middle.   
-Now move the dish to the middle of those two master marks.   
+Now move the dish to the middle of those two master middle marks.   
 Congratulations your dish is now azimuth aligned. Don't lock it down too firm, but well note and roughly fix the dish to the ground at that position.   
 
 ## Elevation Alignment
@@ -143,7 +143,7 @@ With the dish roughly on signal you need to find a yardstick or stable measureme
 You will need to be as accurate as possible here. Depending on your look angle to the satellite will determine how much your dish will need to pivot up and down to track the sat.  
 It could be as small as an inch (25mm) or up to 3-4 inches (75+mm). Thus you need to be as accurate as possible in your marks. (The angle and movement are based on your location in relation to the satellite - for example, the closer to the equator you are, the more your dish will be looking up - if you live closer to the poles, your dish will be looking more at the horizon.)   
 ## Find top and bottom of the orbit on the dish   
-Over 48 or more hours, look at the graph and pick times when the satellite is at the top and bottom of the orbit.  
+Over 48 or more hours, look at the graph and find the two times when the satellite is at the top and bottom of the orbit.  
 
 This is critical and not optional. Mark the dish position with a marker on your yardstick, note the top of the orbit position and 12ish hours latter, the bottom of the orbit position. Yes, this means you will be going outside in the dark more than a few times. Hence my comment about having free easy access to the dish.    
 
@@ -164,7 +164,7 @@ Now you need to link Node-RED to the actuator.
 Here I used an industrial microcontroller, but you could use an Arduino that has a Cat 5 network port.   
 Write some code that takes the Node-RED position (Sent every 15 minutes) and compares it with the current resistance value.  
 Move the dish via relays in a H-Bridge in the correct direction with a small dead-band so that the arm does not hunt continuously around the required set point.
-Thus every 15 minutes the dish motor will receive a new position from Node-RED NORAD TLE and will move the arm to the new location.   
+Thus every 10 to 15 minutes (quicker is NOT better) the dish motor will receive a new position from Node-RED NORAD TLE and will move the arm to the new location.   
 Now, to sync all this up, put the arm on your desk on some paper marked with the length you measured off the yardstick on the dish.  
 You now have a mark for the top of the orbit and bottom of the orbit.  
 You can simply wait ~12-24 hours watching the actuator on the desk and your graph and make slight adjustments to your microcontroller code and the Node-RED rescale node to ensure the graph to actuator arm match.

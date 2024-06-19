@@ -25,7 +25,7 @@ Then select UTC:
 - - - -
 
 ## Jume 2024. Ignore this section    
-ZeroTeir is on my nasty list after doing a bait-and-switch.    
+ZeroTeir is on tbg nasty list after doing a bait-and-switch. Ovoid them at all costs.       
 
 
 ## ZeroTeir ##

@@ -11,6 +11,8 @@ In Jan 2022 we started looking at it seriously, so all this is very new and thus
 Sep 2022 Iridium has picked up a LOT of interest in the past few weeks with some very interesting posts on the ACARS groups.io email list.
 Seems that a good amount of military aircraft (All USAF KC-135) are going to be moving from Inmarsat L-Band to Iridium. There also have been some really solid appreciation for Iridium ACARS messages given via Twitter from the website power users. It's clear that this bleeding edge mode has a great deal of untapped potential.   
 Insert usual call for more feeders here...     
+    
+Check out the Iridium page on [tbg.airframes.io] to see the sort of data you will be getting. Iridium is the second most expensive ACARS mode (after C-Band), so be sure it has some data you really care about. If you live in an area already covered, you might want to think twice about the expense. Your data will help, but don't go hungry or cold to provide what we already have on the sites.     
 
 ## Parts required to build an Iridium ground station
 ### Antenna   

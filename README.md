@@ -8,15 +8,14 @@ You can search and live view a lot of satcom ACARS feeds (and some HFDL / VHF VD
     
 [tbg1.airframes.io](https://tbg1.airframes.io/)   
        
-Please note that the website is a dumpster fire.   
+Please note that the website is a dumpster fire. (ie, full of bugs and glitches).   
 Yes, tbg is aware that it does not work for you.   
-tbg is also aware that the menu icons don't make sense for the page content.   
 No, tbg can't 'just give me the old site back'. Since March 22nd 2024 there is no 'old site' in existence.        
 And yes, thebaldgeek is more painfully aware than you can ever know that the site is not optimized for _your_ mobile or PC screen sizes.    
-avgeeks around the world have said its the only ACARS website like it on the planet. Embrace its quirks, or move on.   
+
     
-## About this website  
-This GitHub website is just a brain dump and rough help notes to assist others in getting the hardware and software together to receive and decode ACARS messages from the main modes/frequencies.    
+## About these GitHub pages  
+This GitHub 'website' is just a tbg brain dump and rough help notes to assist others in getting the hardware and software together to receive and decode ACARS messages from the main modes/frequencies.    
 Its not perfect, its not up to date, its not finished, its not polished, it never will be..... in time, these pages will fade as more helpful docs are written over at [docs.airframes.io](https://docs.airframes.io/)   
    
 # About ACARS    
@@ -26,12 +25,12 @@ Please take the time to [read this overview of ACARS](https://www.pentestpartner
 ###  READ THIS!
 
 My motto is 'fail fast, fail often'. I am NOT a programer. Do NOT use the site. Do not read these pages. Please do continue to complain about them.  
-The best way to put this is: `What I am doing cant be done, which means that I don't know what I'm doing, but at least I know that I don't know what I'm doing.`  
+The best way to put this is: `I don't know what I'm doing, but at least I know that I don't know what I'm doing.`  
 
 
 ### Support or Contact   
 
-I am happy to help those that try and help themselves.... In other words, if you don't read these pages and ask questions that are clearly answered here, then tbg responses will be limited.     
+I am happy to help those that try and help themselves.... In other words, if you don't read these pages and ask questions that are clearly answered here, then tbg responses will be limited. (Usually screenshots of what you did not read).     
    
 If you have some ideas about improving the data readablity or decoding of ACARS for the site, here is my starting point - "A problem well stated is a problem half-solved. Charles Kettering - Inventer".   
 In other words, the better you can describe your suggestion, the better chance you have of seeing it show up on the site.    
@@ -52,7 +51,7 @@ If you have 15 minutes to look at some old real world examples of ACARS data, lo
 Less active, but also on [BlueSky](https://staging.bsky.app/profile/thebaldgeek.bsky.social)   
 
    
-If you want more of a traditional forums, then airframesio have that as well, join us over at the [airframes community](https://community.airframes.io/)   
+If you want more of a traditional forums, then airframesio has that as well, join the [airframes community](https://community.airframes.io/)   
 The whole ACARS team is very active on the [airframes discord](https://discord.com/invite/airframes)  
     
 For even more searchable ACARS data (over 2 Billion ACARS messages stretching back a few years) and information on how to feed the different ACARS modes, please support [airframes.io](https://app.airframes.io/about)   
