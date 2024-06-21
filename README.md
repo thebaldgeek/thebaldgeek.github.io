@@ -14,7 +14,7 @@ And yes, thebaldgeek is more painfully aware than you can ever know that the sit
     
 Map with ADSC and ACARS plotted together:    
 [tbgmap.airframes.io](https://tbgmap.airframes.io/)   
-Tips for using the map - and you REALLY should read them - can be found here:   
+Tips for using the map - and you REALLY REALLY should read them - can be found here:   
 [tbg map notes](https://tbg.airframes.io/dashboard/map)
     
   
