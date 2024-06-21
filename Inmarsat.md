@@ -3,7 +3,7 @@
 Navigation: [home](README.md)  
 
 One of, if not, THE first thing you will need to do is find which one of the 4 Inmarsat satellites covers your part of the planet. Or even more specifically, which of them is visible from your desired antenna location.    
-There are many versions of the Inmarsat coverage area. Inmarsat moved the orbits for better coverage and other technical reasons in 2018 and again around late 2023 into early 2024. Check the map on [tbg.airframes.io about page](https://tbg.airframes.io/dashboard/about) 
+There are many versions of the Inmarsat coverage area. Inmarsat moved the orbits for better coverage and other technical reasons in 2018 and again around late 2023 into early 2024. As well as the info on this page, check the map on [tbg.airframes.io about page](https://tbg.airframes.io/dashboard/about) 
 
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/inmarsatcoverage.png" height="580">   
    

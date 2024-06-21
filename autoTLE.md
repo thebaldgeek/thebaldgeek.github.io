@@ -1,6 +1,9 @@
 # A flow to automatically get TLE data from celestrak.com and use it with the satellites node   
    
 Navigation: [home](README.md)
+   
+## Jume 2024. Ignore this page    
+Do not use. Celestrak changed their endpoints around mid 2023 and broke 100's of TLE updators. tbg has not updated this flow to reflect that breaking change.        
 
 There are two parts to consider here.   
 You should not hit the URL every time you want to track the satellite or move the rotator. To pull this off, we get the TLE once every 24 hours (plenty fast enough for most satellite orbits) and store it in a flow.context list, then every time we want to move the rotator or get the satellite position data we read the TLE out of the flow.context list.   
