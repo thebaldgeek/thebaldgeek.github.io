@@ -2,7 +2,12 @@
    
 Navigation: [home](README.md)  
 
-## Jume 2024. Ignore this page   
+## Jume 2024.  
+While the UAV page from the old site did not make the new site (yet), thebaldgeek is still super interested in these airframes.   
+The list here has been updated with the new site launch.    
+If you have any thoughts on how to add a UAV table, reach out.   
+    
+--------
    
 
 One of the types of aircraft that warranted its very own page on the Node-RED dashboard is UAV or Drones or any of the other names they go under.   
@@ -11,16 +16,15 @@ My site uses the typical ADSB airframe database, drones are classed as different
 
 Bottom line, I check for both type and ICAO.    
 
-Jan 2022 here is my current list:    
+June 2024 here is my current list:    
 ```   
-class = ["Q4","Q9","HRON", "Q1","Q25","FRBD", "SOL1", "SOL2","ANKA","DRON"];
+class = ["Q4","Q9","HRON", "Q1","Q25","FRBD", "FFLO", "VFHC", "SOL1", "SOL2","ANKA","DRON", "UAV"];
 
-icaolist = ["AE6D2F","7CFA7E","7CFA7F","7CFA80","7CFA81","7CFA82","7CFA83","7CFA84","7CFA85","7CFA86","7CFA87","7CFA88","7CFA89","7CFA8A","FF6B64","4251CA","42511C","42511D","7CFA7E","7CFA82","7CFA80","AE60C4","AE60BA","001088","001102","AE0FCA","N341HK","506F87","AE541F","43D1F1","N250VU","000003","A2596C","43C888","43C881","43C886","43C87B","43C878","43C887","001453","001071","001084","298CC2","0200F1","738BE8","425178","AE46B7","AE4BDB","AE540F", "AE5415", "AE541D","AE61BB","AE61BC","AE4DDF","44F04E","44F046","44F04C","N507HK","N363HK","4B835F","25E25E"];
-
-
-
+icaolist = a16c6d,a2f676,a32524,a328db,a33dc3,a4182a,a4724d,a483df,a4bc36,a4bfed,a51a10,a51dc7,a54b56,a54f0d,a552c4,a57343,a5ed09,a5f9f7,a61086,a64217,a645ce,a64985,a654aa,a65861,a66996,a92eee,aa8444,aac551,ac742b,a344e5,acb0cb,acb076,acb175,acb1a0,acb15c,acb1ad,acb234,acb202,ae541a,ae54b7,ae5420,ae5421,ae2c37,ae5411,ae5412,ae5413,ae5417,ae5419,ae625b,ae7811,ae7812,ae7813,ae7814,ae7815,ae7816,af3c53,af4fa8,33fd6b,33fd6a,33fd69,33fd5e,33fd45,87cd20,87cd21,87cd22,71f64a,71f64d,ae51ed,ae5c0d,ae5c13,ae60b7,ac7b99,a5bcc0,ae540e,ae5c76,ae5c71,a169d7,a3c92c,a3c1be,a44360,ae54b6,ae29f8,a410bc,ae27a7,ae2c38,ae2fd0,ae4bd7,a47604,ae61aa,a5b552,add2ef,ae1f0c,ae5422,ae54b5,ae5416,ae5c73,a3e6e3,a67f78,a38569,a5dcb2,a12e51%20,a5d8fb,a5b533,ae17ed,ae5c72,ae5c74,ae5c75,ae625c,ae625d,ae6257,43c889,43c885,43c884,43c883,43c879,43c87a,43c87c,43c87d,43c87e,43c87f,43c810,ad9a7d,43c809,783132,ae6d2f,7cfa7f,7cfa81,7cfa83,7cfa84,7cfa85,7cfa86,7cfa87,7cfa88,7cfa89,7cfa8a,ff6b64,4251ca,42511c,42511d,7cfa7e,7cfa82,7cfa80,ae60c4,ae60ba,001088,001102,ae0fca,506f87,ae541f,43d1f1,000003,a2596c,43c888,43c881,43c886,43c87b,43c878,43c887,001453,001071,001084,298cc2,0200f1,738be8,425178,ae46b7,ae4bdb,ae540f,%20ae5415,ae61bb,ae61bc,ae4ddf,44f04e,44f046,44f04c,4b835f,25e25e
 
 ```  
+Their are some UAVs that have been tagged with a class and some that are not, so pick a method, tbg suggests ICAO, and stick with it.
+
 If you know of any UAV's that I don't have listed (either by class or hex) please let me know and I can update the code and have a better chance of it showing on the dashboard page.  
     
 ### Node-RED function block code   
