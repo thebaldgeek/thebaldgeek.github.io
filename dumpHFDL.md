@@ -27,7 +27,7 @@ If you want to run Raspberry PiOS, get the 32 bit desktopless version. Since the
 ### Build from source   
 You will need libacars so lets get the dependencies and get that built.   
 
-    sudo apt install build-essential cmake pkg-config libglib2.0-dev libconfig++-dev libliquid-dev libfftw3-dev g++ libpython3-dev python3-numpy swig zlib1g-dev libxml2-dev
+    sudo apt install build-essential cmake pkg-config git libglib2.0-dev libconfig++-dev libliquid-dev libfftw3-dev g++ libpython3-dev python3-numpy swig zlib1g-dev libxml2-dev
     cd ~
     git clone https://github.com/szpajder/libacars 
     cd libacars
@@ -35,7 +35,7 @@ You will need libacars so lets get the dependencies and get that built.
     cd build
     cmake ../
     make -j4
-    sudo make install; 
+    sudo make install 
     sudo ldconfig
 
 Ok now we need SoapySDR, so lets build that.
@@ -55,7 +55,7 @@ Ok now you need to install the Soapy driver for your SDR, if you are using an Ai
 If you are using an SDRPlay device, here is how to install their API/driver (this is for a Pi (ARM) use your CPU file (try dropping the '-ARM-' from the file name here) from SDRPlay if on x86)   
 
     cd ~
-    wget https://www.sdrplay.com/software/SDRplay_RSP_API-ARM-3.09.1.run   
+    wget https://www.sdrplay.com/software/SDRplay_RSP_API-ARM-3.09.1.run or wget https://www.sdrplay.com/software/SDRplay_RSP_API-Linux-3.15.2.run   
     chmod 755 ./SDRplay_RSP_API-ARM-3.09.1.run  
     ./SDRplay_RSP_API-ARM-3.09.1.run  
     git clone https://github.com/pothosware/SoapySDRPlay  
@@ -65,8 +65,8 @@ If you are using an SDRPlay device, here is how to install their API/driver (thi
     cmake ..  
     sudo make install  
 
-You can test and see if it finds your SoapySDR with `SoapySDR --find`   
-Also `SoapySDR --info` is helpful at times.   
+You can test and see if it finds your SoapySDR with `SoapySDRUtil --find`   
+Also `SoapySDRUtil --info` is helpful at times.   
 You can search for a specific device with something like: `SoapySDRUtil --find "driver=sdrplay"`  Just swap out the driver for your SDR hardware.
 
 Ok, now lets build dumphfdl  
