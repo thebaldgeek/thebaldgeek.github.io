@@ -9,11 +9,11 @@ If you have any thoughts on what data might be on a UAV table on the website, pl
     
 --------
    
-My site uses the typical ADSB airframe database, drones are classed as different `types` in there. On top of that people (private and state backed) that build, fly and deploy UAV's don't tend to advertise it. The result of this is that avgees around the world have collected many ICAO hex codes over the past year that may or may not be flagged as UAV in the generic ADSB database.    
+My site uses the typical ADSB airframe database, drones are classed as different `types` in there. On top of that people (private and state backed) that build, fly and deploy UAV's don't tend to advertise it. The result of this is that avgeeks around the world have collected many ICAO hex codes over the past year that may or may not be flagged as UAV in the generic ADSB database.    
 
 Bottom line, tbg finds it of value to check for both type and ICAO.    
 
-June 7th 2024 here is the current list updated by some kind folks on X.:    
+July 7th 2024 here is the current list updated by some kind folks on X.:    
 ```   
 type codes = ["Q4","Q9","HRON", "Q1","Q25","FRBD", "FFLO", "VFHC", "SOL1", "SOL2","ANKA","DRON", "UAV"];
 
@@ -23,7 +23,7 @@ icaolist = /?icao=a16c6d,a2f676,a32524,a328db,a33dc3,a4182a,a4724d,a483df,a4bc36
     
 Copy past the above list and put it on the end of the usual 'globe' URL. Takes about 15 seconds to load all 300+ ICAO's, so just hang in there.
 
-Their are some UAVs that have been tagged with a class and some that are not, so pick a method, tbg suggests ICAO, and stick with it.
+There are some UAVs that have been tagged with a class and some that are not, so pick a method, tbg suggests ICAO, and stick with it.
 
 PLEASE! If you know of any UAV's that are not listed (either by 'type' or ICAO hex) please let tbg know and he can update the list.  
     
