@@ -1,8 +1,8 @@
-# Background of the UAV-Done page.   
+# Background of the UAV-Drone page.   
    
 Navigation: [home](README.md)  
 
-## Jume 2024.  
+## June 2024.  
 While the UAV page from the old site did not make the new site (yet), many #avgeeks are still super interested in these airframes.   
 The list here is being updated and maintained by some key avgeeks on X. Big thanks to [Evergreen Intel](https://x.com/vcdgf555).    
 If you have any thoughts on what data might be on a UAV table on the website, please reach out.   
