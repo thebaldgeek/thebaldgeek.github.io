@@ -203,6 +203,57 @@ In the terminal run the example file: `sudo ./example.sh`
 At this point, you can visit your PC's IP address from any browser on your network and look for the map, so in my case `http://192.168.1.122:8888/map.html`  
 Let that run. You should see the sats and beams update around once a minute.   
 Keep reading much further down if you would like to share your map with thebaldgeeks current global Iridium map (please and thanks).    
+    
+## Terminal Four - Sending me your map data.   
+Optional. If you want to add your map coverage to the central global map that I tweet now and then.   
+Type `nano map.py`, then copy/paste in this text:    
+```   
+#!/usr/bin/env python3   
+   
+import sys   
+import select   
+import time   
+import socket   
+   
+uid = "ktbg"   
+ap = ("thebaldgeek.net", 123456)   
+sk = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)   
+def sendOverUdp(line):   
+    try:   
+        bytes = str.encode(line)   
+        print(len(bytes))   
+        if len(bytes) < 65300 :   
+           sk.sendto(bytes, ap)   
+    except Exception as e:   
+        print(e)  
+   
+def no_input():   
+    print('no input')   
+   
+while True:   
+    line = uid + sys.stdin.readline()   
+    if line:   
+        sendOverUdp(line)   
+    else:   
+        time.sleep(1)   
+else:   
+    no_input()    
+```
+
+
+You will need to change the UID from `ktbg` and tell me what you set it to be and then change the port number that I will give you and this will allow you to send your local map data to the global map. (Live map URL only for Iridium feeder sharers).  
+Next run this command: 
+```pip install https://github.com/joh/when-changed/archive/master.zip```   
+This will install a python script that will look for changes to a file. 
+Its very important that you CD into where it was installed:  
+(change 'ubuntu' for your user name home directory if needed) ```cd /home/ubuntu/.local/bin```   
+Now run the file watch which will send me your sats.json rougly once a minute and your coverage will be added to the master map on my site:
+
+```./when-changed /usr/src/iridium-toolkit/html/sats.json cat /usr/src/iridium-toolkit/html/sats.json |  python3 ~/map.py```
+
+
+
+
 
 ## Is it working? Tuning by numbers  
 Iridium is a bit of an odd mode. It really rewards a bad antenna and poor performing SDR. What do I mean by that?   
@@ -328,17 +379,6 @@ Stop reading here, the notes below are mostly wrong and are just for history.
 Note that I used to run a global Iridium coverage map, but the URL was getting 'attacked' to try and break into my network, so I took it down.
 If there is enough interest from the handful of Iridium feeders, I can put it back up and just let a few people know about it.   
 Sep 2022. Its back! Feeder only perk. Follow me on Twitter to see regular map updates.   
-
-## Terminal Four - Sending me your map data.   
-Almost there: Copy your acars.py script like this `cp acars.py map.py` and edit just the port number that I will give you and this will allow you to send your local map data to the global map. (URL only for Iridium feeder sharers).  
-Next run this command: 
-```pip install https://github.com/joh/when-changed/archive/master.zip```   
-This will install a python script that will look for changes to a file. 
-Now go to where it was installed:  
-```cd /home/ubuntu/.local/bin```   
-Now run the file watch which will send me your sats.json rougly once a minute and your coverage will be added to the master map on my site:
-
-```./when-changed /usr/src/iridium-toolkit/html/sats.json cat /usr/src/iridium-toolkit/html/sats.json |  python3 ~/map.py```
 
 
 ## Closing thoughts / to-do    
