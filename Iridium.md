@@ -311,11 +311,9 @@ Now that you have a UDP stream of ACARS messages you can perhaps use Node-RED to
 airframes.io has an ingest script, so reach out to me or Kevin to get that. Please feed Kevin (and me if you like) because when you do that you will be part of a global system using this very challenging mode.    
 Speaking of 'fun', it seems that once again and aircraft builders are tormenting AVGEEKS the world over as they use different ICAO/Rego/ModeS combos in their messages to identify their aircraft.    
 thebaldgeek is keeping a list of 'unknown' aircraft and if you like tracking down those sorts of things, everyone would love your help to figure out the ones in the table. Once they are 'known', their Iridium 'code' is put in a CSV file and used site wide for identifying the aircraft no mater what mode they show up on.   
-At the moment, ADSBEx (or any other flight tracking service) does not include these...aaahhh... 'special' Iridium codes, so acars.adsbexchange is the only place these Iridium aircraft are decoded and put into tables / database.   
-thebaldgeek is sharing these codes with the airframes.io guys as he does not want to be a data island and wants to share all the information he can so more people can benefit.   
+At the moment, ADSBEx (or any other flight tracking service) does not include these...aaahhh... 'special' Iridium codes, so tbg.airframes.io is the only place these Iridium aircraft are decoded and put into tables / database.   
+thebaldgeek is sharing these codes with the airframes.io guys as he does not want to be a data island and wants to share all the information he can so as many people as possible can benefit.   
 
-
-Jump over the fold to see the global map command......
 
 ---
 
