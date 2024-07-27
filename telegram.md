@@ -2,6 +2,9 @@
    
 Navigation: [home](README.md)  
    
+## Jume 2024. Ignore this page   
+    
+	
 ### History
 For lots of reasons, a bunch of us aviation geeks have a Telegram chat room. We got the idea to build a chat bot in Node-RED that we could ask questions of when we are on the go and just want a quick answer about some aircraft or system status.    
 We also use the bot chat for alerts since it shows up on our smart watches better formatted than our email does (we used to send a lot of aircraft alerts from Node-RED to our emails, but have been moving them to Telegram).   

@@ -1,7 +1,10 @@
-# Background of the Squawk page.   
+# Rough thoughts on a Squawk page.   
    
 Navigation: [home](README.md)  
-
+    
+## Jume 2024. Ignore this page   
+     
+     
 I have been sending 7700 (emergency) squawks to the Telegram bot while I test the Node-RED flow. While in that testing phase a guy on the ADSBExchange Discord server asked me if there was a place on my website for squawk codes... Duh..   
 
 Both ADSB and ADSC data often (but not always in the case of satcom ADSC ACARS messages) have squawk codes in them. VDL2 messages only have squawk codes in them when they originate from a ground station, ie they tell the aircraft what to squawk. So you really are limited to ADSB messages for squawk codes.  
