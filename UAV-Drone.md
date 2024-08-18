@@ -13,7 +13,7 @@ My site uses the typical ADSB airframe database, drones are classed as different
 
 Bottom line, tbg finds it of value to check for both type and ICAO.    
 
-July 27th 2024 here is the current list updated by some kind folks on X.:    
+Aug 18th 2024 here is the current list updated by some kind folks on X.:    
 ```   
 type codes = ["Q4","Q9","HRON", "Q1","Q25","FRBD", "FFLO", "VFHC", "SOL1", "SOL2","ANKA","DRON", "UAV"];
 
