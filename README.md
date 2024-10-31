@@ -9,8 +9,9 @@ You can search and live view a lot of satcom ACARS feeds (and some HFDL / VHF VD
 [tbg.airframes.io](https://tbg.airframes.io/)   
        
 Please note that the website is a dumpster fire. (ie, full of bugs and glitches).   
-No, tbg can't 'just give me the old site back'. Since March 22nd 2024 there is no 'old site' in existence.        
-And yes, thebaldgeek is more painfully aware than you can ever know that the site looks horrible on _your_ mobile and PC screen sizes.    
+Honestly, thats part of its quirky appeal. Jokes aside, tbg is not a programmer, he is the wrong guy to be doing this, but here we are...   
+If you want a more solid ACARS website, check out [airframes.io](https://airframes.io), they are the real deal over there.   
+The way we think of the two websites is that tbg.airframes is the scrappy ally cat that makes all the mistakes, ACARS on the bleeding edge. Airframes.io is the powerful puma.     
     
 Map with ADSC and ACARS plotted together:    
 [tbgmap.airframes.io](https://tbgmap.airframes.io/)   
@@ -33,38 +34,36 @@ Its not perfect, its not up to date, its not finished, its not polished, it neve
 
 ###  READ THIS!
 
-My motto is 'fail fast, fail often'. I am NOT a programer. Do NOT use the site. Do not read these GitHub pages. But please do continue to complain about both of them.  
+My motto is 'fail fast, fail often'. I am NOT a programer. Do NOT use the site. Do not read these GitHub pages.  
 The best way to put this is: `I don't know what I'm doing, but at least I know that I don't know what I'm doing.`  
 
 
 ### Support    
 
-I am happy to help those that try and help themselves.... In other words, if you don't read these pages and ask questions that are clearly answered here, then tbg responses will be limited. (Usually screenshots from this Github of what you did not read).     
+I am happy to help those that try and help themselves.... In other words, if you don't read these pages and ask questions that are clearly answered here, then tbg responses will be limited. (Usually he will answer the questions with screenshots from this Github of what you did not read).     
    
 If you have some ideas about improving the data readablity or decoding of ACARS for the site, here is my starting point - "A problem well stated is a problem half-solved. Charles Kettering - Inventer".   
 In other words, the better you can describe your suggestion, the better chance you have of seeing it show up on the site.    
-      
+tbg did not come up with any of the pages on the website, each of them are ideas clearly explained by avgeeks around the world.   
+Its YOUR website, not thebaldgeeks!          
 
 ### Contact  
-If you are on X, best way to get hold of thebaldgeek is to DM him over there. (Both X and DM's are open and public).   
+thebaldgeek is most active on [X / Twitter](https://twitter.com/thebaldgeek). DM's are open.   
 If your not on X, you can try the [website chat](https://tbg.airframes.io/dashboard/chat) to connect with tbg and chat about ACARS.  
-    
-thebaldgeek is most active on [X / Twitter](https://twitter.com/thebaldgeek).       
-The best way to keep updated with the goings on of all things ACARS really is via X.     
+Not as active, but tbg is also on <a rel="me" href="https://ioc.exchange/@thebaldgeek">Mastodon</a>   
+Even less active, but also on [BlueSky](https://staging.bsky.app/profile/thebaldgeek.bsky.social)     
+     
    
 ### Other resources   
 
 Do note that I don't Tweet actual OSINT information... My site/tweets/role is to provide raw OSINT data. Ive found that most people that do osint often don't know where/how the raw data they use comes from, my goal is to help people understand how RF (radio frequency) signals can be converted into useful data for people to analyze and thus deepen the intel derived.   
     
-If you have 15 minutes to look at some old real world examples of ACARS data, look back through the [Reddit ACARS](https://www.reddit.com/r/ACARS/) sub.   
-    
-Not as active, but tbg is also on <a rel="me" href="https://ioc.exchange/@thebaldgeek">Mastodon</a>   
-Even less active, but also on [BlueSky](https://staging.bsky.app/profile/thebaldgeek.bsky.social)   
+If you have 15 minutes to look at some old real world examples of ACARS data, take look back through the [Reddit ACARS](https://www.reddit.com/r/ACARS/) sub.   
 
 If you want more of a traditional forums, then airframesio has that as well, join the [airframes community](https://community.airframes.io/)   
 The whole ACARS team is very active on the [airframes discord](https://discord.com/invite/airframes)  
     
-For even more searchable ACARS data (over 2 Billion ACARS messages stretching back a few years) and information on how to feed the different ACARS modes, please support [airframes.io](https://app.airframes.io/about)   
+For even more searchable ACARS data (over 3 Billion ACARS messages stretching back a few years) and information on how to feed the different ACARS modes, please support [airframes.io](https://app.airframes.io/about)   
 You can also follow them on Twitter [AirframesIO](https://twitter.com/AirframesIO)   
    
 <!-- Global site tag (gtag.js) - Google Analytics -->
