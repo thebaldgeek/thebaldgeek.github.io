@@ -11,7 +11,10 @@ You can search and live view a lot of satcom ACARS feeds (and some HFDL / VHF VD
 Please note that the website is a dumpster fire. (ie, full of bugs and glitches).   
 Honestly, thats part of its quirky appeal. Jokes aside, tbg is not a programmer, he is the wrong guy to be doing this, but here we are...   
 If you want a more solid ACARS website, check out [airframes.io](https://airframes.io), they are the real deal over there.   
-The way we think of the two websites is that tbg.airframes is the scrappy ally cat that makes all the mistakes, ACARS on the bleeding edge. Airframes.io is the powerful puma.     
+The way we think of the two websites is that tbg.airframes is the scrappy ally cat that makes all the mistakes, ACARS on the bleeding edge. Airframes.io is the powerful puma, ACARS done right.   
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/dumpstaFire.png" height="320">    
+   
+The sites are not related beyond they both are ACARS centric. thebaldgeek is gratefully hosted by airframes, thats about it for any connection between the two sites.      
     
 Map with ADSC and ACARS plotted together:    
 [tbgmap.airframes.io](https://tbgmap.airframes.io/)   
@@ -24,25 +27,25 @@ Get a solid intro by [reading this overview of ACARS](https://www.pentestpartner
    
 There are many osint folks and avgeeks that combine the usual ADSB/C data (aircraft pixels on a map) _with_ ACARS to really amplify both sources of data. The sum really is MUCH greater than the parts.   
    
-Think of it this way:    
+Think of aircraft tracking this way:    
 ADSB/C is the where.    
-ACARS is the why it is where it is.
+ACARS is the why.   
 
 ## About these GitHub pages  
-This GitHub 'website' is just a tbg brain dump and rough help notes to assist others in getting the hardware and software together to receive and decode ACARS messages from the main modes/frequencies.    
+This GitHub 'website' is just a tbg brain dump and rough help notes to assist others in getting the hardware and software together to receive and decode ACARS messages from the main modes and frequencies.    
 Its not perfect, its not up to date, its not finished, its not polished, it never will be..... in time, these pages will fade as more helpful docs are written over at [docs.airframes.io](https://docs.airframes.io/)   
 
 ###  READ THIS!
 
-My motto is 'fail fast, fail often'. I am NOT a programer. Do NOT use the site. Do not read these GitHub pages.  
-The best way to put this is: `I don't know what I'm doing, but at least I know that I don't know what I'm doing.`  
+tbg motto is 'fail fast, fail often'. thebaldgeek is NOT a programer. Do NOT use the site. Do not read these GitHub pages.  
+The best way to put this is: `I don't know what I'm doing, but I for sure know that I don't know what I'm doing.`  
 
 
 ### Support    
 
-I am happy to help those that try and help themselves.... In other words, if you don't read these pages and ask questions that are clearly answered here, then tbg responses will be limited. (Usually he will answer the questions with screenshots from this Github of what you did not read).     
+I am happy to help those that try and help themselves.     
    
-If you have some ideas about improving the data readablity or decoding of ACARS for the site, here is my starting point - "A problem well stated is a problem half-solved. Charles Kettering - Inventer".   
+If you have some ideas about improving ACARS readability or decoding of ACARS for the site, here is my starting point - "A problem well stated is a problem half-solved. Charles Kettering - Inventer".   
 In other words, the better you can describe your suggestion, the better chance you have of seeing it show up on the site.    
 tbg did not come up with any of the pages on the website, each of them are ideas clearly explained by avgeeks around the world.   
 Its YOUR website, not thebaldgeeks!          
@@ -56,7 +59,7 @@ Even less active, but also on [BlueSky](https://staging.bsky.app/profile/thebald
    
 ### Other resources   
 
-Do note that I don't Tweet actual OSINT information... My site/tweets/role is to provide raw OSINT data. Ive found that most people that do osint often don't know where/how the raw data they use comes from, my goal is to help people understand how RF (radio frequency) signals can be converted into useful data for people to analyze and thus deepen the intel derived.   
+Do note that tbg does not Tweet actual OSINT information... My site/tweets/role is to provide raw OSINT data. Ive found that most people that do osint often don't know where or how the raw data they use comes from, my goal is to help people understand how RF (radio frequency) signals can be converted into useful data for people to analyze and thus deepen the intel derived.   
     
 If you have 15 minutes to look at some old real world examples of ACARS data, take look back through the [Reddit ACARS](https://www.reddit.com/r/ACARS/) sub.   
 
