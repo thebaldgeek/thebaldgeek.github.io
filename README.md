@@ -9,11 +9,12 @@ You can search and live view a lot of satcom ACARS feeds (and some HFDL / VHF VD
 [tbg.airframes.io](https://tbg.airframes.io/)   
        
 Please note that the website is a dumpster fire. (ie, full of bugs and glitches).   
+    
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/dumpstaFire.png" height="320">    
+   
 Honestly, thats part of its quirky appeal. Jokes aside, tbg is not a programmer, he is the wrong guy to be doing this, but here we are...   
 If you want a more solid ACARS website, check out [airframes.io](https://airframes.io), they are the real deal over there.   
 The way we think of the two websites is that tbg.airframes is the scrappy ally cat that makes all the mistakes, ACARS on the bleeding edge. Airframes.io is the powerful puma, ACARS done right.   
-<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/dumpstaFire.png" height="320">    
-   
 The sites are not related beyond they both are ACARS centric. thebaldgeek is gratefully hosted by airframes, thats about it for any connection between the two sites.      
     
 Map with ADSC and ACARS plotted together:    
