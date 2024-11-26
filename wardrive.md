@@ -30,7 +30,8 @@ Samsung G23 - solid. tbg sons daily driver. Tested in-car only.
 Samsung G20 - Beast. No, really, this phone is the best wardriving Android that tbg has found hands down.    
 Nexus 7 - External antenna mod. Great setup, on the large size, but the external antenna mod makes it worth running. (Died Aug 2024 - display).   
    
-3 phone example when warriding on an electric AT longboard
+3 phone example when warriding on an electric AT longboard   
+(Right click - Open in new tab any photos to enbiggen)   
 
    
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/wardrive/3phonewarride.png" height="320">   
