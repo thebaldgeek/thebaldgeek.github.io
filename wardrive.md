@@ -83,7 +83,14 @@ P5 in-car 5 run average wifi SSIDs: 2456
 P5 roof 5 run average wifi SSIDs: 4971   
 Stunning. Almost double the wifi SSID’s by having the phone on the roof of the car.  
 Same drive, same time, 5 working day average. Pretty much consistently about double the number of SSIDs heard by the exact same phone just by mounting it on the roof of the car.  
-(As an aside, tbg thinks the 2018 Chevrolet Bolt is the best wardiving car — it’s quiet, cheap, has a good enough turning circle, and most of all a one pedal driving mode that can't be beat).  
+  
+If you want to print your own, this should give you a good head start.    
+Let thebaldgeek know (contact on the home page here), he'd love to hear about it:  
+[wiglefin body](https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/wardrive/wigleFinV3_body.stl)   
+[wiglefin lid](https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/wardrive/wigleFinV3_lid.stl)   
+[wiglefin lid pin](https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/wardrive/wigleFinV3_pin.stl)   
+
+(As an aside, tbg thinks the 2019 Chevrolet Bolt is the best wardiving car — it’s quiet, cheap, has a good enough turning circle, and most of all, a one pedal driving mode that can't be beat).  
    
 ## Scanning Wifi channels.   
   
