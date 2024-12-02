@@ -109,8 +109,8 @@ You will get a helpful overlap of each phone scanning different channels at diff
 https://github.com/lozaning/The_Wifydra
    
 Update: Dec 2nd 2024.   
-After building the unit and testing it with wigle.net there are issues with the CSV file that is created.   
-Check this issue here for more details: https://github.com/lozaning/The_Wifydra/issues/7   
+After building the unit and testing it with (wigle.net) there are issues with the CSV file that is created.   
+Check this issue here for more details: (https://github.com/lozaning/The_Wifydra/issues/7)   
 At this time, thebaldgeek is ceasing to work on the wifydra as it's outside his skill set to fix.   
 
 
