@@ -107,6 +107,12 @@ You will get a helpful overlap of each phone scanning different channels at diff
 ## wifhydra - scan ALL the 2.4Ghz channels ALL the time. #allTheWifi
 
 https://github.com/lozaning/The_Wifydra
+   
+Dec 2nd 2024.   
+After building the unit and testing it with wigle.net there are issues with the CSV file that is created.   
+Check this issue here for more details: https://github.com/lozaning/The_Wifydra/issues/7   
+At this time, thebaldgeek is ceasing to work on it as it's outside his skill set to fix.   
+    
 
 Build cost is about $120 to $210 USD depending on options.. (Note that the Wifydra in a box with whip antennas is going to cost around the same cost as a refurb Samsung S20 here in the USA).
 BOM:
