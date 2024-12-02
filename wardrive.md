@@ -108,18 +108,18 @@ You will get a helpful overlap of each phone scanning different channels at diff
 
 https://github.com/lozaning/The_Wifydra
    
-Dec 2nd 2024.   
+Update: Dec 2nd 2024.   
 After building the unit and testing it with wigle.net there are issues with the CSV file that is created.   
 Check this issue here for more details: https://github.com/lozaning/The_Wifydra/issues/7   
-At this time, thebaldgeek is ceasing to work on it as it's outside his skill set to fix.   
-    
+At this time, thebaldgeek is ceasing to work on the wifydra as it's outside his skill set to fix.   
+
 
 Build cost is about $120 to $210 USD depending on options.. (Note that the Wifydra in a box with whip antennas is going to cost around the same cost as a refurb Samsung S20 here in the USA).
 BOM:
 $30 5 x PCB (5 is the min order).  
-$32 1 x [GPS board:](https://www.adafruit.com/product/746)  
-$9 1 x [MicroSD breakout board:](https://www.adafruit.com/product/254)  
-$34 1 x [Feather board:](https://www.digikey.com/en/products/detail/adafruit-industries-llc/5300/16584014)  
+$32 1 x [GPS board](https://www.adafruit.com/product/746)  
+$9 1 x [MicroSD breakout board](https://www.adafruit.com/product/254)  
+$34 1 x [Feather board](https://www.digikey.com/en/products/detail/adafruit-industries-llc/5300/16584014)  
 $68 14 x [ESP32C3](https://www.seeedstudio.com/Seeed-XIAO-ESP32C3-p-5431.html)  
 Note1: the ESP32C3 each come with a small flexible ‘patch’ antenna on a short coax cable.  
 Note2: tbg went for the cheaper ESP as the phones get Bluetooth already and the cheap board is the same price as the expensive board without an antenna.  
