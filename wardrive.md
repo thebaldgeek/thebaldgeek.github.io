@@ -108,12 +108,6 @@ You will get a helpful overlap of each phone scanning different channels at diff
 
 https://github.com/lozaning/The_Wifydra
    
-Update: Dec 2nd 2024.   
-After building the unit and testing it with (wigle.net) there are issues with the CSV file that is created.   
-Check this issue here for more details: (https://github.com/lozaning/The_Wifydra/issues/7)   
-At this time, thebaldgeek is ceasing to work on the wifydra as it's outside his skill set to fix.   
-
-
 Build cost is about $120 to $210 USD depending on options.. (Note that the Wifydra in a box with whip antennas is going to cost around the same cost as a refurb Samsung S20 here in the USA).
 BOM:
 $30 5 x PCB (5 is the min order).  
@@ -132,6 +126,10 @@ Extra tbg Options;
 1 x [microSD card extender](https://www.amazon.com/dp/B07WWVBK8V)  
 1 x [Hard case](https://www.amazon.com/dp/B094W9266D)  
 1 x [Magnet set](https://www.amazon.com/dp/B0CC5HC4NG)  
+
+Before you start the parts collection / build process, you should take a read of the following github issue.   
+The wifydra software took a bit of tweaking to make work with wigle.net and you should be aware of the need to manually 'fix' the CSV file before you upload it each and every time.   
+(https://github.com/lozaning/The_Wifydra/issues/)  
 
 Program the sub.ino into each ESP, make sure you edit the .ino (its a text file) and change the board number - look for the obvious comment a few lines into the file. They MUST be numbered 1 through 14, don’t use any other number system, the numbers are tied to the code in the dom.ino file in the feather board.  
 tbg labeled the boards so if he had an issue, he’d know which one it was, not required, but not a bad idea.  
@@ -156,7 +154,8 @@ Just a bit of a 'for interest' photo. No hot spots. The board draws just over 1.
 The 4 magenets on the bottom of the box means that tbg can move the wifydra around from AT longboard to car and other places under 82Mph windspeed.   
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/wardrive/wifydraandwiglefin.jpg" height="240">   
 
-Program the dom.ino into the feather board.  
+Program the correct dom.ino into the feather board. As of Dec 3rd 3 2024, the correct dom is at the bottom of the github issue linked above. DO NOT use the dom in the main zip file!   
+
 Note that we could not get the Dom to compile and download using the local IDE that we used for the Subs. Once we switched to the cloud based IDE, the dom compiled and downloaded without issue.   
   
 Solder up the +v, gnd and two I2C pads on each sub and the pins on the GPS and SD card boards.  
