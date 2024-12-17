@@ -89,6 +89,17 @@ Let thebaldgeek know (contact on the home page here), he'd love to hear about it
 [wiglefin body](https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/wardrive/wigleFinV3_body.stl)   
 [wiglefin lid](https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/wardrive/wigleFinV3_lid.stl)   
 [wiglefin lid pin](https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/wardrive/wigleFinV3_pin.stl)   
+   
+The print has been designed to take the 150lb pull magnets from Amazon, these here: [Magnet set](https://www.amazon.com/dp/B0CC5HC4NG)  
+Depending on your printer, you may or may not need to glue them in.  
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/wardrive/wiglefinmagetfit.png" height="320">   
+Im my case, this red print they are pretty much a perfect fit.   
+TIP: try and get them as close to the bottom as possible. You want the max pull force onto the surface and the closer you get them the stronger the pull.   
+In other words, don't get any glue between the bottom of the print and the roof of the car. Just the non-slip grip.   
+      
+<img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/wardrive/bottomofwiglefin.png" height="320">  
+The kitchen draw liner really helps keep the fin from moving around and also stops the magnets from hitting the roof of the car.   
+Just be sure to check the bottom of the fin each time before you place it, you might have picked up some small metal hitchhikers and they might scratch the roof. 
 
 (As an aside, tbg thinks the 2019 Chevrolet Bolt is the best wardiving car — it’s quiet, cheap, has a good enough turning circle, and most of all, a one pedal driving mode that can't be beat).  
    
@@ -106,7 +117,8 @@ You will get a helpful overlap of each phone scanning different channels at diff
   
 ## wifhydra - scan ALL the 2.4Ghz channels ALL the time. #allTheWifi
 
-https://github.com/lozaning/The_Wifydra
+[allTheWifi with Wifydra](https://github.com/lozaning/The_Wifydra)   
+Dec 2024. NOTE! DO NOT USE the dom.ini that is in the repo (main.zip). It has errors and will NOT work. ONLY use the dom.ini that is in thebaldgeek issue comments at the bottom of [this](https://github.com/lozaning/The_Wifydra/issues/7) thread.   
    
 Build cost is about $120 to $210 USD depending on options.. (Note that the Wifydra in a box with whip antennas is going to cost around the same cost as a refurb Samsung S20 here in the USA).
 BOM:
@@ -129,7 +141,7 @@ Extra tbg Options;
 
 Before you start the parts collection / build process, you should take a read of the following github issue.   
 The wifydra software took a bit of tweaking to make work with wigle.net and you should be aware of the need to manually 'fix' the CSV file before you upload it each and every time.   
-(https://github.com/lozaning/The_Wifydra/issues/)  
+[Correct and working dom.ini in the bottom comment](https://github.com/lozaning/The_Wifydra/issues/7)  
 
 Program the sub.ino into each ESP, make sure you edit the .ino (its a text file) and change the board number - look for the obvious comment a few lines into the file. They MUST be numbered 1 through 14, don’t use any other number system, the numbers are tied to the code in the dom.ino file in the feather board.  
 tbg labeled the boards so if he had an issue, he’d know which one it was, not required, but not a bad idea.  
@@ -142,16 +154,23 @@ Only thing of note is that we had three of the 14 subs throw this message:
  — Failed uploading: uploading error: exit status 2  
 Thankfully both worked on retry.  
 1 Sub ESP32 totally failed. Tip, buy 1-2 extra and save having to reorder and extra shipping.  
+  
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/wardrive/blankpcb.jpg" height="240">   
-Blank PCB, you can see the 14 receivers on the desk. The antennas are mounted on the case.
+Blank PCB on the right, you can see the 14 receivers on the desk in the middle. The Wifi antennas and GPS active puck antenna is mounted on the empty case.    
+  
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/wardrive/wifydragacks.jpg" height="240">   
 Three wire jumpers are needed to route power to a few places that were missed on the OP board.   
+Make sure you install these or the board will not fully power up.      
+   
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/wardrive/handforscale.jpg" height="240">   
 Wifydra in the hand.   
+   
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/wardrive/wifydrathermal.JPG" height="240">   
 Just a bit of a 'for interest' photo. No hot spots. The board draws just over 1.3 Amps at 5vDC, its about 7 Watts, nothing hot, just everything slightly warm.    
+   
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/wardrive/wifydrariding.jpg" height="240">   
-The 4 magenets on the bottom of the box means that tbg can move the wifydra around from AT longboard to car and other places under 82Mph windspeed.   
+The 4 magnets on the bottom of the box means that tbg can move the wifydra around from AT electric longboard to car and other places under 82Mph windspeed.   
+   
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/wardrive/wifydraandwiglefin.jpg" height="240">   
 
 Program the correct dom.ino into the feather board. As of Dec 3rd 3 2024, the correct dom is at the bottom of the github issue linked above. DO NOT use the dom in the main zip file!   
@@ -168,9 +187,10 @@ The board worked when powered via the USB-C connector on the Dom Feather module.
   
 When there is no lock, the GPS will flash its fix LED every second. When the GPS has a fix, it will flash every 15 seconds.  
   
-There is no ‘safely remove’ the SD card requirement, the code writes each new SSID to the CSV log file and closes the file, so the card can be ejected at any time that its activity LED is not on.  
+There is no ‘safely remove’ the SD card requirement, the code writes each new SSID to the CSV log file as it comes in and then closes the file, so the card can be ejected at any time that its activity LED is not on.  
 Log into wigle and upload all the CSV files created during the run. Best to wipe them out of the SD card once uploaded so you can keep track of what you have sent after each wardrive.  
   
+After each wardrive, power off the wifydra pop the SD card, open it in a text editor, delete the top SSDIs that have a lat lon of 0.0 / 0.0, optionally also remove the top few SSIDs that have an error (last number before the WIFI at the end of each line) greater than 100.0. Save the file and then upload it to wigle.net.   
    
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
