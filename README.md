@@ -7,6 +7,7 @@ Navigation: [Inmarsat](Inmarsat.md) : [L-Band](L-Band.md) : [C-Band](C-Band.md) 
 You can search and live view a lot of satcom ACARS feeds (and some HFDL / VHF VDL ones as well) on the site:-    
     
 [tbg.airframes.io](https://tbg.airframes.io/)   
+The closest thing there is to a 'users guide' for the site is [here](https://community.airframes.io/t/website-overview-tbg-airframes-io/159)   
        
 Please note that the website is a dumpster fire. (ie, full of bugs and glitches).   
     
@@ -15,7 +16,7 @@ Please note that the website is a dumpster fire. (ie, full of bugs and glitches)
 Honestly, thats part of its quirky appeal. Jokes aside, tbg is not a programmer, he is the wrong guy to be doing this, but here we are...   
 If you want a more solid ACARS website, check out [airframes.io](https://airframes.io), they are the real deal over there.   
 The way we think of the two websites is that tbg.airframes is the scrappy ally cat that makes all the mistakes, ACARS on the bleeding edge. Airframes.io is the powerful puma, ACARS done right.   
-The sites are not related beyond they both are ACARS centric. thebaldgeek is gratefully hosted by airframes, thats about it for any connection between the two sites.      
+The sites are not really 'connected' beyond they both are ACARS centric and run by good mates. thebaldgeek is gratefully hosted by airframes. It is CRITICAL that if you setup an ACARS station that you feed airframes.io first and foremost.         
     
 Map with ADSC and ACARS plotted together:    
 [tbgmap.airframes.io](https://tbgmap.airframes.io/)   
