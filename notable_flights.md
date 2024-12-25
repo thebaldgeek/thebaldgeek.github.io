@@ -118,11 +118,11 @@ METAR FIMP 250300Z 08010KT 9999 FEW018 27/21 Q1016
 There are of course voice comm’s going on. A topic for another time.  
 Here we see plans change and we now have dispatch send weather for Melbourne, Adelaide and Perth  
   
- "icao": "7C4926",  
- "sat": "L-143E",  
- "type": "A388",  
- "rego": "VH-OQG",  
- "time": "2024-12-25T03:43:56.319Z",  
+"icao": "7C4926",  
+"sat": "L-143E",  
+"type": "A388",  
+"rego": "VH-OQG",  
+"time": "2024-12-25T03:43:56.319Z",  
 [tbgmap.airframes.io](https://tbgmap.airframes.io/?icao=7C4926&showTrace=2024-12-25&timestamp=1735098236)  
 VH-OQG  
 HDQONQF ~6 03:43   
@@ -132,7 +132,7 @@ RWY: WND: 030-160/8. MAX TW 5 KTS WX: CAVOK TMP: 32 QNH: 1012
 -----END OF MESSAGE-----  
 ATIS YPAD C   250323  
 RWY: 23   WND: 260-320/10. MAX TW 3. MAX XW 15. WX: CAVOK\n\t   TMP: 33  
-+ QNH: 1008  
+QNH: 1008  
 -----END OF MESSAGE-----  
 ATIS YPPH X   250310  
 APCH: EXP ILS APCH  RWY: 21 AND 24 FOR ARR. RWY 21 FOR DEP.   WND: 200/15 MAX XW 12 KTS, RWY 24  WX: CAVOK  TMP: 24+ QNH: 1015  
@@ -214,7 +214,7 @@ TO ENGINEERING
 MAINT QF63 ANTICIPATED LW IS 421000KG. APPROX 30T ABOVE MLW   
   
   
-   
+-------------------------- EOL --------------------------------
   
 Check back now and then for updates to this page.     
 tbg has one other really cool one he needs to post.     
