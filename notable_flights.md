@@ -39,7 +39,8 @@ TRL FL090 WIND 030/9KTS VIS ABV 10KM SCT 600FT BKN 1400FT T16 DP15 QNH 1026HPA T
 CONFIRM ATIS  
   
 Here is the first sign of the situation unfolding.  
-The aircraft via C-Band (from cockpit to ground) request weather reports for New Zealand.  
+The aircraft via C-Band (from cockpit to ground) request weather reports for - of all places - the airstrip in Antarctica!   
+tbg can not explain this one at all!  
   
 "sat": "C-143E",  
 "type": "A388",  
