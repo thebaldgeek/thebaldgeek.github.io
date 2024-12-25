@@ -6,7 +6,7 @@ Navigation: [home](README.md)
 ADSB/C is the where   
 ACARS is the why
 
-When you combine the two systems, you end up with a much more accuate telling of the flight.  
+When you combine the two systems, you end up with a much more accurate telling of the flight.  
 On this page thebaldgeek breaks down one (soon two) such flight to show how ACARS explains why ADSB/C folks saw the return, but claimed they did not know why (FlightRadar24, FlightAware (and others) social media teams have done this more than a handful of times - if they can miss ACARS, others might as well).   
 
 ### QF63 RTB (return to base) flight due to maintance issue. (tbg suspects engine issue)   
@@ -15,7 +15,7 @@ Dec 25th 2024.
 thebaldgeek comments in lowercase, ACARS in upper.
    
 Note that a lot of system pings and ACARS that TBG does not fully understand are skipped over.    
-There are around 300 ACARS from this part of the flight, so we are just looking at a human high level overview to give a feel for how ACARS can in real time fill out the details of the flight.     
+There are around 300 ACARS from this part of the flight, so we are just looking at a human high level overview to give a feel for how ACARS can, in real time, fill out the details of the flight.     
 
 We pick up the flight as they passed the last VHF ACARS receiver over Tasmania and the aircraft switched to satcom.
   
