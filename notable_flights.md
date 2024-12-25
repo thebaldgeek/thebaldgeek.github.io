@@ -33,7 +33,7 @@ At this timestamp, everything is on track and they get sent arrival overview inf
 "type": "A388",  
 "rego": "VH-OQG",  
 "time": "2024-12-25T00:52:28.366Z",  
-(https://tbgmap.airframes.io/?icao=7C4926&showTrace=2024-12-25&timestamp=1735087948)  
+[tbgmap.airframes.io](https://tbgmap.airframes.io/?icao=7C4926&showTrace=2024-12-25&timestamp=1735087948)  
 VH-OQG JNBATYA.TI2/FAOR ATIS P 0001Z. EXP ZONE IMC ARR RWY03L DEP RWY03L CLEARANCE DELIVERY ON 121. 9  
 TRL FL090 WIND 030/9KTS VIS ABV 10KM SCT 600FT BKN 1400FT T16 DP15 QNH 1026HPA TEMPO VIS3000M BCFG  
 CONFIRM ATIS  
@@ -45,7 +45,7 @@ The aircraft via C-Band (from cockpit to ground) request weather reports for New
 "type": "A388",  
 "rego": "VH-OQG",  
 "time": "2024-12-25T01:15:36.068Z",  
-(https://tbgmap.airframes.io/?icao=7C4926&showTrace=2024-12-25&timestamp=1735089336)  
+[tbgmap.airframes.io](https://tbgmap.airframes.io/?icao=7C4926&showTrace=2024-12-25&timestamp=1735089336)  
 VH-OQG FLIGHT QF63  
 U22AQF0063  
 WX REQUEST  
@@ -61,7 +61,7 @@ Dispatch sends back some data (again, via L-Band. Last time tbg is going to poin
 "type": "A388",  
 "rego": "VH-OQG",  
 "time": "2024-12-25T01:15:41.335Z",  
-(https://tbgmap.airframes.io/?icao=7C4926&showTrace=2024-12-25&timestamp=1735089341)  
+[tbgmap.airframes.io](https://tbgmap.airframes.io/?icao=7C4926&showTrace=2024-12-25&timestamp=1735089341)  
 VH-OQG .HDQONQF ~6 01:15 ACTUAL  
 METAR TTF FAOR 250100Z 03009KT 9999 BKN005 OVC013 16/15 Q1026 NOSIG=  
 AIRPORT DATA MISSING: NZWD  
@@ -75,7 +75,7 @@ Point being, not all L and C band messages are from humans.
 "type": "A388",  
 "rego": "VH-OQG",  
 "time": "2024-12-25T01:39:27.113Z",  
-(https://tbgmap.airframes.io/?icao=7C4926&showTrace=2024-12-25&timestamp=1735090767)  
+[tbgmap.airframes.io](https://tbgmap.airframes.io/?icao=7C4926&showTrace=2024-12-25&timestamp=1735090767)  
 VH-OQG FLIGHT QF63  
 J43AQF0063/MELCAYA.ADS.VH-OQG  
 BASIC_REPORT:  
@@ -92,7 +92,7 @@ Why so far? They need a good sized airport to land an A388, they need to house a
 "type": "A388",  
 "rego": "VH-OQG",  
 "time": "2024-12-25T03:14:36.892Z",  
-(https://tbgmap.airframes.io/?icao=7C4926&showTrace=2024-12-25&timestamp=1735096477)  
+[tbgmap.airframes.io](https://tbgmap.airframes.io/?icao=7C4926&showTrace=2024-12-25&timestamp=1735096477)  
 VH-OQG FLIGHT QF63  
 U36AQF0063  
 WX REQUEST  
@@ -106,7 +106,7 @@ Dispatch operators are the unsung heroes of the skies… 10 seconds later they s
 "type": "A388",  
 "rego": "VH-OQG",  
 "time": "2024-12-25T03:14:46.534Z",  
-(https://tbgmap.airframes.io/?icao=7C4926&showTrace=2024-12-25&timestamp=1735096487)  
+[tbgmap.airframes.io](https://tbgmap.airframes.io/?icao=7C4926&showTrace=2024-12-25&timestamp=1735096487)  
 VH-OQG.HDQONQF ~6  
 03:14 ACTUAL METAR TTF FAOR 250300Z 07010KT 9000 OVC006 16/14 Q1026 NOSIG=  
 METAR YPPH 250300Z 20016KT CAVOK 24/06 Q1016  
@@ -123,7 +123,7 @@ Here we see plans change and we now have dispatch send weather for Melbourne, Ad
  "type": "A388",  
  "rego": "VH-OQG",  
  "time": "2024-12-25T03:43:56.319Z",  
-(https://tbgmap.airframes.io/?icao=7C4926&showTrace=2024-12-25&timestamp=1735098236)  
+[tbgmap.airframes.io](https://tbgmap.airframes.io/?icao=7C4926&showTrace=2024-12-25&timestamp=1735098236)  
 VH-OQG  
 HDQONQF ~6 03:43   
 ATIS YMML P   250329  
@@ -145,7 +145,7 @@ Sometimes this sort of check in happens when dispatch operators switch over due 
 "type": "A388",  
 "rego": "VH-OQG",  
 "time": "2024-12-25T04:37:58.713Z",  
-(https://tbgmap.airframes.io/?icao=7C4926&showTrace=2024-12-25&timestamp=1735101479)  
+[tbgmap.airframes.io](https://tbgmap.airframes.io/?icao=7C4926&showTrace=2024-12-25&timestamp=1735101479)  
 VH-OQG \tQFFLTDISP~1   
 GDAY 63  
 DO U REQUIRE ANYTHING FROM  
@@ -162,7 +162,7 @@ tbg tip ‘freetext’ is an interesting ACARS search term.
 "type": "A388",  
 "rego": "VH-OQG",  
 "time": "2024-12-25T04:40:17.751Z",  
-(https://tbgmap.airframes.io/?icao=7C4926&showTrace=2024-12-25&timestamp=1735101618)  
+[tbgmap.airframes.io](https://tbgmap.airframes.io/?icao=7C4926&showTrace=2024-12-25&timestamp=1735101618)  
 VH-OQG MELCAYA.AT1.VH-OQG  
 FANS-1/A CPDLC MESSAGE:  
 CPDLC UPLINK MESSAGE:  
@@ -176,7 +176,7 @@ Dispatch letting the crew know the game plan so they can keep the passengers in 
 "type": "A388",  
 "rego": "VH-OQG",  
 "time": "2024-12-25T06:14:52.760Z",  
-(https://tbgmap.airframes.io/?icao=7C4926&showTrace=2024-12-25&timestamp=1735107293)   
+[tbgmap.airframes.io](https://tbgmap.airframes.io/?icao=7C4926&showTrace=2024-12-25&timestamp=1735107293)   
 VH-OQG \tQFOPSCNTL~1  
 QF63 THE CURRENT PLAN IS FOR AN 0700LT  
 DEPARTURE TOMORROW ON A DIFFERENT  
@@ -191,7 +191,7 @@ OPS CTL"
 "type": "A388",  
 "rego": "VH-OQG",  
 "time": "2024-12-25T06:27:21.766Z",  
-(https://tbgmap.airframes.io/?icao=7C4926&showTrace=2024-12-25&timestamp=1735108042)  
+[tbgmap.airframes.io](https://tbgmap.airframes.io/?icao=7C4926&showTrace=2024-12-25&timestamp=1735108042)  
 VH-OQG \tQUSYDKOQF~  
 HI PARK BAY: 10  
 BAGGAGE CAROUSEL: 15  
@@ -207,7 +207,7 @@ From the flight crew to maintenance that they are going to land a little on the 
 "type": "A388",  
 "rego": "VH-OQG",  
 "time": "2024-12-25T07:25:40.601Z",  
-(https://tbgmap.airframes.io/?icao=7C4926&showTrace=2024-12-25&timestamp=1735111541)  
+[tbgmap.airframes.io](https://tbgmap.airframes.io/?icao=7C4926&showTrace=2024-12-25&timestamp=1735111541)  
 VH-OQG FLIGHT QF63  
 U24AQF0063  
 TO ENGINEERING  
