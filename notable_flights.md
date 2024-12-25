@@ -14,7 +14,9 @@ Dec 25th 2024.
 
 thebaldgeek comments in lowercase, ACARS in upper.
    
-    
+Note that a lot of system pings and ACARS that TBG does not fully understand are skipped over.    
+There are around 300 ACARS from this part of the flight, so we are just looking at a human high level overview to give a feel for how ACARS can in real time fill out the details of the flight.     
+
 We pick up the flight as they passed the last VHF ACARS receiver over Tasmania and the aircraft switched to satcom.
   
 "time": "2024-12-25T00:35:50.033Z",  
