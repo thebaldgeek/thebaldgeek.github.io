@@ -158,20 +158,6 @@ REGARDS ANDY
 FLT DISPATCH  
   
   
-Dispatch letting them know they are going to get some initial landing vectors as they log into the VHF ACARS system over Tasmaina.  
-tbg tip ‘freetext’ is an interesting ACARS search term.  
-  
-"sat": "L-143E",  
-"type": "A388",  
-"rego": "VH-OQG",  
-"time": "2024-12-25T04:40:17.751Z",  
-[tbgmap.airframes.io](https://tbgmap.airframes.io/?icao=7C4926&showTrace=2024-12-25&timestamp=1735101618)  
-VH-OQG MELCAYA.AT1.VH-OQG  
-FANS-1/A CPDLC MESSAGE:  
-CPDLC UPLINK MESSAGE:  
-HEADER:   MSG ID: 13 TIMESTAMP: 04:40:11  MESSAGE DATA:  
-[FREETEXT]    EXPECT AMENDED ROUTE CLEARANCE ON VHF APPROACHING TASUM  
-  
 Dispatch letting the crew know the game plan so they can keep the passengers in the loop.  
   
 "icao": "7C4926",  
