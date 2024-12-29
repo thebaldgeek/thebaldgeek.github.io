@@ -22,7 +22,7 @@ The sites are not really 'connected' beyond they both are ACARS centric and run 
 thebaldgeek is gratefully hosted by airframes. It is CRITICAL that if you setup an ACARS station that you feed airframes.io first and foremost.         
     
 
-    
+
 Map with ADSC and ACARS plotted together:    
 [tbgmap.airframes.io](https://tbgmap.airframes.io/)   
 Tips for using the map - and you REALLY REALLY should read them - can be found here:   
@@ -45,7 +45,7 @@ Its not perfect, its not up to date, its not finished, its not polished, it neve
 ###  READ THIS!
 
 tbg motto is 'fail fast, fail often'. thebaldgeek is NOT a programer. Do NOT use the site. Do not read these GitHub pages.  
-The best way to put this is: `I don't know what I'm doing, but I know that I don't know what I'm doing.`  
+The best way to put this is: `I don't know what I'm doing, and I know that I don't know what I'm doing.`  
 
 
 ### Support    
