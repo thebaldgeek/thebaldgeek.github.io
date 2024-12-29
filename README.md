@@ -15,8 +15,13 @@ Please note that the website is a dumpster fire. (ie, full of bugs and glitches)
    
 Honestly, thats part of its quirky appeal. Jokes aside, tbg is not a programmer, he is the wrong guy to be doing this, but here we are...   
 If you want a more solid ACARS website, check out [airframes.io](https://airframes.io), they are the real deal over there.   
-The way we think of the two websites is that tbg.airframes is the scrappy ally cat that makes all the mistakes, ACARS on the bleeding edge. Airframes.io is the powerful puma, ACARS done right.   
-The sites are not really 'connected' beyond they both are ACARS centric and run by good mates. thebaldgeek is gratefully hosted by airframes. It is CRITICAL that if you setup an ACARS station that you feed airframes.io first and foremost.         
+If you are looking for ACARS hardware, hit up their [shop](https://shop.airframes.io/)    
+The way we think of the two websites is that tbg.airframes is the scrappy ally cat that makes all the mistakes, ACARS on the bleeding edge.    
+Airframes.io is the powerful puma, ACARS done right.   
+The sites are not really 'connected' beyond they both are ACARS centric and run by good mates.    
+thebaldgeek is gratefully hosted by airframes. It is CRITICAL that if you setup an ACARS station that you feed airframes.io first and foremost.         
+    
+
     
 Map with ADSC and ACARS plotted together:    
 [tbgmap.airframes.io](https://tbgmap.airframes.io/)   
@@ -25,7 +30,7 @@ Tips for using the map - and you REALLY REALLY should read them - can be found h
     
   
 # What even is ACARS??    
-Get a solid intro by [reading this overview of ACARS](https://www.pentestpartners.com/security-blog/introduction-to-acars/). Its one of the best introductions of ACARS from signal to data I have ever come across.    
+Get a solid intro by [reading this overview of ACARS](https://www.pentestpartners.com/security-blog/introduction-to-acars/). Its one of the best introductions of ACARS from signal to data thebaldgeek has ever come across.    
    
 There are many osint folks and avgeeks that combine the usual ADSB/C data (aircraft pixels on a map) _with_ ACARS to really amplify both sources of data. The sum really is MUCH greater than the parts.   
    
@@ -40,12 +45,12 @@ Its not perfect, its not up to date, its not finished, its not polished, it neve
 ###  READ THIS!
 
 tbg motto is 'fail fast, fail often'. thebaldgeek is NOT a programer. Do NOT use the site. Do not read these GitHub pages.  
-The best way to put this is: `I don't know what I'm doing, but I for sure know that I don't know what I'm doing.`  
+The best way to put this is: `I don't know what I'm doing, but I know that I don't know what I'm doing.`  
 
 
 ### Support    
 
-I am happy to help those that try and help themselves.     
+thebaldgeek is happy to help those that try and help themselves, conversly, low quality questons get cut/paste answers from these pages.        
    
 If you have some ideas about improving ACARS readability or decoding of ACARS for the site, here is my starting point - "A problem well stated is a problem half-solved. Charles Kettering - Inventer".   
 In other words, the better you can describe your suggestion, the better chance you have of seeing it show up on the site.    
@@ -53,20 +58,19 @@ tbg did not come up with any of the pages on the website, each of them are ideas
 Its YOUR website, not thebaldgeeks!          
 
 ### Contact  
-thebaldgeek is most active on [X / Twitter](https://twitter.com/thebaldgeek). DM's are open.   
+thebaldgeek is most active on [X / Twitter](https://twitter.com/thebaldgeek). DM's are open. Sorry, not sorry, its a fact, X is still the best avgeek platform hands down. Use lists for people you follow and its an amazing site for keeping updated with YOUR feed and nothing else.       
 If your not on X, you can try the [website chat](https://tbg.airframes.io/dashboard/chat) to connect with tbg and chat about ACARS.  
-Not as active, but tbg is also on <a rel="me" href="https://ioc.exchange/@thebaldgeek">Mastodon</a>   
-Even less active, but also on [BlueSky](https://staging.bsky.app/profile/thebaldgeek.bsky.social)     
-     
+Slightly less active, but also on [BlueSky](https://staging.bsky.app/profile/thebaldgeek.bsky.social)     
+Not as active, but tbg is also on <a rel="me" href="https://ioc.exchange/@thebaldgeek">Mastodon</a>     
    
 ### Other resources   
 
-Do note that tbg does not Tweet actual OSINT information... My site/tweets/role is to provide raw OSINT data. Ive found that most people that do osint often don't know where or how the raw data they use comes from, my goal is to help people understand how RF (radio frequency) signals can be converted into useful data for people to analyze and thus deepen the intel derived.   
+Do note that tbg does not Tweet actual OSINT information... His site/tweets/role is to provide raw OSINT data. Hes found that most people that do osint often don't know where or how the raw data they use comes from, his goal is to help people understand how RF (radio frequency) signals can be converted into useful data for people to analyze and thus deepen the intel derived.   
     
-If you have 15 minutes to look at some old real world examples of ACARS data, take look back through the [Reddit ACARS](https://www.reddit.com/r/ACARS/) sub.   
+Reddit is a tricky platform, but do take look through the [Reddit ACARS](https://www.reddit.com/r/ACARS/) sub.   
 
 If you want more of a traditional forums, then airframesio has that as well, join the [airframes community](https://community.airframes.io/)   
-The whole ACARS team is very active on the [airframes discord](https://discord.com/invite/airframes)  
+The ACARS team that matters is very active on the [airframes discord](https://discord.com/invite/airframes)  
     
 For even more searchable ACARS data (over 3 Billion ACARS messages stretching back a few years) and information on how to feed the different ACARS modes, please support [airframes.io](https://app.airframes.io/about)   
 You can also follow them on Twitter [AirframesIO](https://twitter.com/AirframesIO)   
