@@ -260,7 +260,7 @@ Lets zoom in a bit…
   
   
   
-Right. There is no way they intended to land there!  
+Right. There is no way they intended to land there!   
 Now I am really intrigued and started to put the word out to a few mates. I did not tweet it as I knew it would be complicated, but still let a few avgeeks know on Discord/Messenger/Email etc.  
 ```  
 Pilot: GES:50 2 .N24974 ! 5Z 7 Flight UA2781 M96AUA2781/C4 DISP MSG / PGUM PMDY 16 142733 SEND FORM VIA  
@@ -269,8 +269,10 @@ Pilot: GES:50 2 .N24974 ! 5Z 7 Flight UA2781 M96AUA2781/C4 DISP MSG / PGUM PMDY 
 Sounds like the crew is getting sorted, using the aircraft satcom ACARS system to talk back and forth to / from dispatch!! Pretty crazy cool.  
 ```  
 Dispatch: AES:A254D8 GES:50 2 .N24974 ! RA M QUWHQVDUA?1MSG FROM DISP UA2781-16 PGUM PMDY YOUR CLEARANCE  
-WAS CANCELLED WITH OAKLAND, AND WE ARE STILL TRYING TO CONTACT ANYONE ON THE ISLAND, ALTHOUGH I SUSPECT THAT SOMEONE WOKE UP WHEN A 787 LANDED. PLEASE LET ME KNOW IF/WHEN YOU GET IN CONTACT WITH ANYONE ON THE GROUND  
+WAS CANCELLED WITH OAKLAND, AND WE ARE STILL TRYING TO CONTACT ANYONE ON THE ISLAND, ALTHOUGH I SUSPECT THAT   
+SOMEONE WOKE UP WHEN A 787 LANDED. PLEASE LET ME KNOW IF/WHEN YOU GET IN CONTACT WITH ANYONE ON THE GROUND  
 ```  
+
 Not sure how long ADSBx holds the history, but this what we were looking at:  
 [adsbex](https://globe.adsbexchange.com/?icao=a254d8&lat=26.824&lon=177.129&zoom=6.0&showTrace=2021-04-16)  
   
@@ -584,10 +586,12 @@ About this time, the aircaft sent its first position report via ADSC.
 Pilot: WE CANT TAKEOFF TILL 0800Z… CAN YOU EXTEND VOID… PLEASE THANX  
 ```  
 Becasue of birds. They need to take off late so they are all asleep.  
+
 ```  
 Dispatch: [freetext] APPROVED AS REQUESTED. REVISED DEPARTURE TIME OF 0800Z VOID TIME 0815 [freetext] REST OF CLEARANCE REMAINS THE SAME  
 ```  
 When they depart from these islands with no ATC they have to get clearance from Oakland center which issues the clearance with void times meaning they have to be off in this case by 0815, if not they must get another clearance.   
+
 ```   
 Dispatch: AES:A254D8 GES:50 2 .N24974 ! C1 M .DPCULUA 180734 AGM AN .N24974 – UA2781 MDY  
 ==================MAINTENANCE RELEASE DOCUMENT================   
@@ -606,7 +610,7 @@ RLS STA-SEQ-TIME 0974/N24974 2781-16APR21-1 18APR21 MDY 01-0636Z A. THE FOLLOWIN
 ```  
 We got another C-band (satellite dish) ADSC position update from the aircraft.  
 They are on the end of the runway.  
-  
+
 
 ```  
 Aircraft: GES:50 2 .N24974 ! BA 1 Flight UA2781 L84AUA2781/OAKODYA.AT1.N24974A1A05E4C3D803B9C181  
