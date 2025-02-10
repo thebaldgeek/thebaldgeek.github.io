@@ -61,7 +61,7 @@ Its YOUR website, not thebaldgeeks!
 thebaldgeek is most active on [X / Twitter](https://twitter.com/thebaldgeek). DM's are open. Sorry, not sorry, its a fact, X is still the best avgeek platform hands down. Use lists for people you follow and its an amazing site for keeping updated with YOUR feed and nothing else. The interaction and aviation friendships there are second to none.          
 If your not on X, you can try the [website chat](https://tbg.airframes.io/dashboard/chat) to connect with tbg and chat about ACARS.  
 tbg also cross posts (Dec 2024) on [BlueSky](https://staging.bsky.app/profile/thebaldgeek.bsky.social). Lots of followers over there, but zero interaction - hence the cross posts for now.        
-tbg also cross posts (Dec 2024) on <a rel="me" href="https://ioc.exchange/@thebaldgeek">Mastodon</a>. Less followers, but at least a tiny bit of discussion now and then.  
+  
    
    
 ### Other resources   
