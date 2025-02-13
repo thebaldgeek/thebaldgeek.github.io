@@ -23,12 +23,16 @@ thebaldgeek is gratefully hosted by airframes. It is CRITICAL that if you setup 
     
 
 
-Map with ADSC and ACARS plotted together:    
+Map with ADSC and ACARS aircraft:    
 [tbgmap.airframes.io](https://tbgmap.airframes.io/)   
 Tips for using the map - and you REALLY REALLY should read them - can be found here:   
 [tbg map notes](https://tbg.airframes.io/dashboard/map)
     
-  
+Map with military aircraft and their ACARS messages:   
+[tbgacarshub.airframes.io](https://tbgacarshub.airframes.io/adsb)   
+Note: The position plots and ACARS messages are synchronized over time in your web browser, so this map won't work as intended on mobile devices.   
+      
+
 # What even is ACARS??    
 Get a solid intro by [reading this overview of ACARS](https://www.pentestpartners.com/security-blog/introduction-to-acars/). Its one of the best introductions of ACARS from signal to data thebaldgeek has ever come across.    
    

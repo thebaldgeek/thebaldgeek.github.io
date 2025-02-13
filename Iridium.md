@@ -99,6 +99,9 @@ This guide assumes that you would like to share your Iridium data with the world
  
 Here is the big picture, we are going to make a python file (acars.py) that will take the output from the Iridium decoder and send it via UDP to thebaldgeek ingest server. (Note, this WONT work for airframes.io - more on how to feed them at a future time).
 You will have one terminal to extract the raw data and another terminal to decode the ACARS messages and to send the data to my site. (Optionally, there is a third terminal for your local map if you would like to see your coverage).   
+   
+ # Docker   
+ If docker is your poison, you have an option [Iridium Docker by jkrasuk](https://github.com/jkrasuk/docker-gr-iridium-toolkit)   
 
 # Lots of terminals   
 ## Terminal One   
