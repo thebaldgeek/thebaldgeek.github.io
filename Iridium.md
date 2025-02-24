@@ -3,13 +3,13 @@
 Navigation: [home](README.md)  
 
 There is a solid amount of ACARS messages being sent via the Iridium satellite constellation.   
-To set expectations right up front, there are no position reports, so no chance of plotting pixels on a map, also the way Iridium works, routing messages between satellites in LEO to the nearest satellite that can 'see' a ground station (gateways are located in Tempe, Arizona (USA) Fairbanks, Alaska (USA) Svalbard, Norway (Europe) Punta Arenas, Chile (South America)), you often only get a fragment of the ACARS message. And voice? Very delayed, very time consuming, very CPU intensive for just a few seconds of a random unknown call audio (ie, more than just aircraft voice calls are carried by Iridium, so you cant _just_ decode aircraft calls), so we are not even going to discuss it.   
+To set expectations right up front, there are no position reports, so no chance of plotting aircraft pixels on a map, also the way Iridium works, routing messages between satellites in LEO to the nearest satellite that can 'see' a ground station (gateways are located in Tempe, Arizona (USA) Fairbanks, Alaska (USA) Svalbard, Norway (Europe) Punta Arenas, Chile (South America)), you often only get a fragment of the ACARS message. And voice? Very delayed, very time consuming, very CPU intensive for just a few seconds of a random unknown call audio (ie, more than just aircraft voice calls are carried by Iridium, so you cant _just_ decode aircraft calls), so we are not even going to discuss it.   
  Currently there are a solid number of avgeek ground stations scattered around mainland USA and a few around Europe / UK which when combined are seeing around 24,000 Iridium ACARS messages a day.  
     <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/iridium/usaEuro2_fast.gif" height="288">    
 In Jan 2022 we started looking at it seriously, so all this is very new and thus a bit rough around the edges, but here are some tips to get you started. If you want to get technical, [this doc](https://www.icao.int/safety/acp/inactive%20working%20groups%20library/acp-wg-m-iridium-3/ird-swg03-wp05-draft%20iridium%20ams(r)s%20tech%20manual%20-%20021506.pdf) is a good read.   
 
 Sep 2022 Iridium has picked up a LOT of interest in the past few months with some very interesting posts on the ACARS groups.io email list.
-Seems that a good amount of military aircraft (All USAF KC-135) are going to be moving from Inmarsat L-Band to Iridium. There also have been some really solid appreciation for Iridium ACARS messages given via Twitter from the website power users. It's clear that this bleeding edge mode has a great deal of untapped potential.   
+Seems that a good amount of military aircraft (All USAF KC-135 for example) are going to be moving from Inmarsat L-Band to Iridium. There also have been some really solid appreciation for Iridium ACARS messages given via Twitter from the website power users. It's clear that this bleeding edge mode has a great deal of untapped potential.   
 Insert usual call for more feeders here...      
     
 Check out the Iridium page on [tbg.airframes.io] to see the sort of data you will be getting. Iridium is the second most expensive ACARS mode (after C-Band), so be sure it has some data you really care about. If you live in an area already covered (check the [about page](https://tbg.airframes.io/dashboard/about) for example global ACARS Iridium stations), you might want to think twice about the expense. Your data will help, but don't go hungry or cold to provide what we already have on the sites.     
@@ -20,9 +20,9 @@ For a quick soup-to-nuts Iridium ACARS primer, thebaldgeek did a Tweet thread th
 ### Antenna   
 I started out using the RTLSDR v2 patch antenna since its only meh at Inmarsat and so I had an unused one kicking around. While not the best antenna for Iridium (its directional and has a mystery SAW filter in the LNA), its really not too bad given it's price and availability, if its all you can get, then give it a go by mounting it outside, looking straight up ie, flat, or angled in any direction that does not have obstructions (trees etc).  
 Some people have hand built themselves a RHCP L-Band patch antenna, since it has less forward gain, the home made ones are an option if you are so inclined. Be sure and couple it with a solid L-Band LNA - ie, a filtered one, not a wide band LNA.      
-I jumped on eBay and picked up a combined GPS and iridium dome antenna and will report back on how it goes once we get some air time with it - July 2024, its not great.      
+I jumped on eBay and picked up a combined GPS and iridium dome antenna and will report back on how it goes once we get some air time with it - Update: July 2024, its not great.      
 Do note that there are very few _active_ (built in LNA) Iridium antennas since transmitting up to the satellites is very common. That said, I have found one that I really like: [HC610](https://www.google.com/search?q=HC610&sourceid=chrome&ie=UTF-8). (There is also a passive version of this antenna, so that might be an easier to find and buy than this active one). Note that the HC610 has some nice out of band filters to help cut down on the very busy L-Band crud we are not wanting to hear.      
-In short, thus far, out of the 4-6 antennas we have tested, the HC-610 is by far and away THE best Iridium antenna by a good margin.     
+In short, thus far, out of the 6-10 antennas tbg has tested, the HC-610 is by far and away THE best Iridium antenna by a good margin.     
 
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/iridium/bottomview.png" height="287">   
 This is the view of the bottom of the antenna. Note the male connector.    
@@ -31,13 +31,13 @@ This helix is very small, should be able to mount it outside in the clear view o
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/iridium/mounted.png" height="340">   
 Mounted next to my GPS (galmon) antenna. Note that the L-Band patch is looking at the 54w Inmarsat, not Iridium.    
 If you are using an active antenna or LNA be sure and enable the Bias-T on your SDR via its config file, or use a physical Bias-T power injector (which is what I do because I am testing a lot of different SDRs and they all are a pain to turn the bias-T on in the config file - some don't even support Bias-T - some (RSP1a) only supply 10's of milliamps via the Bias-T and depending on your LNA you might have issues supplying enough power.).   
-Bottom line, you want an L-band RHCP omni directorial antenna with a clear view of the sky, good LNA and good quality coax for Iridium.   
+Bottom line, you want an L-band RHCP omni directorial (360 deg)  antenna with a clear view of the sky, good LNA and good quality coax for Iridium.   
 
 ### LNA   
 There are a few wide band amplifiers that cover 1.6Ghz, most are pretty noisy since they run wide open (unfiltered) and have far too much gain. Best LNA for Iridium is an L-Band specific one.    
 The Nooelec Iridium+IR LNA has amazing performance. Well worth the money and Bias-T hassels to drive this amplifier.   
 At a quick glance, you may assume that there are a few Nooelects that seem to cover this band, but they don't all cover the full range of Iridium frequencies. Nooelec have a really helpful [page on their SAWbird LNA range](https://support.nooelec.com/hc/en-us/articles/360011133694-SAWbird-LNA-Filters), take some time to read it before making your purchase. Here is a tip, Iridium is pretty loud. You may not need the extra gain of the + LNA version. Also note that the + draws an extra 150mA. So for example, if you are using an RSP1a SDR, its Bias-T can only supply 50mA, so the base SAWbird LNA is (should be - might be) fine at 30mA draw, the + at 180mA will not work. In the case of Iridium, the extra 10db gain is probably not needed so this combo would work fine depending on your antenna, coax quality and length. (Of course, once again, to really press this home, you can and should just use a physical Bias-T and not have to worry about any of this).   
-Of course, if you are using the HC-610 antenna, you don't need an LNA (And for sure should not run an active antenna AND an LNA, that is not a good idea at all - please don't subscribe to the 'more gain is always better' school of wrong).
+Of course, if you are using the HC-610 antenna, you don't need an LNA (And for sure you should NOT run an active antenna AND an LNA, that is not a good idea at all - please don't subscribe to the 'more gain is always better' school of wrong).
 
 ### SDR   
 I normally like the RTLSDR v3 for this sort of thing (all things ACARS and L-Band). Its very affordable and very quick and clean to get running. The problem with the RTLSDR is that it only covers around 2Mhz bandwidth and that is only a very small number of the Iridium data channels.  
@@ -53,13 +53,18 @@ If you want to build from source the repo can be found on the [Chaos Computer Cl
 Note that none of the Iridium tools use a gui, so you must run it all via the desktop shell terminal on the DragonOS computer (or via PuTTY with DragonOS). I did my testing on a VMware instance on my Windows PC since you need USB 3.0 and plenty of CPU power to drive your SDR to the required 10Mhz BW and decode all the burst data.      
 
 ### Computer - CPU power is critical   
-The decoding of such a wide bandwidth of such bursty data is very CPU intense. You will need a USB 3.0 port to pass the data smoothly (USB 2.0 is a bit of a bottle neck - Please don't argue that USB2.0 is good enough. You are wrong. Its not enough. You MUST use a USB3.0 port that is not shared with any other SDRs).    
-For starters, the Raspberry Pi5 and Pi4 do NOT have enough power to decode more than about 2mhz, ie, the output of the RTLSDR v3. So yes, you can get started and see a few messages, but you will be missing out on over 80% of the aircraft in your area and you will have to chose between getting ACARS and seeing your map coverage, one or the other, the Pi5/4 and RTLSDR v3 can not decode both. (Look down this page a bit to see why, the map data is at one end and ACARS data at the other end of the 10Mhz spread).       
+The decoding of such a wide bandwidth of such bursty data is very CPU intense. You will need a USB 3.0 port to pass the data smoothly (USB 2.0 is a bit of a bottle neck - Please don't argue that USB2.0 is good enough. You are wrong. Its not enough. You MUST use a USB3.0 port that is not shared with any other SDRs or USB 2.0 devices like keyboards or mice. USB will downgrade any USB port to the slowest device on the port.).    
+   
+Again. To be very very very clear. Stop arguing with thebaldgeek that the Airspy R2 is only a USB 2.0 device and so USB2 is fine. ITS NOT FINE! Connect it to a USB3 port (the blue ones) that does not have ANY other USB devices on it (`lsusb` and `sudo lsusb -t` are your guides here).   
+
+Ok, fine, so you want to argue, look at this way, you have spent a lot of money and time setting up an Iridium station, if you want to plug into a USB2 port and get low 50's bursts and ~50 to 60% 'Ok_ave' numbers, thats on you. Just don't DM tbg and ask how to make it go better on USB2.  
+
+For computer starters, the Raspberry Pi5 and Pi4 do NOT have enough power to decode more than about 2mhz, ie, the output of the RTLSDR v3. So yes, you can get started and see a few messages, but you will be missing out on over 80% of the aircraft in your area and you will have to chose between getting ACARS and seeing your map coverage, one or the other, the Pi5/4 and RTLSDR v3 can not decode both. (Look down this page a bit to see why, the map data is at one end and ACARS data at the other end of the 10Mhz spread).       
 Our KBOS station is running: i3-12100 CPU, H670 chipset. That seems to be doing the job very well. A few other stations are running the Beelink N95 and N100 NUC or Trigkey NUC clones and seem to be very happy reporting good decode rates. We want to test the Odroid N2. A guy used a Steamdeck with good numbers.    
 A few other stations are using old laptops, i5, i7 and are working well (i5 is touch and go). One reported his very old i7 could not keep up and he had to upgrade the system he ran the Iridium code on.        
 RAM is not as critical, around 2-4mb or more is enough. HDD space requires a minimum of 32GB for DragonOS_Focal.  
-Personally I am running DragonOS_Focal on a VMware player machine on my Windows PC sharing 6 cores and am very happy. July 2024 update. A windows reinstall broke USB3 virtual box support and after weeks of stuggling, I gave up, bought a Beelink N95 for $130 off Amazon and was back up and running in about 15 minutes with DagonOS_FocalX. Wish I had not wasted my time on the vmWare / VirtualBox drama.   
-You will know if your CPU is up to the task based on how many dropped frames you see. Roughly the make/break is to have a 'ok_ave' of more than 70%.   
+Personally I am running DragonOS_Focal on a VMware player machine on my Windows PC sharing 6 cores and am very happy. July 2024 update. A windows reinstall broke USB3 virtual box support and after weeks of struggling, I gave up, bought a Beelink N95 for $130 off Amazon and was back up and running in about 15 minutes with DagonOS_FocalX. Wish I had not wasted my time on the vmWare / VirtualBox drama.   
+You will know if your CPU is up to the task based on how many dropped frames you see. Roughly the make/break is to have a 'ok_ave' of MORE than 70%. If you have less, you are plugged into a USB2 or a USB3 with a shared USB2 bus/device or your CPU is choking.   
 
 ## Getting Started
 Once you install DragonOS_FocalX on an i5 or better x86 computer with a USB 3.0 port, you are ready to start.  
@@ -91,7 +96,7 @@ Move the gain to zero. Ignore the waterfall, just look at the spectrum.
 Slowly move the gain up. Look at both the noise floor and the peaks of the signals.    
 As you move the gain all the way to max you will see the noise floor just keep rising, but the signal peaks will at some point stop getting higher. They will just get crushed between the rising noise floor and their max height will just remain the same. This is where the peak hold is helpful with Iridium, so you can see what the peak of the bursts are.     
 Move the gain up and down very slowly, one click at a time till you have the tallest hight on the signals and lowest noise floor. Make a note of that number.   
-You don't want to crush your signal, you want to ensure your SNR, signal to noise ratio is a high as possible. Tall peeks, low noise floor. Big gap between the peak and the static is what you looking to get dialed.    
+You don't want to crush your signal, you want to ensure your SNR, signal to noise ratio, is a high as possible. Tall peeks, low noise floor. Big gap between the peak and the static is what you looking to get dialed.    
 
 ## Decoding Iridium ACARS.   
 For now you are going to open a few terminals, we are working on an script to run it and keep it running (it does crash now and then), but for now, this is the best way to get going.....   
@@ -100,7 +105,7 @@ This guide assumes that you would like to share your Iridium data with the world
 Here is the big picture, we are going to make a python file (acars.py) that will take the output from the Iridium decoder and send it via UDP to thebaldgeek ingest server. (Note, this WONT work for airframes.io - more on how to feed them at a future time).
 You will have one terminal to extract the raw data and another terminal to decode the ACARS messages and to send the data to my site. (Optionally, there is a third terminal for your local map if you would like to see your coverage).   
    
- # Docker   
+# Docker   
  If docker is your poison, you have an option [Iridium Docker by jkrasuk](https://github.com/jkrasuk/docker-gr-iridium-toolkit)   
 
 # Lots of terminals   
@@ -135,6 +140,8 @@ To be clear, if you not using an R2 look/path that command in the /usr/src/gr-ir
 A quick word about the -D 4 part......    
 Decimation is a way of breaking up the 10Mhz bandwidth into more CPU digestible sub parts (with a small overlap to not miss any burst that happen to fall on a seam).   
 Its strongly recommended that you do run with some decimation. There is a strong mathematical link between decimation, SDR sample rate and the total bandwidth. gr-iridium will do a sanity check when you start it and let you know if you are hallucinating with any of the combinations. 
+You should test -D 8 and -D 4 as a guide. Each change should be given a few hours to soak and get stable numbers.   
+Because of the LEO nature of Iridium, you cant rush things. Play the long game and get it right.   
 
 Once up and running you are going to get a line of status numbers per second:   
 ```1666645162 | i: 351/s | i_avg: 392/s | q_max:   24 | i_ok:  79% | o:  751/s | ok:  82% | ok: 291/s | ok_avg:  85% | ok:   31170861 | ok_avg: 334/s | d: 8260```  
@@ -209,6 +216,9 @@ At this point, you can visit your PC's IP address from any browser on your netwo
 Let that run. You should see the sats and beams update around once a minute.   
 Keep reading if you would like to share your map with thebaldgeeks current global Iridium map (please and thanks).    
     
+Do note that you MUST be running the ./example script to generate the sats.json file.   
+If you are feeding your map to thebaldgeek, you MUST have the local map running to feed it to the master map on tbg's site.
+
 ## Terminal Four - Sending me your map data.   
 Optional. If you want to add your map coverage to the central global map that I tweet now and then.   
 Type `nano map.py`, then copy/paste in this text:    
@@ -246,7 +256,7 @@ else:
 ```
 
 
-You will need to change the UID from `ktbg` and tell me what you set it to be and then change the port number that I will give you and this will allow you to send your local map data to the global map. (Live map URL only for Iridium feeder sharers).  
+You will need to change the UID from `ktbg` and tell me what you set it to be and then change the port number that I will give you and this will allow you to send your local map data to the global map. (View the master map on the home page of the site).  
 Next run this command: 
 ```pip install https://github.com/joh/when-changed/archive/master.zip```   
 This will install a python script that will look for changes to a file. 
