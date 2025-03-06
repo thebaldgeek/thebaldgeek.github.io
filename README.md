@@ -30,7 +30,8 @@ Tips for using the map - and you REALLY REALLY should read them - can be found h
     
 Map with military aircraft and their ACARS messages:   
 [tbgacarshub.airframes.io](https://tbgacarshub.airframes.io/adsb)   
-Note: The position plots and ACARS messages are synchronized over time in your web browser, so this map won't work as intended on mobile devices.   
+Note: The position plots and ACARS messages are synchronized over time in your web browser. When you click the link, just chill for about 30 min while it does it thing.  
+Since the map syncs in real time, the map won't work as intended on mobile devices, they drop the connection to save power too readily.   
       
 
 # What even is ACARS??    

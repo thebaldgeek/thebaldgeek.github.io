@@ -259,8 +259,10 @@ else:
 You will need to change the UID from `ktbg` and tell me what you set it to be and then change the port number that I will give you and this will allow you to send your local map data to the global map. (View the master map on the home page of the site).  
 Next run this command: 
 ```pip install https://github.com/joh/when-changed/archive/master.zip```   
-This will install a python script that will look for changes to a file. 
-Its very important that you CD into where it was installed:  
+This will install a python script that will look for changes to a file.  
+
+Its VERY important that you CD into where it was installed:  
+   
 (change 'ubuntu' for your user name home directory if needed) ```cd /home/ubuntu/.local/bin```   
 Now run the file watch which will send me your sats.json rougly once a minute and your coverage will be added to the master map on my site:
 

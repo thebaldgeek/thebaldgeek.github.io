@@ -3,7 +3,7 @@
 Navigation: [home](README.md)  
 
 C-Band is the most difficult aspect of setting up and running a full satcom ground station, but because of this and the rich data it can provide, if you have the space, time and patience its probably the most rewarding of all the AERO frequencies that are in use.   
-I have seen many examples where having both C and L band data from the same Inmarsat has proven very effective.   
+I have seen many examples where having both C and L band data from the same Inmarsat has proven very effective - you can read of two such flights [here](notable_flights.md).   
 
 Here is a random screen shot of the aircraft that my dish can pick up over the course of a day - you get an ebb and flow in the traffic you will see depending on the time of day and year. The mix of military vs civil will also change just like it does with ADSB.   
 
@@ -20,16 +20,16 @@ Lets break it down....
 4. Buy a feed (LNB), LNB power supply, some TV grade coax cable, SDR, computer.   
 5. Get some planes on a map for a few hours a day.   
 6. Get aircraft ACARS messages.   
-7. Move the dish twice a day (for example, once before work, once after work). Get a feel for where you need to point the dish for each part of the satellite orbit, ie, top and bottom.      
-8. When you are sick of retuning your SDR frequencies for hot/cold (ie, day/night) cycles, buy a GPSDO and modify the LNB so you no longer have re-tune the SDR frequencies. Or ensure you buy an external LO LNB from the start and never have this issue.   
+7. Move the dish twice a day (for example, once in the morning, once in the evening). Get a feel for where you need to point the dish for each part of the satellite orbit, ie, top and bottom.      
+8. Tweak your LNB to dish alignment slowly over time.   
 9. When you are sick of manually moving the dish, put a linear motor on it to track the satellite automatically.    
 10. Done. Sit back and enjoy the data. (Be aware, this last step could take many many months to get to - no, not kidding).   
 
 ## Dish size matters.
-You will need the space for a minimum of a 6ish foot (2.4 meter) dish. Some people will tell you that you can get away with a smaller dish, but the signal is going be so marginal that its hard to justify the time and money to setup something that will only bearly work or will be frustrating to use. You may even end up either giving up, or buying a bigger dish, ie spending needless money and time on the smaller dish.      
+You will need the space for a minimum of a 6ish foot (2.4 meter) dish. Some people will tell you that you can get away with a smaller dish, but the signal is going be so marginal that its hard to justify the time and money to setup something that will only barely work or will be frustrating to use. You may even end up either giving up, or buying a bigger dish, ie spending needless money and time on the smaller dish.      
 I also feel that most people will want a large enough dish so that _all_ signals from the satellite can be recovered around the clock. If you are close to the equator (ie, under the satellite) then yes, perhaps something smaller might work.  
 Do your research, ask lots of questions from those that insist a smaller dish will 'work just fine', qualify their data quality.    
-Be sure and read this entire page before making the final decision of the final dish size, there are _three_ types of AERO Data from C-Band (10500, 1200 and 8400) and most people with smaller dishes only can pick up one (10500), they dismiss the other two with a wave of the hand 'There is nothing interesting using those weaker signals' ... You need to make that decision, not them ....   
+Be sure and read this entire page before making the final decision of the final dish size, there are _three_ types of AERO Data from C-Band (10500, 1200 and 8400) and most people with smaller dishes only can pick up one (10500), they dismiss the other two with a wave of the hand 'There is nothing interesting using those weaker signals' ... You need to make that decision, not them .... If you are mostly interested in military or small bizjet data, trust me, you are GOING to want to pick up ALL the 1200 data. If you are interested in hearing audio from the cockpit, you are going to want a big dish to be able to decode that data.   
 
 Having free and easy physical access to the dish is also important, you will be spending a _lot_ of time working on it and adjusting it for the setup / commissioning period at all hours of the day and night. If it is on a roof where access is uncomfortable or dangerous in the dark, that is a no-go in my mind. You will need also run a coax and a few command and control cables to the dish and lastly some sort of power outlet or stable low voltage outlet will be required somewhat close to the dish.   
 
@@ -89,7 +89,7 @@ norsat 3.4Ghz to 4.2Ghz with external 10Mhz LO. There are different models (N ty
    
 1 x power cable for motors and 5v DC supply for GPSDO - length for install [something like this](https://www.amazon.com/Multi-Core-Shielded-Anti-Interference-Control-Signal/dp/B09639HGN9)   
    
-1 x Linear motor with resistance position feedback. Stroke length as per instructions [4'' example from Amazon](https://www.amazon.com/gp/product/B00NVI5RII/). Another similar motor with feedback: [linear actuator with potentiometer](https://www.robotshop.com/products/4-stroke-150-lbs-force-linear-actuator-w-potentiometer) (Do NOT buy the actuators with the pulse output!!)  
+1 x Linear motor with resistance position feedback. Stroke length as per instructions [4'' example from Amazon](https://www.amazon.com/gp/product/B00NVI5RII/). Another similar motor with feedback: [linear actuator with potentiometer](https://www.robotshop.com/products/4-stroke-150-lbs-force-linear-actuator-w-potentiometer) (Do NOT buy the actuators with the pulse output!! You MUST get one with about 10,000 Ohm (10K) resistor feedback)  
    
 1 x Microcontroller with 5 amp H-Bridge relays [Example from Amazon](https://www.amazon.com/s?k=h-bridge&ref=nb_sb_noss_1).   
    
@@ -108,7 +108,7 @@ Here is an example.
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/cband/norsatondish.png" height="320"> 
 
  
-If not already, place the dish pretty much in its final resting place. It should be level at the base in both axis. This is important because as you track in elevation, you don't an an azimuth component creeping in as it will move you off signal.    
+If not already, place the dish pretty much in its final resting place. It should be level at the base in both axis. This is important because as you track in elevation, you don't want an azimuth component creeping in as it will move you off signal.    
 
 Don't secure the dish to the ground yet, you will need to pivot it to find the middle of the orbit. Look at the graph and see where the satellite is in its orbit and move the dish left and right while looking at the waterfall to find the edges of the signal.   
      
@@ -120,7 +120,7 @@ I put a tent peg in the ground and used a marker to show the edges of the orbit.
 
 This is a bit of a thorn in our side at the moment. In time we will move to [SDRReceiver](SDRReciver.md) but for now the quickest way to get going is to use SDR# or SDR-Console.  
 Download it, unzip it and run the bat file to set up the SDR.  
-Then run zadig as admin and install the driver for the SDR. (If you have alreay done this, you don't need to do it twice).  
+Then run zadig as admin and install the driver for the SDR. (If you have already done this, you don't need to do it twice).  
 Now run the SDR software.  
 Next, finding the right frequency. This has been pretty hard in the past since its hard to find an image of what you are looking for on the web. I am trying to get screen shots of all the Inmarsats so people know where to look and what they are looking for.
 Here is 98W 10500 burst waterfall.  All the Inmarsats ADSC look just like this. Just the frequency changes by a little. You should be able to see a pattern like this on every sat pretty close to this downconverted frequency. Note the small chirpy R and T channels on the left, they are of some value, but the bulk of the interesting data is in those big fat 10500 bursts, so focus on finding them for now.   
@@ -183,7 +183,7 @@ Program the motor to move up and down the exact same range. Bolt it to the dish.
     
  # Software   
 SDRReceiver is hard to setup on C-Band as most people like to see the waterfall as they setup each of the VFOs.
-Buy a copy of VAC so you can remove the audio watermark and have more than 3 virtual audio cables.   
+Buy a copy of VAC so you can remove the audio watermark and have more than 3 virtual audio cables. (Don't buy VAD - its limited to 6 virtual audio cables and you WILL need more than that)   
 Use sdr-console. Put a VFO over each data channel. Assign a different VAC Line number to each VFO. Map/link that audio line number to each Jaero.   
 Configure Jaero for zero logging and uncheck local audio decoding. (Uses way less CPU).    
 Configure each jaero basestation output for a different port number in either VRS or readsb.   
