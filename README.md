@@ -65,7 +65,7 @@ Its YOUR website, not thebaldgeeks!
 ### Contact  
 thebaldgeek is most active on [X / Twitter](https://twitter.com/thebaldgeek). DM's are open. Sorry, not sorry, its a fact, X is still the best avgeek platform hands down. Use lists for people you follow and its an amazing site for keeping updated with YOUR feed and nothing else. The interaction and aviation friendships there are second to none.          
 If your not on X, you can try the [website chat](https://tbg.airframes.io/dashboard/chat) to connect with tbg and chat about ACARS.  
-tbg also cross posts (Dec 2024) on [BlueSky](https://staging.bsky.app/profile/thebaldgeek.bsky.social). Lots of followers over there, but zero interaction - hence the cross posts for now.        
+tbg also cross posts on [BlueSky](https://staging.bsky.app/profile/thebaldgeek.bsky.social). Lots of followers over there, but zero interaction - hence the cross posts for now.        
   
    
    
@@ -73,12 +73,15 @@ tbg also cross posts (Dec 2024) on [BlueSky](https://staging.bsky.app/profile/th
 
 Do note that tbg does not Tweet actual OSINT information... His site/tweets/role is to provide raw OSINT data. Hes found that most people that do osint often don't know where or how the raw data they use comes from, his goal is to help people understand how RF (radio frequency) signals can be converted into useful data for people to analyze and thus deepen the intel derived.   
     
-Reddit is a tricky platform, but do take look through the [Reddit ACARS](https://www.reddit.com/r/ACARS/) sub.   
+tbg blogs about the main website, askes for input (anaon comments accepted), and goes into more depth on the sites workings: [k6thebaldgeek.blogspot](https://k6thebaldgeek.blogspot.com/)
+
+Reddit is a tricky platform, but do take look through the posts on [Reddit ACARS](https://www.reddit.com/r/ACARS/) sub.   
 
 If you want more of a traditional forums, then airframesio has that as well, join the [airframes community](https://community.airframes.io/)   
 The ACARS team that matters is very active on the [airframes discord](https://discord.com/invite/airframes)  
+The airframe team have an awesome blog: [blog.airframes](https://blog.airframes.io/)    
     
-For even more searchable ACARS data (over 3 Billion ACARS messages stretching back a few years) and information on how to feed the different ACARS modes, please support [airframes.io](https://app.airframes.io/about)   
+For even more searchable ACARS data (over 4 Billion ACARS messages stretching back a few years) and information on how to feed the different ACARS modes, please support [airframes.io](https://app.airframes.io/about)   
 You can also follow them on Twitter [AirframesIO](https://twitter.com/AirframesIO)   
    
 <!-- Global site tag (gtag.js) - Google Analytics -->
