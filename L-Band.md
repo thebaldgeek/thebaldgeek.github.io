@@ -396,7 +396,20 @@ Frequency...Region......Use..................Use......Hex Oct..Provider......GEO
 
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/143eL-Band.png" height="380"> 
 
-### 6F1 83E (No screenshot for now)       
+### 6F1 83E (No screenshot for now)      
+Update: Apr 2025
+1545076800 (600)   
+1545081700 (600)   
+1545086800 (600)   
+1545156400 (600)   
+1545161500 (600)   
+1545181900 (600)    
+1546036100 (10500)   
+1546086000 (10500)   
+1546101200 (10500)   
+1546116700 (10500)    
+    
+Old list kept for historical reference only - do not use.   
 Frequency...Region......Use..................Use......Hex Oct..Provider......GEO Location......Beam      
 1545,0050   83,5E       Aero-L(600)       Psmc2    C1 301         ARINC Perth, AU         Global beam      
 1545,1600   83,5E       Aero-L(600)       P-Chan   C5 305         SITA Perth, AU          Global beam      
