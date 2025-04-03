@@ -397,7 +397,7 @@ Frequency...Region......Use..................Use......Hex Oct..Provider......GEO
 <img src="https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/143eL-Band.png" height="380"> 
 
 ### 6F1 83E (No screenshot for now)      
-Update: Apr 2025
+Update: Apr 2025   
 1545076800 (600)   
 1545081700 (600)   
 1545086800 (600)   
