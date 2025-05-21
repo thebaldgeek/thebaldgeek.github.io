@@ -9,7 +9,7 @@ ACARS is the why
 When you combine the two systems, you end up with a much more accurate telling of the flight.  
 On this page thebaldgeek breaks down one (soon two) such flight to show how ACARS explains why ADSB/C folks saw the return, but claimed they did not know why (FlightRadar24, FlightAware (and others) social media teams have done this more than a handful of times - if they can miss ACARS, others might as well).   
   
-### AA75EF (return to PHNL) flight due to bomb threat   
+### AA75EF (return to PHNL) due to bomb threat   
 May 21th 2025.   
 
 ```
@@ -44,10 +44,10 @@ ON BOARD
 	    REMAINING FUEL: 05:00  
 	    PERSONS ON BOARD: 356    
 ```   
-Here we can see the initial pan pan pan messages.   
+Here we can see the initial pan pan pan message.   
 At this stage we do not know how the flight crew found out about the bomb threat.   
-They call the emergency and give the fuel on board and SOB (souls on board).   
-This came via C-band as expected. Its not 100% correct, but good enough to keep in mind that C=Band = cockpit.   
+They call the emergency and give the fuel on board and SOB (souls on board) / POB (Persons On Board).   
+This came via C-band as expected. Its not 100% correct, but good enough to keep in mind that C=Band = cockpit. L-Band is land (or dispatch)   
    
 L-Band then asks for confirmation of the emergency.   
 ```
@@ -56,24 +56,27 @@ AES:AA75EF GES:02 2 .N773UA 	QUNDCULUA~1MSG FROM DISP
 	ARE YOU DECLARING AN EMERGENCY?  
 	CHIDD  
 ```   
+   
 Cockpit crew ack:   
 ```
  AES:AA75EF GES:02 2 .N773UA FLIGHT UA1169  
-  
+   
 	M51AUA1169/C4 DISP MSG       / PHNL PHNL 20 094135  
 	YES.  EMERGENCY A/C  
 ```
+   
 Dispatch operator then asks for their ETA back to PHNL   
 ```
 AES:AA75EF GES:02 2 .N773UA 	QUNDCULUA~1MSG FROM DISP  
-	UA1169-20 PHNL KLAX  
+	UA1169-20 PHNL KLAX   
 	WHAT DOES BOX SHOW FOR ETA HNL?  
 	CHIDD  
 ```   
-Crew then fires back the FMC (FLight Managment COmputer data)   
+   
+Crew then reports back the FMC (FLight Management Computer data)   
 ```
  AES:AA75EF GES:02 2 .N773UA FLIGHT UA1169  
-  
+   
 	M52AUA1169/D5 DIVERSION      / PHNL PHNL 20 094654 PHNL 1133 0643  
 ```
    
@@ -90,6 +93,7 @@ Automated message from dispatch.
 	FINAL WEIGHTS BEFORE  
 	YOUR NEXT DEPARTURE  
 ```   
+   
 Another semi automated message from dispatch.   
 ```
  AES:AA75EF GES:02 2 .N773UA 	.NDCULUA 210951  
@@ -109,6 +113,7 @@ Another semi automated message from dispatch.
 	5) ALTITUDE THAT FUEL DUMP BEGAN AND ALTITUDE AT COMPLETION.  
 	6) WX CONDITIONS IN VCNTY.  
 ```   
+   
 Dispatch asking for specific information.   
 ```
 	 AES:AA75EF GES:02 2 .N773UA 	/OAKODYA.AT1  
@@ -121,7 +126,8 @@ Dispatch asking for specific information.
 	  MESSAGE DATA:   
 	   [FREETEXT]  
 	    DO YOU HAVE ANY FURTHER INFO ABOUT THE BOMB OR POSSIBLE SUSPECT  
-```
+```   
+   
 Flight crew reply.   
 ```
  AES:AA75EF GES:02 2 .N773UA FLIGHT UA1169  
@@ -135,7 +141,8 @@ Flight crew reply.
 	  MESSAGE DATA:  
 	   [FREETEXT]  
 	    NEGATIVE LEO ON BOARD IS MON CABIN.  
-```
+```   
+   
 LEO = Law Enforcement Officer   
    
 Dispatch say thanks for that information.   
@@ -149,7 +156,8 @@ Dispatch say thanks for that information.
 	   TIMESTAMP: 09:56:55  
 	  MESSAGE DATA:  
 	   ROGER  
-```
+```   
+   
 Flight crew advise that they are not doing a fuel dump - land heavy.   
 ```
  AES:AA75EF GES:02 2 .N773UA FLIGHT UA1169
@@ -157,13 +165,15 @@ Flight crew advise that they are not doing a fuel dump - land heavy.
 	M56AUA1169/C4 DISP MSG       / PHNL PHNL 20 095702  
 	LDG WGT 443K  
 	NO DUMP  
-```
+```   
+   
 Dispatch ack the no-dump   
 ```
 AES:AA75EF GES:02 2 .N773UA 	QUNDCULUA~1MSG FROM DISP  
 	UA1169-20 PHNL PHNL  
 	COPY..TNKS  
 ```   
+   
 Flight crew make it clear the inflight emergency (The pan pan pan)   
 ```
  AES:AA75EF GES:02 2 .N773UA FLIGHT UA1169  
@@ -173,6 +183,7 @@ Flight crew make it clear the inflight emergency (The pan pan pan)
 	SECURITY INCIDENT  
 	BOMB THREAT  
 ```   
+   
 Dispatch let the flight crew know what they are to expect on the ground.   
 ```
  AES:AA75EF GES:02 2 .N773UA 	QUNDCULUA~1MSG FROM DISP  
@@ -180,6 +191,7 @@ Dispatch let the flight crew know what they are to expect on the ground.
 	SATCOM DROPPED..HNL OPS SAYS REMOTE R7 TO PARK..POLICE WILL MEET YOU  
 	CHIDD
 ```   
+   
 Different dispatch operator adds more ground information.   
 ```
  AES:AA75EF GES:02 2 .N773UA 	.NDCULUA 211004  
@@ -197,6 +209,7 @@ Different dispatch operator adds more ground information.
 	
 	HNLCS   
 ```   
+   
 Dispatch asking if they need any more assistance.   
 ```
 	 AES:AA75EF GES:02 2 .N773UA 	/OAKODYA.AT1  
@@ -211,6 +224,7 @@ Dispatch asking if they need any more assistance.
 	   [FREETEXT]  
 	    DO YOU NEED FURTHER LAW ENFORCEMENT ASSISTANCE ON THE GROUND AT PHNL  
 ```   
+   
 Dispatch checking for confirmation that the cockpit is secure.  
 ```
 	 AES:AA75EF GES:02 2 .N773UA 	/OAKODYA.AT1  
@@ -225,6 +239,7 @@ Dispatch checking for confirmation that the cockpit is secure.
 	   [FREETEXT]  
 	    CONFIRM COCKPIT IS SECURE AT THIS TIME  
 ```   
+   
 Flight crew confirming.   
 ```
  AES:AA75EF GES:02 2 .N773UA FLIGHT UA1169  
