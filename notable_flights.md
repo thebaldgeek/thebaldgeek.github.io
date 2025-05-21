@@ -9,6 +9,243 @@ ACARS is the why
 When you combine the two systems, you end up with a much more accurate telling of the flight.  
 On this page thebaldgeek breaks down one (soon two) such flight to show how ACARS explains why ADSB/C folks saw the return, but claimed they did not know why (FlightRadar24, FlightAware (and others) social media teams have done this more than a handful of times - if they can miss ACARS, others might as well).   
   
+### AA75EF (return to PHNL) flight due to bomb threat   
+May 21th 2025.   
+
+```
+FANS-1/A CPDLC MESSAGE:  
+	 CPDLC DOWNLINK MESSAGE:  
+	  HEADER:  
+	   MSG ID: 2  
+	   TIMESTAMP: 09:36:32  
+	  MESSAGE DATA:  
+	   POSITION REPORT [POSITIONREPORT]  
+	    LATITUDE:   24 17.1 NORTH  
+	    LONGITUDE: 145 23.7 WEST  
+	    TIME AT CURRENT POSITION: 09:36  
+	    FLIGHT LEVEL: 370  
+	    MACH NUMBER: 0.83  
+	   PAN PAN PAN  
+	   DIVERTING TO [POSITION] VIA [ROUTECLEARANCE]  
+	    AIRPORT: PHNL  
+	    DEPARTURE AIRPORT: PHNL  
+	    DESTINATION AIRPORT: PHNL  
+	    DEPARTURE RUNWAY:  
+	     RUNWAY DIRECTION: 8  
+	     RUNWAY CONFIGURATION: LEFT  
+	    ROUTE:  
+	     PUBLISHED IDENTIFIER:  
+	      FIX: FOMAS  
+	     AIRWAY ID: R578  
+	     PUBLISHED IDENTIFIER:  
+	      FIX: FICKY  
+	   [REMAININGFUEL] OF FUEL REMAINING AND [REMAININGSOULS] SOULS  
+ON BOARD  
+	    REMAINING FUEL: 05:00  
+	    PERSONS ON BOARD: 356    
+```   
+Here we can see the initial pan pan pan messages.   
+At this stage we do not know how the flight crew found out about the bomb threat.   
+They call the emergency and give the fuel on board and SOB (souls on board).   
+This came via C-band as expected. Its not 100% correct, but good enough to keep in mind that C=Band = cockpit.   
+   
+L-Band then asks for confirmation of the emergency.   
+```
+AES:AA75EF GES:02 2 .N773UA 	QUNDCULUA~1MSG FROM DISP  
+	UA1169-20 PHNL KLAX  
+	ARE YOU DECLARING AN EMERGENCY?  
+	CHIDD  
+```   
+Cockpit crew ack:   
+```
+ AES:AA75EF GES:02 2 .N773UA FLIGHT UA1169  
+  
+	M51AUA1169/C4 DISP MSG       / PHNL PHNL 20 094135  
+	YES.  EMERGENCY A/C  
+```
+Dispatch operator then asks for their ETA back to PHNL   
+```
+AES:AA75EF GES:02 2 .N773UA 	QUNDCULUA~1MSG FROM DISP  
+	UA1169-20 PHNL KLAX  
+	WHAT DOES BOX SHOW FOR ETA HNL?  
+	CHIDD  
+```   
+Crew then fires back the FMC (FLight Managment COmputer data)   
+```
+ AES:AA75EF GES:02 2 .N773UA FLIGHT UA1169  
+  
+	M52AUA1169/D5 DIVERSION      / PHNL PHNL 20 094654 PHNL 1133 0643  
+```
+   
+Automated message from dispatch.   
+```
+ AES:AA75EF GES:02 2 .N773UA 	QUNDCULUA~1INVALID WEIGHTS  
+	UA1169/20 PHNL PHNL     
+	SENT: 09:49:23Z   
+	INVALID WEIGHTS DUE TO  
+	RETURN TO BLOCK.  
+	  
+	SINCE YOU RETURNED  
+	BE SURE YOU HAVE NEW  
+	FINAL WEIGHTS BEFORE  
+	YOUR NEXT DEPARTURE  
+```   
+Another semi automated message from dispatch.   
+```
+ AES:AA75EF GES:02 2 .N773UA 	.NDCULUA 210951  
+	AGM  
+	AN N773UA  
+	-  /UA1169/20 PHNL PHNL     
+	SENT: 09:51:42Z   
+	- MESSAGE FROM CHIDD -  
+	  
+	  
+	FOR A FLT THAT REQUIRES FUEL JETTISON,INCLUDE THE FOLLOWING INFO  
+	IN THE IRREG MSSG:  
+	1) START TIME  
+	2) STOP TIME  
+	3) TOTAL AMOUNT OF FUEL DUMPED.  
+	4) START AND STOP LOCATION.  
+	5) ALTITUDE THAT FUEL DUMP BEGAN AND ALTITUDE AT COMPLETION.  
+	6) WX CONDITIONS IN VCNTY.  
+```   
+Dispatch asking for specific information.   
+```
+	 AES:AA75EF GES:02 2 .N773UA 	/OAKODYA.AT1  
+  
+	FANS-1/A CPDLC MESSAGE:  
+	 CPDLC UPLINK MESSAGE:  
+	  HEADER:  
+	   MSG ID: 5  
+	   TIMESTAMP: 09:53:13  
+	  MESSAGE DATA:   
+	   [FREETEXT]  
+	    DO YOU HAVE ANY FURTHER INFO ABOUT THE BOMB OR POSSIBLE SUSPECT  
+```
+Flight crew reply.   
+```
+ AES:AA75EF GES:02 2 .N773UA FLIGHT UA1169  
+   
+
+	FANS-1/A CPDLC MESSAGE:  
+	 CPDLC DOWNLINK MESSAGE:  
+	  HEADER:  
+	   MSG ID: 5  
+	   TIMESTAMP: 09:54:13  
+	  MESSAGE DATA:  
+	   [FREETEXT]  
+	    NEGATIVE LEO ON BOARD IS MON CABIN.  
+```
+LEO = Law Enforcement Officer   
+   
+Dispatch say thanks for that information.   
+```
+ AES:AA75EF GES:02 2 .N773UA 	/OAKODYA.AT1.N773UA23278DC0C0C2F5  
+
+	FANS-1/A CPDLC MESSAGE:  
+	 CPDLC UPLINK MESSAGE:  
+	  HEADER:  
+	   MSG ID: 6  
+	   TIMESTAMP: 09:56:55  
+	  MESSAGE DATA:  
+	   ROGER  
+```
+Flight crew advise that they are not doing a fuel dump - land heavy.   
+```
+ AES:AA75EF GES:02 2 .N773UA FLIGHT UA1169
+
+	M56AUA1169/C4 DISP MSG       / PHNL PHNL 20 095702  
+	LDG WGT 443K  
+	NO DUMP  
+```
+Dispatch ack the no-dump   
+```
+AES:AA75EF GES:02 2 .N773UA 	QUNDCULUA~1MSG FROM DISP  
+	UA1169-20 PHNL PHNL  
+	COPY..TNKS  
+```   
+Flight crew make it clear the inflight emergency (The pan pan pan)   
+```
+ AES:AA75EF GES:02 2 .N773UA FLIGHT UA1169  
+
+	M57AUA1169/C6 STA MSG        / PHNL PHNL 20 095903 PHNL  
+	RETURNING TO HNL.  
+	SECURITY INCIDENT  
+	BOMB THREAT  
+```   
+Dispatch let the flight crew know what they are to expect on the ground.   
+```
+ AES:AA75EF GES:02 2 .N773UA 	QUNDCULUA~1MSG FROM DISP  
+	UA1169-20 PHNL PHNL  
+	SATCOM DROPPED..HNL OPS SAYS REMOTE R7 TO PARK..POLICE WILL MEET YOU  
+	CHIDD
+```   
+Different dispatch operator adds more ground information.   
+```
+ AES:AA75EF GES:02 2 .N773UA 	.NDCULUA 211004  
+	AGM  
+	AN N773UA  
+	-  UA1169/21 PHNL PHNL    
+	SENT: 10:04:40Z   
+	THANKS  
+	ETA 0130  
+	REEF RUNWAY	ARRIVAL	ENTOURAGE NOTIFIED  
+	PARKING	AT TWY R7  
+	TAXIWAY  
+	ROMEO SEVEN  
+	ALL PARTIES	AWARE THANKS  
+	
+	HNLCS   
+```   
+Dispatch asking if they need any more assistance.   
+```
+	 AES:AA75EF GES:02 2 .N773UA 	/OAKODYA.AT1  
+  
+  
+	FANS-1/A CPDLC MESSAGE:  
+	 CPDLC UPLINK MESSAGE:  
+	  HEADER:  
+	   MSG ID: 7  
+	   TIMESTAMP: 10:08:03  
+	  MESSAGE DATA:  
+	   [FREETEXT]  
+	    DO YOU NEED FURTHER LAW ENFORCEMENT ASSISTANCE ON THE GROUND AT PHNL  
+```   
+Dispatch checking for confirmation that the cockpit is secure.  
+```
+	 AES:AA75EF GES:02 2 .N773UA 	/OAKODYA.AT1  
+  
+  
+	FANS-1/A CPDLC MESSAGE:  
+	 CPDLC UPLINK MESSAGE:  
+	  HEADER:  
+	   MSG ID: 8  
+	   TIMESTAMP: 10:08:21  
+	  MESSAGE DATA:  
+	   [FREETEXT]  
+	    CONFIRM COCKPIT IS SECURE AT THIS TIME  
+```   
+Flight crew confirming.   
+```
+ AES:AA75EF GES:02 2 .N773UA FLIGHT UA1169  
+   
+	L67AUA1169/OAKODYA.AT1.N773UA630EA21603EBFD   
+
+	FANS-1/A CPDLC MESSAGE:   
+	 CPDLC DOWNLINK MESSAGE:   
+	  HEADER:   
+	   MSG ID: 6   
+	   MSG REF: 7   
+	   TIMESTAMP: 10:08:22   
+	  MESSAGE DATA:   
+	   ROGER   
+```   
+   
+The remaining messages are just system hand off from satcom to VDL   
+
+
+
+
 ### QF63 RTB (return to base) flight due to maintance issue. (tbg suspects engine issue)   
 Dec 25th 2024.   
   
