@@ -6,8 +6,10 @@ Navigation: [home](README.md)
 ADSB/C is the where   
 ACARS is the why
 
-When you combine the two systems, you end up with a much more accurate telling of the flight.  
-On this page thebaldgeek breaks down one (soon two) such flight to show how ACARS explains why ADSB/C folks saw the return, but claimed they did not know why (FlightRadar24, FlightAware (and others) social media teams have done this more than a handful of times - if they can miss ACARS, others might as well).   
+When you combine the two data types, you end up with a much more accurate telling of the flight.  
+On this page thebaldgeek breaks down a few flights to show how ACARS explains why ADSB/C folks saw an aircraft change course, but they claimed at the time they did not know why. (FlightRadar24, FlightAware (and others) social media teams have done this more than a handful of times - if these 'flight tracking experts' can miss ACARS, others might as well).   
+   
+These flight 'replays' also serve as real world examples of how #osint aircraft tracking data can paint a more accurate timeline when different sources are pulled together and thus remove conjecture and confirmation bias.   
   
 ### AA75EF (return to PHNL) due to bomb threat   
 May 21th 2025.   
