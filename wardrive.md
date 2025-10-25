@@ -11,7 +11,7 @@ The notes that remain here are just about the WigleFin and wifydra build parts l
 ## WigleFin.
   
 If you want to print your own, this should give you a good head start.    
-Let thebaldgeek know (contact on the home page here), he'd love to hear about it:  
+Let thebaldgeek know, he'd love to hear about it:  
 [wiglefin body](https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/wardrive/wigleFinV3_body.stl)   
 [wiglefin lid](https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/wardrive/wigleFinV3_lid.stl)   
 [wiglefin lid pin](https://raw.githubusercontent.com/thebaldgeek/thebaldgeek.github.io/main/img/wardrive/wigleFinV3_pin.stl)   
