@@ -2,12 +2,12 @@
 
 Navigation: [Inmarsat](Inmarsat.md) : [L-Band](L-Band.md) : [C-Band](C-Band.md) :  [VHF-ACARS/VDL2](vhf-acars.md) :  [dumpHFDL](dumpHFDL.md) : [Iridium](Iridium.md) : [STDC](stdc.md) : [Jaero](jaero.md) : [SDRReceiver](SDRReceiver.md) : [Radiosonde](radiosonde.md) : [DragonOS](DragonOS.md) : [autoTLE](autoTLE.md) : [OpenSkyAPI](OpenSkyAPI.md) : [VRS](vrs.md) : [MQTT](mqtt.md) : [Raspberry Pi](raspberrypi.md) : [Telegram Bot](telegram.md) : [UAV-Drone](UAV-Drone.md) : [Squawk](Squawk.md) : [Interesting Flights](notable_flights.md) : [wardrive](wardrive.md)
 
-# The main ACARS website
+# The main ACARS website has closed down
    
    
-Oct 2026 thebaldgeek felt it was time to close the site down.    
+```Oct 2026 thebaldgeek felt it was time to close the site down.    
 He's going to leave these pages up, but the site is no more.    
-It was a Node-RED fuled dumpster fire. It had it's day, it was way way way past its 'use by' date.
+It was a Node-RED fuled dumpster fire. It had it's day, it was way way way past its 'use by' date.```
 
    
    
