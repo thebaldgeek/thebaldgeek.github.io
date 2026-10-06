@@ -10,10 +10,7 @@ He's going to leave these pages up, but the site is no more.
 It was a Node-RED fuled dumpster fire. It had it's day, it was way way way past its 'best by' date.```
 
    
-   
-You can search and live view a lot of satcom ACARS feeds (and some HFDL / VHF VDL ones as well) on the site:-    
-    
-[tbg.airframes.io](https://tbg.airframes.io/)   
+     
 The closest thing there is to a 'users guide' for the site is [here](https://community.airframes.io/t/website-overview-tbg-airframes-io/159)   
        
 Please note that the website is a dumpster fire. (ie, full of bugs and glitches).   
