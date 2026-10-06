@@ -7,7 +7,7 @@ Navigation: [Inmarsat](Inmarsat.md) : [L-Band](L-Band.md) : [C-Band](C-Band.md) 
    
 ```Oct 2026 thebaldgeek felt it was time to close the site down.    
 He's going to leave these pages up, but the site is no more.    
-It was a Node-RED fuled dumpster fire. It had it's day, it was way way way past its 'use by' date.```
+It was a Node-RED fuled dumpster fire. It had it's day, it was way way way past its 'best by' date.```
 
    
    
