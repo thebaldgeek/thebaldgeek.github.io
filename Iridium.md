@@ -73,6 +73,16 @@ You will know if your CPU is up to the task based on how many dropped frames you
 
 ## Getting Started
 Once you install DragonOS_FocalX on an i5 or better x86 computer with a USB 3.0 port, you are ready to start.  
+   
+   ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   
+Update. Nov 2026.   
+The best way to get started with Iridum is to use Iridium-Observatory.   
+Read more about it here: https://k6thebaldgeek.blogspot.com/2026/11/iridiuim-observatory.html    
+   
+Everything below this just kept for histoy as there are still some relivent bits, but please install Iridium-Observatory vs following the old instructions on this page.
+   
+++++++++++++++++++++++++++++++++++++++++++++++++
 
 The very first thing you MUST do is run the command (NOT as sudo, just as your user - this is important its done just as your usual username/command prompt) `volk_profile`   
 What this does is run a whole bunch of math problems in different ways and figures out your CPU profile and the fastest way it computes stuff.    
